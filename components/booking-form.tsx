@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { DemoBadge } from "@/components/brand";
-import { site } from "@/lib/content";
+import { site, whatsAppHref } from "@/lib/content";
 
 export function BookingForm() {
   const [sent, setSent] = useState(false);
@@ -112,7 +112,7 @@ export function BookingForm() {
           Send booking request
         </button>
         <a
-          href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi Amroz — I want to book a booth in Ward 32.")}`}
+          href={whatsAppHref("Hi Amroz — I want to book a booth in Ward 32.")}
           className="text-center text-sm font-medium text-cyan underline-offset-4 hover:underline"
         >
           Or WhatsApp {site.phoneDisplay}

@@ -33,12 +33,81 @@ export const site = {
 
 export const nav = [
   { href: "#play", label: "Play" },
+  { href: "#shop", label: "Shop" },
   { href: "#membership", label: "Membership" },
   { href: "#events", label: "Events" },
   { href: "#gallery", label: "Gallery" },
   { href: "#faq", label: "FAQ" },
   { href: "#visit", label: "Visit" },
 ] as const;
+
+export function whatsAppHref(text: string) {
+  return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;
+}
+
+export function shopConfirmHref(sku: string) {
+  return whatsAppHref(`I want ${sku} / pickup at Amroz`);
+}
+
+export const shopPickup = {
+  place: "Pepsicola / football ground",
+  line: "Confirm on WhatsApp, then pick up at Pepsicola by the football ground — street-side counter, not a Ward 32 booth hold.",
+} as const;
+
+export const shopGear = [
+  {
+    sku: "Fantech Raigor III",
+    name: "Fantech Raigor III",
+    kind: "Mouse",
+    blurb: "Light wireless mouse for ranked nights and the bag home.",
+    price: "1,499",
+    accent: "cyan" as const,
+  },
+  {
+    sku: "Fantech THOR II X16 V2",
+    name: "Fantech THOR II X16 V2",
+    kind: "Wired RGB mouse",
+    blurb: "Wired RGB, macro buttons — the counter staple when wireless dies.",
+    price: "1,799",
+    accent: "violet" as const,
+  },
+  {
+    sku: "Fantech ATOM 63 MK874V2",
+    name: "Fantech ATOM 63",
+    kind: "Atom keyboard",
+    blurb: "60% ATOM board. Compact, hot-swap, RGB. Confirm switch color on chat.",
+    price: "2,999",
+    accent: "magenta" as const,
+  },
+  {
+    sku: "Fantech HG25 Orbit",
+    name: "Fantech HG25 Orbit",
+    kind: "Headset",
+    blurb: "Wired headset for booth or home. Mic on a stick, no app required.",
+    price: "2,199",
+    accent: "cyan" as const,
+  },
+  {
+    sku: "Fantech Revolver II WGP12",
+    name: "Fantech Revolver II WGP12",
+    kind: "Gamepad",
+    blurb: "Wireless pad for FC nights when the DualSense is already claimed.",
+    price: "2,299",
+    accent: "violet" as const,
+  },
+] as const;
+
+export const shopTopup = {
+  sku: "Free Fire top-up",
+  name: "Free Fire top-up",
+  kind: "Diamonds",
+  blurb: "One hub — send your player ID and diamond pack on WhatsApp. We confirm stock before you travel.",
+} as const;
+
+export const shopSteam = {
+  name: "Steam wallet",
+  note: "Coming soon. Ask on chat if you still need a code — we are not listing packs yet.",
+} as const;
 
 export const games = [
   {
@@ -206,6 +275,10 @@ export const faqs = [
   {
     q: "How do I get in touch?",
     a: "WhatsApp +977 980-123-4567 (demo number), the form on this page, or walk up to the desk. We typically reply within an hour during open hours.",
+  },
+  {
+    q: "Can I buy a mouse or Free Fire top-up?",
+    a: "Yes — open Shop, tap Confirm on WhatsApp, and pick up at Pepsicola / football ground. Guide prices are listed; we confirm stock on chat. Pay at pickup — no online checkout yet.",
   },
 ];
 

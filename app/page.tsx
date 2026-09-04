@@ -1,7 +1,8 @@
 import { BookingForm } from "@/components/booking-form";
-import { DemoBadge, Wordmark } from "@/components/brand";
+import { DemoBadge } from "@/components/brand";
 import { Header } from "@/components/header";
-import { SocialLinks } from "@/components/social";
+import { ShopSection } from "@/components/shop";
+import { SiteFooter } from "@/components/site-footer";
 import {
   events,
   faqs,
@@ -10,6 +11,7 @@ import {
   packages,
   reviews,
   site,
+  whatsAppHref,
 } from "@/lib/content";
 
 const galleryClass = [
@@ -40,6 +42,7 @@ export default function Home() {
       <main id="main" className="flex-1">
         <Hero />
         <Games />
+        <ShopSection />
         <Membership />
         <Events />
         <Gallery />
@@ -77,7 +80,7 @@ function SectionHeading({
 
 function Hero() {
   const maps = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(site.mapsQuery)}`;
-  const wa = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi Amroz — I want to book a booth.")}`;
+  const wa = whatsAppHref("Hi Amroz — I want to book a booth.");
 
   return (
     <section id="top" className="relative overflow-hidden">
@@ -112,6 +115,12 @@ function Hero() {
               className="inline-flex items-center justify-center rounded-full border border-line px-6 py-3 text-sm font-semibold text-text transition hover:border-magenta hover:text-magenta"
             >
               Visit · directions
+            </a>
+            <a
+              href="#shop"
+              className="inline-flex items-center justify-center px-2 py-3 text-sm font-medium text-cyan underline-offset-4 hover:underline"
+            >
+              Shop gear & Free Fire
             </a>
           </div>
           <dl className="mt-10 grid max-w-lg grid-cols-3 gap-4 border-t border-line pt-6 text-sm">
@@ -479,32 +488,3 @@ function Location() {
   );
 }
 
-function SiteFooter() {
-  return (
-    <footer className="border-t border-line bg-ink">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <Wordmark />
-          <p className="mt-3 max-w-sm text-sm text-muted">
-            Kathmandu Ward 32 PS club — original Amroz branding for this demo.
-            Not affiliated with other gaming zones in the city.
-          </p>
-        </div>
-        <div>
-          <p className="text-sm font-medium">Connect</p>
-          <SocialLinks className="mt-3" />
-          <p className="mt-3 text-xs text-muted">
-            Social URLs are placeholders. <DemoBadge className="ml-1" />
-          </p>
-        </div>
-        <div className="text-sm text-muted">
-          <p>{site.phoneDisplay}</p>
-          <p>{site.email}</p>
-          <p className="mt-4 text-xs">
-            © {new Date().getFullYear()} {site.name}. Demo marketing site.
-          </p>
-        </div>
-      </div>
-    </footer>
-  );
-}

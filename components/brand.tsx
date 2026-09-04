@@ -1,7 +1,13 @@
-export function Wordmark({ compact = false }: { compact?: boolean }) {
+export function Wordmark({
+  compact = false,
+  href = "/",
+}: {
+  compact?: boolean;
+  href?: string;
+}) {
   return (
     <a
-      href="#top"
+      href={href}
       className="group flex items-center gap-2.5 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan"
       aria-label="Amroz Gaming Zone home"
     >

@@ -2,20 +2,21 @@
 
 import { useState } from "react";
 import { Wordmark } from "@/components/brand";
-import { nav, site } from "@/lib/content";
+import { nav, whatsAppHref } from "@/lib/content";
+import { homeHref, navHref, type SitePage } from "@/lib/routes";
 
-export function Header() {
+export function Header({ page = "home" }: { page?: SitePage }) {
   const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-ink/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Wordmark />
+        <Wordmark href={homeHref(page)} />
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
           {nav.map((item) => (
             <a
               key={item.href}
-              href={item.href}
+              href={navHref(item.href.slice(1), page)}
               className="rounded-md px-3 py-2 text-sm text-muted transition hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
             >
               {item.label}
@@ -24,7 +25,7 @@ export function Header() {
         </nav>
         <div className="flex items-center gap-2">
           <a
-            href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi Amroz — I want to book a booth.")}`}
+            href={whatsAppHref("Hi Amroz — I want to book a booth.")}
             className="hidden rounded-full bg-cyan px-4 py-2 text-sm font-semibold text-ink glow-btn transition sm:inline-flex"
           >
             Book a booth
@@ -56,7 +57,7 @@ export function Header() {
             {nav.map((item) => (
               <a
                 key={item.href}
-                href={item.href}
+                href={navHref(item.href.slice(1), page)}
                 onClick={() => setOpen(false)}
                 className="rounded-md px-3 py-3 text-base text-text hover:bg-panel"
               >
@@ -64,7 +65,7 @@ export function Header() {
               </a>
             ))}
             <a
-              href="#book"
+              href={navHref("book", page)}
               onClick={() => setOpen(false)}
               className="mt-2 rounded-full bg-cyan px-4 py-3 text-center text-sm font-semibold text-ink"
             >
