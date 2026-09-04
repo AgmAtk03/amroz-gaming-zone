@@ -4,16 +4,14 @@ Gaming **service** demo for Kathmandu — instant digital top-ups and same-day p
 
 ## Live demo (SHA-pinned githack)
 
-Branch CDNs go stale. Use the **commit SHA** on `live-demo`, not the branch name.
+Branch CDNs go stale. Open the **`live-demo` commit SHA**, not the branch name.
 
-After each export, the latest SHA and URLs are noted in the pull request. Pattern:
+**Current export:** `7f429f03b7acabfda736cbb512150cb511cc4af7`
 
-```
-https://raw.githack.com/AgmAtk03/amroz-gaming-zone/<LIVE_DEMO_SHA>/index.html
-https://raw.githack.com/AgmAtk03/amroz-gaming-zone/<LIVE_DEMO_SHA>/shop/index.html
-https://raw.githack.com/AgmAtk03/amroz-gaming-zone/<LIVE_DEMO_SHA>/pay/index.html
-https://raw.githack.com/AgmAtk03/amroz-gaming-zone/<LIVE_DEMO_SHA>/pay/success/index.html
-```
+- Home: https://raw.githack.com/AgmAtk03/amroz-gaming-zone/7f429f03b7acabfda736cbb512150cb511cc4af7/index.html
+- Shop: https://raw.githack.com/AgmAtk03/amroz-gaming-zone/7f429f03b7acabfda736cbb512150cb511cc4af7/shop/index.html
+- Pay: https://raw.githack.com/AgmAtk03/amroz-gaming-zone/7f429f03b7acabfda736cbb512150cb511cc4af7/pay/index.html
+- Success: https://raw.githack.com/AgmAtk03/amroz-gaming-zone/7f429f03b7acabfda736cbb512150cb511cc4af7/pay/success/index.html
 
 - **GitHub Pages** (after Pages is enabled on `main`): https://agmatk03.github.io/amroz-gaming-zone/
 - **Vercel production:** https://amroz-ward32-dristi-astra.vercel.app/
