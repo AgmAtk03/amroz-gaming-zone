@@ -5,11 +5,19 @@ import { Wordmark } from "@/components/brand";
 import { nav, whatsAppHref } from "@/lib/content";
 import { homeHref, navHref, type SitePage } from "@/lib/routes";
 
-export function Header({ page = "home" }: { page?: SitePage }) {
+export function Header({
+  page = "home",
+  sticky = true,
+}: {
+  page?: SitePage;
+  sticky?: boolean;
+}) {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-ink/80 backdrop-blur-md">
+    <header
+      className={`${sticky ? "sticky top-0 z-50" : ""} border-b border-line bg-ink/80 backdrop-blur-md`}
+    >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Wordmark href={homeHref(page)} />
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">

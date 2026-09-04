@@ -4,8 +4,11 @@ Marketing demo site for **Amroz Gaming Zone** — a Kathmandu Ward 32 PlayStatio
 
 ## Live demo
 
-- **Public HTTPS (no login):** https://raw.githack.com/AgmAtk03/amroz-gaming-zone/live-demo/index.html
-- **Shop page (githack):** https://raw.githack.com/AgmAtk03/amroz-gaming-zone/live-demo/shop/index.html
+- **Public HTTPS (SHA-pinned, preferred):** https://raw.githack.com/AgmAtk03/amroz-gaming-zone/6a85ab7f640f2e263bbbaa424d20116130a0e2f9/index.html
+- **Shop:** https://raw.githack.com/AgmAtk03/amroz-gaming-zone/6a85ab7f640f2e263bbbaa424d20116130a0e2f9/shop/index.html
+- **Demo checkout:** https://raw.githack.com/AgmAtk03/amroz-gaming-zone/6a85ab7f640f2e263bbbaa424d20116130a0e2f9/checkout/index.html
+- **Demo success:** https://raw.githack.com/AgmAtk03/amroz-gaming-zone/6a85ab7f640f2e263bbbaa424d20116130a0e2f9/checkout/success/index.html
+- **Branch CDN (can go stale):** https://raw.githack.com/AgmAtk03/amroz-gaming-zone/live-demo/index.html
 - **Vercel production:** https://amroz-ward32-dristi-astra.vercel.app/ — Dristi Astra Hobby team. If this URL shows a Vercel login, disable **Deployment Protection → Vercel Authentication** on project `amroz-ward32`.
 - **GitHub Pages** (after enabling Pages in repo settings): https://agmatk03.github.io/amroz-gaming-zone/
 
@@ -24,6 +27,6 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-Hours, phone, membership rates, reviews, gallery tiles, and social URLs are **demo placeholders** unless marked otherwise. Shop guide prices are unlabeled NPR placeholders — only the contact number carries a demo badge until a real WhatsApp line is set.
+Hours, phone, membership rates, reviews, gallery tiles, and social URLs are **demo placeholders** unless marked otherwise. Shop guide prices are unlabeled NPR placeholders. Checkout is a **UI-only mock** (no Khalti / eSewa keys, no live charge). Prefer SHA-pinned raw.githack URLs — the `live-demo` branch CDN can go stale.
 
 Rebuild the public CDN branch with `npm run export:githack`, then publish the `out/` folder to `live-demo`.
