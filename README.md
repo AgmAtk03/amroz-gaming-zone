@@ -16,14 +16,14 @@ Prefer **SHA-pinned** githack URLs (branch CDN can go stale):
 ## Screens
 
 - Home — hero, play, shop, Amroz Members, booth passes, events, photos, FAQ, reviews, booking, visit
-- Shop — 5 Fantech SKUs (pickup only) + 7 digital hubs + Members DEMO card
+- Shop — 5 Fantech SKUs + 7 digital hubs + Members DEMO card
 - Hubs — `/shop/freefire` `/shop/pubg` `/shop/mlbb` `/shop/valorant` `/shop/roblox` `/shop/psn` `/shop/steam`
 - DEMO pay — `/pay?sku=…` (Player ID when needed → mock Khalti / eSewa)
 - DEMO success — `/pay/done`
 - WhatsApp Confirm on gear, hubs, and checkout
 
 Digital codes / top-ups: **Same-day · within 2 hours** (Kathmandu).  
-Fantech: **Pickup at Pepsicola / football ground** — no gear delivery or 2-hour claim.
+Fantech: **Same-day delivery or pickup at Pepsicola / football ground** — not a 2-hour claim on gear.
 
 Checkout is owner-pitch mock only — large DEMO banner, sample NPR, no live payment keys.
 

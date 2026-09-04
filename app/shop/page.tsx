@@ -9,7 +9,7 @@ import { shopPickup } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Shop | Amroz Gaming Zone",
   description:
-    "Fantech gear (pickup at Pepsicola) and seven digital hubs. Digital codes same-day / within 2 hours in Kathmandu.",
+    "Fantech gear: same-day delivery or pickup at Pepsicola. Digital codes same-day / within 2 hours in Kathmandu.",
 };
 
 export default function ShopPage() {

@@ -82,7 +82,7 @@ function Hero() {
           </h1>
           <p className="mt-4 max-w-xl text-lg text-muted">
             PS5 booths, a few PC seats, snacks. Book a slot, or buy top-ups and
-            Fantech at the counter.
+            Fantech — same-day delivery or pickup.
           </p>
           <SpeedHero />
           <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">

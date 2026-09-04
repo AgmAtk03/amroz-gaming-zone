@@ -1,6 +1,7 @@
 export const speedCopy = {
   digitalShort: "Same-day · within 2 hours for digital codes / top-ups (Kathmandu).",
-  gearPickup: "Pickup at Pepsicola / football ground",
+  gearFulfill:
+    "Same-day delivery or pickup at Pepsicola / football ground",
 } as const;
 
 export const site = {
@@ -265,7 +266,7 @@ export const faqs = [
   },
   {
     q: "How fast are top-ups and gear?",
-    a: "Digital codes and top-ups: same-day / within 2 hours in Kathmandu. Fantech gear is pickup at Pepsicola / football ground — we do not promise delivery or a 2-hour window on hardware. Checkout on this site is DEMO only.",
+    a: "Digital codes and top-ups: same-day / within 2 hours in Kathmandu. Fantech gear: same-day delivery or pickup at Pepsicola / football ground — not a 2-hour window on hardware. Checkout on this site is DEMO only.",
   },
   {
     q: "Can I buy a mouse or Free Fire top-up?",

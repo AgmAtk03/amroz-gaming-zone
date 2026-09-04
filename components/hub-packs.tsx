@@ -42,7 +42,7 @@ export function HubPacks({ hub }: { hub: DigitalHub }) {
             All hubs
           </a>
           <a
-            href={shopConfirmHref(hub.name)}
+            href={shopConfirmHref(hub.name, "digital")}
             className="text-sm text-muted underline-offset-4 hover:underline"
           >
             Confirm {hub.short} on WhatsApp

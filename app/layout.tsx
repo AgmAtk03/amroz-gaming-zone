@@ -11,7 +11,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "Amroz Gaming Zone | Pepsicola, Kathmandu",
   description:
-    "PlayStation club and counter shop in Pepsicola. Booths, Fantech pickup, and digital top-ups same-day / within 2 hours in Kathmandu.",
+    "PlayStation club in Pepsicola. Digital top-ups same-day / within 2 hours. Fantech: same-day delivery or counter pickup.",
   applicationName: "Amroz Gaming Zone",
   keywords: [
     "Amroz Gaming Zone",

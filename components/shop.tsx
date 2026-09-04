@@ -64,7 +64,7 @@ export function ShopSection({
                     DEMO · {item.band}
                   </span>
                 </p>
-                <p className="mt-1 text-xs text-muted">{shopPickup.place} · pickup</p>
+                <p className="mt-1 text-xs text-muted">{speedCopy.gearFulfill}</p>
                 <div className="mt-4 flex flex-col gap-2">
                   <a
                     href={payHref(item.sku, from)}

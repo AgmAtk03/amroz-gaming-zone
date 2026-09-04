@@ -99,7 +99,7 @@ function CheckoutSteps({ item }: { item: CheckoutItem }) {
       </p>
       <p className="mt-2 text-sm text-muted">
         {item.kind === "gear"
-          ? "Pickup at Pepsicola / football ground. No delivery or 2-hour claim on gear."
+          ? "Same-day delivery or pickup at Pepsicola / football ground. Not a 2-hour window on gear."
           : "Same-day · within 2 hours for this digital code / top-up (Kathmandu)."}
       </p>
 

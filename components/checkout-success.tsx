@@ -83,7 +83,10 @@ export function CheckoutSuccess() {
           Back to shop
         </a>
         <a
-          href={shopConfirmHref(ticket?.title ?? "this DEMO order")}
+          href={shopConfirmHref(
+            ticket?.title ?? "this DEMO order",
+            ticket?.kind === "gear" ? "gear" : "digital",
+          )}
           className="text-center text-sm font-medium text-cyan underline-offset-4 hover:underline"
         >
           Confirm on WhatsApp

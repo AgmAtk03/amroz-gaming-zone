@@ -247,7 +247,7 @@ export function getCheckoutItem(sku: string): CheckoutItem | undefined {
       kind: "gear",
       needsId: false,
       successLine:
-        "Pickup at Pepsicola / football ground. Pay was DEMO only — no gear delivery promised.",
+        "Same-day delivery or pickup at Pepsicola / football ground. Pay was DEMO only.",
       waSku: gear.name,
     };
   }
@@ -276,11 +276,18 @@ export function getCheckoutItem(sku: string): CheckoutItem | undefined {
   return undefined;
 }
 
-export function shopConfirmHref(sku: string) {
-  return whatsAppHref(`I want ${sku} / pickup Amroz Pepsicola football ground`);
+export function shopConfirmHref(sku: string, kind: "gear" | "digital" = "gear") {
+  const how =
+    kind === "digital"
+      ? "same-day within 2 hours (Kathmandu)"
+      : "same-day delivery or pickup Amroz Pepsicola football ground";
+  return whatsAppHref(`I want ${sku} / ${how}`);
 }
 
 export function checkoutWhatsAppHref(item: CheckoutItem, playerId?: string) {
   const idBit = playerId ? ` / ID ${playerId}` : "";
-  return shopConfirmHref(`${item.waSku}${idBit}`);
+  return shopConfirmHref(
+    `${item.waSku}${idBit}`,
+    item.kind === "gear" ? "gear" : "digital",
+  );
 }
