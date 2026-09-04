@@ -46,7 +46,9 @@ export function whatsAppHref(text: string) {
 }
 
 export function shopConfirmHref(sku: string) {
-  return whatsAppHref(`I want ${sku} / pickup at Amroz`);
+  return whatsAppHref(
+    `I want ${sku} / pickup Amroz Pepsicola football ground`,
+  );
 }
 
 export const shopPickup = {
@@ -56,43 +58,43 @@ export const shopPickup = {
 
 export const shopGear = [
   {
-    sku: "Fantech Raigor III",
-    name: "Fantech Raigor III",
+    sku: "Fantech wireless mouse (entry)",
+    name: "Fantech wireless mouse (entry)",
     kind: "Mouse",
     blurb: "Light wireless mouse for ranked nights and the bag home.",
-    price: "1,499",
+    band: "~NPR 900–1100",
     accent: "cyan" as const,
   },
   {
-    sku: "Fantech THOR II X16 V2",
-    name: "Fantech THOR II X16 V2",
+    sku: "Fantech wired RGB mouse (mid)",
+    name: "Fantech wired RGB mouse (mid)",
     kind: "Wired RGB mouse",
     blurb: "Wired RGB, macro buttons — the counter staple when wireless dies.",
-    price: "1,799",
+    band: "~NPR 1200–1500",
     accent: "violet" as const,
   },
   {
-    sku: "Fantech ATOM 63 MK874V2",
-    name: "Fantech ATOM 63",
+    sku: "Fantech Atom 87 keyboard",
+    name: "Fantech Atom 87 keyboard",
     kind: "Atom keyboard",
-    blurb: "60% ATOM board. Compact, hot-swap, RGB. Confirm switch color on chat.",
-    price: "2,999",
+    blurb: "ATOM 87 board. Confirm switch color on chat.",
+    band: "~NPR 2800–3000",
     accent: "magenta" as const,
   },
   {
-    sku: "Fantech HG25 Orbit",
-    name: "Fantech HG25 Orbit",
+    sku: "Fantech Orbit headset",
+    name: "Fantech Orbit headset",
     kind: "Headset",
     blurb: "Wired headset for booth or home. Mic on a stick, no app required.",
-    price: "2,199",
+    band: "~NPR 1200–1900",
     accent: "cyan" as const,
   },
   {
-    sku: "Fantech Revolver II WGP12",
-    name: "Fantech Revolver II WGP12",
+    sku: "Fantech Shooter II / GP13 gamepad",
+    name: "Fantech Shooter II / GP13 gamepad",
     kind: "Gamepad",
-    blurb: "Wireless pad for FC nights when the DualSense is already claimed.",
-    price: "2,299",
+    blurb: "Pad for FC nights when the DualSense is already claimed.",
+    band: "~NPR 2499",
     accent: "violet" as const,
   },
 ] as const;
