@@ -15,13 +15,11 @@ export function BookingForm() {
   if (sent) {
     return (
       <div
-        className="neon-border rounded-2xl bg-panel p-6 sm:p-8"
+        className="rounded-lg border border-line bg-panel p-6 sm:p-8"
         role="status"
         aria-live="polite"
       >
-        <p className="font-display text-sm tracking-widest text-cyan uppercase">
-          Request parked
-        </p>
+        <p className="text-sm text-muted">Request saved</p>
         <h3 className="mt-2 text-2xl font-semibold">We’ll ping you on WhatsApp.</h3>
         <p className="mt-3 text-muted">
           This demo form does not send data anywhere. In production, the desk
@@ -42,7 +40,7 @@ export function BookingForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="neon-border rounded-2xl bg-panel p-6 sm:p-8"
+      className="rounded-lg border border-line bg-panel p-6 sm:p-8"
     >
       <div className="flex flex-wrap items-center gap-2">
         <h3 className="text-xl font-semibold">Hold a booth</h3>
@@ -107,12 +105,12 @@ export function BookingForm() {
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
         <button
           type="submit"
-          className="rounded-full bg-magenta px-5 py-3 text-sm font-semibold text-white transition hover:brightness-110"
+          className="rounded-md bg-cyan px-5 py-2.5 text-sm font-medium text-white"
         >
           Send booking request
         </button>
         <a
-          href={whatsAppHref("Hi Amroz — I want to book a booth in Ward 32.")}
+          href={whatsAppHref("Hi Amroz — I want to book a booth.")}
           className="text-center text-sm font-medium text-cyan underline-offset-4 hover:underline"
         >
           Or WhatsApp {site.phoneDisplay}

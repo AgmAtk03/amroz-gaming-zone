@@ -10,8 +10,8 @@ export function SiteFooter({ page = "home" }: { page?: SitePage }) {
         <div>
           <Wordmark href={homeHref(page)} />
           <p className="mt-3 max-w-sm text-sm text-muted">
-            Kathmandu Ward 32 PS club — original Amroz branding for this demo.
-            Not affiliated with other gaming zones in the city.
+            PlayStation club at Pepsicola / football ground. Demo site — not
+            affiliated with other Kathmandu gaming shops.
           </p>
         </div>
         <div>

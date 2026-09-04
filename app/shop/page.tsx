@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { DemoPayBanner } from "@/components/demo-banner";
 import { Header } from "@/components/header";
 import { ShopSection } from "@/components/shop";
 import { SiteFooter } from "@/components/site-footer";
+import { SpeedShop } from "@/components/speed-promise";
 import { shopPickup } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Shop | Amroz Gaming Zone",
   description:
-    "Fantech gear and Free Fire top-up at Amroz. Confirm on WhatsApp and pick up at Pepsicola / football ground.",
+    "Fantech gear: same-day delivery or pickup at Pepsicola. Digital codes same-day / within 2 hours in Kathmandu.",
 };
 
 export default function ShopPage() {
@@ -15,25 +17,24 @@ export default function ShopPage() {
     <>
       <a
         href="#shop"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-cyan focus:px-3 focus:py-2 focus:text-ink"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-cyan px-3 py-2 text-white"
       >
         Skip to shop
       </a>
       <Header page="shop" />
       <main className="flex-1">
-        <section className="relative overflow-hidden">
-          <div className="grid-overlay pointer-events-none absolute inset-0" />
-          <div className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-            <p className="font-display text-xs tracking-[0.28em] text-magenta uppercase">
-              Shop · not the booth floor
-            </p>
-            <h1 className="mt-3 max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
-              Confirm on WhatsApp. Pick up at {shopPickup.place}.
+        <DemoPayBanner />
+        <section>
+          <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
+            <p className="text-sm text-muted">Shop</p>
+            <h1 className="mt-1 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
+              Five Fantech items. Seven top-up hubs.
             </h1>
-            <p className="mt-4 max-w-xl text-muted">
-              Same counter list as the homepage strip. No online payment —
-              we lock the SKU on chat, then you collect.
+            <p className="mt-3 max-w-xl text-muted">
+              DEMO checkout for the owner pitch, or Confirm on WhatsApp.
+              Counter: {shopPickup.place}.
             </p>
+            <SpeedShop />
           </div>
         </section>
         <ShopSection variant="page" />
