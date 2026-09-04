@@ -54,11 +54,11 @@ export function ShopSection({
               </p>
               <h3 className="mt-2 text-lg font-semibold">{item.name}</h3>
               <p className="mt-2 flex-1 text-sm text-muted">{item.blurb}</p>
-              <p className="mt-4 font-display text-xl text-cyan">
-                NPR {item.price}
-                <span className="ml-2 font-sans text-xs font-normal text-muted">
-                  guide
-                </span>
+              <p className="mt-4 font-display text-lg text-cyan">
+                Confirm on WhatsApp
+              </p>
+              <p className="mt-1 text-xs text-muted">
+                Guidance only {item.band}
               </p>
               <a
                 href={shopConfirmHref(item.sku)}
