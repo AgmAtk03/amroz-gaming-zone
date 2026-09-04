@@ -1,19 +1,26 @@
 # Amroz Gaming Zone
 
-Marketing demo site for **Amroz Gaming Zone** — a Kathmandu Ward 32 PlayStation club and electronics hangout.
+Gaming **service** demo for Kathmandu — instant digital top-ups and same-day physical gear from **Pepsicola, Ward 32**. Not a booth-booking venue.
 
-## Live demo
+## Live demo (SHA-pinned githack)
 
-- **Public HTTPS (no login):** https://raw.githack.com/AgmAtk03/amroz-gaming-zone/live-demo/index.html
-- **Shop page (githack):** https://raw.githack.com/AgmAtk03/amroz-gaming-zone/live-demo/shop/index.html
-- **Vercel production:** https://amroz-ward32-dristi-astra.vercel.app/ — Dristi Astra Hobby team. If this URL shows a Vercel login, disable **Deployment Protection → Vercel Authentication** on project `amroz-ward32`.
-- **GitHub Pages** (after enabling Pages in repo settings): https://agmatk03.github.io/amroz-gaming-zone/
+Branch CDNs go stale. Open the **`live-demo` commit SHA**, not the branch name.
+
+**Current export:** `7f429f03b7acabfda736cbb512150cb511cc4af7`
+
+- Home: https://raw.githack.com/AgmAtk03/amroz-gaming-zone/7f429f03b7acabfda736cbb512150cb511cc4af7/index.html
+- Shop: https://raw.githack.com/AgmAtk03/amroz-gaming-zone/7f429f03b7acabfda736cbb512150cb511cc4af7/shop/index.html
+- Pay: https://raw.githack.com/AgmAtk03/amroz-gaming-zone/7f429f03b7acabfda736cbb512150cb511cc4af7/pay/index.html
+- Success: https://raw.githack.com/AgmAtk03/amroz-gaming-zone/7f429f03b7acabfda736cbb512150cb511cc4af7/pay/success/index.html
+
+- **GitHub Pages** (after Pages is enabled on `main`): https://agmatk03.github.io/amroz-gaming-zone/
+- **Vercel production:** https://amroz-ward32-dristi-astra.vercel.app/
 
 ## Stack
 
-- Next.js App Router
+- Next.js App Router (static export for githack / Pages)
 - Tailwind CSS
-- Vercel (Dristi Astra) + static `live-demo` branch
+- Client-only DEMO checkout (mock Khalti / eSewa) and desk chat
 
 ## Local
 
@@ -24,6 +31,4 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-Hours, phone, membership rates, reviews, gallery tiles, and social URLs are **demo placeholders** unless marked otherwise. Shop guide prices are unlabeled NPR placeholders — only the contact number carries a demo badge until a real WhatsApp line is set.
-
-Rebuild the public CDN branch with `npm run export:githack`, then publish the `out/` folder to `live-demo`.
+Rebuild the public static tree with `npm run export:githack`, then publish the `out/` folder to the `live-demo` branch. Assets are rewritten to **relative** paths so a SHA-pinned githack URL loads CSS/JS from the same commit.

@@ -1,29 +1,39 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #07060d;
-  --ink-2: #0e0b16;
-  --panel: #14101f;
-  --line: rgba(180, 140, 255, 0.22);
-  --cyan: #22f0ff;
-  --magenta: #ff3cac;
-  --violet: #b56bff;
-  --text: #f3eefc;
-  --muted: #b7adc8;
+  --paper: #f3eee4;
+  --paper-2: #e8dfd0;
+  --ink: #1e1a16;
+  --ink-soft: #3a342c;
+  --panel: #fbf8f2;
+  --line: #cfc3b0;
+  --pine: #3f4f3a;
+  --rust: #9a3f2a;
+  --teal: #2f5c59;
+  --muted: #6b6256;
+  --gold: #b8893a;
+  --ember: #c4622d;
+  --sand: #c4a574;
+  --brick: #8a3a2c;
 }
 
 @theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
   --color-ink: var(--ink);
-  --color-ink-2: var(--ink-2);
+  --color-ink-soft: var(--ink-soft);
   --color-panel: var(--panel);
   --color-line: var(--line);
-  --color-cyan: var(--cyan);
-  --color-magenta: var(--magenta);
-  --color-violet: var(--violet);
-  --color-text: var(--text);
+  --color-pine: var(--pine);
+  --color-rust: var(--rust);
+  --color-teal: var(--teal);
   --color-muted: var(--muted);
-  --font-sans: var(--font-outfit);
-  --font-display: var(--font-orbitron);
+  --color-gold: var(--gold);
+  --color-ember: var(--ember);
+  --color-sand: var(--sand);
+  --color-brick: var(--brick);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
 }
 
 html {
@@ -32,167 +42,74 @@ html {
 
 html,
 body {
-  background: var(--ink);
-  color: var(--text);
+  background: var(--paper);
+  color: var(--ink);
 }
 
 body {
-  font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   min-height: 100%;
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--cyan) 40%, transparent);
-  color: #041016;
+  background: color-mix(in oklab, var(--gold) 45%, transparent);
+  color: var(--ink);
 }
 
-.font-display {
-  font-family: var(--font-orbitron), ui-sans-serif, system-ui, sans-serif;
+.font-serif {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
 }
 
 .site-bg {
   background:
-    radial-gradient(1200px 600px at 10% -10%, rgba(181, 107, 255, 0.18), transparent 55%),
-    radial-gradient(900px 500px at 100% 0%, rgba(34, 240, 255, 0.1), transparent 50%),
-    radial-gradient(800px 500px at 80% 80%, rgba(255, 60, 172, 0.08), transparent 50%),
-    var(--ink);
+    radial-gradient(900px 420px at 0% -10%, rgba(196, 165, 116, 0.22), transparent 55%),
+    radial-gradient(700px 380px at 100% 0%, rgba(63, 79, 58, 0.08), transparent 50%),
+    var(--paper);
 }
 
-.grid-overlay {
+.shop-grain {
   background-image:
-    linear-gradient(rgba(34, 240, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(181, 107, 255, 0.05) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+    linear-gradient(rgba(30, 26, 22, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 26, 22, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
 }
 
-.neon-border {
-  border: 1px solid color-mix(in oklab, var(--cyan) 35%, var(--line));
-  box-shadow:
-    0 0 0 1px rgba(255, 60, 172, 0.08) inset,
-    0 0 32px rgba(34, 240, 255, 0.08);
+.thumb-btn {
+  min-height: 48px;
 }
 
-.glow-btn {
-  box-shadow:
-    0 0 0 1px color-mix(in oklab, var(--cyan) 50%, transparent),
-    0 0 24px rgba(34, 240, 255, 0.28);
+.hub-ember {
+  background: linear-gradient(160deg, #f6d7c4, #f3eee4);
+}
+.hub-sand {
+  background: linear-gradient(160deg, #efe3cb, #f3eee4);
+}
+.hub-pine {
+  background: linear-gradient(160deg, #d7dfd2, #f3eee4);
+}
+.hub-teal {
+  background: linear-gradient(160deg, #d3e0de, #f3eee4);
+}
+.hub-brick {
+  background: linear-gradient(160deg, #edd6d1, #f3eee4);
+}
+.hub-ink {
+  background: linear-gradient(160deg, #ddd8d2, #f3eee4);
+}
+.hub-gold {
+  background: linear-gradient(160deg, #f0e4c4, #f3eee4);
 }
 
-.glow-btn:hover {
-  box-shadow:
-    0 0 0 1px var(--cyan),
-    0 0 32px rgba(34, 240, 255, 0.4);
+.shelf-scroll {
+  scrollbar-width: none;
 }
-
-.tile-cyan {
-  background:
-    radial-gradient(120% 90% at 0% 0%, rgba(34, 240, 255, 0.22), transparent 55%),
-    linear-gradient(160deg, #171326, #0c0a12);
-}
-
-.tile-violet {
-  background:
-    radial-gradient(120% 90% at 100% 0%, rgba(181, 107, 255, 0.28), transparent 55%),
-    linear-gradient(160deg, #171326, #0c0a12);
-}
-
-.tile-magenta {
-  background:
-    radial-gradient(120% 90% at 50% 100%, rgba(255, 60, 172, 0.22), transparent 50%),
-    linear-gradient(160deg, #171326, #0c0a12);
-}
-
-.gallery-a {
-  background:
-    repeating-linear-gradient(135deg, rgba(34, 240, 255, 0.12) 0 8px, transparent 8px 18px),
-    radial-gradient(circle at 30% 40%, rgba(34, 240, 255, 0.35), transparent 42%),
-    #120c1c;
-}
-
-.gallery-b {
-  background:
-    radial-gradient(ellipse at 70% 30%, rgba(255, 60, 172, 0.45), transparent 45%),
-    radial-gradient(ellipse at 20% 80%, rgba(181, 107, 255, 0.4), transparent 40%),
-    #120c1c;
-}
-
-.gallery-c {
-  background:
-    linear-gradient(180deg, transparent 60%, rgba(7, 6, 13, 0.7)),
-    repeating-linear-gradient(90deg, rgba(181, 107, 255, 0.2) 0 2px, transparent 2px 14px),
-    #160e24;
-}
-
-.gallery-d {
-  background:
-    conic-gradient(from 210deg at 50% 50%, rgba(34, 240, 255, 0.3), rgba(181, 107, 255, 0.15), rgba(255, 60, 172, 0.3), rgba(34, 240, 255, 0.3)),
-    #100c18;
-}
-
-.gallery-e {
-  background:
-    radial-gradient(circle at 50% 120%, rgba(34, 240, 255, 0.35), transparent 50%),
-    linear-gradient(145deg, #1a1230, #0a0810);
-}
-
-.gallery-f {
-  background:
-    repeating-radial-gradient(circle at 20% 20%, rgba(255, 60, 172, 0.2) 0 6px, transparent 6px 18px),
-    #140d1f;
-}
-
-details.faq > summary {
-  list-style: none;
-}
-
-details.faq > summary::-webkit-details-marker {
+.shelf-scroll::-webkit-scrollbar {
   display: none;
-}
-
-details.faq[open] > summary .chev {
-  transform: rotate(45deg);
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-
-  .pulse-ring,
-  .scan {
-    animation: none !important;
-  }
-}
-
-@keyframes pulse-ring {
-  0% {
-    transform: scale(0.85);
-    opacity: 0.55;
-  }
-  100% {
-    transform: scale(1.25);
-    opacity: 0;
-  }
-}
-
-.pulse-ring {
-  animation: pulse-ring 2.4s ease-out infinite;
-}
-
-.pulse-ring:nth-child(2) {
-  animation-delay: 0.8s;
-}
-
-@keyframes scan {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(400%);
-  }
-}
-
-.scan {
-  animation: scan 5s linear infinite;
 }
