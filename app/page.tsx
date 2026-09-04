@@ -1,8 +1,11 @@
 import { BookingForm } from "@/components/booking-form";
 import { DemoBadge } from "@/components/brand";
 import { Header } from "@/components/header";
+import { MembersSection } from "@/components/members";
+import { ShopPhoto } from "@/components/photo";
 import { ShopSection } from "@/components/shop";
 import { SiteFooter } from "@/components/site-footer";
+import { SpeedHero } from "@/components/speed-promise";
 import {
   events,
   faqs,
@@ -14,27 +17,12 @@ import {
   whatsAppHref,
 } from "@/lib/content";
 
-const galleryClass = [
-  "gallery-a",
-  "gallery-b",
-  "gallery-c",
-  "gallery-d",
-  "gallery-e",
-  "gallery-f",
-];
-
-const gameClass = {
-  cyan: "tile-cyan",
-  violet: "tile-violet",
-  magenta: "tile-magenta",
-} as const;
-
 export default function Home() {
   return (
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-cyan focus:px-3 focus:py-2 focus:text-ink"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-cyan focus:px-3 focus:py-2 focus:text-white"
       >
         Skip to content
       </a>
@@ -43,6 +31,7 @@ export default function Home() {
         <Hero />
         <Games />
         <ShopSection />
+        <MembersSection />
         <Membership />
         <Events />
         <Gallery />
@@ -67,10 +56,8 @@ function SectionHeading({
 }) {
   return (
     <div className="max-w-2xl">
-      <p className="font-display text-xs tracking-[0.28em] text-cyan uppercase">
-        {kicker}
-      </p>
-      <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
+      <p className="text-sm text-muted">{kicker}</p>
+      <h2 className="mt-1 text-3xl font-semibold tracking-tight">
         {title}
       </h2>
       {lede ? <p className="mt-3 text-muted">{lede}</p> : null}
@@ -83,102 +70,88 @@ function Hero() {
   const wa = whatsAppHref("Hi Amroz — I want to book a booth.");
 
   return (
-    <section id="top" className="relative overflow-hidden">
-      <div className="grid-overlay pointer-events-none absolute inset-0" />
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-12 lg:py-28">
+    <section id="top">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <div className="mb-4 flex flex-wrap items-center gap-2">
-            <span className="rounded-full border border-cyan/40 bg-cyan/10 px-3 py-1 text-xs font-medium text-cyan">
-              {site.city} · {site.ward}
-            </span>
+          <div className="mb-3 flex flex-wrap items-center gap-2 text-sm text-muted">
+            <span>{site.city} · {site.ward}</span>
             <DemoBadge />
           </div>
-          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-            Duals, ranked nights, and neon that stays on past last bus.
+          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+            PlayStation club in Pepsicola.
           </h1>
-          <p className="mt-5 max-w-xl text-lg text-muted">
-            Amroz Gaming Zone is a PlayStation club and electronics hangout in
-            Ward 32 — PS5 booths, a tight PC arena, snack counter, and weekly
-            brackets. Walk in, or lock a seat before Friday fills.
+          <p className="mt-4 max-w-xl text-lg text-muted">
+            PS5 booths, a few PC seats, snacks. Book a slot, or buy top-ups and
+            Fantech at the counter.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <SpeedHero />
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
               href={wa}
-              className="inline-flex items-center justify-center rounded-full bg-cyan px-6 py-3 text-sm font-semibold text-ink glow-btn transition"
+              className="inline-flex items-center justify-center rounded-md bg-cyan px-5 py-2.5 text-sm font-medium text-white"
             >
-              Book on WhatsApp
+              Book a booth
+            </a>
+            <a
+              href="#shop"
+              className="inline-flex items-center justify-center rounded-md bg-panel px-5 py-2.5 text-sm font-medium"
+            >
+              Shop
             </a>
             <a
               href={maps}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full border border-line px-6 py-3 text-sm font-semibold text-text transition hover:border-magenta hover:text-magenta"
+              className="inline-flex items-center justify-center rounded-md border border-line px-5 py-2.5 text-sm"
             >
-              Visit · directions
-            </a>
-            <a
-              href="#shop"
-              className="inline-flex items-center justify-center px-2 py-3 text-sm font-medium text-cyan underline-offset-4 hover:underline"
-            >
-              Shop gear & Free Fire
+              Directions
             </a>
           </div>
-          <dl className="mt-10 grid max-w-lg grid-cols-3 gap-4 border-t border-line pt-6 text-sm">
+          <dl className="mt-8 grid max-w-lg grid-cols-3 gap-4 border-t border-line pt-5 text-sm">
             <div>
-              <dt className="text-muted">Walk-in PS5</dt>
-              <dd className="mt-1 font-display text-lg text-cyan">NPR 199/hr</dd>
+              <dt className="text-muted">PS5 walk-in</dt>
+              <dd className="mt-1">NPR 199/hr</dd>
             </div>
             <div>
               <dt className="text-muted">Open till</dt>
-              <dd className="mt-1 font-display text-lg">12:30 AM</dd>
+              <dd className="mt-1">12:30 AM Fri–Sat</dd>
             </div>
             <div>
-              <dt className="text-muted">Booths</dt>
-              <dd className="mt-1 font-display text-lg">PS5 + PC</dd>
+              <dt className="text-muted">Floor</dt>
+              <dd className="mt-1">PS5 + PC</dd>
             </div>
           </dl>
         </div>
         <div className="lg:col-span-5">
-          <div className="relative neon-border overflow-hidden rounded-3xl bg-panel p-6 sm:p-8">
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-24 overflow-hidden">
-              <div className="scan h-10 bg-gradient-to-b from-cyan/0 via-cyan/20 to-cyan/0" />
+          <div className="overflow-hidden rounded-lg border border-line bg-panel">
+            <div className="h-44">
+              <ShopPhoto
+                src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&fit=crop&w=1000&q=70"
+                alt="PlayStation setup — placeholder until venue photos"
+              />
             </div>
-            <p className="font-display text-xs tracking-[0.28em] text-magenta uppercase">
-              Live floor
-            </p>
-            <p className="mt-2 text-2xl font-semibold">Booth status</p>
-            <ul className="mt-6 space-y-3 text-sm">
-              {[
-                ["PS5-01 · FC 26", "Open"],
-                ["PS5-02 · GTA V", "In session"],
-                ["PS5-03 · Tekken 8", "Open"],
-                ["PC-A · Valorant", "Held 20:00"],
-              ].map(([label, state]) => (
-                <li
-                  key={label}
-                  className="flex items-center justify-between rounded-xl border border-line bg-ink/60 px-4 py-3"
-                >
-                  <span>{label}</span>
-                  <span
-                    className={
-                      state === "Open" ? "text-cyan" : "text-muted"
-                    }
+            <div className="p-5">
+              <p className="text-sm text-muted">Booths right now</p>
+              <p className="mt-1 text-lg font-semibold">Sample board</p>
+              <ul className="mt-4 space-y-2 text-sm">
+                {[
+                  ["PS5-01 · FC 26", "Open"],
+                  ["PS5-02 · GTA V", "In session"],
+                  ["PS5-03 · Tekken 8", "Open"],
+                  ["PC-A · Valorant", "Held 20:00"],
+                ].map(([label, state]) => (
+                  <li
+                    key={label}
+                    className="flex items-center justify-between border-b border-line py-2 last:border-0"
                   >
-                    {state}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-5 flex items-center gap-2 text-xs text-muted">
-              Invented for this demo — not a live feed.
-              <DemoBadge />
-            </p>
-            <div className="relative mt-6 flex h-28 items-center justify-center">
-              <div className="pulse-ring absolute h-24 w-24 rounded-full border border-cyan/40" />
-              <div className="pulse-ring absolute h-24 w-24 rounded-full border border-magenta/40" />
-              <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-ink font-display text-cyan">
-                A
-              </div>
+                    <span>{label}</span>
+                    <span className="text-muted">{state}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-3 text-xs text-muted">
+                Made up for the demo. <DemoBadge className="ml-1" />
+              </p>
             </div>
           </div>
         </div>
@@ -192,14 +165,14 @@ function Games() {
     <section id="play" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
       <SectionHeading
         kicker="Play"
-        title="Games & entertainment"
-        lede="A PS club with a PC side-hustle: sports, fighters, shooters, racing, and a gear counter so nobody sits out for a dead pad."
+        title="What’s on the floor"
+        lede="Sports, fighters, shooters, racing. Spare pads at the counter."
       />
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {games.map((g) => (
           <article
             key={g.title}
-            className={`rounded-2xl border border-line p-5 ${gameClass[g.accent]}`}
+            className="rounded-lg border border-line bg-panel p-4"
           >
             <h3 className="text-lg font-semibold">{g.title}</h3>
             <p className="mt-2 text-sm text-muted">{g.blurb}</p>
@@ -207,7 +180,7 @@ function Games() {
               {g.tags.map((t) => (
                 <li
                   key={t}
-                  className="rounded-full border border-line px-2.5 py-0.5 text-[11px] uppercase tracking-wide text-cyan"
+                  className="rounded-md border border-line px-2 py-0.5 text-xs text-muted"
                 >
                   {t}
                 </li>
@@ -228,9 +201,9 @@ function Membership() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
-          kicker="Membership"
-          title="Weekly and monthly in NPR"
-          lede="Priced like a Kathmandu PS club: cheaper than stacking hourly if you show up more than twice a week. Hours reset; they don’t roll."
+          kicker="Booth passes"
+          title="Weekly and monthly"
+          lede="Cheaper than stacking hourly if you come more than twice a week. Hours reset."
         />
         <p className="mt-4 flex flex-wrap items-center gap-2 text-sm text-muted">
           Walk-in: PS5 NPR 199/hr · PC NPR 179/hr · extra pad NPR 50/hr
@@ -242,27 +215,25 @@ function Membership() {
               key={p.name}
               className={`relative flex flex-col rounded-2xl border p-6 ${
                 p.popular
-                  ? "border-cyan neon-border bg-panel"
+                  ? "border-cyan bg-panel"
                   : "border-line bg-ink"
               }`}
             >
               {p.popular ? (
-                <span className="absolute -top-3 left-6 rounded-full bg-cyan px-3 py-1 text-[11px] font-semibold tracking-wide text-ink uppercase">
-                  Most popular
+                <span className="absolute -top-3 left-6 rounded-md bg-cyan px-2.5 py-1 text-xs font-medium text-white">
+                  Most used
                 </span>
               ) : null}
               <h3 className="text-xl font-semibold">{p.name}</h3>
-              <p className="mt-4 font-display text-4xl text-cyan">
+              <p className="mt-4 text-3xl font-semibold">
                 NPR {p.price}
-                <span className="text-base text-muted">/{p.cadence}</span>
+                <span className="text-base font-normal text-muted">/{p.cadence}</span>
               </p>
-              <p className="mt-2 text-sm text-magenta">{p.save}</p>
+              <p className="mt-2 text-sm text-muted">{p.save}</p>
               <ul className="mt-6 flex-1 space-y-2 text-sm text-muted">
                 {p.perks.map((perk) => (
                   <li key={perk} className="flex gap-2">
-                    <span className="text-cyan" aria-hidden="true">
-                      ▹
-                    </span>
+                    <span aria-hidden="true">·</span>
                     {perk}
                   </li>
                 ))}
@@ -271,8 +242,8 @@ function Membership() {
                 href="#book"
                 className={`mt-8 inline-flex justify-center rounded-full px-4 py-2.5 text-sm font-semibold ${
                   p.popular
-                    ? "bg-cyan text-ink glow-btn"
-                    : "border border-line text-text hover:border-cyan"
+                    ? "bg-cyan text-white"
+                    : "border border-line"
                 }`}
               >
                 Get this pass
@@ -290,20 +261,18 @@ function Events() {
     <section id="events" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
       <SectionHeading
         kicker="Events"
-        title="Tournaments & late brackets"
-        lede="Weekly fighters, a seasonal football cup, and LAN Sundays when the PC row is worth reserving."
+        title="Upcoming nights"
+        lede="Tekken Fridays, a football cup, and the odd LAN Sunday."
       />
       <div className="mt-10 grid gap-4 lg:grid-cols-3">
         {events.map((e) => (
           <article
             key={e.title}
-            className="rounded-2xl border border-line bg-panel p-6"
+            className="rounded-lg border border-line bg-panel p-5"
           >
-            <p className="text-xs font-medium tracking-widest text-magenta uppercase">
-              {e.status}
-            </p>
-            <h3 className="mt-2 text-xl font-semibold">{e.title}</h3>
-            <p className="mt-3 text-sm text-cyan">
+            <p className="text-xs text-muted">{e.status}</p>
+            <h3 className="mt-2 text-lg font-semibold">{e.title}</h3>
+            <p className="mt-2 text-sm">
               {e.date} · {e.time}
             </p>
             <p className="mt-2 text-sm text-muted">{e.note}</p>
@@ -326,19 +295,22 @@ function Gallery() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
-          kicker="Gallery"
-          title="The floor, before we shoot it"
-          lede="Styled venue tiles — not empty frames. Real photos replace these when the shutter’s documented."
+          kicker="Photos"
+          title="The room — placeholders"
+          lede="Game and gear photos until we shoot the actual floor."
         />
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {gallery.map((g, i) => (
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {gallery.map((g) => (
             <figure
               key={g.title}
-              className={`relative min-h-56 overflow-hidden rounded-2xl border border-line ${galleryClass[i]}`}
+              className="overflow-hidden rounded-lg border border-line bg-panel"
             >
-              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink to-transparent p-4">
-                <p className="font-semibold">{g.title}</p>
-                <p className="text-sm text-muted">{g.caption}</p>
+              <div className="h-48">
+                <ShopPhoto src={g.photo} alt="" />
+              </div>
+              <figcaption className="p-4">
+                <p className="font-medium">{g.title}</p>
+                <p className="mt-1 text-sm text-muted">{g.caption}</p>
                 <DemoBadge className="mt-2" />
               </figcaption>
             </figure>
@@ -354,8 +326,8 @@ function Faq() {
     <section id="faq" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
       <SectionHeading
         kicker="FAQ"
-        title="Before you take a booth"
-        lede="Hours, walk-ins, memberships, food, ages, parking — the questions every Kathmandu PS club gets at the shutter."
+        title="Usual questions"
+        lede="Hours, walk-ins, passes, food, ages, parking, shop speed."
       />
       <div className="mt-10 divide-y divide-line rounded-2xl border border-line bg-panel">
         {faqs.map((item) => (
@@ -383,16 +355,16 @@ function Reviews() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           kicker="Social proof"
-          title="What the last squad said"
-          lede="Demo reviews in the voice of regulars — not imported widgets, not a live Google feed."
+        title="What people said"
+        lede="Sample reviews. Not a live Google feed."
         />
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
           {reviews.map((r) => (
             <blockquote
               key={r.name}
-              className="rounded-2xl border border-line bg-ink p-6"
+              className="rounded-lg border border-line bg-ink p-5"
             >
-              <p className="text-cyan" aria-label={`${r.stars} out of 5`}>
+              <p className="text-amber" aria-label={`${r.stars} out of 5`}>
                 {"★".repeat(r.stars)}
                 {"☆".repeat(5 - r.stars)}
               </p>
@@ -416,9 +388,9 @@ function Booking() {
       <div className="grid items-start gap-10 lg:grid-cols-2">
         <div>
           <SectionHeading
-            kicker="Advance booking"
-            title="Hold the booth. Then show up."
-            lede="Friday duals and tournament windows go first. WhatsApp the desk or send a request — we’ll confirm a 15-minute hold."
+            kicker="Booking"
+            title="Hold a booth"
+            lede="Fridays fill up. WhatsApp or send the form. We hold 15 minutes."
           />
           <ul className="mt-8 space-y-3 text-sm text-muted">
             <li>Groups of 6+ : book 48 hours ahead.</li>
@@ -445,16 +417,15 @@ function Location() {
     <section id="visit" className="border-t border-line bg-ink-2/80 py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
-          kicker="Location"
-          title="Ward 32, Kathmandu"
-          lede={`${site.areaHint}. Pin is a demo stand-in until the exact shutter GPS is confirmed.`}
+          kicker="Visit"
+          title="Pepsicola, Kathmandu"
+          lede={`${site.areaHint}. Map pin is a stand-in until GPS is confirmed.`}
         />
         <div className="mt-10 grid gap-6 lg:grid-cols-5">
           <div className="space-y-4 lg:col-span-2">
             <p className="text-lg font-semibold">{site.addressLine}</p>
             <p className="text-muted">
-              Near the Naya Baneshwor / Minbhawan stretch — easy from Koteshwor,
-              Tinkune, and New Baneshwor. Look for cyan light on the glass.
+              By the football ground. Easy from Koteshwor, Jadibuti, Tinkune.
             </p>
             <dl className="space-y-2 text-sm">
               {site.hours.map((h) => (
@@ -469,16 +440,16 @@ function Location() {
               href={maps}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 inline-flex rounded-full bg-cyan px-5 py-2.5 text-sm font-semibold text-ink glow-btn"
+              className="mt-2 inline-flex rounded-md bg-cyan px-5 py-2.5 text-sm font-medium text-white"
             >
               Open directions
             </a>
           </div>
           <div className="overflow-hidden rounded-2xl border border-line lg:col-span-3">
             <iframe
-              title="Amroz Gaming Zone map — Ward 32 Kathmandu (demo pin)"
+              title="Amroz Gaming Zone map — Pepsicola Kathmandu (demo pin)"
               src={site.mapsEmbed}
-              className="h-80 w-full grayscale contrast-125"
+              className="h-80 w-full"
               loading="lazy"
             />
           </div>

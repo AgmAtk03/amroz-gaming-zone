@@ -1,19 +1,31 @@
 # Amroz Gaming Zone
 
-Marketing demo site for **Amroz Gaming Zone** — a Kathmandu Ward 32 PlayStation club and electronics hangout.
+Marketing demo site for **Amroz Gaming Zone** — a PlayStation club at Pepsicola / football ground, Kathmandu.
 
 ## Live demo
 
 - **Public HTTPS (no login):** https://raw.githack.com/AgmAtk03/amroz-gaming-zone/live-demo/index.html
-- **Shop page (githack):** https://raw.githack.com/AgmAtk03/amroz-gaming-zone/live-demo/shop/index.html
-- **Vercel production:** https://amroz-ward32-dristi-astra.vercel.app/ — Dristi Astra Hobby team. If this URL shows a Vercel login, disable **Deployment Protection → Vercel Authentication** on project `amroz-ward32`.
-- **GitHub Pages** (after enabling Pages in repo settings): https://agmatk03.github.io/amroz-gaming-zone/
+- **Shop:** https://raw.githack.com/AgmAtk03/amroz-gaming-zone/live-demo/shop/index.html
+- **Vercel production:** https://amroz-ward32-dristi-astra.vercel.app/
+- **GitHub Pages** (after enabling Pages): https://agmatk03.github.io/amroz-gaming-zone/
 
-## Stack
+Prefer **SHA-pinned** githack URLs (branch CDN can go stale):
 
-- Next.js App Router
-- Tailwind CSS
-- Vercel (Dristi Astra) + static `live-demo` branch
+`https://raw.githack.com/AgmAtk03/amroz-gaming-zone/<SHA>/index.html`
+
+## Screens
+
+- Home — hero, play, shop, Amroz Members, booth passes, events, photos, FAQ, reviews, booking, visit
+- Shop — 5 Fantech SKUs (pickup only) + 7 digital hubs + Members DEMO card
+- Hubs — `/shop/freefire` `/shop/pubg` `/shop/mlbb` `/shop/valorant` `/shop/roblox` `/shop/psn` `/shop/steam`
+- DEMO pay — `/pay?sku=…` (Player ID when needed → mock Khalti / eSewa)
+- DEMO success — `/pay/done`
+- WhatsApp Confirm on gear, hubs, and checkout
+
+Digital codes / top-ups: **Same-day · within 2 hours** (Kathmandu).  
+Fantech: **Pickup at Pepsicola / football ground** — no gear delivery or 2-hour claim.
+
+Checkout is owner-pitch mock only — large DEMO banner, sample NPR, no live payment keys.
 
 ## Local
 
@@ -22,8 +34,4 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
-
-Hours, phone, membership rates, reviews, gallery tiles, and social URLs are **demo placeholders** unless marked otherwise. Shop guide prices are unlabeled NPR placeholders — only the contact number carries a demo badge until a real WhatsApp line is set.
-
-Rebuild the public CDN branch with `npm run export:githack`, then publish the `out/` folder to `live-demo`.
+Rebuild the public CDN branch with `npm run export:githack`, then publish `out/` to `live-demo`.

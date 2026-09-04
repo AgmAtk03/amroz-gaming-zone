@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Orbitron, Outfit } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -8,38 +8,33 @@ const outfit = Outfit({
   display: "swap",
 });
 
-const orbitron = Orbitron({
-  variable: "--font-orbitron",
-  subsets: ["latin"],
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  title: "Amroz Gaming Zone | PS club in Kathmandu Ward 32",
+  title: "Amroz Gaming Zone | Pepsicola, Kathmandu",
   description:
-    "Amroz Gaming Zone is a PlayStation club and PC hangout in Ward 32, Kathmandu. Book PS5 booths, join tournaments, and grab weekly or monthly memberships in NPR.",
+    "PlayStation club and counter shop in Pepsicola. Booths, Fantech pickup, and digital top-ups same-day / within 2 hours in Kathmandu.",
   applicationName: "Amroz Gaming Zone",
   keywords: [
     "Amroz Gaming Zone",
-    "Kathmandu PS5",
-    "gaming zone Ward 32",
+    "Pepsicola PS5",
+    "Kathmandu gaming zone",
     "PlayStation club Nepal",
   ],
   openGraph: {
     title: "Amroz Gaming Zone",
     description:
-      "Ward 32’s late-night PS club — booths, tournaments, memberships in NPR.",
+      "Pepsicola PlayStation club — booths, Fantech, digital top-ups.",
     locale: "en_NP",
     type: "website",
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html
-      lang="en"
-      className={`${outfit.variable} ${orbitron.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${outfit.variable} h-full antialiased`}>
       <body className="site-bg min-h-full flex flex-col">{children}</body>
     </html>
   );

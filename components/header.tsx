@@ -25,8 +25,14 @@ export function Header({ page = "home" }: { page?: SitePage }) {
         </nav>
         <div className="flex items-center gap-2">
           <a
+            href={navHref("shop", page)}
+            className="hidden rounded-md border border-line px-3 py-2 text-sm sm:inline-flex"
+          >
+            Shop
+          </a>
+          <a
             href={whatsAppHref("Hi Amroz — I want to book a booth.")}
-            className="hidden rounded-full bg-cyan px-4 py-2 text-sm font-semibold text-ink glow-btn transition sm:inline-flex"
+            className="hidden rounded-md bg-cyan px-4 py-2 text-sm font-medium text-white sm:inline-flex"
           >
             Book a booth
           </a>
@@ -67,7 +73,7 @@ export function Header({ page = "home" }: { page?: SitePage }) {
             <a
               href={navHref("book", page)}
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-cyan px-4 py-3 text-center text-sm font-semibold text-ink"
+              className="mt-2 rounded-md bg-cyan px-4 py-3 text-center text-sm font-medium text-white"
             >
               Book a booth
             </a>

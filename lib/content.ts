@@ -1,11 +1,16 @@
+export const speedCopy = {
+  digitalShort: "Same-day · within 2 hours for digital codes / top-ups (Kathmandu).",
+  gearPickup: "Pickup at Pepsicola / football ground",
+} as const;
+
 export const site = {
   name: "Amroz Gaming Zone",
   shortName: "Amroz",
-  tagline: "Ward 32’s late-night PS club.",
+  tagline: "PlayStation club in Pepsicola.",
   city: "Kathmandu",
-  ward: "Ward 32",
-  areaHint: "Naya Baneshwor / Minbhawan corridor",
-  addressLine: "Ward 32, Kathmandu Metropolitan City",
+  ward: "Pepsicola",
+  areaHint: "Pepsicola / football ground",
+  addressLine: "Pepsicola, by the football ground, Kathmandu",
   country: "Nepal",
   phoneDisplay: "+977 980-123-4567",
   phoneTel: "+9779801234567",
@@ -20,9 +25,9 @@ export const site = {
     { label: "PC pod", price: "NPR 179 / hr" },
     { label: "Extra DualSense", price: "NPR 50 / hr" },
   ],
-  mapsQuery: "27.6935,85.3425",
+  mapsQuery: "27.6778,85.3615",
   mapsEmbed:
-    "https://www.openstreetmap.org/export/embed.html?bbox=85.328%2C27.684%2C85.357%2C27.703&layer=mapnik&marker=27.6935%2C85.3425",
+    "https://www.openstreetmap.org/export/embed.html?bbox=85.346%2C27.668%2C85.377%2C27.688&layer=mapnik&marker=27.6778%2C85.3615",
   social: [
     { name: "Facebook", href: "https://facebook.com/amrozgamingzone" },
     { name: "Instagram", href: "https://instagram.com/amrozgamingzone" },
@@ -34,10 +39,10 @@ export const site = {
 export const nav = [
   { href: "#play", label: "Play" },
   { href: "#shop", label: "Shop" },
-  { href: "#membership", label: "Membership" },
+  { href: "#members", label: "Members" },
+  { href: "#membership", label: "Passes" },
   { href: "#events", label: "Events" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#faq", label: "FAQ" },
+  { href: "#gallery", label: "Floor" },
   { href: "#visit", label: "Visit" },
 ] as const;
 
@@ -45,118 +50,70 @@ export function whatsAppHref(text: string) {
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;
 }
 
-export function shopConfirmHref(sku: string) {
-  return whatsAppHref(`I want ${sku} / pickup at Amroz`);
-}
-
 export const shopPickup = {
   place: "Pepsicola / football ground",
-  line: "Confirm on WhatsApp, then pick up at Pepsicola by the football ground — street-side counter, not a Ward 32 booth hold.",
+  line: "Counter at Pepsicola, by the football ground. WhatsApp Confirm if you skip the DEMO pay path.",
 } as const;
 
-export const shopGear = [
+export const memberPerks = [
   {
-    sku: "Fantech Raigor III",
-    name: "Fantech Raigor III",
-    kind: "Mouse",
-    blurb: "Light wireless mouse for ranked nights and the bag home.",
-    price: "1,499",
-    accent: "cyan" as const,
+    title: "5% off Fantech pickup",
+    note: "Sample member cut on the five counter SKUs. DEMO — not a live coupon.",
   },
   {
-    sku: "Fantech THOR II X16 V2",
-    name: "Fantech THOR II X16 V2",
-    kind: "Wired RGB mouse",
-    blurb: "Wired RGB, macro buttons — the counter staple when wireless dies.",
-    price: "1,799",
-    accent: "violet" as const,
+    title: "Free Fire top-up bonus",
+    note: "Join-week extra diamonds on the FF hub. Sample perk only.",
   },
   {
-    sku: "Fantech ATOM 63 MK874V2",
-    name: "Fantech ATOM 63",
-    kind: "Atom keyboard",
-    blurb: "60% ATOM board. Compact, hot-swap, RGB. Confirm switch color on chat.",
-    price: "2,999",
-    accent: "magenta" as const,
+    title: "1 booth hour credit",
+    note: "One PS5 hour after you land on the list. Desk would stamp this.",
   },
   {
-    sku: "Fantech HG25 Orbit",
-    name: "Fantech HG25 Orbit",
-    kind: "Headset",
-    blurb: "Wired headset for booth or home. Mic on a stick, no app required.",
-    price: "2,199",
-    accent: "cyan" as const,
-  },
-  {
-    sku: "Fantech Revolver II WGP12",
-    name: "Fantech Revolver II WGP12",
-    kind: "Gamepad",
-    blurb: "Wireless pad for FC nights when the DualSense is already claimed.",
-    price: "2,299",
-    accent: "violet" as const,
+    title: "Early tournament slots",
+    note: "FC Cup and Tekken Friday hold a few seats for the list first.",
   },
 ] as const;
-
-export const shopTopup = {
-  sku: "Free Fire top-up",
-  name: "Free Fire top-up",
-  kind: "Diamonds",
-  blurb: "One hub — send your player ID and diamond pack on WhatsApp. We confirm stock before you travel.",
-} as const;
-
-export const shopSteam = {
-  name: "Steam wallet",
-  note: "Coming soon. Ask on chat if you still need a code — we are not listing packs yet.",
-} as const;
 
 export const games = [
   {
     title: "PS5 Duals",
-    blurb: "4K screens, DualSense haptics, and the titles everyone actually queues for.",
+    blurb: "FC, GTA, UFC — the titles people actually wait for.",
     tags: ["FC 26", "GTA V", "UFC 5"],
-    accent: "cyan" as const,
   },
   {
-    title: "PC Arena",
-    blurb: "High-refresh pods for ranked nights — mouse, headset, and a clean desk.",
+    title: "PC pods",
+    blurb: "A few ranked seats. Mouse and headset on the desk.",
     tags: ["Valorant", "Warzone", "CS2"],
-    accent: "violet" as const,
   },
   {
     title: "Football nights",
-    blurb: "Couch rivalries, club friendlies, and our monthly Ward Cup on the big panel.",
+    blurb: "Couch games and a monthly cup on the big screen.",
     tags: ["FC 26", "eFootball"],
-    accent: "magenta" as const,
   },
   {
     title: "Fighters",
-    blurb: "Tekken 8 and UFC 5 on rotation. Bring a rival. Leave with a clip.",
+    blurb: "Tekken 8 and UFC 5 on rotation.",
     tags: ["Tekken 8", "UFC 5"],
-    accent: "cyan" as const,
   },
   {
     title: "Shooters",
-    blurb: "Battle royale and tactical nights — party chat friendly, no griefing the lobby.",
+    blurb: "Party chat okay. Don’t grief the lobby.",
     tags: ["Fortnite", "COD"],
-    accent: "violet" as const,
   },
   {
-    title: "Racing & sim",
-    blurb: "Gran Turismo and arcade racers when you want speed without the ranked stress.",
+    title: "Racing",
+    blurb: "GT and arcade racers when you want a break from ranked.",
     tags: ["GT7", "NFS"],
-    accent: "magenta" as const,
   },
   {
-    title: "Co-op lounge",
-    blurb: "Split-screen, party games, and birthday energy. Soft lights, loud scoreboards.",
+    title: "Co-op / birthday",
+    blurb: "Split-screen and party games. Book two booths for groups.",
     tags: ["It Takes Two", "Party"],
-    accent: "cyan" as const,
   },
   {
-    title: "Gear counter",
+    title: "Spare pads",
     tags: ["Pads", "Headsets"],
-    blurb: "Controllers, chargers, and headsets on-site — rent a spare or grab a cable.",
-    accent: "violet" as const,
+    blurb: "Rent a DualSense or grab a cable at the counter.",
   },
 ];
 
@@ -227,12 +184,42 @@ export const events = [
 ];
 
 export const gallery = [
-  { title: "PS5 booth row", caption: "Four duals, one soundtrack." },
-  { title: "Night neon", caption: "Cyan on the glass after 9." },
-  { title: "Tournament desk", caption: "Bracket sheets, cold drinks." },
-  { title: "PC pods", caption: "Ranked-ready, cables managed." },
-  { title: "Lounge corner", caption: "Wait your turn without standing." },
-  { title: "Gear shelf", caption: "Pads, headsets, spare leads." },
+  {
+    title: "PS5 booths",
+    caption: "Placeholder photo — real floor shots when we have them.",
+    photo:
+      "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&fit=crop&w=900&q=70",
+  },
+  {
+    title: "Controllers",
+    caption: "Pads on the table, not a stock office.",
+    photo:
+      "https://images.unsplash.com/photo-1592840496694-26d035b184cc?auto=format&fit=crop&w=900&q=70",
+  },
+  {
+    title: "Headset shelf",
+    caption: "Orbit and rentals at the counter.",
+    photo:
+      "https://images.unsplash.com/photo-1599669454699-248893623440?auto=format&fit=crop&w=900&q=70",
+  },
+  {
+    title: "PC seats",
+    caption: "Small row. Ask what’s free.",
+    photo:
+      "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=70",
+  },
+  {
+    title: "Waiting area",
+    caption: "Sit while the booth finishes.",
+    photo:
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=900&q=70",
+  },
+  {
+    title: "Keyboards",
+    caption: "Fantech on the shelf.",
+    photo:
+      "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?auto=format&fit=crop&w=900&q=70",
+  },
 ];
 
 export const faqs = [
@@ -254,7 +241,7 @@ export const faqs = [
   },
   {
     q: "Is there a membership?",
-    a: "Yes — Weekly Pulse, Monthly Squad, and a Weekend Spark pass. Hours don’t roll over. Pause requests for exams or travel: message us; we handle it case by case.",
+    a: "Two layers: Amroz Members is a free list (email + optional WhatsApp) with sample shop/booth perks — DEMO, stored on your device. Booth passes are Weekly Pulse, Monthly Squad, and Weekend Spark. Hours don’t roll over.",
   },
   {
     q: "Is food and drink allowed?",
@@ -270,15 +257,19 @@ export const faqs = [
   },
   {
     q: "Is there parking?",
-    a: "Street and nearby lot parking around Ward 32 / Naya Baneshwor. Bike spots in front when the shutter’s up. Exact bay count is still a demo placeholder.",
+    a: "Street parking around Pepsicola / the football ground. Bike spots in front when the shutter’s up. Exact bay count is still a demo placeholder.",
   },
   {
     q: "How do I get in touch?",
     a: "WhatsApp +977 980-123-4567 (demo number), the form on this page, or walk up to the desk. We typically reply within an hour during open hours.",
   },
   {
+    q: "How fast are top-ups and gear?",
+    a: "Digital codes and top-ups: same-day / within 2 hours in Kathmandu. Fantech gear is pickup at Pepsicola / football ground — we do not promise delivery or a 2-hour window on hardware. Checkout on this site is DEMO only.",
+  },
+  {
     q: "Can I buy a mouse or Free Fire top-up?",
-    a: "Yes — open Shop, tap Confirm on WhatsApp, and pick up at Pepsicola / football ground. Guide prices are listed; we confirm stock on chat. Pay at pickup — no online checkout yet.",
+    a: "Yes — five Fantech SKUs and seven digital hubs (Free Fire, PUBG, MLBB, Valorant, Roblox, PSN, Steam USD). Owner-pitch checkout is mock Khalti/eSewa. WhatsApp Confirm is the fallback.",
   },
 ];
 
@@ -301,7 +292,7 @@ export const reviews = [
     name: "Nirajan T.",
     meta: "Walk-in PC · Imadol",
     quote:
-      "Came for a Warzone session — pods are tight but the refresh rate is honest. Wish there were two more PCs. Still the best in Ward 32 for me.",
+      "Came for a Warzone session — pods are tight but the refresh rate is honest. Wish there were two more PCs. Still the best Pepsicola floor for me.",
     stars: 4,
   },
   {

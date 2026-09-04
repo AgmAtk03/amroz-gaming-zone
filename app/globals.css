@@ -1,15 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #07060d;
-  --ink-2: #0e0b16;
-  --panel: #14101f;
-  --line: rgba(180, 140, 255, 0.22);
-  --cyan: #22f0ff;
-  --magenta: #ff3cac;
-  --violet: #b56bff;
-  --text: #f3eefc;
-  --muted: #b7adc8;
+  --ink: #141414;
+  --ink-2: #1c1c1c;
+  --panel: #222222;
+  --line: #3a3a3a;
+  --cyan: #3d8b74;
+  --magenta: #8a6a4a;
+  --violet: #6b6b6b;
+  --amber: #c4a35a;
+  --text: #f2f0ea;
+  --muted: #a8a49c;
 }
 
 @theme inline {
@@ -20,10 +21,11 @@
   --color-cyan: var(--cyan);
   --color-magenta: var(--magenta);
   --color-violet: var(--violet);
+  --color-amber: var(--amber);
   --color-text: var(--text);
   --color-muted: var(--muted);
   --font-sans: var(--font-outfit);
-  --font-display: var(--font-orbitron);
+  --font-display: var(--font-outfit);
 }
 
 html {
@@ -42,104 +44,39 @@ body {
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--cyan) 40%, transparent);
-  color: #041016;
+  background: #3d8b74;
+  color: #fff;
 }
 
 .font-display {
-  font-family: var(--font-orbitron), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
 }
 
 .site-bg {
-  background:
-    radial-gradient(1200px 600px at 10% -10%, rgba(181, 107, 255, 0.18), transparent 55%),
-    radial-gradient(900px 500px at 100% 0%, rgba(34, 240, 255, 0.1), transparent 50%),
-    radial-gradient(800px 500px at 80% 80%, rgba(255, 60, 172, 0.08), transparent 50%),
-    var(--ink);
+  background: var(--ink);
 }
 
-.grid-overlay {
-  background-image:
-    linear-gradient(rgba(34, 240, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(181, 107, 255, 0.05) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+.club-band {
+  background: var(--ink-2);
 }
 
-.neon-border {
-  border: 1px solid color-mix(in oklab, var(--cyan) 35%, var(--line));
-  box-shadow:
-    0 0 0 1px rgba(255, 60, 172, 0.08) inset,
-    0 0 32px rgba(34, 240, 255, 0.08);
+.demo-pay-banner {
+  background: #e8c04a;
+  color: #1a1408;
+  text-align: center;
+  padding: 1.1rem 1.25rem;
+  border-bottom: 3px solid #1a1408;
 }
 
-.glow-btn {
-  box-shadow:
-    0 0 0 1px color-mix(in oklab, var(--cyan) 50%, transparent),
-    0 0 24px rgba(34, 240, 255, 0.28);
+.demo-pay-banner-compact {
+  padding: 0.75rem 1rem;
 }
 
-.glow-btn:hover {
-  box-shadow:
-    0 0 0 1px var(--cyan),
-    0 0 32px rgba(34, 240, 255, 0.4);
-}
-
-.tile-cyan {
-  background:
-    radial-gradient(120% 90% at 0% 0%, rgba(34, 240, 255, 0.22), transparent 55%),
-    linear-gradient(160deg, #171326, #0c0a12);
-}
-
-.tile-violet {
-  background:
-    radial-gradient(120% 90% at 100% 0%, rgba(181, 107, 255, 0.28), transparent 55%),
-    linear-gradient(160deg, #171326, #0c0a12);
-}
-
-.tile-magenta {
-  background:
-    radial-gradient(120% 90% at 50% 100%, rgba(255, 60, 172, 0.22), transparent 50%),
-    linear-gradient(160deg, #171326, #0c0a12);
-}
-
-.gallery-a {
-  background:
-    repeating-linear-gradient(135deg, rgba(34, 240, 255, 0.12) 0 8px, transparent 8px 18px),
-    radial-gradient(circle at 30% 40%, rgba(34, 240, 255, 0.35), transparent 42%),
-    #120c1c;
-}
-
-.gallery-b {
-  background:
-    radial-gradient(ellipse at 70% 30%, rgba(255, 60, 172, 0.45), transparent 45%),
-    radial-gradient(ellipse at 20% 80%, rgba(181, 107, 255, 0.4), transparent 40%),
-    #120c1c;
-}
-
-.gallery-c {
-  background:
-    linear-gradient(180deg, transparent 60%, rgba(7, 6, 13, 0.7)),
-    repeating-linear-gradient(90deg, rgba(181, 107, 255, 0.2) 0 2px, transparent 2px 14px),
-    #160e24;
-}
-
-.gallery-d {
-  background:
-    conic-gradient(from 210deg at 50% 50%, rgba(34, 240, 255, 0.3), rgba(181, 107, 255, 0.15), rgba(255, 60, 172, 0.3), rgba(34, 240, 255, 0.3)),
-    #100c18;
-}
-
-.gallery-e {
-  background:
-    radial-gradient(circle at 50% 120%, rgba(34, 240, 255, 0.35), transparent 50%),
-    linear-gradient(145deg, #1a1230, #0a0810);
-}
-
-.gallery-f {
-  background:
-    repeating-radial-gradient(circle at 20% 20%, rgba(255, 60, 172, 0.2) 0 6px, transparent 6px 18px),
-    #140d1f;
+.tile-cyan,
+.tile-violet,
+.tile-magenta,
+.tile-amber {
+  background: var(--panel);
 }
 
 details.faq > summary {
@@ -158,41 +95,4 @@ details.faq[open] > summary .chev {
   html {
     scroll-behavior: auto;
   }
-
-  .pulse-ring,
-  .scan {
-    animation: none !important;
-  }
-}
-
-@keyframes pulse-ring {
-  0% {
-    transform: scale(0.85);
-    opacity: 0.55;
-  }
-  100% {
-    transform: scale(1.25);
-    opacity: 0;
-  }
-}
-
-.pulse-ring {
-  animation: pulse-ring 2.4s ease-out infinite;
-}
-
-.pulse-ring:nth-child(2) {
-  animation-delay: 0.8s;
-}
-
-@keyframes scan {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(400%);
-  }
-}
-
-.scan {
-  animation: scan 5s linear infinite;
 }
