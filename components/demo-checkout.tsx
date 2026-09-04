@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   demoHubs,
@@ -39,7 +39,7 @@ export function DemoCheckout() {
     return <HubPicker />;
   }
 
-  return <CheckoutWizard hub={hub} presetPackId={presetPack} />;
+  return <CheckoutWizard key={hub.id} hub={hub} presetPackId={presetPack} />;
 }
 
 function HubPicker() {
@@ -90,25 +90,56 @@ function CheckoutWizard({
   const preset = getDemoPack(hub, presetPackId);
   const [pack, setPack] = useState<DemoPack | undefined>(preset);
   const [playerId, setPlayerId] = useState("");
+  const [readyForPay, setReadyForPay] = useState(false);
   const [wallet, setWallet] = useState<MockWalletId | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const idSectionRef = useRef<HTMLElement>(null);
+  const paySectionRef = useRef<HTMLElement>(null);
+  const [ready, setReady] = useState(false);
 
-  const step = !pack ? 1 : playerId.trim() ? 3 : 2;
+  useEffect(() => {
+    setReady(true);
+  }, []);
+
+  const step = !pack ? 1 : readyForPay ? 3 : 2;
+  const canPay = Boolean(pack) && playerId.trim().length >= 3 && readyForPay;
   const wa = useMemo(
     () => demoWhatsAppHref(hub, pack, playerId),
     [hub, pack, playerId],
   );
 
+  function persistPack(item: DemoPack) {
+    setPack(item);
+    setWallet(null);
+    setReadyForPay(false);
+    if (typeof window === "undefined") return;
+    const url = new URL(window.location.href);
+    url.searchParams.set("hub", hub.id);
+    url.searchParams.set("pack", item.id);
+    window.history.replaceState(null, "", `${url.pathname}${url.search}`);
+    window.requestAnimationFrame(() => {
+      idSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
   function onIdSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const value = playerId.trim();
+    if (!pack) {
+      setError("Pick a sample pack first.");
+      return;
+    }
     if (value.length < 3) {
       setError(`Enter a sample ${hub.idLabel.toLowerCase()} (3+ characters).`);
       return;
     }
     setError("");
     setPlayerId(value);
+    setReadyForPay(true);
+    window.requestAnimationFrame(() => {
+      paySectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   }
 
   function startMockPay(id: MockWalletId) {
@@ -129,7 +160,10 @@ function CheckoutWizard({
   }
 
   return (
-    <div className="mx-auto max-w-xl px-4 py-8 sm:px-6 sm:py-12">
+    <div
+      data-checkout-ready={ready ? "1" : "0"}
+      className="mx-auto max-w-xl px-4 py-8 sm:px-6 sm:py-12"
+    >
       <p className="font-display text-xs tracking-[0.28em] text-magenta uppercase">
         {hub.kind}
       </p>
@@ -170,10 +204,9 @@ function CheckoutWizard({
               <button
                 key={item.id}
                 type="button"
-                onClick={() => {
-                  setPack(item);
-                  setWallet(null);
-                }}
+                aria-pressed={selected}
+                data-pack={item.id}
+                onClick={() => persistPack(item)}
                 className={`rounded-2xl border px-3 py-4 text-left ${
                   selected
                     ? "border-cyan bg-cyan/10 neon-border"
@@ -191,66 +224,65 @@ function CheckoutWizard({
         </div>
       </section>
 
-      {pack ? (
-        <section className="mt-8">
-          <h2 className="text-sm font-semibold">2. {hub.idLabel}</h2>
-          <form className="mt-3" onSubmit={onIdSubmit}>
-            <label htmlFor="demo-player-id" className="text-xs text-muted">
-              {hub.idHint}
-            </label>
-            <input
-              id="demo-player-id"
-              name="playerId"
-              value={playerId}
-              onChange={(e) => {
-                setPlayerId(e.target.value);
-                setError("");
-              }}
-              placeholder={hub.idPlaceholder}
-              autoComplete="off"
-              inputMode={hub.id === "psn" || hub.id === "gear" ? "text" : "numeric"}
-              className="mt-2 w-full rounded-xl border border-line bg-ink px-4 py-3 text-base text-text outline-none focus:border-cyan"
-            />
-            {error ? <p className="mt-2 text-sm text-magenta">{error}</p> : null}
-            <button
-              type="submit"
-              className="mt-3 w-full rounded-full bg-cyan px-4 py-3 text-sm font-semibold text-ink glow-btn"
-            >
-              Continue to mock pay
-            </button>
-          </form>
-        </section>
-      ) : null}
+      <section ref={idSectionRef} className="mt-8 scroll-mt-28">
+        <h2 className="text-sm font-semibold">2. {hub.idLabel}</h2>
+        <form className="mt-3" onSubmit={onIdSubmit}>
+          <label htmlFor="demo-player-id" className="text-xs text-muted">
+            {hub.idHint}
+          </label>
+          <input
+            id="demo-player-id"
+            name="playerId"
+            value={playerId}
+            disabled={!pack}
+            onChange={(e) => {
+              setPlayerId(e.target.value);
+              setReadyForPay(false);
+              setError("");
+            }}
+            placeholder={pack ? hub.idPlaceholder : "Pick a pack first"}
+            autoComplete="off"
+            inputMode={hub.id === "psn" || hub.id === "gear" ? "text" : "numeric"}
+            className="mt-2 w-full rounded-xl border border-line bg-ink px-4 py-3 text-base text-text outline-none focus:border-cyan disabled:opacity-50"
+          />
+          {error ? <p className="mt-2 text-sm text-magenta">{error}</p> : null}
+          <button
+            type="submit"
+            disabled={!pack}
+            className="mt-3 w-full rounded-full bg-cyan px-4 py-3 text-sm font-semibold text-ink glow-btn disabled:opacity-50"
+          >
+            Continue to mock pay
+          </button>
+        </form>
+      </section>
 
-      {pack && playerId.trim().length >= 3 ? (
-        <section className="mt-8">
-          <h2 className="text-sm font-semibold">3. Mock wallet</h2>
-          <p className="mt-1 text-xs text-muted">
-            Pure UI. No API keys. No live Khalti or eSewa.
-          </p>
-          <div className="mt-3 grid gap-3">
-            {mockWallets.map((method) => (
-              <button
-                key={method.id}
-                type="button"
-                disabled={busy}
-                onClick={() => startMockPay(method.id)}
-                className={`rounded-2xl border px-4 py-4 text-left ${walletClass[method.tone]} ${
-                  wallet === method.id && busy ? "opacity-80" : ""
-                }`}
-              >
-                <p className="font-semibold">{method.label}</p>
-                <p className="mt-1 text-xs text-muted">{method.hint}</p>
-                {wallet === method.id && busy ? (
-                  <p className="mt-2 text-sm text-cyan">
-                    Mock {method.name}… not contacting a bank.
-                  </p>
-                ) : null}
-              </button>
-            ))}
-          </div>
-        </section>
-      ) : null}
+      <section ref={paySectionRef} className="mt-8 scroll-mt-28">
+        <h2 className="text-sm font-semibold">3. Mock wallet</h2>
+        <p className="mt-1 text-xs text-muted">
+          Pure UI. No API keys. No live Khalti or eSewa.
+        </p>
+        <div className="mt-3 grid gap-3">
+          {mockWallets.map((method) => (
+            <button
+              key={method.id}
+              type="button"
+              disabled={!canPay || busy}
+              onClick={() => startMockPay(method.id)}
+              className={`rounded-2xl border px-4 py-4 text-left ${walletClass[method.tone]} ${
+                !canPay ? "opacity-50" : ""
+              } ${wallet === method.id && busy ? "opacity-80" : ""}`}
+            >
+              <p className="font-semibold">{method.label}</p>
+              <p className="mt-1 text-xs text-muted">{method.hint}</p>
+              {wallet === method.id && busy ? (
+                <p className="mt-2 text-sm text-cyan">
+                  Mock {method.name}… not contacting a bank.
+                </p>
+              ) : null}
+            </button>
+          ))}
+        </div>
+      </section>
 
       <aside className="mt-8 rounded-2xl border border-line bg-ink/60 px-4 py-4 text-sm text-muted">
         <p>

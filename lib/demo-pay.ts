@@ -89,7 +89,7 @@ export const demoHubs: readonly DemoHub[] = [
     idHint: "Account the PlayStation Store credit should land on.",
     idPlaceholder: "amroz_player",
     accent: "cyan",
-    fulfillment: "Store credit pending · code or account credit · pickup if needed",
+    fulfillment: "PlayStation Store credit pending · code or ID credit",
     packs: [
       { id: "psn-500", label: "NPR 500 credit", amount: "500", unit: "wallet", price: "500" },
       { id: "psn-1000", label: "NPR 1,000 credit", amount: "1000", unit: "wallet", price: "1,000" },
