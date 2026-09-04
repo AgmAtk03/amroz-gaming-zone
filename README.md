@@ -11,7 +11,7 @@ Marketing demo site for **Amroz Gaming Zone** — a PlayStation club at Pepsicol
 
 Prefer **SHA-pinned** githack URLs (branch CDN can go stale):
 
-`https://raw.githack.com/AgmAtk03/amroz-gaming-zone/<SHA>/index.html`
+`https://raw.githack.com/AgmAtk03/amroz-gaming-zone/1edc784aa0d4d66a2860e379a50ced2603bdf323/index.html`
 
 ## Screens
 
