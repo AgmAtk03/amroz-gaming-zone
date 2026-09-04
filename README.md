@@ -4,14 +4,15 @@ Marketing demo site for **Amroz Gaming Zone** — a Kathmandu Ward 32 PlayStatio
 
 ## Live demo
 
-- **Public (no login):** https://agmatk03.github.io/amroz-gaming-zone/
-- **Vercel production:** https://amroz-ward32-dristi-astra.vercel.app/ — Dristi Astra Hobby team; if this URL shows a Vercel login, turn off **Deployment Protection → Vercel Authentication** on the `amroz-ward32` project.
+- **Public HTTPS (no login):** https://raw.githack.com/AgmAtk03/amroz-gaming-zone/live-demo/index.html
+- **Vercel production:** https://amroz-ward32-dristi-astra.vercel.app/ — Dristi Astra Hobby team. If this URL shows a Vercel login, disable **Deployment Protection → Vercel Authentication** on project `amroz-ward32`.
+- **GitHub Pages** (after enabling Pages in repo settings): https://agmatk03.github.io/amroz-gaming-zone/
 
 ## Stack
 
 - Next.js App Router
 - Tailwind CSS
-- Vercel + GitHub Pages
+- Vercel (Dristi Astra) + static `live-demo` branch
 
 ## Local
 
