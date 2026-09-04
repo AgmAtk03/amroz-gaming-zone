@@ -1,2 +1,2 @@
-:HL["https://raw.githack.com/AgmAtk03/amroz-gaming-zone/live-demo/_next/static/chunks/0xj-3n82v_gga.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"s5AG1Fb1iknEoJApaOt2-"}
+:HL["https://raw.githack.com/AgmAtk03/amroz-gaming-zone/d14d482a5daac27f0a60664ea4fbcd33d35a6887/_next/static/chunks/0xj-3n82v_gga.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"hAGkQDvgbeb4es-IuOLq1"}
