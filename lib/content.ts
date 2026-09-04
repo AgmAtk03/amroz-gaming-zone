@@ -278,7 +278,7 @@ export const faqs = [
   },
   {
     q: "Can I buy a mouse or Free Fire top-up?",
-    a: "Yes — open Shop, tap Confirm on WhatsApp, and pick up at Pepsicola / football ground. Guide prices are listed; we confirm stock on chat. Pay at pickup — no online checkout yet.",
+    a: "Yes — open Shop. Top-ups and PlayStation Store credit have a DEMO mock Khalti / eSewa path for owner review (sample NPR, not live pay). WhatsApp confirm is still the fallback. Gear can stay on chat or use a light Demo buy. Pickup at Pepsicola / football ground.",
   },
 ];
 

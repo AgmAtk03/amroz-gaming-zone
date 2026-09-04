@@ -7,7 +7,7 @@ import { shopPickup } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Shop | Amroz Gaming Zone",
   description:
-    "Fantech gear and Free Fire top-up at Amroz. Confirm on WhatsApp and pick up at Pepsicola / football ground.",
+    "Fantech gear, Free Fire / PUBG / MLBB top-ups, and PlayStation Store credit. DEMO mock pay or WhatsApp — pickup at Pepsicola / football ground.",
 };
 
 export default function ShopPage() {
@@ -28,11 +28,12 @@ export default function ShopPage() {
               Shop · not the booth floor
             </p>
             <h1 className="mt-3 max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
-              Confirm on WhatsApp. Pick up at {shopPickup.place}.
+              Demo top-up or WhatsApp. Pick up at {shopPickup.place}.
             </h1>
             <p className="mt-4 max-w-xl text-muted">
-              Same counter list as the homepage strip. No online payment —
-              we lock the SKU on chat, then you collect.
+              Free Fire, PUBG UC, MLBB, and PlayStation Store credit use a
+              labeled mock Khalti / eSewa path. WhatsApp confirm stays as the
+              fallback. Nothing here is live pay.
             </p>
           </div>
         </section>
