@@ -21,9 +21,9 @@ Same SHA on `raw.githack.com` (replace the host).
 
 ## Shop
 
-- Header: logo, Instant Delivery pill, search, game chips, cart
-- Trending strip (square physical + digital tiles, client-shuffled) sits under the header
-- Game top-up grid (Free Fire, PUBG, MLBB, Valorant, Roblox, PS Store, Steam) — no Instant Delivery stamps on cards
+- Header: logo, Instant Delivery pill, search, category chips, cart — light sweep animation
+- Hero carousel (Swiper-style energy, Amroz art only): GTA 6 pre-order, PS5, top-ups, gear
+- Catalog IA: Categories → one card per game. Packs only after tap-in. `data/catalog.json` covers Gaming Center Nepal digital + Amroz gear
 - Checkout: UID / Riot ID / Online ID as needed. Steam & PS Store also ask account password (not saved). Mobile games stay UID-only
 - Saved IDs, Buy again, member price still apply
 - Gear copy is 2 hour delivery; stock chips stay
