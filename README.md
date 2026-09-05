@@ -6,17 +6,17 @@ Kathmandu shop — **Instant Delivery** top-ups and **2 Hour Delivery** gaming g
 
 Branch CDNs go stale. Open **one** `live-demo` commit SHA. HTML, CSS, `_next` media, and `amroz-client.js` all live in that same tree — no second assets commit.
 
-**Current export:** `3682e17470eff24163f2710451f19008be816e21`
+**Current export:** `4d224afacf6e3cb1c580ca388ed7bf4cbebca98f`
 
 Use **rawcdn** (production). `raw.githack.com` may show a one-time “Open the page” interstitial.
 
-- Home: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/3682e17470eff24163f2710451f19008be816e21/index.html
-- Shop: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/3682e17470eff24163f2710451f19008be816e21/shop/index.html
-- Top-ups category: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/3682e17470eff24163f2710451f19008be816e21/shop/index.html?cat=topups
-- Pay: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/3682e17470eff24163f2710451f19008be816e21/pay/index.html
-- Free Fire: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/3682e17470eff24163f2710451f19008be816e21/pay/index.html?hub=freefire
-- Steam (login fields): https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/3682e17470eff24163f2710451f19008be816e21/pay/index.html?hub=steam
-- Success: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/3682e17470eff24163f2710451f19008be816e21/pay/success/index.html
+- Home: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/4d224afacf6e3cb1c580ca388ed7bf4cbebca98f/index.html
+- Shop: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/4d224afacf6e3cb1c580ca388ed7bf4cbebca98f/shop/index.html
+- Top-ups category: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/4d224afacf6e3cb1c580ca388ed7bf4cbebca98f/shop/index.html?cat=topups
+- Pay: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/4d224afacf6e3cb1c580ca388ed7bf4cbebca98f/pay/index.html
+- Free Fire: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/4d224afacf6e3cb1c580ca388ed7bf4cbebca98f/pay/index.html?hub=freefire
+- Steam (login fields): https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/4d224afacf6e3cb1c580ca388ed7bf4cbebca98f/pay/index.html?hub=steam
+- Success: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/4d224afacf6e3cb1c580ca388ed7bf4cbebca98f/pay/success/index.html
 
 Same SHA on `raw.githack.com` (replace the host).
 
