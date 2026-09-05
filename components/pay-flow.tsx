@@ -1,16 +1,18 @@
 "use client";
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
+import { CategoryBrowse } from "@/components/category-browse";
+import { GameArt } from "@/components/game-art";
 import { PayMarks } from "@/components/pay-marks";
 import { Photo } from "@/components/photo";
 import { SavedIdPanel } from "@/components/saved-id-panel";
 import {
+  featuredHubs,
   getBundle,
   getHub,
   getPack,
   getPhysical,
   hubNeedsPassword,
-  hubs,
   type Bundle,
   type Hub,
   type Pack,
@@ -77,22 +79,23 @@ export function PayFlow() {
 function HubPicker() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
-      <p className="text-xs font-semibold tracking-wide text-gold uppercase">Game top-ups</p>
+      <p className="text-xs font-semibold tracking-wide text-gold uppercase">Checkout</p>
       <h1 className="mt-2 max-w-lg text-3xl font-semibold tracking-tight">
-        Pick a game. Start with your ID.
+        Pick a game first.
       </h1>
       <p className="mt-2 max-w-lg text-sm text-muted">
-        Credit lands on the ID after you pay with Khalti or eSewa.
+        One card per game. Packs open after you tap in.
       </p>
+      <CategoryBrowse from="pay" />
       <ul className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
-        {hubs.map((hub) => (
+        {featuredHubs.map((hub) => (
           <li key={hub.id}>
             <a
               href={payHref("pay", { hub: hub.id })}
               className="photo-card flex flex-col overflow-hidden rounded-2xl"
             >
-              <div className="aspect-[4/3]">
-                <Photo src={hub.photo} alt="" />
+              <div className="aspect-square">
+                <GameArt src={hub.photo} name={hub.name} short={hub.short} alt="" />
               </div>
               <div className="p-3">
                 <p className="font-semibold">{hub.name}</p>
@@ -258,7 +261,7 @@ function DigitalPay({
     <div className="mx-auto max-w-xl px-4 py-6 sm:px-6 sm:py-10">
       <div className="flex items-center gap-3">
         <div className="h-14 w-14 overflow-hidden rounded-xl">
-          <Photo src={hub.photo} alt="" />
+          <GameArt src={hub.photo} name={hub.name} short={hub.short} alt="" />
         </div>
         <div>
           <p className="text-xs tracking-[0.16em] text-muted uppercase">{hub.kind}</p>

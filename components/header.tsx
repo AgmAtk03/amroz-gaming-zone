@@ -2,7 +2,7 @@
 
 import { FormEvent, useMemo, useState } from "react";
 import { InstantBadge, Wordmark } from "@/components/brand";
-import { gameChips, hubs, physical } from "@/lib/catalog";
+import { catalogCategories, hubs, physical } from "@/lib/catalog";
 import { homeHref, payHref, shopPageHref, type SitePage } from "@/lib/routes";
 import { useSavedStore } from "@/lib/saved-ids";
 
@@ -60,7 +60,7 @@ export function Header({
 
   return (
     <header
-      className={`${sticky ? "sticky top-0 z-40" : ""} border-b border-line bg-paper/95 backdrop-blur-md`}
+      className={`${sticky ? "sticky top-0 z-40" : ""} header-energy border-b border-line bg-paper/95 backdrop-blur-md`}
     >
       <div className="mx-auto flex max-w-5xl items-center gap-3 px-3 py-2.5 sm:px-6">
         <div className="flex min-w-0 items-center gap-2">
@@ -139,26 +139,18 @@ export function Header({
         ) : null}
       </form>
 
-      <nav aria-label="Shop games" className="border-t border-line">
+      <nav aria-label="Shop categories" className="border-t border-line">
         <ul className="chip-row mx-auto flex max-w-5xl gap-2 overflow-x-auto px-3 py-2 sm:px-6">
-          {gameChips.map((chip) => (
+          {catalogCategories.map((chip) => (
             <li key={chip.id} className="shrink-0">
               <a
-                href={payHref(page, { hub: chip.id })}
-                className="inline-flex rounded-full border border-line bg-panel px-3 py-1.5 text-xs font-semibold"
+                href={shopPageHref(page, { cat: chip.id })}
+                className="chip-energy inline-flex rounded-full border border-line bg-panel px-3 py-1.5 text-xs font-semibold"
               >
                 {chip.label}
               </a>
             </li>
           ))}
-          <li className="shrink-0">
-            <a
-              href={page === "shop" ? "#shelf" : shopPageHref(page)}
-              className="inline-flex rounded-full border border-line bg-panel px-3 py-1.5 text-xs font-semibold"
-            >
-              Gear
-            </a>
-          </li>
         </ul>
       </nav>
     </header>

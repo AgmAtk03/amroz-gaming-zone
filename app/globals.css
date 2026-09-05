@@ -81,6 +81,84 @@ body {
   display: none;
 }
 
+.header-energy {
+  box-shadow: 0 1px 0 color-mix(in oklab, var(--gold) 35%, transparent);
+}
+
+.header-energy::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background-size: 220% 100%;
+  animation: header-sweep 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+header.header-energy {
+  position: relative;
+}
+
+@keyframes header-sweep {
+  0% {
+    background-position: 120% 0;
+  }
+  100% {
+    background-position: -120% 0;
+  }
+}
+
+.chip-energy {
+  transition: border-color 0.16s ease, transform 0.16s ease, background 0.16s ease;
+}
+
+.chip-energy:hover,
+.chip-energy:active {
+  border-color: color-mix(in oklab, var(--gold) 55%, var(--line));
+  transform: translateY(-1px);
+}
+
+.hero-slide {
+  opacity: 0;
+  transition: opacity 0.55s ease;
+}
+
+.hero-slide.is-on {
+  opacity: 1;
+}
+
+.hero-ken {
+  animation: ken 6.2s ease-out both;
+  transform-origin: 50% 40%;
+}
+
+@keyframes ken {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.hero-copy {
+  animation: copy-up 0.45s ease both;
+}
+
+@keyframes copy-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .photo-card {
   background: var(--panel);
   border: 1px solid var(--line);
@@ -166,7 +244,10 @@ body {
   .hub-card,
   .photo-shimmer::after,
   .photo-card,
-  .press-card {
+  .press-card,
+  .header-energy::after,
+  .hero-ken,
+  .hero-copy {
     animation: none;
     transition: none;
   }
