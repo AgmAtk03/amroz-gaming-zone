@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 export function Wordmark({
   compact = false,
   href = "/",
@@ -43,7 +45,7 @@ export function InstantBadge({
   children = "Instant Delivery",
 }: {
   className?: string;
-  children?: string;
+  children?: ReactNode;
 }) {
   return (
     <span

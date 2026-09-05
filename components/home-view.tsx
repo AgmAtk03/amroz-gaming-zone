@@ -11,11 +11,11 @@ import { TrustBar } from "@/components/trust-bar";
 export function HomeView() {
   return (
     <>
+      <TrendingStrip />
       <Hero />
       <TrustBar />
       <BuyAgain />
       <HubGrid />
-      <TrendingStrip />
       <PhysicalShelf curated />
       <BundlesRow />
       <MembersOffer />

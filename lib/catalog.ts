@@ -18,6 +18,8 @@ export type Pack = {
   marginRank: number;
 };
 
+export type FulfillMode = "uid" | "account";
+
 export type Hub = {
   id: HubId;
   kind: string;
@@ -27,6 +29,9 @@ export type Hub = {
   idLabel: string;
   idHint: string;
   idPlaceholder: string;
+  fulfillMode: FulfillMode;
+  passwordLabel?: string;
+  passwordWhy?: string;
   tone: "ember" | "sand" | "pine" | "teal" | "brick" | "ink" | "gold";
   fulfillment: string;
   photo: string;
@@ -35,16 +40,21 @@ export type Hub = {
   packs: readonly Pack[];
 };
 
+export function hubNeedsPassword(hub: Hub) {
+  return hub.fulfillMode === "account";
+}
+
 export const hubs: readonly Hub[] = [
   {
     id: "freefire",
     kind: "Diamonds",
     name: "Free Fire",
     short: "FF",
-    blurb: "Diamonds on your UID. Instant Delivery.",
+    blurb: "Diamonds on your UID. Pay, then play.",
     idLabel: "Player ID",
-    idHint: "Free Fire UID — digits only.",
+    idHint: "Free Fire UID — digits only. No game password.",
     idPlaceholder: "123456789",
+    fulfillMode: "uid",
     tone: "ember",
     fulfillment: "Diamonds pending on this ID",
     photo: "/images/hub-freefire.jpg",
@@ -62,10 +72,11 @@ export const hubs: readonly Hub[] = [
     kind: "UC",
     name: "PUBG UC",
     short: "PUBG",
-    blurb: "UC on your character ID. Instant Delivery.",
+    blurb: "UC on your character ID. Pay, then play.",
     idLabel: "Character ID",
-    idHint: "PUBG character ID — digits only.",
+    idHint: "PUBG character ID — digits only. No game password.",
     idPlaceholder: "5123456789",
+    fulfillMode: "uid",
     tone: "sand",
     fulfillment: "UC pending on this ID",
     photo: "/images/hub-pubg.jpg",
@@ -83,10 +94,11 @@ export const hubs: readonly Hub[] = [
     kind: "Diamonds",
     name: "MLBB",
     short: "ML",
-    blurb: "MLBB diamonds. Instant Delivery.",
+    blurb: "MLBB diamonds on your Player ID.",
     idLabel: "Player ID",
-    idHint: "Player ID. Zone ID optional.",
+    idHint: "Player ID. Zone ID optional. No game password.",
     idPlaceholder: "12345678 (1234)",
+    fulfillMode: "uid",
     tone: "gold",
     fulfillment: "Diamonds pending on this ID",
     photo: "/images/hub-mlbb.jpg",
@@ -104,10 +116,11 @@ export const hubs: readonly Hub[] = [
     kind: "VP",
     name: "Valorant",
     short: "VAL",
-    blurb: "Valorant Points on your Riot ID. Instant Delivery.",
+    blurb: "VP on your Riot ID. Name#TAG is enough.",
     idLabel: "Riot ID",
-    idHint: "Name#TAG as you type it in-game.",
+    idHint: "Name#TAG as you type it in-game. No password.",
     idPlaceholder: "amroz#NP1",
+    fulfillMode: "uid",
     tone: "brick",
     fulfillment: "VP pending on this Riot ID",
     photo: "/images/hub-valorant.jpg",
@@ -124,10 +137,11 @@ export const hubs: readonly Hub[] = [
     kind: "Robux",
     name: "Roblox",
     short: "RBX",
-    blurb: "Robux on the username. Instant Delivery.",
+    blurb: "Robux on your Roblox username.",
     idLabel: "Roblox username",
-    idHint: "Exact username — not the display name.",
+    idHint: "Exact username — not the display name. No password.",
     idPlaceholder: "amroz_player",
+    fulfillMode: "uid",
     tone: "teal",
     fulfillment: "Robux pending on this username",
     photo: "/images/hub-roblox.jpg",
@@ -144,10 +158,14 @@ export const hubs: readonly Hub[] = [
     kind: "Wallet",
     name: "PS Store",
     short: "PS",
-    blurb: "PlayStation Store credit. Instant Delivery.",
+    blurb: "PS Store credit on your account.",
     idLabel: "PSN Online ID",
-    idHint: "Account the store credit should land on.",
+    idHint: "The Online ID we should credit.",
     idPlaceholder: "amroz_psn",
+    fulfillMode: "account",
+    passwordLabel: "PlayStation password",
+    passwordWhy:
+      "We sign in once to drop store credit on this account. Password is not saved on this phone.",
     tone: "ink",
     fulfillment: "Store credit pending · code or account",
     photo: "/images/hub-psn.jpg",
@@ -165,10 +183,14 @@ export const hubs: readonly Hub[] = [
     kind: "USD wallet",
     name: "Steam USD",
     short: "STM",
-    blurb: "Steam USD wallet code. Instant Delivery.",
+    blurb: "Steam USD wallet on your account.",
     idLabel: "Steam username",
-    idHint: "Account name the wallet code is for.",
+    idHint: "The Steam account the wallet should land on.",
     idPlaceholder: "amroz_steam",
+    fulfillMode: "account",
+    passwordLabel: "Steam password",
+    passwordWhy:
+      "We sign in once to add the wallet. Password is not saved on this phone.",
     tone: "pine",
     fulfillment: "Steam USD code pending",
     photo: "/images/hub-steam.jpg",
@@ -297,12 +319,43 @@ export const physical: readonly PhysicalItem[] = [
     popular: true,
   },
   {
+    id: "ps5-console",
+    sku: "PS5 console",
+    name: "PS5 console",
+    kind: "Console",
+    group: "ps5",
+    blurb: "Disc console for the living room. Ask first — stock moves fast.",
+    price: "89,900",
+    memberPrice: "87,900",
+    for: "PS5",
+    photo: "/images/gear-ps5-console.jpg",
+    stock: "ask",
+    marginRank: 9,
+    popular: true,
+  },
+  {
+    id: "gta6-preorder",
+    sku: "GTA 6 pre-order",
+    name: "GTA 6 pre-order",
+    kind: "Pre-order",
+    group: "ps5",
+    blurb: "Hold a copy. We ping you when it drops. Pay now, pick up later.",
+    price: "8,999",
+    memberPrice: "8,549",
+    for: "PS5",
+    photo: "/images/gear-gta6.jpg",
+    stock: "in",
+    qty: 5,
+    marginRank: 5,
+    popular: true,
+  },
+  {
     id: "ps5-dock",
     sku: "PS5 charge dock",
     name: "PS5 charge dock",
     kind: "Dock",
     group: "ps5",
-    blurb: "Two pads, one brick. Same-day if it is on the shelf.",
+    blurb: "Two pads, one brick. 2 hour delivery if it is on the shelf.",
     price: "3,299",
     memberPrice: "3,134",
     for: "PS5",
@@ -398,7 +451,7 @@ export const bundles: readonly Bundle[] = [
   {
     id: "bundle-ff-mouse",
     name: "FF night kit",
-    blurb: "310 diamonds + Fantech wireless. Dual take — digital now, mouse same-day.",
+    blurb: "310 diamonds + Fantech wireless. Credit now. Mouse in 2 hours.",
     price: "1,849",
     memberPrice: "1,756",
     hubId: "freefire",
@@ -419,19 +472,37 @@ export const bundles: readonly Bundle[] = [
   },
 ];
 
-export type TrendingPack = {
-  hubId: HubId;
-  packId: string;
+export type TrendingKind = "hub" | "physical";
+
+export type TrendingItem = {
+  kind: TrendingKind;
+  id: string;
+  title: string;
 };
 
-export const trendingPacks: readonly TrendingPack[] = [
-  { hubId: "freefire", packId: "ff-310" },
-  { hubId: "pubg", packId: "pubg-325" },
-  { hubId: "mlbb", packId: "mlbb-172" },
-  { hubId: "valorant", packId: "val-475" },
-  { hubId: "psn", packId: "psn-1000" },
-  { hubId: "roblox", packId: "rbx-400" },
+export const trendingSeed: readonly TrendingItem[] = [
+  { kind: "physical", id: "ps5-dualsense", title: "PS5" },
+  { kind: "physical", id: "ps5-console", title: "PS5 console" },
+  { kind: "physical", id: "gta6-preorder", title: "GTA 6 pre-order" },
+  { kind: "hub", id: "freefire", title: "Free Fire" },
+  { kind: "hub", id: "pubg", title: "PUBG UC" },
+  { kind: "hub", id: "mlbb", title: "MLBB" },
+  { kind: "hub", id: "steam", title: "Steam" },
+  { kind: "hub", id: "psn", title: "PS Store" },
+  { kind: "hub", id: "valorant", title: "Valorant" },
+  { kind: "hub", id: "roblox", title: "Roblox" },
 ];
+
+export function shuffleTrending<T>(list: readonly T[]): T[] {
+  const next = [...list];
+  for (let i = next.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = next[i];
+    next[i] = next[j];
+    next[j] = tmp;
+  }
+  return next;
+}
 
 const hubById = Object.fromEntries(hubs.map((hub) => [hub.id, hub]));
 const physicalById = Object.fromEntries(physical.map((item) => [item.id, item]));
@@ -472,10 +543,10 @@ export const homePhysicalIds = [
   "cable-pack",
 ] as const;
 
-export const homeTrending = trendingPacks.slice(0, 5);
+export const homeTrending = trendingSeed;
 
 export const categories = [
-  { id: "digital", label: "Instant Delivery", href: "#topups" },
+  { id: "digital", label: "Game top-ups", href: "#topups" },
   { id: "gear", label: "Gaming gear", href: "#shelf" },
 ] as const;
 

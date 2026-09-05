@@ -41,7 +41,10 @@ function reply(
       (q.includes("mouse") && item.kind.toLowerCase().includes("mouse")) ||
       (q.includes("headset") && item.kind === "Headset") ||
       ((q.includes("keyboard") || q.includes("atom")) && item.id === "ft-atom87") ||
-      (q.includes("dualsense") && item.id === "ps5-dualsense"),
+      (q.includes("dualsense") && item.id === "ps5-dualsense") ||
+      ((q.includes("console") || q.includes("ps5 console")) && item.id === "ps5-console") ||
+      ((q.includes("gta") || q.includes("gta 6") || q.includes("gta6")) &&
+        item.id === "gta6-preorder"),
   );
 
   if (hitHub) {
@@ -63,8 +66,8 @@ function reply(
       hrefLabel: lang === "ne" ? "Shelf card kholnus" : `Open ${hitItem.name}`,
       text:
         lang === "ne"
-          ? `${hitItem.name} shelf ma cha. Same-day Pepsicola Ward 32, usually 2 hours.`
-          : `${hitItem.name} is on the shelf. Same-day from Pepsicola Ward 32, usually within two hours.`,
+          ? `${hitItem.name} shelf ma cha. 2 hour delivery, Pepsicola Ward 32.`
+          : `${hitItem.name} is on the shelf. 2 hour delivery from Pepsicola, Ward 32.`,
     };
   }
 

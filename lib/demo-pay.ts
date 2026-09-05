@@ -8,13 +8,13 @@ export const mockWallets = [
     id: "khalti" as const,
     name: "Khalti",
     label: "Pay with Khalti",
-    hint: "NPR · Instant Delivery after payment.",
+    hint: "NPR · credit lands on your ID after pay.",
   },
   {
     id: "esewa" as const,
     name: "eSewa",
     label: "Pay with eSewa",
-    hint: "NPR · Instant Delivery after payment.",
+    hint: "NPR · credit lands on your ID after pay.",
   },
 ] as const;
 
@@ -58,7 +58,7 @@ export function demoWhatsAppHref(hub: Hub, pack?: Pack, playerId?: string) {
 }
 
 export function physicalWhatsAppHref(name: string) {
-  return whatsAppHref(`Hi Amroz — I want ${name}. Same-day Pepsicola Ward 32.`);
+  return whatsAppHref(`Hi Amroz — I want ${name}. 2 hour delivery, Pepsicola Ward 32.`);
 }
 
 export function slaMissWhatsAppHref(name: string, orderId: string) {

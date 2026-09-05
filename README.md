@@ -1,6 +1,6 @@
 # Amroz Gaming Zone
 
-Kathmandu shop — **Instant Delivery** top-ups and same-day gaming gear from **Pepsicola, Ward 32**.
+Kathmandu shop — **Instant Delivery** (header only) top-ups and **2 hour** gaming gear from **Pepsicola, Ward 32**.
 
 ## Live shop (SHA-pinned githack)
 
@@ -20,11 +20,12 @@ Same SHA on `raw.githack.com` (replace the host).
 
 ## Shop
 
-- Header: logo, search, game chips, cart, Instant Delivery
-- Home leads with Instant Delivery, then a 7-game top-up grid (Free Fire, PUBG, MLBB, Valorant, Roblox, PS Store, Steam)
-- Physical gear sits below
-- Checkout: hub → UID first (last-used default) → pack → confirm → Pay with Khalti / eSewa
+- Header: logo, Instant Delivery pill, search, game chips, cart
+- Trending strip (square physical + digital tiles, client-shuffled) sits under the header
+- Game top-up grid (Free Fire, PUBG, MLBB, Valorant, Roblox, PS Store, Steam) — no Instant Delivery stamps on cards
+- Checkout: UID / Riot ID / Online ID as needed. Steam & PS Store also ask account password (not saved). Mobile games stay UID-only
 - Saved IDs, Buy again, member price still apply
+- Gear copy is 2 hour delivery; stock chips stay
 - Wallet buttons are client-only (no live API keys). Customer UI does not label them mock or demo.
 
 ## Stack
