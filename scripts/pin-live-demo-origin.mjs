@@ -1,9 +1,11 @@
 import { readdir, readFile, writeFile } from "node:fs/promises";
-import { extname, join } from "node:path";
+import { extname, isAbsolute, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = process.argv[2]
-  ? join(process.cwd(), process.argv[2])
+  ? isAbsolute(process.argv[2])
+    ? process.argv[2]
+    : join(process.cwd(), process.argv[2])
   : join(fileURLToPath(new URL(".", import.meta.url)), "..", "out");
 const sha = process.argv[3] || process.env.LIVE_DEMO_SHA;
 if (!sha) {
