@@ -3,7 +3,7 @@ self.__BUILD_MANIFEST = {
     "afterFiles": [],
     "beforeFiles": [
       {
-        "source": "/AgmAtk03/amroz-gaming-zone/__LIVE_SHA__/_next/:path+",
+        "source": "/gh/AgmAtk03/amroz-gaming-zone@__LIVE_SHA__/_next/:path+",
         "destination": "/_next/:path+"
       }
     ],
