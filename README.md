@@ -6,15 +6,15 @@ Kathmandu shop — **Instant Delivery** top-ups and same-day gaming gear from **
 
 Branch CDNs go stale. Open **one** `live-demo` commit SHA. HTML, CSS, `_next` media, and `amroz-client.js` all live in that same tree — no second assets commit.
 
-**Current export:** `e150bf30d642954bd2e6386271bf553092b686a2`
+**Current export:** `a4e222740a623cc4d1118604247fee047363c9c6`
 
 Use **rawcdn** (production). `raw.githack.com` may show a one-time “Open the page” interstitial.
 
-- Home: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/e150bf30d642954bd2e6386271bf553092b686a2/index.html
-- Shop: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/e150bf30d642954bd2e6386271bf553092b686a2/shop/index.html
-- Pay: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/e150bf30d642954bd2e6386271bf553092b686a2/pay/index.html
-- Free Fire: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/e150bf30d642954bd2e6386271bf553092b686a2/pay/index.html?hub=freefire
-- Success: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/e150bf30d642954bd2e6386271bf553092b686a2/pay/success/index.html
+- Home: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/a4e222740a623cc4d1118604247fee047363c9c6/index.html
+- Shop: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/a4e222740a623cc4d1118604247fee047363c9c6/shop/index.html
+- Pay: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/a4e222740a623cc4d1118604247fee047363c9c6/pay/index.html
+- Free Fire: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/a4e222740a623cc4d1118604247fee047363c9c6/pay/index.html?hub=freefire
+- Success: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/a4e222740a623cc4d1118604247fee047363c9c6/pay/success/index.html
 
 Same SHA on `raw.githack.com` (replace the host).
 
