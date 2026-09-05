@@ -31,11 +31,12 @@ type Store = {
 const KEY = "amroz-saved-ids-v1";
 const EVENT = "amroz-saved-ids";
 
+const EMPTY_STORE: Store = { ids: [], orders: [] };
 let snapshotRaw: string | null = null;
-let snapshot: Store = { ids: [], orders: [] };
+let snapshot: Store = EMPTY_STORE;
 
 function emptyStore(): Store {
-  return { ids: [], orders: [] };
+  return EMPTY_STORE;
 }
 
 function parseStore(raw: string | null): Store {

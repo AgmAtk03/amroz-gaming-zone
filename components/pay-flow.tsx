@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { DemoBadge } from "@/components/brand";
 import { PayMarks } from "@/components/pay-marks";
@@ -120,14 +120,8 @@ function DigitalPay({
   orderId: string | null;
 }) {
   const preset = getPack(hub, presetPackId);
-  const prior = getDigitalOrder(orderId);
-  const initialSaved =
-    getSavedId(presetSid) ??
-    (prior ? getSavedId(prior.savedId) : undefined) ??
-    lastUsedSavedId(hub.id);
-
   const [pack, setPack] = useState<Pack | undefined>(preset);
-  const [saved, setSaved] = useState<SavedGameId | undefined>(initialSaved);
+  const [saved, setSaved] = useState<SavedGameId | undefined>(undefined);
   const [freshValue, setFreshValue] = useState("");
   const [freshLabel, setFreshLabel] = useState("main");
   const [saveNext, setSaveNext] = useState(true);
@@ -137,7 +131,20 @@ function DigitalPay({
   const [referral, setReferral] = useState("");
   const [nudge, setNudge] = useState(false);
   const [forcePick, setForcePick] = useState(false);
-  const [idLocked, setIdLocked] = useState(Boolean(reorder && initialSaved));
+  const [idLocked, setIdLocked] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const prior = getDigitalOrder(orderId);
+    const fromStore =
+      getSavedId(presetSid) ??
+      (prior ? getSavedId(prior.savedId) : undefined) ??
+      lastUsedSavedId(hub.id);
+    if (fromStore) setSaved(fromStore);
+    if (reorder && fromStore) setIdLocked(true);
+    setReady(true);
+  }, [hub.id, presetSid, orderId, reorder]);
+
   const member = useMember();
   const memberOn = Boolean(member);
   const savedStore = useSavedStore();
@@ -157,8 +164,8 @@ function DigitalPay({
           : 3;
 
   const wa = useMemo(
-    () => demoWhatsAppHref(hub, pack, activeId),
-    [hub, pack, activeId],
+    () => demoWhatsAppHref(hub, pack, ready ? activeId : undefined),
+    [hub, pack, activeId, ready],
   );
 
   function onFreshSubmit(e: FormEvent<HTMLFormElement>) {
@@ -229,6 +236,10 @@ function DigitalPay({
     window.setTimeout(() => {
       window.location.href = successHref("pay", query);
     }, 500);
+  }
+
+  if (!ready) {
+    return <div className="mx-auto max-w-xl px-4 py-16 text-muted">Loading checkout…</div>;
   }
 
   return (
