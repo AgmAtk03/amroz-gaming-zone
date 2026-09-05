@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { DemoBadge } from "@/components/brand";
 import { demoPayNotice } from "@/lib/content";
 import {
@@ -10,6 +9,7 @@ import {
   readDemoOrder,
   slaMissWhatsAppHref,
 } from "@/lib/demo-pay";
+import { usePageSearchParams } from "@/lib/page-search";
 import { usePrefs } from "@/lib/prefs";
 import { payHref, reorderHref, shopPageHref } from "@/lib/routes";
 import { getDigitalOrderByTxn, getSavedId, maskGameId } from "@/lib/saved-ids";
@@ -51,20 +51,27 @@ function SlaClock({ dueAt, name, orderId }: { dueAt: number; name: string; order
 }
 
 export function PaySuccess() {
-  const search = useSearchParams();
-  const parsed = readDemoOrder(search);
+  const search = usePageSearchParams();
   const prefs = usePrefs();
   const [playerId, setPlayerId] = useState("");
   const [storedSid, setStoredSid] = useState<string | undefined>(undefined);
   const [storedOid, setStoredOid] = useState<string | undefined>(undefined);
 
+  const parsed = search ? readDemoOrder(search) : null;
+
   useEffect(() => {
-    const stored = getDigitalOrderByTxn(parsed.txn);
-    const saved = getSavedId(parsed.sid);
+    if (!search) return;
+    const next = readDemoOrder(search);
+    const stored = getDigitalOrderByTxn(next.txn);
+    const saved = getSavedId(next.sid);
     setPlayerId(stored?.playerId ?? saved?.value ?? "");
     setStoredSid(stored?.savedId);
     setStoredOid(stored?.id);
-  }, [parsed.txn, parsed.sid]);
+  }, [search]);
+
+  if (!parsed) {
+    return <div className="mx-auto max-w-xl px-4 py-16 text-muted">Loading receipt…</div>;
+  }
 
   const sample = !parsed.pay || (!parsed.pack && !parsed.item) || !parsed.txn;
   const digital = parsed.hub && parsed.pack;

@@ -1,7 +1,6 @@
 "use client";
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { DemoBadge } from "@/components/brand";
 import { PayMarks } from "@/components/pay-marks";
 import { Photo } from "@/components/photo";
@@ -28,6 +27,7 @@ import {
   type MockWalletId,
 } from "@/lib/demo-pay";
 import { useMember } from "@/lib/member";
+import { usePageSearchParams } from "@/lib/page-search";
 import { writePrefs } from "@/lib/prefs";
 import { payHref, shopPageHref, successHref } from "@/lib/routes";
 import {
@@ -46,7 +46,10 @@ function slaDueFromNow() {
 }
 
 export function PayFlow() {
-  const search = useSearchParams();
+  const search = usePageSearchParams();
+  if (!search) {
+    return <div className="mx-auto max-w-xl px-4 py-16 text-muted">Loading checkout…</div>;
+  }
   const hub = getHub(search.get("hub"));
   const item = getPhysical(search.get("sku"));
   const bundle = getBundle(search.get("bundle"));
