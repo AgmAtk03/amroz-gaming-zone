@@ -50,10 +50,18 @@ let changed = 0;
 for (const file of files) {
   if (!rewriteExt.has(extname(file))) continue;
   const source = await readFile(file, "utf8");
-  const next = source.replace(
+  let next = source.replace(
     publicAsset,
     (_, path) => `${origin}/${stripFileSlash(path)}`,
   );
+  // Ordered boot on static CDNs. `async` lets the Turbopack runtime race
+  // the chunk graph; factories register but never instantiate.
+  if (extname(file) === ".html") {
+    next = next.replace(
+      /(<script\b[^>]*\bsrc="[^"]*_next\/[^"]*"[^>]*?)\sasync(?:="")?/g,
+      "$1 defer",
+    );
+  }
   if (next !== source) {
     await writeFile(file, next);
     changed += 1;
