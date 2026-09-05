@@ -13,8 +13,8 @@ if (!sha) {
   process.exit(1);
 }
 
-const from = "https://raw.githack.com/AgmAtk03/amroz-gaming-zone/__LIVE_SHA__";
-const to = `https://raw.githack.com/AgmAtk03/amroz-gaming-zone/${sha}`;
+const from = "https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/__LIVE_SHA__";
+const to = `https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/${sha}`;
 const rewriteExt = new Set([".html", ".js", ".css", ".txt", ".json"]);
 
 async function walk(dir) {
