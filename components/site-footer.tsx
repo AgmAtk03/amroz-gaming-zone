@@ -1,34 +1,41 @@
 import { DemoBadge, Wordmark } from "@/components/brand";
-import { SocialLinks } from "@/components/social";
-import { site } from "@/lib/content";
+import { site, whatsAppHref } from "@/lib/content";
 import { homeHref, type SitePage } from "@/lib/routes";
 
 export function SiteFooter({ page = "home" }: { page?: SitePage }) {
   return (
-    <footer className="border-t border-line bg-ink">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 lg:flex-row lg:items-start lg:justify-between">
+    <footer id="contact" className="border-t border-line bg-paper-2">
+      <div className="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-10 sm:px-6 lg:flex-row lg:items-start lg:justify-between">
         <div>
           <Wordmark href={homeHref(page)} />
           <p className="mt-3 max-w-sm text-sm text-muted">
-            Kathmandu Ward 32 PS club — original Amroz branding for this demo.
-            Not affiliated with other gaming zones in the city.
+            {site.addressLine}
+          </p>
+          <p className="mt-1 text-sm text-muted">
+            {site.tagline} Unique txn + order ID.
           </p>
         </div>
-        <div>
-          <p className="text-sm font-medium">Connect</p>
-          <SocialLinks className="mt-3" />
-          <p className="mt-3 text-xs text-muted">
-            Social URLs are placeholders. <DemoBadge className="ml-1" />
-          </p>
-        </div>
-        <div className="text-sm text-muted">
-          <p>{site.phoneDisplay}</p>
-          <p>{site.email}</p>
-          <p className="mt-4 text-xs">
-            © {new Date().getFullYear()} {site.name}. Demo marketing site.
+        <div className="flex flex-col gap-3">
+          <a
+            href={whatsAppHref("Hi Amroz — I need a top-up or same-day gear.")}
+            className="thumb-btn inline-flex items-center justify-center rounded-xl bg-gold px-5 text-sm font-semibold text-paper"
+          >
+            Contact on WhatsApp
+          </a>
+          <a
+            href={`tel:${site.phoneTel}`}
+            className="thumb-btn inline-flex items-center justify-center rounded-xl border border-line px-5 text-sm font-semibold"
+          >
+            Call {site.phoneDisplay}
+          </a>
+          <p className="text-xs text-muted">
+            Demo number. <DemoBadge className="ml-1" />
           </p>
         </div>
       </div>
+      <p className="border-t border-line px-4 py-4 text-center text-xs text-muted">
+        © {new Date().getFullYear()} {site.name}. Gaming marketplace — not a booth-booking venue.
+      </p>
     </footer>
   );
 }
