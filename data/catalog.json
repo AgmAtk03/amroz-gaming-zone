@@ -1,6 +1,7 @@
 {
   "source": "https://gaming.com.np/",
-  "note": "Gaming Center Nepal catalog folded into unique games. Same product never listed twice. Packs only after tap-in. Amroz gear lives in catalog.ts.",
+  "inventory": "data/gaming-com-np-amroz-catalog.md",
+  "note": "Imported from data/gaming-com-np-amroz-catalog.md. Families (MLBB, Free Fire) are one card; regions/packs after tap-in. Dead paths skipped (where-winds-meet, honkai-star-rail main). Amroz gear lives in catalog.ts.",
   "categories": [
     {
       "id": "topups",
@@ -59,6 +60,32 @@
         "Mobile Legends (Philippines)",
         "New - Mobile Legends (Nepal)",
         "Super Value Pass MLBB"
+      ],
+      "regions": [
+        {
+          "id": "np",
+          "label": "Nepal"
+        },
+        {
+          "id": "global",
+          "label": "Global"
+        },
+        {
+          "id": "id",
+          "label": "Indonesia"
+        },
+        {
+          "id": "mysg",
+          "label": "MY / SG"
+        },
+        {
+          "id": "ph",
+          "label": "Philippines"
+        },
+        {
+          "id": "ru",
+          "label": "Russia"
+        }
       ],
       "packs": [
         {
@@ -148,6 +175,28 @@
         "Free Fire Level Up Pass",
         "Free Fire (LATAM)",
         "Freefire Vietnam"
+      ],
+      "regions": [
+        {
+          "id": "np",
+          "label": "Nepal"
+        },
+        {
+          "id": "id",
+          "label": "Indonesia"
+        },
+        {
+          "id": "my",
+          "label": "Malaysia"
+        },
+        {
+          "id": "latam",
+          "label": "LATAM"
+        },
+        {
+          "id": "vn",
+          "label": "Vietnam"
+        }
       ],
       "packs": [
         {
@@ -241,6 +290,7 @@
       "mergedFrom": [
         "PUBG Mobile (GLOBAL)"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "pubg-60",
@@ -304,6 +354,7 @@
         "ROBLOX",
         "Roblox Gift Card (US)"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "roblox-80",
@@ -367,6 +418,7 @@
         "Valorant (PH)-INSTANT",
         "Valorant Points"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "valorant-475",
@@ -431,6 +483,7 @@
         "Genshin Impact Battle Pass",
         "Genshin Impact x Miliastra Wonderland"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "genshin-60",
@@ -493,6 +546,7 @@
       "mergedFrom": [
         "Honor of Kings"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "honor-of-kings-16",
@@ -555,6 +609,7 @@
       "mergedFrom": [
         "Call of Duty Mobile"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "call-of-duty-80",
@@ -618,6 +673,7 @@
         "eFootball PES 2026 (Android Only)",
         "(IOS Only) eFootball PES 2026"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "efootball-100a",
@@ -681,6 +737,7 @@
         "Blood Strike",
         "Blood Strike - Pass"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "blood-strike-60",
@@ -744,6 +801,7 @@
         "Delta Force (Global)",
         "Delta Force (Global) - Packs"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "delta-force-60",
@@ -807,6 +865,7 @@
         "Tower of Fantasy (GLOBAL)",
         "Tower of Fantasy (SEA)"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "tower-of-fantasy-60g",
@@ -870,6 +929,7 @@
         "Honkai: Star Rail",
         "Honkai: Star Rail Battle Pass"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "honkai-star-rail-60",
@@ -933,6 +993,7 @@
         "CLASH OF CLANS OFFERS",
         "Clash of Clans"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "clash-of-clans-80",
@@ -996,6 +1057,7 @@
         "Starmaker Topup",
         "[Instant] Starmaker Topup"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "starmaker-100",
@@ -1048,6 +1110,7 @@
       "mergedFrom": [
         "Bigo Live (Direct Topup)"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "bigo-100",
@@ -1100,6 +1163,7 @@
       "mergedFrom": [
         "Poppo Live"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "poppo-100",
@@ -1152,6 +1216,7 @@
       "mergedFrom": [
         "Dragon Raja (SEA)"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "dragon-raja-60",
@@ -1204,6 +1269,7 @@
       "mergedFrom": [
         "Goddess of Victory: Nikke (Global)"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "nikke-60",
@@ -1256,6 +1322,7 @@
       "mergedFrom": [
         "Identity V"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "identity-v-60",
@@ -1308,6 +1375,7 @@
       "mergedFrom": [
         "LifeAfter"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "life-after-60",
@@ -1350,6 +1418,7 @@
       "mergedFrom": [
         "Mirage:Perfect Skyline"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "mirage-60",
@@ -1392,6 +1461,7 @@
       "mergedFrom": [
         "Moonlight Blade M"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "moonlight-blade-60",
@@ -1434,6 +1504,7 @@
       "mergedFrom": [
         "Super Sus"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "super-sus-60",
@@ -1476,6 +1547,7 @@
       "mergedFrom": [
         "Zepeto"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "zepeto-80",
@@ -1518,6 +1590,7 @@
       "mergedFrom": [
         "Farlight84"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "farlight84-60",
@@ -1560,6 +1633,7 @@
       "mergedFrom": [
         "Tiktok Coins"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "tiktok-70",
@@ -1612,6 +1686,7 @@
       "mergedFrom": [
         "Wuthering Waves"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "wuthering-waves-60",
@@ -1664,6 +1739,7 @@
       "mergedFrom": [
         "Pokemon Go"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "pokemon-go-100",
@@ -1706,6 +1782,7 @@
       "mergedFrom": [
         "Lords Mobile"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "lords-mobile-100",
@@ -1748,6 +1825,7 @@
       "mergedFrom": [
         "Blockman Go"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "blockman-go-60",
@@ -1790,6 +1868,7 @@
       "mergedFrom": [
         "Standoff 2"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "standoff-2-100",
@@ -1832,6 +1911,7 @@
       "mergedFrom": [
         "Immortal Taoists - Idle Manga"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "immortal-taoists-60",
@@ -1874,6 +1954,7 @@
       "mergedFrom": [
         "Brawl Star Pass and Offers"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "brawl-stars-30",
@@ -1926,6 +2007,7 @@
       "mergedFrom": [
         "Score Match"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "score-match-100",
@@ -1968,6 +2050,7 @@
       "mergedFrom": [
         "FC Mobile"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "fc-mobile-40",
@@ -2020,6 +2103,7 @@
       "mergedFrom": [
         "Honkai Impact 3rd (SEA)"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "honkai-impact-60",
@@ -2062,6 +2146,7 @@
       "mergedFrom": [
         "Last Island of Survival"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "last-island-60",
@@ -2104,6 +2189,7 @@
       "mergedFrom": [
         "Chess.com"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "chess-com-1m",
@@ -2156,6 +2242,7 @@
       "mergedFrom": [
         "Mini World:CREATA"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "mini-world-60",
@@ -2198,6 +2285,7 @@
       "mergedFrom": [
         "Clash Royale"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "clash-royale-80",
@@ -2240,6 +2328,7 @@
       "mergedFrom": [
         "Fortnite"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "fortnite-1000",
@@ -2292,6 +2381,7 @@
       "mergedFrom": [
         "War Robots"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "war-robots-100",
@@ -2334,6 +2424,7 @@
       "mergedFrom": [
         "Magic Chess: Go Go"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "magic-chess-50",
@@ -2386,6 +2477,7 @@
       "mergedFrom": [
         "Marvel Rivals"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "marvel-rivals-300",
@@ -2438,6 +2530,7 @@
       "mergedFrom": [
         "Punishing: Gray Raven"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "gray-raven-60",
@@ -2480,6 +2573,7 @@
       "mergedFrom": [
         "Squad Busters"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "squad-busters-80",
@@ -2522,6 +2616,7 @@
       "mergedFrom": [
         "Once Human"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "once-human-60",
@@ -2564,6 +2659,7 @@
       "mergedFrom": [
         "Love and Deepspace"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "love-and-deepspace-60",
@@ -2606,6 +2702,7 @@
       "mergedFrom": [
         "Telegram Stars"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "telegram-stars-50",
@@ -2648,6 +2745,7 @@
       "mergedFrom": [
         "Whiteout Survival"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "whiteout-survival-100",
@@ -2690,6 +2788,7 @@
       "mergedFrom": [
         "Lineage2M"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "lineage2m-60",
@@ -2714,44 +2813,55 @@
       ]
     },
     {
-      "id": "where-winds-meet",
+      "id": "teen-patti",
       "category": "topups",
-      "kind": "Jade",
-      "name": "Where Winds Meet",
-      "short": "WWM",
-      "blurb": "Jade on your UID.",
+      "kind": "Chips",
+      "name": "Teen Patti Gold",
+      "short": "TPG",
+      "blurb": "Chips on your Teen Patti ID.",
       "idLabel": "Player ID",
-      "idHint": "Where Winds Meet ID. No password.",
+      "idHint": "Teen Patti Gold ID. No password.",
       "idPlaceholder": "123456789",
       "fulfillMode": "uid",
       "tone": "gold",
-      "fulfillment": "Jade pending on this ID",
+      "fulfillment": "Chips pending on this ID",
       "photo": "",
       "featured": false,
       "marginRank": 8,
       "mergedFrom": [
-        "Where Winds Meet"
+        "Teen Patti Gold"
       ],
+      "regions": [],
       "packs": [
         {
-          "id": "where-winds-meet-60",
-          "label": "60 jade",
-          "amount": "60",
-          "unit": "jade",
-          "price": "180",
-          "memberPrice": "171",
+          "id": "teen-patti-10m",
+          "label": "10M chips",
+          "amount": "10m",
+          "unit": "chips",
+          "price": "190",
+          "memberPrice": "180",
           "popular": false,
           "marginRank": 1
         },
         {
-          "id": "where-winds-meet-300",
-          "label": "300 jade",
-          "amount": "300",
-          "unit": "jade",
-          "price": "750",
-          "memberPrice": "712",
+          "id": "teen-patti-50m",
+          "label": "50M chips",
+          "amount": "50m",
+          "unit": "chips",
+          "price": "790",
+          "memberPrice": "750",
           "popular": true,
           "marginRank": 2
+        },
+        {
+          "id": "teen-patti-200m",
+          "label": "200M chips",
+          "amount": "200m",
+          "unit": "chips",
+          "price": "2,490",
+          "memberPrice": "2,366",
+          "popular": false,
+          "marginRank": 3
         }
       ]
     },
@@ -2775,6 +2885,7 @@
         "Steam Wallet Code (USD)",
         "Steam Wallet Code (INR)"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "steam-5",
@@ -2840,6 +2951,7 @@
         "PlayStation Store Wallet Code (INR)",
         "PlayStation Network Card (US)"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "psn-1000",
@@ -2904,6 +3016,7 @@
       "mergedFrom": [
         "Grand Theft Auto V (GTA 5)"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "gta-5-std",
@@ -2946,6 +3059,7 @@
       "mergedFrom": [
         "Minecraft Java and Bedrock Edition"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "minecraft-both",
@@ -2978,6 +3092,7 @@
       "mergedFrom": [
         "Black Myth: Wukong Steam Gift"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "wukong-std",
@@ -3010,6 +3125,7 @@
       "mergedFrom": [
         "Tekken 8"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "tekken-8-std",
@@ -3042,6 +3158,7 @@
       "mergedFrom": [
         "Windows Activation Key (Nepal)"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "windows-home",
@@ -3084,6 +3201,7 @@
       "mergedFrom": [
         "Microsoft Office"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "office-per",
@@ -3126,6 +3244,7 @@
       "mergedFrom": [
         "TryHackMe"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "tryhackme-1m",
@@ -3168,6 +3287,7 @@
       "mergedFrom": [
         "NoPing Subscription Code"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "noping-1m",
@@ -3193,7 +3313,7 @@
     },
     {
       "id": "udemy",
-      "category": "vouchers",
+      "category": "topups",
       "kind": "Course credit",
       "name": "Udemy",
       "short": "UD",
@@ -3210,6 +3330,7 @@
       "mergedFrom": [
         "Udemy"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "udemy-1",
@@ -3253,6 +3374,7 @@
         "iTunes Gift Card (IN)",
         "iTunes Gift Card (US)"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "itunes-10us",
@@ -3305,6 +3427,7 @@
       "mergedFrom": [
         "Nintendo eShop Gift Card (US)"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "nintendo-10",
@@ -3357,6 +3480,7 @@
       "mergedFrom": [
         "Razer Pin Direct Top Up (MY)"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "razer-10",
@@ -3400,6 +3524,7 @@
         "Garena Shell (ID)",
         "Garena Shell (MY)"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "garena-shell-50id",
@@ -3452,6 +3577,7 @@
       "mergedFrom": [
         "Bigo Live Gift Card"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "bigo-card-10",
@@ -3494,6 +3620,7 @@
       "mergedFrom": [
         "Tango"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "tango-10",
@@ -3526,6 +3653,7 @@
       "mergedFrom": [
         "Discord Nitro"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "discord-1m",
@@ -3568,6 +3696,7 @@
       "mergedFrom": [
         "Netflix Premium Subscription"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "netflix-1m",
@@ -3610,6 +3739,7 @@
       "mergedFrom": [
         "Crunchyroll Premium"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "crunchyroll-1m",
@@ -3652,6 +3782,7 @@
       "mergedFrom": [
         "YouTube Premium"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "youtube-1m",
@@ -3694,6 +3825,7 @@
       "mergedFrom": [
         "Surfshark VPN"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "surfshark-1m",
@@ -3736,6 +3868,7 @@
       "mergedFrom": [
         "Duolingo Super"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "duolingo-1m",
@@ -3778,6 +3911,7 @@
       "mergedFrom": [
         "Prime Video"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "prime-video-1m",
@@ -3820,6 +3954,7 @@
       "mergedFrom": [
         "Zoom"
       ],
+      "regions": [],
       "packs": [
         {
           "id": "zoom-1m",

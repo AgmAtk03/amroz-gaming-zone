@@ -49,8 +49,14 @@ export function makeOrderId() {
   return `ORD-${pick(6)}`;
 }
 
-export function demoWhatsAppHref(hub: Hub, pack?: Pack, playerId?: string) {
+export function demoWhatsAppHref(
+  hub: Hub,
+  pack?: Pack,
+  playerId?: string,
+  region?: string,
+) {
   const bits = [`Hi Amroz — I want ${hub.name}`];
+  if (region) bits.push(region);
   if (pack) bits.push(pack.label);
   if (playerId) bits.push(`${hub.idLabel} ${maskGameId(playerId)}`);
   bits.push("Pepsicola Ward 32");

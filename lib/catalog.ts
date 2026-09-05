@@ -36,6 +36,7 @@ export type Hub = {
   popular?: boolean;
   marginRank: number;
   mergedFrom?: readonly string[];
+  regions?: readonly { id: string; label: string }[];
   packs: readonly Pack[];
 };
 

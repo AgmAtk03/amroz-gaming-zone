@@ -52,6 +52,7 @@ def uid(
     featured=False,
     category="topups",
     merged=None,
+    regions=None,
 ):
     return {
         "id": id_,
@@ -70,6 +71,7 @@ def uid(
         "featured": featured,
         "marginRank": 3 if featured else 8,
         "mergedFrom": merged or [],
+        "regions": regions or [],
         "packs": packs(id_, pack_rows),
     }
 
@@ -195,6 +197,14 @@ hubs = [
         photo="/images/hub-mlbb.jpg",
         featured=True,
         merged=MLBB_MERGED,
+        regions=[
+            {"id": "np", "label": "Nepal"},
+            {"id": "global", "label": "Global"},
+            {"id": "id", "label": "Indonesia"},
+            {"id": "mysg", "label": "MY / SG"},
+            {"id": "ph", "label": "Philippines"},
+            {"id": "ru", "label": "Russia"},
+        ],
     ),
     uid(
         "freefire",
@@ -217,6 +227,13 @@ hubs = [
         photo="/images/hub-freefire.jpg",
         featured=True,
         merged=FF_MERGED,
+        regions=[
+            {"id": "np", "label": "Nepal"},
+            {"id": "id", "label": "Indonesia"},
+            {"id": "my", "label": "Malaysia"},
+            {"id": "latam", "label": "LATAM"},
+            {"id": "vn", "label": "Vietnam"},
+        ],
     ),
     uid(
         "pubg",
@@ -499,7 +516,18 @@ hubs = [
     uid("telegram-stars", "Telegram Stars", "TG", "Stars", "Stars on your Telegram username.", "Telegram username", "Username with @. No password.", "@amroz", [("50 stars", "50", "stars", 190), ("250 stars", "250", "stars", 850, True)], merged=["Telegram Stars"]),
     uid("whiteout-survival", "Whiteout Survival", "WOS", "Gems", "Gems on your UID.", "Player ID", "Whiteout Survival ID. No password.", "123456789", [("100 gems", "100", "gems", 180), ("500 gems", "500", "gems", 820, True)], merged=["Whiteout Survival"]),
     uid("lineage2m", "Lineage2M", "L2M", "NCoin", "NCoin on your UID.", "Player ID", "Lineage2M ID. No password.", "123456789", [("60 ncoin", "60", "ncoin", 190), ("300 ncoin", "300", "ncoin", 790, True)], merged=["Lineage2M"]),
-    uid("where-winds-meet", "Where Winds Meet", "WWM", "Jade", "Jade on your UID.", "Player ID", "Where Winds Meet ID. No password.", "123456789", [("60 jade", "60", "jade", 180), ("300 jade", "300", "jade", 750, True)], merged=["Where Winds Meet"]),
+    uid(
+        "teen-patti",
+        "Teen Patti Gold",
+        "TPG",
+        "Chips",
+        "Chips on your Teen Patti ID.",
+        "Player ID",
+        "Teen Patti Gold ID. No password.",
+        "123456789",
+        [("10M chips", "10m", "chips", 190), ("50M chips", "50m", "chips", 790, True), ("200M chips", "200m", "chips", 2490)],
+        merged=["Teen Patti Gold"],
+    ),
     account(
         "steam",
         "Steam",
@@ -552,7 +580,7 @@ hubs = [
     code("office", "Microsoft Office", "OFF", "License", "Office license key.", [("Personal", "per", "key", 4990, True), ("Professional", "pro", "key", 8990)], category="vouchers", merged=["Microsoft Office"]),
     code("tryhackme", "TryHackMe", "THM", "Voucher", "TryHackMe voucher code.", [("1 month", "1m", "month", 1490, True), ("1 year", "1y", "year", 9990)], category="vouchers", merged=["TryHackMe"]),
     code("noping", "NoPing", "NP", "Subscription code", "NoPing code after pay.", [("1 month", "1m", "month", 890, True), ("1 year", "1y", "year", 6990)], category="vouchers", merged=["NoPing Subscription Code"]),
-    code("udemy", "Udemy", "UD", "Course credit", "Udemy credit after pay.", [("1 course", "1", "course", 890, True), ("5 courses", "5", "course", 3490)], category="vouchers", merged=["Udemy"]),
+    code("udemy", "Udemy", "UD", "Course credit", "Udemy credit after pay.", [("1 course", "1", "course", 890, True), ("5 courses", "5", "course", 3490)], category="topups", merged=["Udemy"]),
     code(
         "itunes",
         "iTunes / App Store",
@@ -596,7 +624,8 @@ assert len(ids) == len(set(ids)), "duplicate hub ids"
 
 payload = {
     "source": "https://gaming.com.np/",
-    "note": "Gaming Center Nepal catalog folded into unique games. Same product never listed twice. Packs only after tap-in. Amroz gear lives in catalog.ts.",
+    "inventory": "data/gaming-com-np-amroz-catalog.md",
+    "note": "Imported from data/gaming-com-np-amroz-catalog.md. Families (MLBB, Free Fire) are one card; regions/packs after tap-in. Dead paths skipped (where-winds-meet, honkai-star-rail main). Amroz gear lives in catalog.ts.",
     "categories": categories,
     "hubs": hubs,
 }

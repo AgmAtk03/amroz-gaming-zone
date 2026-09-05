@@ -141,8 +141,10 @@ function DigitalPay({
   const [forcePick, setForcePick] = useState(false);
   const [idLocked, setIdLocked] = useState(false);
   const [accountPass, setAccountPass] = useState("");
+  const [region, setRegion] = useState(hub.regions?.[0]?.id ?? "");
   const [ready, setReady] = useState(false);
   const needsPass = hubNeedsPassword(hub);
+  const regionLabel = hub.regions?.find((row) => row.id === region)?.label;
 
   useEffect(() => {
     const prior = getDigitalOrder(orderId);
@@ -175,8 +177,8 @@ function DigitalPay({
           : 3;
 
   const wa = useMemo(
-    () => demoWhatsAppHref(hub, pack, ready ? activeId : undefined),
-    [hub, pack, activeId, ready],
+    () => demoWhatsAppHref(hub, pack, ready ? activeId : undefined, regionLabel),
+    [hub, pack, activeId, ready, regionLabel],
   );
 
   function onFreshSubmit(e: FormEvent<HTMLFormElement>) {
@@ -406,6 +408,25 @@ function DigitalPay({
               </button>
             ) : null}
           </div>
+          {hub.regions?.length ? (
+            <div className="mt-3">
+              <p className="text-xs font-semibold text-muted">Region</p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {hub.regions.map((row) => (
+                  <button
+                    key={row.id}
+                    type="button"
+                    onClick={() => setRegion(row.id)}
+                    className={`rounded-full px-3 py-1.5 text-xs font-semibold ${
+                      region === row.id ? "bg-gold text-paper" : "border border-line bg-panel"
+                    }`}
+                  >
+                    {row.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : null}
           <div className="mt-3 grid grid-cols-2 gap-2">
             {hub.packs.map((item) => {
               const selected = pack?.id === item.id;
@@ -453,6 +474,12 @@ function DigitalPay({
               <dt className="text-muted">Pack</dt>
               <dd className="font-medium">{pack.label}</dd>
             </div>
+            {regionLabel ? (
+              <div className="flex justify-between gap-4">
+                <dt className="text-muted">Region</dt>
+                <dd className="font-medium">{regionLabel}</dd>
+              </div>
+            ) : null}
             {needsPass ? (
               <label className="block text-xs text-muted">
                 {hub.passwordLabel}

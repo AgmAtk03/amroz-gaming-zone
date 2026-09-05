@@ -49,7 +49,7 @@ export function HeroCarousel() {
   useEffect(() => {
     const t = window.setInterval(() => {
       setI((n) => (n + 1) % slides.length);
-    }, 5200);
+    }, 2500);
     return () => window.clearInterval(t);
   }, []);
 
@@ -57,51 +57,57 @@ export function HeroCarousel() {
 
   return (
     <section id="top" className="hero-reel relative overflow-hidden">
-      <div className="relative min-h-[18.5rem] sm:min-h-[21rem]">
-        {slides.map((row, idx) => (
-          <div
-            key={row.id}
-            className={`hero-slide absolute inset-0 ${idx === i ? "is-on" : ""}`}
-            aria-hidden={idx !== i}
-          >
-            <Photo src={row.photo} alt="" priority={idx === 0} className="hero-ken" />
-            <div className="absolute inset-0 bg-gradient-to-t from-paper via-paper/70 to-paper/20" />
-          </div>
-        ))}
-        <div className="relative mx-auto flex min-h-[18.5rem] max-w-5xl flex-col justify-end px-4 py-5 sm:min-h-[21rem] sm:px-6 sm:py-8">
-          <p className="hero-copy text-xs font-semibold tracking-wide text-gold uppercase">
-            {slide.kicker}
-          </p>
-          <h1 className="hero-copy mt-2 max-w-xl text-[1.7rem] leading-[1.12] font-semibold tracking-tight sm:text-4xl">
-            {slide.title}
-          </h1>
-          <p className="hero-copy mt-2 max-w-md text-[15px] text-ink-soft">{slide.line}</p>
-          <div className="mt-4 flex flex-wrap items-center gap-2">
-            <a
-              href={slide.href}
-              className="thumb-btn inline-flex items-center justify-center rounded-xl bg-gold px-5 text-sm font-semibold text-paper"
+      <div className="relative min-h-[18.5rem] overflow-hidden sm:min-h-[21rem]">
+        <div
+          className="hero-track flex h-full min-h-[18.5rem] sm:min-h-[21rem]"
+          style={{ transform: `translateX(-${i * 100}%)` }}
+        >
+          {slides.map((row, idx) => (
+            <div key={row.id} className="relative min-h-[18.5rem] w-full shrink-0 sm:min-h-[21rem]">
+              <Photo src={row.photo} alt="" priority={idx === 0} className="hero-ken" />
+              <div className="absolute inset-0 bg-gradient-to-t from-paper via-paper/70 to-paper/20" />
+            </div>
+          ))}
+        </div>
+        <div className="pointer-events-none absolute inset-0">
+          <div className="mx-auto flex min-h-[18.5rem] max-w-5xl flex-col justify-end px-4 py-5 sm:min-h-[21rem] sm:px-6 sm:py-8">
+            <p className="hero-copy text-xs font-semibold tracking-wide text-gold uppercase">
+              {slide.kicker}
+            </p>
+            <h1
+              key={slide.id}
+              className="hero-copy mt-2 max-w-xl text-[1.7rem] leading-[1.12] font-semibold tracking-tight sm:text-4xl"
             >
-              {slide.cta}
-            </a>
-            <a
-              href={shopPageHref("home", { cat: "topups" })}
-              className="thumb-btn inline-flex items-center justify-center rounded-xl border border-line bg-panel/90 px-5 text-sm font-semibold"
-            >
-              Shop games
-            </a>
-          </div>
-          <div className="mt-4 flex gap-1.5">
-            {slides.map((row, idx) => (
-              <button
-                key={row.id}
-                type="button"
-                aria-label={`Show ${row.title}`}
-                onClick={() => setI(idx)}
-                className={`h-1.5 rounded-full transition-all ${
-                  idx === i ? "w-8 bg-gold" : "w-3 bg-line"
-                }`}
-              />
-            ))}
+              {slide.title}
+            </h1>
+            <p className="hero-copy mt-2 max-w-md text-[15px] text-ink-soft">{slide.line}</p>
+            <div className="pointer-events-auto mt-4 flex flex-wrap items-center gap-2">
+              <a
+                href={slide.href}
+                className="thumb-btn inline-flex items-center justify-center rounded-xl bg-gold px-5 text-sm font-semibold text-paper"
+              >
+                {slide.cta}
+              </a>
+              <a
+                href={shopPageHref("home", { cat: "topups" })}
+                className="thumb-btn inline-flex items-center justify-center rounded-xl border border-line bg-panel/90 px-5 text-sm font-semibold"
+              >
+                Shop games
+              </a>
+            </div>
+            <div className="pointer-events-auto mt-4 flex gap-1.5">
+              {slides.map((row, idx) => (
+                <button
+                  key={row.id}
+                  type="button"
+                  aria-label={`Show ${row.title}`}
+                  onClick={() => setI(idx)}
+                  className={`h-1.5 rounded-full transition-all ${
+                    idx === i ? "w-8 bg-gold" : "w-3 bg-line"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
