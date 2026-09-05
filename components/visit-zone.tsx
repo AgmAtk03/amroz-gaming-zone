@@ -71,10 +71,10 @@ export function VisitZone() {
                 <Photo src={slide.photo} alt="" className="zone-still" />
                 <div className="zone-wash absolute inset-0" />
                 <div className="zone-scan pointer-events-none absolute inset-0" />
+                <span className="absolute top-3 right-3 inline-flex rounded-full border border-gold/60 bg-paper/85 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-gold uppercase">
+                  {slide.stamp}
+                </span>
                 <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-5">
-                  <span className="zone-stamp mb-2 inline-flex w-fit rounded-full border border-gold/60 bg-paper/80 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-gold uppercase">
-                    {slide.stamp}
-                  </span>
                   <p className="text-[11px] font-semibold tracking-wide text-gold uppercase">
                     {slide.kicker}
                   </p>
