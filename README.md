@@ -6,12 +6,15 @@ Kathmandu **marketplace** demo — instant digital top-ups and same-day physical
 
 Branch CDNs go stale. Open the **`live-demo` commit SHA**, not the branch name.
 
-**Current export:** `d3e09c41be41fd755cad54c155157176de0063d8`
+**Current export:** `5b6caeb14246b39008a684a4c1847e33646f6f72`  
+Assets (`_next`) pin to `136933f98b76a1315e09f23ca79841ff1f297221`.
 
-- Home: https://raw.githack.com/AgmAtk03/amroz-gaming-zone/d3e09c41be41fd755cad54c155157176de0063d8/index.html
-- Shop: https://raw.githack.com/AgmAtk03/amroz-gaming-zone/d3e09c41be41fd755cad54c155157176de0063d8/shop/index.html
-- Pay: https://raw.githack.com/AgmAtk03/amroz-gaming-zone/d3e09c41be41fd755cad54c155157176de0063d8/pay/index.html
-- Success: https://raw.githack.com/AgmAtk03/amroz-gaming-zone/d3e09c41be41fd755cad54c155157176de0063d8/pay/success/index.html
+Use **rawcdn** (production). `raw.githack.com` may show an interstitial and will not hydrate script tags.
+
+- Home: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/5b6caeb14246b39008a684a4c1847e33646f6f72/index.html
+- Shop: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/5b6caeb14246b39008a684a4c1847e33646f6f72/shop/index.html
+- Pay: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/5b6caeb14246b39008a684a4c1847e33646f6f72/pay/index.html
+- Success: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/5b6caeb14246b39008a684a4c1847e33646f6f72/pay/success/index.html
 
 ## Saved IDs + one-tap reorder (v1)
 
