@@ -7,22 +7,22 @@ export const mockWallets = [
   {
     id: "khalti" as const,
     name: "Khalti",
-    label: "Mock Khalti",
-    hint: "UI only — no Khalti API. Live pay after Cost/%.",
+    label: "Pay with Khalti",
+    hint: "NPR · Instant Delivery after payment.",
   },
   {
     id: "esewa" as const,
     name: "eSewa",
-    label: "Mock eSewa",
-    hint: "UI only — no eSewa API. Live pay after Cost/%.",
+    label: "Pay with eSewa",
+    hint: "NPR · Instant Delivery after payment.",
   },
 ] as const;
 
 export const comingWallet = {
   id: "amroz" as const,
   name: "Amroz wallet",
-  label: "Amroz prepaid · coming",
-  hint: "DEMO — prepaid wallet after Cost/%. Not spendable in v1.",
+  label: "Amroz wallet · coming soon",
+  hint: "Store credit on this phone. Ask the desk if you want it first.",
 };
 
 export type MockWalletId = (typeof mockWallets)[number]["id"];
@@ -50,7 +50,7 @@ export function makeOrderId() {
 }
 
 export function demoWhatsAppHref(hub: Hub, pack?: Pack, playerId?: string) {
-  const bits = [`DEMO: I want ${hub.name}`];
+  const bits = [`Hi Amroz — I want ${hub.name}`];
   if (pack) bits.push(pack.label);
   if (playerId) bits.push(`${hub.idLabel} ${maskGameId(playerId)}`);
   bits.push("Pepsicola Ward 32");
@@ -58,12 +58,12 @@ export function demoWhatsAppHref(hub: Hub, pack?: Pack, playerId?: string) {
 }
 
 export function physicalWhatsAppHref(name: string) {
-  return whatsAppHref(`DEMO: I want ${name} — same-day Pepsicola Ward 32`);
+  return whatsAppHref(`Hi Amroz — I want ${name}. Same-day Pepsicola Ward 32.`);
 }
 
 export function slaMissWhatsAppHref(name: string, orderId: string) {
   return whatsAppHref(
-    `DEMO: 2h window missed for ${name} / ${orderId}. Please credit next digital top-up.`,
+    `Hi Amroz — 2h window missed for ${name} / ${orderId}. Please credit the next top-up.`,
   );
 }
 

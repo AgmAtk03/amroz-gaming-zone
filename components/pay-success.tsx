@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { DemoBadge } from "@/components/brand";
-import { demoPayNotice } from "@/lib/content";
 import {
   demoWhatsAppHref,
   physicalWhatsAppHref,
@@ -29,7 +27,7 @@ function SlaClock({ dueAt, name, orderId }: { dueAt: number; name: string; order
       <div className="mt-4 rounded-xl border border-rust/40 bg-rust/10 p-3 text-sm">
         <p className="font-medium text-rust">2h window missed</p>
         <p className="mt-1 text-xs text-muted">
-          WhatsApp the desk. DEMO credit applies on the next digital top-up.
+          WhatsApp the shop. Credit applies on the next top-up.
         </p>
         <a
           href={slaMissWhatsAppHref(name, orderId)}
@@ -79,9 +77,9 @@ export function PaySuccess() {
     ? parsed.hub!.fulfillment
     : parsed.item
       ? "Held for same-day · Pepsicola Ward 32"
-      : "DEMO receipt";
+      : "Receipt";
 
-  const label = digital ? parsed.pack!.label : parsed.item?.name ?? "Sample pack";
+  const label = digital ? parsed.pack!.label : parsed.item?.name ?? "Order";
   const price = digital ? parsed.pack!.price : parsed.item?.price ?? "—";
   const idLabel = digital ? parsed.hub!.idLabel : "Hold for";
   const masked = digital
@@ -89,8 +87,8 @@ export function PaySuccess() {
       ? maskGameId(playerId)
       : "••••••"
     : parsed.hold || "Walk-in";
-  const txn = parsed.txn || "AMRZ-DEMO-WALK";
-  const order = parsed.order || "ORD-DEMO";
+  const txn = parsed.txn || "—";
+  const order = parsed.order || "—";
   const payName = parsed.pay?.name ?? "Khalti";
 
   const wa = digital && parsed.hub
@@ -99,18 +97,14 @@ export function PaySuccess() {
 
   return (
     <div className="mx-auto max-w-xl px-4 py-8 sm:px-6 sm:py-12">
-      <p className="text-xs tracking-[0.16em] text-muted uppercase">Demo success</p>
+      <p className="text-xs font-semibold tracking-wide text-instant uppercase">Order confirmed</p>
       <h1 className="mt-2 text-3xl font-semibold tracking-tight">{title}</h1>
       <p className="mt-2 text-sm text-muted">
-        End of the mock path. No wallet was charged. Keep both IDs if you need to
-        backtrack the story.
-      </p>
-      <p className="mt-1 text-xs text-muted">
-        {demoPayNotice} <DemoBadge className="ml-1" />
+        Keep the transaction and order IDs. WhatsApp the shop if anything looks off.
       </p>
       {sample ? (
-        <p className="mt-2 text-xs text-teal">
-          Sample receipt — run a pack from the grid to mint a fresh ID.
+        <p className="mt-2 text-xs text-muted">
+          Open a pack from the shop to generate a fresh receipt.
         </p>
       ) : null}
 
@@ -127,7 +121,7 @@ export function PaySuccess() {
           </div>
           <div className="flex justify-between gap-4">
             <dt className="text-muted">Wallet</dt>
-            <dd className="font-medium">Mock {payName}</dd>
+            <dd className="font-medium">{payName}</dd>
           </div>
           <div className="flex justify-between gap-4">
             <dt className="text-muted">Transaction ID</dt>
@@ -149,11 +143,11 @@ export function PaySuccess() {
         ) : null}
         {prefs.referralCredit ? (
           <p className="mt-3 text-xs text-pine">
-            Clan code {prefs.referral} · NPR {prefs.referralCredit} DEMO credit on next digital.
+            Clan code {prefs.referral} · NPR {prefs.referralCredit} credit on next top-up.
           </p>
         ) : null}
         {prefs.restockNudge ? (
-          <p className="mt-2 text-xs text-muted">Restock / low-balance WhatsApp nudge: on (DEMO).</p>
+          <p className="mt-2 text-xs text-muted">Restock / low-balance WhatsApp nudge: on.</p>
         ) : null}
       </div>
 
@@ -175,7 +169,7 @@ export function PaySuccess() {
           href={wa}
           className="thumb-btn inline-flex items-center justify-center rounded-full border border-line px-5 text-sm font-semibold"
         >
-          WhatsApp fallback
+          WhatsApp the shop
         </a>
         <a
           href={shopPageHref("success")}

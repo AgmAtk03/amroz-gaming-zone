@@ -24,7 +24,6 @@ export function AccountDrawer({
         <div className="flex items-center justify-between gap-3">
           <p className="text-sm font-semibold">
             {panel === "cart" ? "Cart · last orders" : member ? member.name : "This phone"}
-            <span className="ml-2 text-[10px] font-medium tracking-wide text-muted uppercase">DEMO</span>
           </p>
           <button type="button" className="text-xs text-muted" onClick={onClose}>
             Close

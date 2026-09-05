@@ -1,7 +1,7 @@
 export const site = {
   name: "Amroz Gaming Zone",
   shortName: "Amroz",
-  tagline: "Instant top-ups. Same-day gaming gear in Kathmandu.",
+  tagline: "Instant Delivery top-ups. Same-day gear in Kathmandu.",
   city: "Kathmandu",
   ward: "Ward 32",
   area: "Pepsicola",
@@ -27,15 +27,10 @@ export const site = {
 } as const;
 
 export const nav = [
-  { href: "#topups", label: "Top up" },
-  { href: "#shelf", label: "Shop" },
+  { href: "#topups", label: "Top-ups" },
+  { href: "#shelf", label: "Gear" },
   { href: "#contact", label: "Contact" },
 ] as const;
-
-export const demoPayBanner = "DEMO — sample prices · mock pay · unique txn ID · not live";
-
-export const demoPayNotice =
-  "Sample NPR for the walkthrough. Live Khalti/eSewa after Cost/%. Unique txn + order IDs on every receipt.";
 
 export function whatsAppHref(text: string) {
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;
@@ -43,29 +38,23 @@ export function whatsAppHref(text: string) {
 
 export const memberPerks = [
   {
-    title: "Member price on digital",
-    detail: "A small cut on top-ups — including one-tap reorder. Shown as a DEMO rate.",
+    title: "Member price on top-ups",
+    detail: "A small cut on diamonds, UC, and wallet credit — including Buy again.",
   },
   {
     title: "Same-day queue",
-    detail: "Physical orders from members get packed first for the two-hour window.",
+    detail: "Gear orders from members get packed first for the two-hour window.",
   },
   {
-    title: "Offer drops",
-    detail: "Weekend packs land here before the public grid. Promo stays DEMO until Cost clears.",
+    title: "Weekend packs first",
+    detail: "Offer drops land here before the public grid.",
   },
 ] as const;
 
 export const trustSteps = [
-  { n: "1", title: "Confirm UID", detail: "Last-used ID is the default" },
-  { n: "2", title: "Pick a pack", detail: "Hub or pack on this phone" },
-  { n: "3", title: "Mock pay", detail: "Instant credit · unique txn ID" },
+  { n: "1", title: "Instant Delivery", detail: "Credit lands on your ID" },
+  { n: "2", title: "eSewa & Khalti", detail: "Pay in NPR, then we send" },
+  { n: "3", title: "UID only", detail: "No password. Save it once." },
 ] as const;
 
-export const trustBadges = [
-  { title: "Instant", detail: "Digital on the ID" },
-  { title: "Same-day KTM", detail: "Physical ≤ 2h" },
-  { title: "In stock", detail: "Shelf truth · DEMO" },
-] as const;
-
-export const demoReferralCodes = ["AMROZ", "WARD32", "SQUAD"] as const;
+export const referralCodes = ["AMROZ", "WARD32", "SQUAD"] as const;

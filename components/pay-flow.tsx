@@ -1,7 +1,6 @@
 "use client";
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
-import { DemoBadge } from "@/components/brand";
 import { PayMarks } from "@/components/pay-marks";
 import { Photo } from "@/components/photo";
 import { SavedIdPanel } from "@/components/saved-id-panel";
@@ -16,7 +15,7 @@ import {
   type Pack,
   type PhysicalItem,
 } from "@/lib/catalog";
-import { demoPayNotice, demoReferralCodes } from "@/lib/content";
+import { referralCodes } from "@/lib/content";
 import {
   comingWallet,
   demoWhatsAppHref,
@@ -77,11 +76,13 @@ export function PayFlow() {
 function HubPicker() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
-      <p className="text-xs tracking-[0.16em] text-muted uppercase">Demo checkout</p>
+      <p className="text-xs font-semibold tracking-wide text-instant uppercase">Instant Delivery</p>
       <h1 className="mt-2 max-w-lg text-3xl font-semibold tracking-tight">
-        Pick a hub. Start with your UID.
+        Pick a game. Start with your ID.
       </h1>
-      <p className="mt-2 max-w-lg text-sm text-muted">{demoPayNotice}</p>
+      <p className="mt-2 max-w-lg text-sm text-muted">
+        Credit lands on the ID after you pay with Khalti or eSewa.
+      </p>
       <ul className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
         {hubs.map((hub) => (
           <li key={hub.id}>
@@ -94,7 +95,7 @@ function HubPicker() {
               </div>
               <div className="p-3">
                 <p className="font-semibold">{hub.name}</p>
-                <p className="text-xs text-muted">Instant · {hub.kind}</p>
+                <p className="text-xs text-muted">Instant Delivery · {hub.kind}</p>
               </div>
             </a>
           </li>
@@ -216,7 +217,7 @@ function DigitalPay({
     setBusy(true);
     const txn = makeTxnId();
     const order = makeOrderId();
-    if (demoReferralCodes.includes(referral.trim().toUpperCase() as (typeof demoReferralCodes)[number])) {
+    if (referralCodes.includes(referral.trim().toUpperCase() as (typeof referralCodes)[number])) {
       writePrefs({ referral: referral.trim().toUpperCase(), referralCredit: 25 });
     }
     if (nudge) writePrefs({ restockNudge: true });
@@ -257,9 +258,7 @@ function DigitalPay({
         </div>
       </div>
       <p className="mt-2 text-sm text-muted">{hub.blurb}</p>
-      <p className="mt-1 text-xs text-muted">
-        {demoPayNotice} <DemoBadge className="ml-1" />
-      </p>
+      <p className="mt-1 text-xs text-muted">Enter the ID, pick a pack, pay. Credit is Instant Delivery.</p>
       {memberOn ? (
         <p className="mt-2 text-xs text-pine">Member rate on — including reorder.</p>
       ) : null}
@@ -396,7 +395,7 @@ function DigitalPay({
                   <p className="text-sm font-semibold">{item.label}</p>
                   <p className="mt-1 text-sm">NPR {memberOn ? item.memberPrice : item.price}</p>
                   <p className={`mt-0.5 text-[11px] ${selected ? "text-paper/70" : "text-muted"}`}>
-                    Instant · sample
+                    Instant Delivery
                   </p>
                 </button>
               );
@@ -407,8 +406,8 @@ function DigitalPay({
 
       {pack && canConfirm && step === 3 ? (
         <section className="mt-6 rounded-2xl border border-line bg-panel p-4">
-          <h2 className="text-sm font-semibold">3. Confirm — then mock pay</h2>
-          <p className="mt-1 text-xs text-muted">No silent ID swap. Check this before a wallet tap.</p>
+          <h2 className="text-sm font-semibold">3. Confirm & pay</h2>
+          <p className="mt-1 text-xs text-muted">Check the ID and pack before you pay.</p>
           <dl className="mt-4 space-y-2 text-sm">
             <div className="flex justify-between gap-4">
               <dt className="text-muted">Hub</dt>
@@ -454,7 +453,7 @@ function DigitalPay({
           </div>
 
           <label className="mt-4 block text-xs text-muted">
-            Clan / referral code (DEMO — credit on next digital)
+            Clan / referral code (credit on next top-up)
             <input
               value={referral}
               onChange={(e) => setReferral(e.target.value)}
@@ -469,7 +468,7 @@ function DigitalPay({
               onChange={(e) => setNudge(e.target.checked)}
             />
             <span className="text-xs text-muted">
-              WhatsApp me when this pack is low or restocked (DEMO opt-in)
+              WhatsApp me when this pack is low or restocked
             </span>
           </label>
 
@@ -486,7 +485,7 @@ function DigitalPay({
                 <p className="font-semibold">{method.label}</p>
                 <p className="mt-1 text-xs text-muted">{method.hint}</p>
                 {wallet === method.id && busy ? (
-                  <p className="mt-2 text-sm text-pine">Mock {method.name}… minting txn + order ID.</p>
+                  <p className="mt-2 text-sm text-pine">Paying with {method.name}…</p>
                 ) : null}
               </button>
             ))}
@@ -503,7 +502,7 @@ function DigitalPay({
           href={wa}
           className="thumb-btn inline-flex w-full items-center justify-center rounded-xl border border-line bg-panel px-4 font-semibold text-ink"
         >
-          WhatsApp fallback
+          WhatsApp the shop
         </a>
         <p className="mt-3 text-xs">
           <a href={payHref("pay")} className="text-teal underline-offset-4 hover:underline">
@@ -581,7 +580,7 @@ function PhysicalPay({ item }: { item: PhysicalItem }) {
         Live shelf · {item.stock === "in" ? "on the counter" : item.stock === "low" ? "low" : "ask"}
       </p>
       <p className="mt-1 text-xs text-muted">
-        {demoPayNotice} <DemoBadge className="ml-1" />
+        Same-day hold from the Pepsicola counter.
       </p>
 
       <form className="mt-6" onSubmit={onHold}>
@@ -603,7 +602,7 @@ function PhysicalPay({ item }: { item: PhysicalItem }) {
           type="submit"
           className="thumb-btn mt-3 w-full rounded-xl bg-gold px-4 text-sm font-semibold text-paper"
         >
-          Continue to mock pay
+          Continue to pay
         </button>
       </form>
 
@@ -621,7 +620,7 @@ function PhysicalPay({ item }: { item: PhysicalItem }) {
               <p className="font-semibold">{method.label}</p>
               <p className="mt-1 text-xs text-muted">{method.hint}</p>
               {wallet === method.id && busy ? (
-                <p className="mt-2 text-sm text-pine">Mock {method.name}…</p>
+                <p className="mt-2 text-sm text-pine">Paying with {method.name}…</p>
               ) : null}
             </button>
           ))}
@@ -636,7 +635,7 @@ function PhysicalPay({ item }: { item: PhysicalItem }) {
         href={physicalWhatsAppHref(item.name)}
         className="thumb-btn mt-6 inline-flex w-full items-center justify-center rounded-xl border border-line px-4 text-sm font-semibold"
       >
-        WhatsApp fallback
+        WhatsApp the shop
       </a>
     </div>
   );

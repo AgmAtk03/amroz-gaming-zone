@@ -12,6 +12,7 @@
   --teal: #aeb6bd;
   --muted: #aeb6bd;
   --gold: #fa7b24;
+  --instant: #2f9e6b;
   --ember: #fa7b24;
   --sand: #aeb6bd;
   --brick: #fa7b24;
@@ -29,6 +30,7 @@
   --color-teal: var(--teal);
   --color-muted: var(--muted);
   --color-gold: var(--gold);
+  --color-instant: var(--instant);
   --color-ember: var(--ember);
   --color-sand: var(--sand);
   --color-brick: var(--brick);
@@ -83,6 +85,11 @@ body {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 16px;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.photo-card:hover {
+  border-color: color-mix(in oklab, var(--gold) 45%, var(--line));
 }
 
 .stock-in {

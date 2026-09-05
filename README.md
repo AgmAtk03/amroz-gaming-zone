@@ -1,8 +1,8 @@
 # Amroz Gaming Zone
 
-Kathmandu **marketplace** demo — instant digital top-ups and same-day physical gear from **Pepsicola, Ward 32**. Not a booth-booking venue.
+Kathmandu shop — **Instant Delivery** top-ups and same-day gaming gear from **Pepsicola, Ward 32**.
 
-## Live demo (SHA-pinned githack)
+## Live shop (SHA-pinned githack)
 
 Branch CDNs go stale. Open **one** `live-demo` commit SHA. HTML, CSS, `_next` media, and `amroz-client.js` all live in that same tree — no second assets commit.
 
@@ -18,23 +18,19 @@ Use **rawcdn** (production). `raw.githack.com` may show a one-time “Open the p
 
 Same SHA on `raw.githack.com` (replace the host).
 
-## Saved IDs + one-tap reorder (v1)
+## Shop
 
-- Save up to **5** player/game IDs per hub, each with a short label (`main`, `smurf`).
-- Persist on this device (`localStorage`). Account sync is later.
-- Checkout: hub → **UID first** (last-used default) → pack → confirm (hub + **masked** ID + price) → mock pay. Reorder still skips to confirm.
-- No saved ID: enter once, **Save for next time?** defaults yes.
-- Home **Buy again** shows the last 3 digital orders. One tap to confirm, one tap to pay.
-- Order history and WhatsApp shares use a masked ID. Full UID never goes in a share URL.
-- Edit / delete saved IDs on the checkout ID step — no page leave.
-- Member price still applies on reorder.
+- Header: logo, search, game chips, cart, Instant Delivery
+- Home leads with Instant Delivery, then a 7-game top-up grid (Free Fire, PUBG, MLBB, Valorant, Roblox, PS Store, Steam)
+- Physical gear sits below
+- Checkout: hub → UID first (last-used default) → pack → confirm → Pay with Khalti / eSewa
+- Saved IDs, Buy again, member price still apply
+- Wallet buttons are client-only (no live API keys). Customer UI does not label them mock or demo.
 
 ## Stack
 
 - Next.js App Router (Vercel / local `next dev`)
 - Static githack export: Tailwind CSS from Next + **client-only** `amroz-client.js` (no RSC hydration)
-- Tailwind CSS
-- Client-only DEMO checkout (mock Khalti / eSewa) — unique **txn + order ID**
 - Photography: Pexels (licensed) + generated product-style stills. No official game logos.
 
 ## Local

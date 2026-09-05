@@ -90,7 +90,7 @@ export function ChatWidget({ from = "home" }: { from?: SitePage }) {
     {
       role: "bot",
       lang: "en",
-      text: "Find a pack or a SKU. English or Nepali. DEMO desk — no paid API.",
+      text: "Ask for a game or a product. English or Nepali is fine.",
     },
   ]);
   const lastLang = useMemo(() => msgs.filter((m) => m.role === "user").at(-1)?.lang ?? "en", [msgs]);
@@ -131,7 +131,7 @@ export function ChatWidget({ from = "home" }: { from?: SitePage }) {
             <div className="flex items-center justify-between border-b border-line px-4 py-3">
               <div>
                 <p className="text-sm font-semibold">Find a product</p>
-                <p className="text-[11px] text-muted">DEMO · points to a pack or SKU</p>
+                <p className="text-[11px] text-muted">Points you to a pack or SKU</p>
               </div>
               <button
                 type="button"

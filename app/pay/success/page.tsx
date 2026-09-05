@@ -4,7 +4,7 @@ import { PaySuccess } from "@/components/pay-success";
 
 export const metadata: Metadata = {
   title: "Receipt | Amroz Gaming Zone",
-  description: "DEMO success — unique transaction ID, not a live charge.",
+  description: "Order confirmed. Transaction and order IDs for your Amroz top-up.",
 };
 
 export default function PaySuccessPage() {

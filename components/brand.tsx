@@ -17,39 +17,37 @@ export function Wordmark({
         <rect x="1.5" y="1.5" width="33" height="33" rx="9" fill={inverse ? "#ffffff" : "#fa7b24"} />
         <path
           d="M9 26 L18 9 L27 26"
-          stroke={inverse ? "#0f1419" : "#0f1419"}
+          stroke="#0f1419"
           strokeWidth="2.2"
           strokeLinejoin="round"
           fill="none"
         />
-        <path d="M13 18.5 H23" stroke={inverse ? "#0f1419" : "#0f1419"} strokeWidth="2" />
+        <path d="M13 18.5 H23" stroke="#0f1419" strokeWidth="2" />
       </svg>
       <span className="leading-tight">
         <span className={`block text-[15px] font-semibold ${inverse ? "text-paper" : "text-ink"}`}>
           Amroz
         </span>
-        {!compact && (
-          <span
-            className={`block text-[11px] tracking-[0.14em] uppercase ${inverse ? "text-paper/60" : "text-muted"}`}
-          >
-            Marketplace
-          </span>
-        )}
+        <span
+          className={`block text-[11px] ${inverse ? "text-paper/70" : "text-muted"} ${compact ? "hidden sm:block" : ""}`}
+        >
+          Gaming Zone
+        </span>
       </span>
     </a>
   );
 }
 
-export function DemoBadge({
+export function InstantBadge({
   className = "",
-  children = "DEMO",
+  children = "Instant Delivery",
 }: {
   className?: string;
   children?: string;
 }) {
   return (
     <span
-      className={`inline-flex items-center rounded-full border border-line bg-paper-2 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-muted ${className}`}
+      className={`inline-flex items-center rounded-full bg-instant px-2 py-0.5 text-[10px] font-semibold tracking-wide text-paper ${className}`}
     >
       {children}
     </span>

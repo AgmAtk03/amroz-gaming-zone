@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { DemoBadge } from "@/components/brand";
 import { Photo } from "@/components/photo";
 import {
   getPhysical,
@@ -47,15 +46,14 @@ export function PhysicalShelf({
   return (
     <section id="shelf" className="py-6 sm:py-8">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        <p className="text-xs tracking-[0.16em] text-muted uppercase">
-          Physical · {curated ? "6 on the counter" : "full shelf"}
+        <p className="text-xs font-semibold tracking-wide text-muted uppercase">
+          Gaming gear
         </p>
         <h2 className="mt-1 text-2xl font-semibold tracking-tight">
-          Same-day gaming gear in Kathmandu
+          Same-day from Pepsicola
         </h2>
         <p className="mt-2 max-w-lg text-sm text-muted">
-          Pickup or drop-off at Pepsicola Ward 32. Two-hour SLA. Miss it —
-          WhatsApp, small credit on the next digital.
+          Pickup or drop-off, Ward 32. Usually within two hours.
         </p>
         {curated ? null : (
           <>
@@ -78,7 +76,6 @@ export function PhysicalShelf({
                 [
                   ["popular", "Popular"],
                   ["price", "Price"],
-                  ["margin", "Best margin"],
                 ] as const
               ).map(([key, label]) => (
                 <button
@@ -123,11 +120,6 @@ export function PhysicalShelf({
                         </span>
                       ) : null}
                     </div>
-                    {!curated && sort === "margin" && item.marginRank <= 2 ? (
-                      <span className="absolute top-2 right-2 rounded-xl bg-paper/90 px-2 py-0.5 text-[10px] font-semibold text-gold">
-                        Best margin
-                      </span>
-                    ) : null}
                   </div>
                   <div className="flex flex-1 flex-col p-3">
                     <p className={`text-[11px] font-medium stock-${item.stock}`}>
@@ -160,9 +152,7 @@ export function PhysicalShelf({
             </a>
           </p>
         ) : (
-          <p className="mt-3 text-xs text-muted">
-            Sample NPR. Stock is a DEMO guess. <DemoBadge className="ml-1" />
-          </p>
+          <p className="mt-3 text-xs text-muted">Stock updates from the Pepsicola counter.</p>
         )}
       </div>
     </section>

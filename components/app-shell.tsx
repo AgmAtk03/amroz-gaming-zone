@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 import { useState } from "react";
 import { AccountDrawer } from "@/components/account-drawer";
 import { BottomNav } from "@/components/bottom-nav";
-import { DemoPayBanner } from "@/components/demo-banner";
 import { Header } from "@/components/header";
 import { SiteFooter } from "@/components/site-footer";
 import type { SitePage } from "@/lib/routes";
@@ -29,7 +28,6 @@ export function AppShell({
       </a>
       <div className="flex min-h-full flex-1 flex-col has-tabbar">
         <div className="sticky top-0 z-50">
-          <DemoPayBanner />
           <Header
             page={page}
             sticky={false}

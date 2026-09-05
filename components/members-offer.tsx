@@ -1,7 +1,6 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { DemoBadge } from "@/components/brand";
 import { Photo } from "@/components/photo";
 import { memberPerks } from "@/lib/content";
 import { clearMember, useMember, writeMember } from "@/lib/member";
@@ -16,7 +15,7 @@ export function MembersOffer() {
     const name = String(data.get("name") ?? "").trim();
     const phone = String(data.get("phone") ?? "").trim();
     if (name.length < 2 || phone.length < 7) {
-      setError("Need a name and a phone (7+ digits) for this DEMO account.");
+      setError("Need a name and a phone (7+ digits).");
       return;
     }
     writeMember({ name, phone, createdAt: new Date().toISOString() });
@@ -33,15 +32,12 @@ export function MembersOffer() {
               <div className="absolute inset-0 bg-gradient-to-t from-panel via-panel/40 to-transparent lg:bg-gradient-to-r" />
             </div>
             <div className="relative p-5 sm:p-7">
-              <div className="flex flex-wrap items-center gap-2">
-                <p className="text-xs tracking-[0.16em] text-muted uppercase">Members</p>
-                <DemoBadge>DEMO until Cost clears</DemoBadge>
-              </div>
+              <p className="text-xs font-semibold tracking-wide text-muted uppercase">Members</p>
               <h2 className="mt-1 text-2xl font-semibold tracking-tight">
-                Member price stays on reorder.
+                Member price on every top-up
               </h2>
               <p className="mt-2 text-sm text-muted">
-                Stays on this phone. Unlocks the DEMO cut on digital — including Buy again.
+                Saved on this phone. Applies on Buy again too.
               </p>
               <ul className="mt-4 space-y-2 text-sm">
                 {memberPerks.map((perk) => (
@@ -54,7 +50,7 @@ export function MembersOffer() {
               <div className="mt-5">
                 {member ? (
                   <div>
-                    <p className="text-xs tracking-wide text-muted uppercase">Signed in · DEMO</p>
+                    <p className="text-xs tracking-wide text-muted uppercase">Signed in</p>
                     <p className="mt-1 text-xl font-semibold">{member.name}</p>
                     <p className="mt-1 text-sm text-muted">{member.phone}</p>
                     <button
@@ -93,7 +89,7 @@ export function MembersOffer() {
                       type="submit"
                       className="thumb-btn w-full rounded-xl bg-gold px-4 text-sm font-semibold text-paper"
                     >
-                      Create DEMO account
+                      Create account
                     </button>
                   </form>
                 )}

@@ -1,3 +1,4 @@
+import { InstantBadge } from "@/components/brand";
 import { Photo } from "@/components/photo";
 import { getHub, getPack, homeTrending } from "@/lib/catalog";
 import { payHref, type SitePage } from "@/lib/routes";
@@ -6,8 +7,8 @@ export function TrendingStrip({ from = "home" }: { from?: SitePage }) {
   return (
     <section id="trending" className="py-6 sm:py-8">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        <p className="text-xs tracking-[0.16em] text-muted uppercase">Trending packs</p>
-        <h2 className="mt-1 text-2xl font-semibold tracking-tight">What people tap</h2>
+        <p className="text-xs font-semibold tracking-wide text-instant uppercase">Popular packs</p>
+        <h2 className="mt-1 text-2xl font-semibold tracking-tight">Selling this week</h2>
         <ul className="shelf-scroll mt-4 flex snap-x gap-3 overflow-x-auto pb-1">
           {homeTrending.map((row) => {
             const hub = getHub(row.hubId);
@@ -21,9 +22,7 @@ export function TrendingStrip({ from = "home" }: { from?: SitePage }) {
                 >
                   <div className="relative h-24">
                     <Photo src={hub.photo} alt="" />
-                    <span className="absolute top-2 left-2 rounded-xl bg-paper/90 px-2 py-0.5 text-[10px] font-semibold">
-                      Instant
-                    </span>
+                    <InstantBadge className="absolute top-2 left-2" />
                   </div>
                   <div className="flex flex-1 flex-col p-3">
                     <p className="text-[11px] text-muted">{hub.name}</p>
