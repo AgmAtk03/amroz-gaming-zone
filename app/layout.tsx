@@ -17,9 +17,9 @@ const noto = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Amroz Gaming Zone | Instant Delivery top-ups in Kathmandu",
+  title: "Amroz Gaming Zone | Game top-ups in Kathmandu",
   description:
-    "Instant Delivery for Free Fire, PUBG, MLBB, Valorant, Roblox, PS Store, and Steam. Same-day gaming gear from Pepsicola, Ward 32.",
+    "Free Fire, PUBG, MLBB, Valorant, Roblox, PS Store, and Steam top-ups on your ID. 2 hour gaming gear from Pepsicola, Ward 32.",
   applicationName: "Amroz Gaming Zone",
   keywords: [
     "Amroz Gaming Zone",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Amroz Gaming Zone",
-    description: "Instant Delivery top-ups. Same-day gaming gear in Kathmandu.",
+    description: "Game top-ups on your ID. 2 hour gaming gear in Kathmandu.",
     locale: "en_NP",
     type: "website",
   },

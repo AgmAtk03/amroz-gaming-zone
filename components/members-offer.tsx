@@ -38,25 +38,26 @@ export function MembersOffer() {
             <div className="relative p-5 sm:p-7">
               <p className="text-xs font-semibold tracking-wide text-muted uppercase">Members</p>
               <h2 className="mt-1 text-2xl font-semibold tracking-tight">
-                Member price on every top-up
+                Save a bit on every top-up
               </h2>
               <p className="mt-2 text-sm text-muted">
-                Saved on this phone. Applies on Buy again too.
+                Name + phone. Takes ten seconds. Stays on this phone — works on Buy again too.
               </p>
-              <ul className="mt-4 space-y-2 text-sm">
+              <ul className="mt-4 space-y-2.5">
                 {memberPerks.map((perk) => (
-                  <li key={perk.title}>
-                    <span className="font-medium">{perk.title}.</span>{" "}
-                    <span className="text-muted">{perk.detail}</span>
+                  <li key={perk.title} className="rounded-xl border border-line bg-paper/50 px-3 py-2.5">
+                    <p className="text-sm font-semibold">{perk.title}</p>
+                    <p className="mt-0.5 text-xs text-muted">{perk.detail}</p>
                   </li>
                 ))}
               </ul>
               <div className="mt-5">
                 {member ? (
                   <div>
-                    <p className="text-xs tracking-wide text-muted uppercase">Signed in</p>
+                    <p className="text-xs tracking-wide text-muted uppercase">You&apos;re in</p>
                     <p className="mt-1 text-xl font-semibold">{member.name}</p>
                     <p className="mt-1 text-sm text-muted">{member.phone}</p>
+                    <p className="mt-2 text-xs text-pine">Member price is on for this phone.</p>
                     <button
                       type="button"
                       className="mt-3 text-sm text-rust underline-offset-4 hover:underline"
@@ -67,34 +68,40 @@ export function MembersOffer() {
                   </div>
                 ) : (
                   <form onSubmit={onSubmit} className="space-y-3">
-                    <label className="block text-sm">
-                      <span className="text-muted">Name</span>
-                      <input
-                        name="name"
-                        required
-                        autoComplete="name"
-                        className="mt-1 w-full rounded-lg border border-line bg-paper px-3 py-3 text-base outline-none focus:border-gold"
-                      />
-                    </label>
-                    <label className="block text-sm">
-                      <span className="text-muted">Phone</span>
-                      <input
-                        name="phone"
-                        required
-                        type="tel"
-                        inputMode="tel"
-                        autoComplete="tel"
-                        placeholder="980…"
-                        className="mt-1 w-full rounded-lg border border-line bg-paper px-3 py-3 text-base outline-none focus:border-gold"
-                      />
-                    </label>
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      <label className="block text-sm">
+                        <span className="text-muted">Your name</span>
+                        <input
+                          name="name"
+                          required
+                          autoComplete="name"
+                          placeholder="e.g. Aayush"
+                          className="mt-1 w-full rounded-lg border border-line bg-paper px-3 py-3 text-base outline-none focus:border-gold"
+                        />
+                      </label>
+                      <label className="block text-sm">
+                        <span className="text-muted">Phone</span>
+                        <input
+                          name="phone"
+                          required
+                          type="tel"
+                          inputMode="tel"
+                          autoComplete="tel"
+                          placeholder="980…"
+                          className="mt-1 w-full rounded-lg border border-line bg-paper px-3 py-3 text-base outline-none focus:border-gold"
+                        />
+                      </label>
+                    </div>
                     {error ? <p className="text-sm text-rust">{error}</p> : null}
                     <button
                       type="submit"
                       className="thumb-btn w-full rounded-xl bg-gold px-4 text-sm font-semibold text-paper"
                     >
-                      Create account
+                      Join free
                     </button>
+                    <p className="text-center text-[11px] text-muted">
+                      No spam. Just a cheaper rate when you buy.
+                    </p>
                   </form>
                 )}
               </div>

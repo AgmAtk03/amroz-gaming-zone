@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { categories, hubs, physical } from "@/lib/catalog";
-import { payHref, type SitePage } from "@/lib/routes";
+import { catalogCategories, hubs, physical } from "@/lib/catalog";
+import { payHref, shopPageHref, type SitePage } from "@/lib/routes";
 
 export function CategoryRow({ from = "home" }: { from?: SitePage }) {
   const [q, setQ] = useState("");
@@ -43,10 +43,10 @@ export function CategoryRow({ from = "home" }: { from?: SitePage }) {
     <section className="border-b border-line">
       <div className="mx-auto max-w-5xl px-4 py-4 sm:px-6">
         <div className="grid grid-cols-2 gap-3">
-          {categories.map((cat) => (
+          {catalogCategories.map((cat) => (
             <a
               key={cat.id}
-              href={cat.href}
+              href={shopPageHref(from, { cat: cat.id })}
               className="rounded-xl border border-line bg-panel px-3 py-3 text-center text-sm font-semibold"
             >
               {cat.label}

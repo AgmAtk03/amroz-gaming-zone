@@ -1,11 +1,7 @@
-export type HubId =
-  | "freefire"
-  | "pubg"
-  | "mlbb"
-  | "valorant"
-  | "roblox"
-  | "psn"
-  | "steam";
+import catalogData from "@/data/catalog.json";
+
+export type HubId = string;
+export type CategoryId = "topups" | "vouchers" | "gift-cards" | "subscriptions" | "gear";
 
 export type Pack = {
   id: string;
@@ -18,8 +14,11 @@ export type Pack = {
   marginRank: number;
 };
 
+export type FulfillMode = "uid" | "account" | "code";
+
 export type Hub = {
   id: HubId;
+  category: Exclude<CategoryId, "gear">;
   kind: string;
   name: string;
   short: string;
@@ -27,160 +26,41 @@ export type Hub = {
   idLabel: string;
   idHint: string;
   idPlaceholder: string;
+  fulfillMode: FulfillMode;
+  passwordLabel?: string;
+  passwordWhy?: string;
   tone: "ember" | "sand" | "pine" | "teal" | "brick" | "ink" | "gold";
   fulfillment: string;
   photo: string;
+  featured?: boolean;
   popular?: boolean;
   marginRank: number;
+  mergedFrom?: readonly string[];
+  regions?: readonly { id: string; label: string }[];
   packs: readonly Pack[];
 };
 
-export const hubs: readonly Hub[] = [
-  {
-    id: "freefire",
-    kind: "Diamonds",
-    name: "Free Fire",
-    short: "FF",
-    blurb: "Diamonds on your UID. Instant Delivery.",
-    idLabel: "Player ID",
-    idHint: "Free Fire UID — digits only.",
-    idPlaceholder: "123456789",
-    tone: "ember",
-    fulfillment: "Diamonds pending on this ID",
-    photo: "/images/hub-freefire.jpg",
-    popular: true,
-    marginRank: 1,
-    packs: [
-      { id: "ff-100", label: "100 diamonds", amount: "100", unit: "diamonds", price: "150", memberPrice: "142", marginRank: 3 },
-      { id: "ff-310", label: "310 diamonds", amount: "310", unit: "diamonds", price: "450", memberPrice: "427", popular: true, marginRank: 1 },
-      { id: "ff-520", label: "520 diamonds", amount: "520", unit: "diamonds", price: "750", memberPrice: "712", popular: true, marginRank: 2 },
-      { id: "ff-1080", label: "1,080 diamonds", amount: "1080", unit: "diamonds", price: "1,500", memberPrice: "1,425", marginRank: 4 },
-    ],
-  },
-  {
-    id: "pubg",
-    kind: "UC",
-    name: "PUBG UC",
-    short: "PUBG",
-    blurb: "UC on your character ID. Instant Delivery.",
-    idLabel: "Character ID",
-    idHint: "PUBG character ID — digits only.",
-    idPlaceholder: "5123456789",
-    tone: "sand",
-    fulfillment: "UC pending on this ID",
-    photo: "/images/hub-pubg.jpg",
-    popular: true,
-    marginRank: 2,
-    packs: [
-      { id: "pubg-60", label: "60 UC", amount: "60", unit: "UC", price: "150", memberPrice: "142", marginRank: 4 },
-      { id: "pubg-325", label: "325 UC", amount: "325", unit: "UC", price: "750", memberPrice: "712", popular: true, marginRank: 1 },
-      { id: "pubg-660", label: "660 UC", amount: "660", unit: "UC", price: "1,500", memberPrice: "1,425", marginRank: 2 },
-      { id: "pubg-1800", label: "1,800 UC", amount: "1800", unit: "UC", price: "3,900", memberPrice: "3,705", marginRank: 3 },
-    ],
-  },
-  {
-    id: "mlbb",
-    kind: "Diamonds",
-    name: "MLBB",
-    short: "ML",
-    blurb: "MLBB diamonds. Instant Delivery.",
-    idLabel: "Player ID",
-    idHint: "Player ID. Zone ID optional.",
-    idPlaceholder: "12345678 (1234)",
-    tone: "gold",
-    fulfillment: "Diamonds pending on this ID",
-    photo: "/images/hub-mlbb.jpg",
-    popular: true,
-    marginRank: 3,
-    packs: [
-      { id: "mlbb-86", label: "86 diamonds", amount: "86", unit: "diamonds", price: "180", memberPrice: "171", marginRank: 3 },
-      { id: "mlbb-172", label: "172 diamonds", amount: "172", unit: "diamonds", price: "360", memberPrice: "342", popular: true, marginRank: 1 },
-      { id: "mlbb-344", label: "344 diamonds", amount: "344", unit: "diamonds", price: "720", memberPrice: "684", marginRank: 2 },
-      { id: "mlbb-706", label: "706 diamonds", amount: "706", unit: "diamonds", price: "1,500", memberPrice: "1,425", marginRank: 4 },
-    ],
-  },
-  {
-    id: "valorant",
-    kind: "VP",
-    name: "Valorant",
-    short: "VAL",
-    blurb: "Valorant Points on your Riot ID. Instant Delivery.",
-    idLabel: "Riot ID",
-    idHint: "Name#TAG as you type it in-game.",
-    idPlaceholder: "amroz#NP1",
-    tone: "brick",
-    fulfillment: "VP pending on this Riot ID",
-    photo: "/images/hub-valorant.jpg",
-    marginRank: 5,
-    packs: [
-      { id: "val-475", label: "475 VP", amount: "475", unit: "VP", price: "450", memberPrice: "427", popular: true, marginRank: 1 },
-      { id: "val-1000", label: "1,000 VP", amount: "1000", unit: "VP", price: "900", memberPrice: "855", marginRank: 2 },
-      { id: "val-2050", label: "2,050 VP", amount: "2050", unit: "VP", price: "1,800", memberPrice: "1,710", marginRank: 3 },
-      { id: "val-3650", label: "3,650 VP", amount: "3650", unit: "VP", price: "3,200", memberPrice: "3,040", marginRank: 4 },
-    ],
-  },
-  {
-    id: "roblox",
-    kind: "Robux",
-    name: "Roblox",
-    short: "RBX",
-    blurb: "Robux on the username. Instant Delivery.",
-    idLabel: "Roblox username",
-    idHint: "Exact username — not the display name.",
-    idPlaceholder: "amroz_player",
-    tone: "teal",
-    fulfillment: "Robux pending on this username",
-    photo: "/images/hub-roblox.jpg",
-    marginRank: 6,
-    packs: [
-      { id: "rbx-80", label: "80 Robux", amount: "80", unit: "Robux", price: "160", memberPrice: "152", marginRank: 3 },
-      { id: "rbx-400", label: "400 Robux", amount: "400", unit: "Robux", price: "750", memberPrice: "712", popular: true, marginRank: 1 },
-      { id: "rbx-800", label: "800 Robux", amount: "800", unit: "Robux", price: "1,450", memberPrice: "1,377", marginRank: 2 },
-      { id: "rbx-1700", label: "1,700 Robux", amount: "1700", unit: "Robux", price: "2,900", memberPrice: "2,755", marginRank: 4 },
-    ],
-  },
-  {
-    id: "psn",
-    kind: "Wallet",
-    name: "PS Store",
-    short: "PS",
-    blurb: "PlayStation Store credit. Instant Delivery.",
-    idLabel: "PSN Online ID",
-    idHint: "Account the store credit should land on.",
-    idPlaceholder: "amroz_psn",
-    tone: "ink",
-    fulfillment: "Store credit pending · code or account",
-    photo: "/images/hub-psn.jpg",
-    popular: true,
-    marginRank: 4,
-    packs: [
-      { id: "psn-500", label: "NPR 500 credit", amount: "500", unit: "wallet", price: "500", memberPrice: "475", marginRank: 3 },
-      { id: "psn-1000", label: "NPR 1,000 credit", amount: "1000", unit: "wallet", price: "1,000", memberPrice: "950", popular: true, marginRank: 1 },
-      { id: "psn-2000", label: "NPR 2,000 credit", amount: "2000", unit: "wallet", price: "2,000", memberPrice: "1,900", marginRank: 2 },
-      { id: "psn-5000", label: "NPR 5,000 credit", amount: "5000", unit: "wallet", price: "5,000", memberPrice: "4,750", marginRank: 4 },
-    ],
-  },
-  {
-    id: "steam",
-    kind: "USD wallet",
-    name: "Steam USD",
-    short: "STM",
-    blurb: "Steam USD wallet code. Instant Delivery.",
-    idLabel: "Steam username",
-    idHint: "Account name the wallet code is for.",
-    idPlaceholder: "amroz_steam",
-    tone: "pine",
-    fulfillment: "Steam USD code pending",
-    photo: "/images/hub-steam.jpg",
-    marginRank: 7,
-    packs: [
-      { id: "stm-5", label: "$5 USD", amount: "5", unit: "USD", price: "750", memberPrice: "712", popular: true, marginRank: 1 },
-      { id: "stm-10", label: "$10 USD", amount: "10", unit: "USD", price: "1,450", memberPrice: "1,377", marginRank: 2 },
-      { id: "stm-20", label: "$20 USD", amount: "20", unit: "USD", price: "2,850", memberPrice: "2,707", marginRank: 3 },
-      { id: "stm-50", label: "$50 USD", amount: "50", unit: "USD", price: "6,900", memberPrice: "6,555", marginRank: 4 },
-    ],
-  },
-] as const;
+export function hubNeedsPassword(hub: Hub) {
+  return hub.fulfillMode === "account";
+}
+
+export function hubNeedsGameId(hub: Hub) {
+  return hub.fulfillMode !== "code";
+}
+
+export const catalogCategories = catalogData.categories as {
+  id: CategoryId;
+  label: string;
+  blurb: string;
+}[];
+
+export const hubs: readonly Hub[] = catalogData.hubs as Hub[];
+export const featuredHubs = hubs.filter((hub) => hub.featured);
+
+export function hubsInCategory(cat: string | null | undefined) {
+  if (!cat || cat === "all") return hubs;
+  return hubs.filter((hub) => hub.category === cat);
+}
 
 export type PhysicalKind = "fantech" | "ps5" | "controller" | "accessory";
 export type StockLevel = "in" | "low" | "ask";
@@ -297,12 +177,43 @@ export const physical: readonly PhysicalItem[] = [
     popular: true,
   },
   {
+    id: "ps5-console",
+    sku: "PS5 console",
+    name: "PS5 console",
+    kind: "Console",
+    group: "ps5",
+    blurb: "Disc console for the living room. Ask first — stock moves fast.",
+    price: "89,900",
+    memberPrice: "87,900",
+    for: "PS5",
+    photo: "/images/gear-ps5-console.jpg",
+    stock: "ask",
+    marginRank: 9,
+    popular: true,
+  },
+  {
+    id: "gta6-preorder",
+    sku: "GTA 6 pre-order",
+    name: "GTA 6 pre-order",
+    kind: "Pre-order",
+    group: "ps5",
+    blurb: "Hold a copy. We ping you when it drops. Pay now, pick up later.",
+    price: "8,999",
+    memberPrice: "8,549",
+    for: "PS5",
+    photo: "/images/gear-gta6.jpg",
+    stock: "in",
+    qty: 5,
+    marginRank: 5,
+    popular: true,
+  },
+  {
     id: "ps5-dock",
     sku: "PS5 charge dock",
     name: "PS5 charge dock",
     kind: "Dock",
     group: "ps5",
-    blurb: "Two pads, one brick. Same-day if it is on the shelf.",
+    blurb: "Two pads, one brick. 2 hour delivery if it is on the shelf.",
     price: "3,299",
     memberPrice: "3,134",
     for: "PS5",
@@ -398,7 +309,7 @@ export const bundles: readonly Bundle[] = [
   {
     id: "bundle-ff-mouse",
     name: "FF night kit",
-    blurb: "310 diamonds + Fantech wireless. Dual take — digital now, mouse same-day.",
+    blurb: "310 diamonds + Fantech wireless. Credit now. Mouse in 2 hours.",
     price: "1,849",
     memberPrice: "1,756",
     hubId: "freefire",
@@ -419,19 +330,37 @@ export const bundles: readonly Bundle[] = [
   },
 ];
 
-export type TrendingPack = {
-  hubId: HubId;
-  packId: string;
+export type TrendingKind = "hub" | "physical";
+
+export type TrendingItem = {
+  kind: TrendingKind;
+  id: string;
+  title: string;
 };
 
-export const trendingPacks: readonly TrendingPack[] = [
-  { hubId: "freefire", packId: "ff-310" },
-  { hubId: "pubg", packId: "pubg-325" },
-  { hubId: "mlbb", packId: "mlbb-172" },
-  { hubId: "valorant", packId: "val-475" },
-  { hubId: "psn", packId: "psn-1000" },
-  { hubId: "roblox", packId: "rbx-400" },
+export const trendingSeed: readonly TrendingItem[] = [
+  { kind: "physical", id: "ps5-dualsense", title: "PS5" },
+  { kind: "physical", id: "ps5-console", title: "PS5 console" },
+  { kind: "physical", id: "gta6-preorder", title: "GTA 6 pre-order" },
+  { kind: "hub", id: "freefire", title: "Free Fire" },
+  { kind: "hub", id: "pubg", title: "PUBG UC" },
+  { kind: "hub", id: "mlbb", title: "MLBB" },
+  { kind: "hub", id: "steam", title: "Steam" },
+  { kind: "hub", id: "psn", title: "PS Store" },
+  { kind: "hub", id: "valorant", title: "Valorant" },
+  { kind: "hub", id: "roblox", title: "Roblox" },
 ];
+
+export function shuffleTrending<T>(list: readonly T[]): T[] {
+  const next = [...list];
+  for (let i = next.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = next[i];
+    next[i] = next[j];
+    next[j] = tmp;
+  }
+  return next;
+}
 
 const hubById = Object.fromEntries(hubs.map((hub) => [hub.id, hub]));
 const physicalById = Object.fromEntries(physical.map((item) => [item.id, item]));
@@ -472,19 +401,11 @@ export const homePhysicalIds = [
   "cable-pack",
 ] as const;
 
-export const homeTrending = trendingPacks.slice(0, 5);
+export const homeTrending = trendingSeed;
 
-export const categories = [
-  { id: "digital", label: "Instant Delivery", href: "#topups" },
-  { id: "gear", label: "Gaming gear", href: "#shelf" },
-] as const;
+export const categories = catalogCategories;
 
-export const gameChips = [
-  { id: "freefire", label: "Free Fire" },
-  { id: "pubg", label: "PUBG" },
-  { id: "mlbb", label: "MLBB" },
-  { id: "valorant", label: "Valorant" },
-  { id: "roblox", label: "Roblox" },
-  { id: "psn", label: "PS Store" },
-  { id: "steam", label: "Steam" },
-] as const;
+export const gameChips = catalogCategories.map((cat) => ({
+  id: cat.id,
+  label: cat.label,
+}));

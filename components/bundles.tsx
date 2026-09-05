@@ -9,7 +9,7 @@ export function BundlesRow({ from = "home" }: { from?: SitePage }) {
         <p className="text-xs font-semibold tracking-wide text-muted uppercase">Bundles</p>
         <h2 className="mt-1 text-2xl font-semibold tracking-tight">Top-up + gear</h2>
         <p className="mt-2 max-w-lg text-sm text-muted">
-          Credit on the ID now. Gear same-day from the shelf.
+          Credit on the ID now. Gear in 2 hours from the shelf.
         </p>
         <ul className="mt-4 grid gap-3 sm:grid-cols-2">
           {bundles.map((bundle) => {

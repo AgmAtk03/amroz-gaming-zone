@@ -19,7 +19,7 @@ function SlaClock({ dueAt, name, orderId }: { dueAt: number; name: string; order
     return () => window.clearInterval(t);
   }, []);
   if (now === 0) {
-    return <p className="mt-3 text-sm text-muted">SLA clock · same-day ≤ 2h</p>;
+    return <p className="mt-3 text-sm text-muted">SLA clock · 2 hour delivery</p>;
   }
   const left = dueAt - now;
   if (left <= 0) {
@@ -43,7 +43,7 @@ function SlaClock({ dueAt, name, orderId }: { dueAt: number; name: string; order
   const s = Math.floor((left % 60_000) / 1000);
   return (
     <p className="mt-3 text-sm text-pine">
-      SLA clock · {h}h {m}m {s}s left for same-day drop
+      SLA clock · {h}h {m}m {s}s left for 2 hour delivery
     </p>
   );
 }
@@ -76,7 +76,7 @@ export function PaySuccess() {
   const title = digital
     ? parsed.hub!.fulfillment
     : parsed.item
-      ? "Held for same-day · Pepsicola Ward 32"
+      ? "Held for 2 hour delivery · Pepsicola Ward 32"
       : "Receipt";
 
   const label = digital ? parsed.pack!.label : parsed.item?.name ?? "Order";
@@ -134,7 +134,7 @@ export function PaySuccess() {
           <div className="flex justify-between gap-4">
             <dt className="text-muted">Collect</dt>
             <dd className="text-right">
-              {digital ? "ID credit · instant" : "Same-day · ≤ 2h · Pepsicola Ward 32"}
+              {digital ? "Lands on your ID" : "2 hour delivery · Pepsicola Ward 32"}
             </dd>
           </div>
         </dl>

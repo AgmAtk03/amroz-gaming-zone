@@ -1,7 +1,7 @@
 export const site = {
   name: "Amroz Gaming Zone",
   shortName: "Amroz",
-  tagline: "Instant Delivery top-ups. Same-day gear in Kathmandu.",
+  tagline: "Game top-ups on your ID. 2 hour gear in Kathmandu.",
   city: "Kathmandu",
   ward: "Ward 32",
   area: "Pepsicola",
@@ -38,23 +38,23 @@ export function whatsAppHref(text: string) {
 
 export const memberPerks = [
   {
-    title: "Member price on top-ups",
-    detail: "A small cut on diamonds, UC, and wallet credit — including Buy again.",
+    title: "Cheaper top-ups",
+    detail: "A little less on diamonds, UC, and store credit — Buy again too.",
   },
   {
-    title: "Same-day queue",
-    detail: "Gear orders from members get packed first for the two-hour window.",
+    title: "Gear packed first",
+    detail: "Your 2 hour delivery jumps the regular queue.",
   },
   {
-    title: "Weekend packs first",
-    detail: "Offer drops land here before the public grid.",
+    title: "Weekend drops early",
+    detail: "New packs show here before the public grid.",
   },
 ] as const;
 
 export const trustSteps = [
-  { n: "1", title: "Instant Delivery", detail: "Credit lands on your ID" },
+  { n: "1", title: "Lands on your ID", detail: "UID, Riot ID, or store login" },
   { n: "2", title: "eSewa & Khalti", detail: "Pay in NPR, then we send" },
-  { n: "3", title: "UID only", detail: "No password. Save it once." },
+  { n: "3", title: "2 hour gear", detail: "Pepsicola, Ward 32" },
 ] as const;
 
 export const referralCodes = ["AMROZ", "WARD32", "SQUAD"] as const;

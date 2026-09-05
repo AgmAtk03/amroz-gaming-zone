@@ -1,15 +1,18 @@
 "use client";
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
+import { CategoryBrowse } from "@/components/category-browse";
+import { GameArt } from "@/components/game-art";
 import { PayMarks } from "@/components/pay-marks";
 import { Photo } from "@/components/photo";
 import { SavedIdPanel } from "@/components/saved-id-panel";
 import {
+  featuredHubs,
   getBundle,
   getHub,
   getPack,
   getPhysical,
-  hubs,
+  hubNeedsPassword,
   type Bundle,
   type Hub,
   type Pack,
@@ -76,26 +79,27 @@ export function PayFlow() {
 function HubPicker() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
-      <p className="text-xs font-semibold tracking-wide text-instant uppercase">Instant Delivery</p>
+      <p className="text-xs font-semibold tracking-wide text-gold uppercase">Checkout</p>
       <h1 className="mt-2 max-w-lg text-3xl font-semibold tracking-tight">
-        Pick a game. Start with your ID.
+        Pick a game first.
       </h1>
       <p className="mt-2 max-w-lg text-sm text-muted">
-        Credit lands on the ID after you pay with Khalti or eSewa.
+        One card per game. Packs open after you tap in.
       </p>
+      <CategoryBrowse from="pay" />
       <ul className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
-        {hubs.map((hub) => (
+        {featuredHubs.map((hub) => (
           <li key={hub.id}>
             <a
               href={payHref("pay", { hub: hub.id })}
               className="photo-card flex flex-col overflow-hidden rounded-2xl"
             >
-              <div className="aspect-[4/3]">
-                <Photo src={hub.photo} alt="" />
+              <div className="aspect-square">
+                <GameArt src={hub.photo} name={hub.name} short={hub.short} alt="" />
               </div>
               <div className="p-3">
                 <p className="font-semibold">{hub.name}</p>
-                <p className="text-xs text-muted">Instant Delivery · {hub.kind}</p>
+                <p className="text-xs text-muted">{hub.kind}</p>
               </div>
             </a>
           </li>
@@ -136,7 +140,11 @@ function DigitalPay({
   const [nudge, setNudge] = useState(false);
   const [forcePick, setForcePick] = useState(false);
   const [idLocked, setIdLocked] = useState(false);
+  const [accountPass, setAccountPass] = useState("");
+  const [region, setRegion] = useState(hub.regions?.[0]?.id ?? "");
   const [ready, setReady] = useState(false);
+  const needsPass = hubNeedsPassword(hub);
+  const regionLabel = hub.regions?.find((row) => row.id === region)?.label;
 
   useEffect(() => {
     const prior = getDigitalOrder(orderId);
@@ -156,7 +164,8 @@ function DigitalPay({
 
   const activeId = saved?.value ?? "";
   const hasId = Boolean(saved && activeId.trim().length >= 3);
-  const canConfirm = Boolean(pack && hasId);
+  const passOk = !needsPass || accountPass.trim().length >= 4;
+  const canConfirm = Boolean(pack && hasId && passOk);
   const startOnConfirm = Boolean(reorder && pack && hasId);
   const step: 1 | 2 | 3 =
     startOnConfirm && idLocked && !forcePick
@@ -168,8 +177,8 @@ function DigitalPay({
           : 3;
 
   const wa = useMemo(
-    () => demoWhatsAppHref(hub, pack, ready ? activeId : undefined),
-    [hub, pack, activeId, ready],
+    () => demoWhatsAppHref(hub, pack, ready ? activeId : undefined, regionLabel),
+    [hub, pack, activeId, ready, regionLabel],
   );
 
   function onFreshSubmit(e: FormEvent<HTMLFormElement>) {
@@ -203,6 +212,10 @@ function DigitalPay({
 
   function startMockPay(id: MockWalletId) {
     if (!pack || activeId.trim().length < 3 || busy) return;
+    if (needsPass && accountPass.trim().length < 4) {
+      setError(`Add the ${hub.passwordLabel?.toLowerCase() ?? "account password"} to send this.`);
+      return;
+    }
     let used = saved;
     if (!used || used.id === "ephemeral") {
       const result = addSavedId(hub.id, activeId, used?.label || "main");
@@ -250,7 +263,7 @@ function DigitalPay({
     <div className="mx-auto max-w-xl px-4 py-6 sm:px-6 sm:py-10">
       <div className="flex items-center gap-3">
         <div className="h-14 w-14 overflow-hidden rounded-xl">
-          <Photo src={hub.photo} alt="" />
+          <GameArt src={hub.photo} name={hub.name} short={hub.short} alt="" />
         </div>
         <div>
           <p className="text-xs tracking-[0.16em] text-muted uppercase">{hub.kind}</p>
@@ -258,7 +271,11 @@ function DigitalPay({
         </div>
       </div>
       <p className="mt-2 text-sm text-muted">{hub.blurb}</p>
-      <p className="mt-1 text-xs text-muted">Enter the ID, pick a pack, pay. Credit is Instant Delivery.</p>
+      <p className="mt-1 text-xs text-muted">
+        {needsPass
+          ? `Add your ${hub.idLabel.toLowerCase()} and ${hub.passwordLabel?.toLowerCase() ?? "account password"}, then pick a pack.`
+          : `Add your ${hub.idLabel.toLowerCase()}, pick a pack, pay. No game password.`}
+      </p>
       {memberOn ? (
         <p className="mt-2 text-xs text-pine">Member rate on — including reorder.</p>
       ) : null}
@@ -337,8 +354,22 @@ function DigitalPay({
                     ? "text"
                     : "numeric"
                 }
-                className="mt-2 w-full rounded-xl border border-line bg-paper px-4 py-3 text-base outline-none focus:border-gold"
+                  className="mt-2 w-full rounded-xl border border-line bg-paper px-4 py-3 text-base outline-none focus:border-gold"
               />
+              {needsPass ? (
+                <label className="mt-3 block text-xs text-muted">
+                  {hub.passwordLabel}
+                  <input
+                    type="password"
+                    value={accountPass}
+                    onChange={(e) => setAccountPass(e.target.value)}
+                    autoComplete="off"
+                    placeholder="Not saved on this phone"
+                    className="mt-1 w-full rounded-xl border border-line bg-paper px-4 py-3 text-base text-ink outline-none focus:border-gold"
+                  />
+                  <span className="mt-1 block text-[11px] leading-snug">{hub.passwordWhy}</span>
+                </label>
+              ) : null}
               <label className="mt-3 flex items-start gap-2 text-sm">
                 <input
                   type="checkbox"
@@ -377,6 +408,25 @@ function DigitalPay({
               </button>
             ) : null}
           </div>
+          {hub.regions?.length ? (
+            <div className="mt-3">
+              <p className="text-xs font-semibold text-muted">Region</p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {hub.regions.map((row) => (
+                  <button
+                    key={row.id}
+                    type="button"
+                    onClick={() => setRegion(row.id)}
+                    className={`rounded-full px-3 py-1.5 text-xs font-semibold ${
+                      region === row.id ? "bg-gold text-paper" : "border border-line bg-panel"
+                    }`}
+                  >
+                    {row.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : null}
           <div className="mt-3 grid grid-cols-2 gap-2">
             {hub.packs.map((item) => {
               const selected = pack?.id === item.id;
@@ -395,7 +445,7 @@ function DigitalPay({
                   <p className="text-sm font-semibold">{item.label}</p>
                   <p className="mt-1 text-sm">NPR {memberOn ? item.memberPrice : item.price}</p>
                   <p className={`mt-0.5 text-[11px] ${selected ? "text-paper/70" : "text-muted"}`}>
-                    Instant Delivery
+                    {hub.kind}
                   </p>
                 </button>
               );
@@ -404,7 +454,7 @@ function DigitalPay({
         </section>
       ) : null}
 
-      {pack && canConfirm && step === 3 ? (
+      {pack && hasId && step === 3 ? (
         <section className="mt-6 rounded-2xl border border-line bg-panel p-4">
           <h2 className="text-sm font-semibold">3. Confirm & pay</h2>
           <p className="mt-1 text-xs text-muted">Check the ID and pack before you pay.</p>
@@ -424,6 +474,26 @@ function DigitalPay({
               <dt className="text-muted">Pack</dt>
               <dd className="font-medium">{pack.label}</dd>
             </div>
+            {regionLabel ? (
+              <div className="flex justify-between gap-4">
+                <dt className="text-muted">Region</dt>
+                <dd className="font-medium">{regionLabel}</dd>
+              </div>
+            ) : null}
+            {needsPass ? (
+              <label className="block text-xs text-muted">
+                {hub.passwordLabel}
+                <input
+                  type="password"
+                  value={accountPass}
+                  onChange={(e) => setAccountPass(e.target.value)}
+                  autoComplete="off"
+                  placeholder="Needed to drop credit on this account"
+                  className="mt-1 w-full rounded-xl border border-line bg-paper px-3 py-2.5 text-sm text-ink outline-none focus:border-gold"
+                />
+                <span className="mt-1 block text-[11px] leading-snug">{hub.passwordWhy}</span>
+              </label>
+            ) : null}
             <div className="flex justify-between gap-4">
               <dt className="text-muted">Price</dt>
               <dd className="font-semibold text-gold">
@@ -472,13 +542,18 @@ function DigitalPay({
             </span>
           </label>
 
+          {needsPass && !passOk ? (
+            <p className="mt-3 text-sm text-gold">Add the account password to pay.</p>
+          ) : null}
+          {error ? <p className="mt-2 text-sm text-rust">{error}</p> : null}
+
           <PayMarks className="mt-4" />
           <div className="mt-3 grid gap-2">
             {mockWallets.map((method) => (
               <button
                 key={method.id}
                 type="button"
-                disabled={busy}
+                disabled={busy || !canConfirm}
                 onClick={() => startMockPay(method.id)}
                 className="rounded-2xl border border-line bg-paper px-4 py-4 text-left"
               >
@@ -574,13 +649,13 @@ function PhysicalPay({ item }: { item: PhysicalItem }) {
       <p className="mt-2 text-sm text-muted">{item.blurb}</p>
       <p className="mt-2 text-sm">
         NPR {memberOn ? item.memberPrice : item.price}
-        <span className="ml-2 text-xs text-muted">same-day · ≤ 2h · Pepsicola Ward 32</span>
+        <span className="ml-2 text-xs text-muted">2 hour delivery · Pepsicola Ward 32</span>
       </p>
       <p className={`mt-1 text-xs stock-${item.stock}`}>
         Live shelf · {item.stock === "in" ? "on the counter" : item.stock === "low" ? "low" : "ask"}
       </p>
       <p className="mt-1 text-xs text-muted">
-        Same-day hold from the Pepsicola counter.
+        2 hour hold from the Pepsicola counter.
       </p>
 
       <form className="mt-6" onSubmit={onHold}>

@@ -50,10 +50,10 @@ export function PhysicalShelf({
           Gaming gear
         </p>
         <h2 className="mt-1 text-2xl font-semibold tracking-tight">
-          Same-day from Pepsicola
+          2 hour delivery
         </h2>
         <p className="mt-2 max-w-lg text-sm text-muted">
-          Pickup or drop-off, Ward 32. Usually within two hours.
+          Pickup or drop-off from Pepsicola, Ward 32.
         </p>
         {curated ? null : (
           <>
@@ -112,7 +112,7 @@ export function PhysicalShelf({
                     <Photo src={item.photo} alt={item.name} />
                     <div className="absolute top-2 left-2 flex flex-col gap-1">
                       <span className="rounded-xl bg-paper/90 px-2 py-0.5 text-[10px] font-semibold">
-                        Same-day KTM
+                        2 hour delivery
                       </span>
                       {item.stock === "in" ? (
                         <span className="rounded-xl bg-paper/90 px-2 py-0.5 text-[10px] font-semibold">

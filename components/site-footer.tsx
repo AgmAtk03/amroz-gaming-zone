@@ -9,11 +9,11 @@ export function SiteFooter({ page = "home" }: { page?: SitePage }) {
         <div>
           <Wordmark href={homeHref(page)} />
           <p className="mt-3 max-w-sm text-sm text-muted">{site.addressLine}</p>
-          <p className="mt-1 text-sm text-muted">Instant Delivery top-ups. Same-day gear.</p>
+          <p className="mt-1 text-sm text-muted">Top-ups on your ID. 2 hour gear.</p>
         </div>
         <div className="flex flex-col gap-3">
           <a
-            href={whatsAppHref("Hi Amroz — I need a top-up or same-day gear.")}
+            href={whatsAppHref("Hi Amroz — I need a top-up or 2 hour gear.")}
             className="thumb-btn inline-flex items-center justify-center rounded-xl bg-gold px-5 text-sm font-semibold text-paper"
           >
             WhatsApp the shop

@@ -31,8 +31,9 @@ export function homeHref(from: SitePage = "home") {
   return href(from, "home");
 }
 
-export function shopPageHref(from: SitePage = "home") {
-  return href(from, "shop");
+export function shopPageHref(from: SitePage = "home", query?: { cat?: string }) {
+  const q = query?.cat ? `?cat=${encodeURIComponent(query.cat)}` : "";
+  return href(from, "shop", q);
 }
 
 export type PayQuery = {

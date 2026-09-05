@@ -81,15 +81,136 @@ body {
   display: none;
 }
 
+.header-energy {
+  box-shadow: 0 1px 0 color-mix(in oklab, var(--gold) 35%, transparent);
+}
+
+.header-energy::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background-size: 220% 100%;
+  animation: header-sweep 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+header.header-energy {
+  position: relative;
+}
+
+@keyframes header-sweep {
+  0% {
+    background-position: 120% 0;
+  }
+  100% {
+    background-position: -120% 0;
+  }
+}
+
+.chip-energy {
+  transition: border-color 0.16s ease, transform 0.16s ease, background 0.16s ease;
+}
+
+.chip-energy:hover,
+.chip-energy:active {
+  border-color: color-mix(in oklab, var(--gold) 55%, var(--line));
+  transform: translateY(-1px);
+}
+
+.hero-track {
+  transition: transform 0.5s ease;
+}
+
+.hero-ken {
+  animation: ken 2.5s ease-out both;
+  transform-origin: 50% 40%;
+}
+
+@keyframes ken {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.hero-copy {
+  animation: copy-up 0.45s ease both;
+}
+
+@keyframes copy-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .photo-card {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 16px;
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  transition: border-color 0.15s ease, transform 0.16s ease;
 }
 
 .photo-card:hover {
   border-color: color-mix(in oklab, var(--gold) 45%, var(--line));
+  transform: scale(1.015);
+}
+
+.press-card:active {
+  transform: scale(0.97);
+}
+
+@keyframes hub-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hub-card {
+  animation: hub-in 0.38s ease both;
+}
+
+.photo-shimmer {
+  isolation: isolate;
+}
+
+.photo-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    color-mix(in oklab, white 14%, transparent) 50%,
+    transparent 80%
+  );
+  background-size: 220% 100%;
+  animation: photo-shimmer 1.15s ease-out 1;
+  pointer-events: none;
+}
+
+@keyframes photo-shimmer {
+  from {
+    background-position: 120% 0;
+  }
+  to {
+    background-position: -120% 0;
+  }
 }
 
 .stock-in {
@@ -113,5 +234,21 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .hub-card,
+  .photo-shimmer::after,
+  .photo-card,
+  .press-card,
+  .header-energy::after,
+  .hero-ken,
+  .hero-copy {
+    animation: none;
+    transition: none;
+  }
+
+  .photo-card:hover,
+  .press-card:active {
+    transform: none;
   }
 }

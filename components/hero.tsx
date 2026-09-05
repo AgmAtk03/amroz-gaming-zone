@@ -1,4 +1,3 @@
-import { InstantBadge } from "@/components/brand";
 import { PayMarks } from "@/components/pay-marks";
 import { Photo } from "@/components/photo";
 import { payHref, shopPageHref } from "@/lib/routes";
@@ -15,19 +14,18 @@ export function Hero() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-paper via-paper/75 to-paper/25" />
         <div className="relative mx-auto flex min-h-[16.5rem] max-w-5xl flex-col justify-end px-4 py-5 sm:min-h-[18rem] sm:px-6 sm:py-8">
-          <InstantBadge className="w-fit px-2.5 py-1 text-[11px]" />
-          <h1 className="mt-3 max-w-xl text-[1.65rem] leading-[1.15] font-semibold tracking-tight sm:text-4xl">
-            Instant Delivery for game top-ups.
+          <h1 className="max-w-xl text-[1.65rem] leading-[1.15] font-semibold tracking-tight sm:text-4xl">
+            Top-ups that land on your ID.
           </h1>
           <p className="mt-2 max-w-md text-[15px] text-ink-soft">
-            Diamonds, UC, VP, Robux, PS Store, Steam — on your ID. Gear same-day from Pepsicola.
+            Pick a game. Pay with eSewa or Khalti. Gear in 2 hours from Pepsicola.
           </p>
           <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center">
             <a
               href="#topups"
               className="thumb-btn inline-flex items-center justify-center rounded-xl bg-gold px-5 text-sm font-semibold text-paper"
             >
-              Shop top-ups
+              Grab a top-up
             </a>
             <a
               href={payHref("home")}
