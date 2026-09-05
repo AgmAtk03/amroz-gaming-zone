@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { BuyAgain } from "@/components/buy-again";
 import { ChatWidget } from "@/components/chat-widget";
 import { DemoPayBanner } from "@/components/demo-banner";
 import { Header } from "@/components/header";
+import { HubGrid } from "@/components/hub-grid";
 import { PhysicalShelf } from "@/components/physical-shelf";
 import { SiteFooter } from "@/components/site-footer";
-import { TopupGrid } from "@/components/topup-grid";
+import { TrendingStrip } from "@/components/trending";
 
 export const metadata: Metadata = {
   title: "Shop | Amroz Gaming Zone",
@@ -30,7 +32,9 @@ export default function ShopPage() {
             Pepsicola Ward 32, usually within two hours.
           </p>
         </section>
-        <TopupGrid from="shop" compact />
+        <BuyAgain from="shop" />
+        <HubGrid from="shop" compact />
+        <TrendingStrip from="shop" />
         <PhysicalShelf from="shop" variant="grid" />
         <ChatWidget from="shop" />
       </main>

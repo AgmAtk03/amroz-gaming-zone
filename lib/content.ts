@@ -27,16 +27,15 @@ export const site = {
 } as const;
 
 export const nav = [
-  { href: "#topups", label: "Top-ups" },
-  { href: "#account", label: "Account" },
-  { href: "#shelf", label: "Physical" },
+  { href: "#topups", label: "Top up" },
+  { href: "#shelf", label: "Shop" },
   { href: "#contact", label: "Contact" },
 ] as const;
 
-export const demoPayBanner = "DEMO — sample prices · not live pay";
+export const demoPayBanner = "DEMO — sample prices · mock pay · unique txn ID · not live";
 
 export const demoPayNotice =
-  "Sample NPR for the walkthrough. Not a live price list and not a real charge.";
+  "Sample NPR for the walkthrough. Live Khalti/eSewa after Cost/%. Unique txn + order IDs on every receipt.";
 
 export function whatsAppHref(text: string) {
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;
@@ -45,7 +44,7 @@ export function whatsAppHref(text: string) {
 export const memberPerks = [
   {
     title: "Member price on digital",
-    detail: "A small cut on top-ups once you are signed in. Shown as a DEMO rate.",
+    detail: "A small cut on top-ups — including one-tap reorder. Shown as a DEMO rate.",
   },
   {
     title: "Same-day queue",
@@ -53,6 +52,15 @@ export const memberPerks = [
   },
   {
     title: "Offer drops",
-    detail: "Weekend packs and leftover codes land here before the public grid.",
+    detail: "Weekend packs land here before the public grid. Promo stays DEMO until Cost clears.",
   },
 ] as const;
+
+export const trustBadges = [
+  { title: "Instant digital", detail: "ID credit, usually now" },
+  { title: "Same-day ≤ 2h", detail: "Physical from Pepsicola" },
+  { title: "Txn + order ID", detail: "Every DEMO receipt" },
+  { title: "WhatsApp desk", detail: "Human if the clock slips" },
+] as const;
+
+export const demoReferralCodes = ["AMROZ", "WARD32", "SQUAD"] as const;

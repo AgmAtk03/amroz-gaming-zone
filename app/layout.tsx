@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { IBM_Plex_Sans, Source_Serif_4 } from "next/font/google";
+import { DM_Sans, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 
-const sans = IBM_Plex_Sans({
+const sans = DM_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -18,9 +18,9 @@ const serif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "Amroz Gaming Zone | Fast top-ups & same-day gear, Pepsicola",
+  title: "Amroz Gaming Zone | Marketplace — top-ups & same-day gear",
   description:
-    "Kathmandu gaming service: instant digital top-ups, same-day physical gear within two hours. Pickup at Pepsicola Ward 32.",
+    "Kathmandu gaming marketplace: instant digital top-ups, same-day physical gear within two hours. Pickup at Pepsicola Ward 32.",
   applicationName: "Amroz Gaming Zone",
   keywords: [
     "Amroz Gaming Zone",
@@ -46,7 +46,7 @@ export default function RootLayout({
       lang="en"
       className={`${sans.variable} ${serif.variable} h-full antialiased`}
     >
-      <body className="site-bg min-h-full flex flex-col">{children}</body>
+      <body className={`${sans.className} site-bg flex min-h-full flex-col`}>{children}</body>
     </html>
   );
 }

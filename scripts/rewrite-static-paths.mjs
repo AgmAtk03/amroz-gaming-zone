@@ -23,7 +23,7 @@ function toRelative(fromFile, absPath) {
   return rel;
 }
 
-const pattern = /(["'`(=])(\/(?:_next|favicon\.ico|icon\.svg)[^"'`)\s]*)/g;
+const pattern = /(["'`(=])(\/(?:_next|favicon\.ico|icon\.svg|images)[^"'`)\s]*)/g;
 
 const files = await walk(root);
 let changed = 0;

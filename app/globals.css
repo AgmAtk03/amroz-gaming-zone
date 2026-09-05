@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f3eee4;
-  --paper-2: #e8dfd0;
-  --ink: #1e1a16;
-  --ink-soft: #3a342c;
-  --panel: #fbf8f2;
-  --line: #cfc3b0;
-  --pine: #3f4f3a;
-  --rust: #9a3f2a;
-  --teal: #2f5c59;
-  --muted: #6b6256;
-  --gold: #b8893a;
-  --ember: #c4622d;
+  --paper: #14110e;
+  --paper-2: #1b1713;
+  --ink: #f4efe6;
+  --ink-soft: #d8cfc0;
+  --panel: #221c17;
+  --line: #3a3229;
+  --pine: #8fb089;
+  --rust: #d27a5a;
+  --teal: #7eb8b2;
+  --muted: #9a9083;
+  --gold: #d4a054;
+  --ember: #e08a4c;
   --sand: #c4a574;
-  --brick: #8a3a2c;
+  --brick: #c46a58;
 }
 
 @theme inline {
@@ -32,8 +32,8 @@
   --color-ember: var(--ember);
   --color-sand: var(--sand);
   --color-brick: var(--brick);
-  --font-sans: var(--font-sans);
-  --font-serif: var(--font-serif);
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Source Serif 4", ui-serif, Georgia, serif;
 }
 
 html {
@@ -53,7 +53,7 @@ body {
 
 ::selection {
   background: color-mix(in oklab, var(--gold) 45%, transparent);
-  color: var(--ink);
+  color: var(--paper);
 }
 
 .font-serif {
@@ -62,43 +62,20 @@ body {
 
 .site-bg {
   background:
-    radial-gradient(900px 420px at 0% -10%, rgba(196, 165, 116, 0.22), transparent 55%),
-    radial-gradient(700px 380px at 100% 0%, rgba(63, 79, 58, 0.08), transparent 50%),
+    radial-gradient(900px 420px at 0% -10%, rgba(212, 160, 84, 0.08), transparent 55%),
+    radial-gradient(700px 380px at 100% 0%, rgba(143, 176, 137, 0.06), transparent 50%),
     var(--paper);
 }
 
-.shop-grain {
-  background-image:
-    linear-gradient(rgba(30, 26, 22, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(30, 26, 22, 0.03) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
-}
-
 .thumb-btn {
-  min-height: 48px;
+  min-height: 44px;
 }
 
-.hub-ember {
-  background: linear-gradient(160deg, #f6d7c4, #f3eee4);
+.chip-row {
+  scrollbar-width: none;
 }
-.hub-sand {
-  background: linear-gradient(160deg, #efe3cb, #f3eee4);
-}
-.hub-pine {
-  background: linear-gradient(160deg, #d7dfd2, #f3eee4);
-}
-.hub-teal {
-  background: linear-gradient(160deg, #d3e0de, #f3eee4);
-}
-.hub-brick {
-  background: linear-gradient(160deg, #edd6d1, #f3eee4);
-}
-.hub-ink {
-  background: linear-gradient(160deg, #ddd8d2, #f3eee4);
-}
-.hub-gold {
-  background: linear-gradient(160deg, #f0e4c4, #f3eee4);
+.chip-row::-webkit-scrollbar {
+  display: none;
 }
 
 .shelf-scroll {
@@ -106,6 +83,21 @@ body {
 }
 .shelf-scroll::-webkit-scrollbar {
   display: none;
+}
+
+.photo-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.stock-in {
+  color: var(--pine);
+}
+.stock-low {
+  color: var(--gold);
+}
+.stock-ask {
+  color: var(--muted);
 }
 
 @media (prefers-reduced-motion: reduce) {

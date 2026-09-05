@@ -3,28 +3,70 @@
 import { FormEvent, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { DemoBadge } from "@/components/brand";
-import { HubArt, hubTile } from "@/components/hub-art";
-import { ProductArt } from "@/components/product-art";
-import { getHub, getPack, getPhysical, hubs, type Hub, type Pack, type PhysicalItem } from "@/lib/catalog";
-import { demoPayNotice } from "@/lib/content";
+import { Photo } from "@/components/photo";
+import { SavedIdPanel } from "@/components/saved-id-panel";
 import {
+  getBundle,
+  getHub,
+  getPack,
+  getPhysical,
+  hubs,
+  type Bundle,
+  type Hub,
+  type Pack,
+  type PhysicalItem,
+} from "@/lib/catalog";
+import { demoPayNotice, demoReferralCodes } from "@/lib/content";
+import {
+  comingWallet,
   demoWhatsAppHref,
+  makeOrderId,
   makeTxnId,
   mockWallets,
   physicalWhatsAppHref,
   type MockWalletId,
 } from "@/lib/demo-pay";
 import { useMember } from "@/lib/member";
+import { writePrefs } from "@/lib/prefs";
 import { payHref, shopPageHref, successHref } from "@/lib/routes";
+import {
+  addSavedId,
+  getDigitalOrder,
+  getSavedId,
+  lastUsedSavedId,
+  maskGameId,
+  recordDigitalOrder,
+  useSavedStore,
+  type SavedGameId,
+} from "@/lib/saved-ids";
+
+function slaDueFromNow() {
+  return Date.now() + 2 * 60 * 60 * 1000;
+}
 
 export function PayFlow() {
   const search = useSearchParams();
   const hub = getHub(search.get("hub"));
   const item = getPhysical(search.get("sku"));
+  const bundle = getBundle(search.get("bundle"));
   const presetPack = search.get("pack");
+  const sid = search.get("sid");
+  const reorder = search.get("reorder") === "1";
+  const oid = search.get("oid");
 
-  if (item) return <PhysicalPay item={item} />;
-  if (hub) return <DigitalPay hub={hub} presetPackId={presetPack} />;
+  if (bundle) return <BundlePay bundle={bundle} />;
+  if (item && !hub) return <PhysicalPay item={item} />;
+  if (hub) {
+    return (
+      <DigitalPay
+        hub={hub}
+        presetPackId={presetPack}
+        presetSid={sid}
+        reorder={reorder}
+        orderId={oid}
+      />
+    );
+  }
   return <HubPicker />;
 }
 
@@ -41,13 +83,15 @@ function HubPicker() {
           <li key={hub.id}>
             <a
               href={payHref("pay", { hub: hub.id })}
-              className={`flex min-h-[140px] flex-col rounded-2xl border border-line p-3 ${hubTile[hub.tone]}`}
+              className="photo-card flex flex-col overflow-hidden rounded-2xl"
             >
-              <div className="h-12 w-12 overflow-hidden rounded-xl">
-                <HubArt id={hub.id} />
+              <div className="aspect-[4/3]">
+                <Photo src={hub.photo} alt="" />
               </div>
-              <p className="mt-2 font-semibold">{hub.name}</p>
-              <p className="text-xs text-muted">{hub.kind}</p>
+              <div className="p-3">
+                <p className="font-semibold">{hub.name}</p>
+                <p className="text-xs text-muted">{hub.kind}</p>
+              </div>
             </a>
           </li>
         ))}
@@ -61,52 +105,126 @@ function HubPicker() {
   );
 }
 
-function DigitalPay({ hub, presetPackId }: { hub: Hub; presetPackId: string | null }) {
+function DigitalPay({
+  hub,
+  presetPackId,
+  presetSid,
+  reorder,
+  orderId,
+}: {
+  hub: Hub;
+  presetPackId: string | null;
+  presetSid: string | null;
+  reorder: boolean;
+  orderId: string | null;
+}) {
   const preset = getPack(hub, presetPackId);
+  const prior = getDigitalOrder(orderId);
+  const initialSaved =
+    getSavedId(presetSid) ??
+    (prior ? getSavedId(prior.savedId) : undefined) ??
+    lastUsedSavedId(hub.id);
+
   const [pack, setPack] = useState<Pack | undefined>(preset);
-  const [playerId, setPlayerId] = useState("");
+  const [saved, setSaved] = useState<SavedGameId | undefined>(initialSaved);
+  const [freshValue, setFreshValue] = useState("");
+  const [freshLabel, setFreshLabel] = useState("main");
+  const [saveNext, setSaveNext] = useState(true);
   const [wallet, setWallet] = useState<MockWalletId | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [referral, setReferral] = useState("");
+  const [nudge, setNudge] = useState(false);
+  const [forcePick, setForcePick] = useState(false);
   const member = useMember();
   const memberOn = Boolean(member);
+  const savedStore = useSavedStore();
+  const savedCount = savedStore.ids.filter((item) => item.hubId === hub.id).length;
 
-  const step = !pack ? 1 : playerId.trim() ? 3 : 2;
-  const wa = useMemo(() => demoWhatsAppHref(hub, pack, playerId), [hub, pack, playerId]);
+  const activeId = saved?.value ?? "";
+  const canConfirm = Boolean(pack && activeId.trim().length >= 3);
+  const startOnConfirm = Boolean(reorder && pack && saved);
+  const step = !pack ? 1 : !canConfirm || forcePick ? 2 : 3;
 
-  function onIdSubmit(e: FormEvent<HTMLFormElement>) {
+  const wa = useMemo(
+    () => demoWhatsAppHref(hub, pack, activeId),
+    [hub, pack, activeId],
+  );
+
+  function onFreshSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const value = playerId.trim();
+    const value = freshValue.trim();
     if (value.length < 3) {
-      setError(`Enter a sample ${hub.idLabel.toLowerCase()} (3+ characters).`);
+      setError(`Enter a ${hub.idLabel.toLowerCase()} (3+ characters).`);
       return;
     }
+    if (saveNext) {
+      const result = addSavedId(hub.id, value, freshLabel);
+      if (!result.ok) {
+        setError(result.error);
+        return;
+      }
+      setSaved(result.saved);
+    } else {
+      setSaved({
+        id: "ephemeral",
+        hubId: hub.id,
+        value,
+        label: "once",
+        lastUsedAt: null,
+        createdAt: new Date().toISOString(),
+      });
+    }
     setError("");
-    setPlayerId(value);
+    setForcePick(false);
   }
 
   function startMockPay(id: MockWalletId) {
-    if (!pack || playerId.trim().length < 3 || busy) return;
+    if (!pack || activeId.trim().length < 3 || busy) return;
+    let used = saved;
+    if (!used || used.id === "ephemeral") {
+      const result = addSavedId(hub.id, activeId, used?.label || "main");
+      if (!result.ok) {
+        setError(result.error);
+        return;
+      }
+      used = result.saved;
+      setSaved(used);
+    }
     setWallet(id);
     setBusy(true);
     const txn = makeTxnId();
+    const order = makeOrderId();
+    if (demoReferralCodes.includes(referral.trim().toUpperCase() as (typeof demoReferralCodes)[number])) {
+      writePrefs({ referral: referral.trim().toUpperCase(), referralCredit: 25 });
+    }
+    if (nudge) writePrefs({ restockNudge: true });
+    recordDigitalOrder({
+      hubId: hub.id,
+      packId: pack.id,
+      savedId: used.id,
+      playerId: used.value,
+      txn,
+      orderId: order,
+    });
     const query = new URLSearchParams({
       hub: hub.id,
       pack: pack.id,
       pay: id,
-      pid: playerId.trim(),
+      sid: used.id,
       txn,
+      order,
     }).toString();
     window.setTimeout(() => {
       window.location.href = successHref("pay", query);
-    }, 650);
+    }, 500);
   }
 
   return (
     <div className="mx-auto max-w-xl px-4 py-6 sm:px-6 sm:py-10">
       <div className="flex items-center gap-3">
-        <div className="h-12 w-12 overflow-hidden rounded-xl">
-          <HubArt id={hub.id} />
+        <div className="h-14 w-14 overflow-hidden rounded-xl">
+          <Photo src={hub.photo} alt="" />
         </div>
         <div>
           <p className="text-xs tracking-[0.16em] text-muted uppercase">{hub.kind}</p>
@@ -118,18 +236,21 @@ function DigitalPay({ hub, presetPackId }: { hub: Hub; presetPackId: string | nu
         {demoPayNotice} <DemoBadge className="ml-1" />
       </p>
       {memberOn ? (
-        <p className="mt-2 text-xs text-pine">Member rate on for this DEMO account.</p>
+        <p className="mt-2 text-xs text-pine">Member rate on — including reorder.</p>
+      ) : null}
+      {startOnConfirm ? (
+        <p className="mt-2 text-xs text-gold">Reorder — confirm the same hub, pack, and ID.</p>
       ) : null}
 
       <ol className="mt-5 flex gap-2 text-[11px] font-medium tracking-wide uppercase">
-        {["Pack", "ID", "Mock pay"].map((label, i) => {
+        {["Pack", "ID", "Confirm"].map((label, i) => {
           const n = i + 1;
           return (
             <li
               key={label}
               className={`flex-1 rounded-full px-2 py-1.5 text-center ${
                 step === n
-                  ? "bg-ink text-paper"
+                  ? "bg-gold text-paper"
                   : step > n
                     ? "bg-paper-2 text-muted"
                     : "border border-line text-muted"
@@ -153,15 +274,14 @@ function DigitalPay({ hub, presetPackId }: { hub: Hub; presetPackId: string | nu
                 onClick={() => {
                   setPack(item);
                   setWallet(null);
+                  if (lastUsedSavedId(hub.id) && !forcePick) setForcePick(false);
                 }}
                 className={`rounded-2xl border px-3 py-3 text-left ${
-                  selected ? "border-ink bg-ink text-paper" : `border-line ${hubTile[hub.tone]}`
+                  selected ? "border-gold bg-gold text-paper" : "border-line bg-panel"
                 }`}
               >
                 <p className="text-sm font-semibold">{item.label}</p>
-                <p className="mt-1 text-sm">
-                  NPR {memberOn ? item.memberPrice : item.price}
-                </p>
+                <p className="mt-1 text-sm">NPR {memberOn ? item.memberPrice : item.price}</p>
                 <p className={`mt-0.5 text-[11px] ${selected ? "text-paper/70" : "text-muted"}`}>
                   sample
                 </p>
@@ -171,56 +291,154 @@ function DigitalPay({ hub, presetPackId }: { hub: Hub; presetPackId: string | nu
         </div>
       </section>
 
-      {pack ? (
+      {pack && step === 2 ? (
         <section className="mt-6">
           <h2 className="text-sm font-semibold">2. {hub.idLabel}</h2>
-          <form className="mt-3" onSubmit={onIdSubmit}>
-            <label htmlFor="demo-player-id" className="text-xs text-muted">
-              {hub.idHint}
-            </label>
-            <input
-              id="demo-player-id"
-              value={playerId}
-              onChange={(e) => {
-                setPlayerId(e.target.value);
-                setError("");
-              }}
-              placeholder={hub.idPlaceholder}
-              autoComplete="off"
-              inputMode={hub.id === "valorant" || hub.id === "roblox" || hub.id === "psn" || hub.id === "steam" ? "text" : "numeric"}
-              className="mt-2 w-full rounded-xl border border-line bg-paper px-4 py-3 text-base outline-none focus:border-ink"
-            />
-            {error ? <p className="mt-2 text-sm text-rust">{error}</p> : null}
-            <button
-              type="submit"
-              className="thumb-btn mt-3 w-full rounded-full bg-ink px-4 text-sm font-semibold text-paper"
-            >
-              Continue
-            </button>
-          </form>
+          {savedCount > 0 ? (
+            <div className="mt-3">
+              <SavedIdPanel
+                hub={hub}
+                selectedId={saved?.id ?? null}
+                onSelect={(next) => {
+                  setSaved(next);
+                  setForcePick(false);
+                }}
+              />
+              {saved ? (
+                <button
+                  type="button"
+                  className="thumb-btn mt-3 w-full rounded-full bg-gold text-sm font-semibold text-paper"
+                  onClick={() => setForcePick(false)}
+                >
+                  Use {saved.label} · {maskGameId(saved.value)}
+                </button>
+              ) : null}
+            </div>
+          ) : (
+            <form className="mt-3" onSubmit={onFreshSubmit}>
+              <p className="text-xs text-muted">{hub.idHint} Save it once — next time is two taps.</p>
+              <label className="mt-3 block text-xs text-muted">
+                Short label
+                <input
+                  value={freshLabel}
+                  onChange={(e) => setFreshLabel(e.target.value)}
+                  placeholder="main"
+                  maxLength={16}
+                  className="mt-1 w-full rounded-xl border border-line bg-paper px-4 py-3 text-sm outline-none focus:border-gold"
+                />
+              </label>
+              <input
+                value={freshValue}
+                onChange={(e) => {
+                  setFreshValue(e.target.value);
+                  setError("");
+                }}
+                placeholder={hub.idPlaceholder}
+                autoComplete="off"
+                inputMode={
+                  hub.id === "valorant" || hub.id === "roblox" || hub.id === "psn" || hub.id === "steam"
+                    ? "text"
+                    : "numeric"
+                }
+                className="mt-2 w-full rounded-xl border border-line bg-paper px-4 py-3 text-base outline-none focus:border-gold"
+              />
+              <label className="mt-3 flex items-start gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  checked={saveNext}
+                  onChange={(e) => setSaveNext(e.target.checked)}
+                  className="mt-1"
+                />
+                <span>Save for next time? (default yes)</span>
+              </label>
+              {error ? <p className="mt-2 text-sm text-rust">{error}</p> : null}
+              <button
+                type="submit"
+                className="thumb-btn mt-3 w-full rounded-full bg-gold px-4 text-sm font-semibold text-paper"
+              >
+                Continue to confirm
+              </button>
+            </form>
+          )}
         </section>
       ) : null}
 
-      {pack && playerId.trim().length >= 3 ? (
-        <section className="mt-6">
-          <h2 className="text-sm font-semibold">3. Mock wallet</h2>
-          <p className="mt-1 text-xs text-muted">Pure UI. No API keys.</p>
-          <div className="mt-3 grid gap-2">
+      {pack && canConfirm && step === 3 ? (
+        <section className="mt-6 rounded-2xl border border-line bg-panel p-4">
+          <h2 className="text-sm font-semibold">3. Confirm — then mock pay</h2>
+          <p className="mt-1 text-xs text-muted">No silent ID swap. Check this before a wallet tap.</p>
+          <dl className="mt-4 space-y-2 text-sm">
+            <div className="flex justify-between gap-4">
+              <dt className="text-muted">Hub</dt>
+              <dd className="font-medium">{hub.name}</dd>
+            </div>
+            <div className="flex justify-between gap-4">
+              <dt className="text-muted">{hub.idLabel}</dt>
+              <dd className="font-mono font-medium">
+                {saved?.label ? `${saved.label} · ` : ""}
+                {maskGameId(activeId)}
+              </dd>
+            </div>
+            <div className="flex justify-between gap-4">
+              <dt className="text-muted">Pack</dt>
+              <dd className="font-medium">{pack.label}</dd>
+            </div>
+            <div className="flex justify-between gap-4">
+              <dt className="text-muted">Price</dt>
+              <dd className="font-semibold text-gold">
+                NPR {memberOn ? pack.memberPrice : pack.price}
+                {memberOn ? <span className="ml-1 text-[11px] font-normal text-pine">member</span> : null}
+              </dd>
+            </div>
+          </dl>
+          <button
+            type="button"
+            className="mt-3 text-xs text-teal underline-offset-4 hover:underline"
+            onClick={() => setForcePick(true)}
+          >
+            Change ID
+          </button>
+
+          <label className="mt-4 block text-xs text-muted">
+            Clan / referral code (DEMO — credit on next digital)
+            <input
+              value={referral}
+              onChange={(e) => setReferral(e.target.value)}
+              placeholder="AMROZ / WARD32 / SQUAD"
+              className="mt-1 w-full rounded-xl border border-line bg-paper px-3 py-2.5 text-sm outline-none focus:border-gold"
+            />
+          </label>
+          <label className="mt-3 flex items-start gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={nudge}
+              onChange={(e) => setNudge(e.target.checked)}
+            />
+            <span className="text-xs text-muted">
+              WhatsApp me when this pack is low or restocked (DEMO opt-in)
+            </span>
+          </label>
+
+          <div className="mt-4 grid gap-2">
             {mockWallets.map((method) => (
               <button
                 key={method.id}
                 type="button"
                 disabled={busy}
                 onClick={() => startMockPay(method.id)}
-                className="rounded-2xl border border-line bg-panel px-4 py-4 text-left"
+                className="rounded-2xl border border-line bg-paper px-4 py-4 text-left"
               >
                 <p className="font-semibold">{method.label}</p>
                 <p className="mt-1 text-xs text-muted">{method.hint}</p>
                 {wallet === method.id && busy ? (
-                  <p className="mt-2 text-sm text-pine">Mock {method.name}… not contacting a bank.</p>
+                  <p className="mt-2 text-sm text-pine">Mock {method.name}… minting txn + order ID.</p>
                 ) : null}
               </button>
             ))}
+            <div className="rounded-2xl border border-dashed border-line px-4 py-3 text-sm text-muted">
+              <p className="font-medium text-ink-soft">{comingWallet.label}</p>
+              <p className="mt-1 text-xs">{comingWallet.hint}</p>
+            </div>
           </div>
         </section>
       ) : null}
@@ -269,22 +487,31 @@ function PhysicalPay({ item }: { item: PhysicalItem }) {
     setWallet(id);
     setBusy(true);
     const txn = makeTxnId();
+    const order = makeOrderId();
+    writePrefs({
+      sla: {
+        sku: item.id,
+        name: item.name,
+        orderId: order,
+        dueAt: slaDueFromNow(),
+      },
+    });
     const query = new URLSearchParams({
       sku: item.id,
       pay: id,
-      pid: holdName.trim(),
       txn,
+      order,
     }).toString();
     window.setTimeout(() => {
       window.location.href = successHref("pay", query);
-    }, 650);
+    }, 500);
   }
 
   return (
     <div className="mx-auto max-w-xl px-4 py-6 sm:px-6 sm:py-10">
       <div className="overflow-hidden rounded-2xl border border-line">
-        <div className="h-28">
-          <ProductArt group={item.group} />
+        <div className="aspect-[16/9]">
+          <Photo src={item.photo} alt={item.name} />
         </div>
       </div>
       <p className="mt-4 text-xs tracking-[0.16em] text-muted uppercase">{item.kind}</p>
@@ -293,6 +520,9 @@ function PhysicalPay({ item }: { item: PhysicalItem }) {
       <p className="mt-2 text-sm">
         NPR {memberOn ? item.memberPrice : item.price}
         <span className="ml-2 text-xs text-muted">same-day · ≤ 2h · Pepsicola Ward 32</span>
+      </p>
+      <p className={`mt-1 text-xs stock-${item.stock}`}>
+        Live shelf · {item.stock === "in" ? "on the counter" : item.stock === "low" ? "low" : "ask"}
       </p>
       <p className="mt-1 text-xs text-muted">
         {demoPayNotice} <DemoBadge className="ml-1" />
@@ -310,12 +540,12 @@ function PhysicalPay({ item }: { item: PhysicalItem }) {
             setError("");
           }}
           placeholder="Name or WhatsApp"
-          className="mt-2 w-full rounded-xl border border-line bg-paper px-4 py-3 text-base outline-none focus:border-ink"
+          className="mt-2 w-full rounded-xl border border-line bg-paper px-4 py-3 text-base outline-none focus:border-gold"
         />
         {error ? <p className="mt-2 text-sm text-rust">{error}</p> : null}
         <button
           type="submit"
-          className="thumb-btn mt-3 w-full rounded-full bg-ink px-4 text-sm font-semibold text-paper"
+          className="thumb-btn mt-3 w-full rounded-full bg-gold px-4 text-sm font-semibold text-paper"
         >
           Continue to mock pay
         </button>
@@ -338,6 +568,10 @@ function PhysicalPay({ item }: { item: PhysicalItem }) {
               ) : null}
             </button>
           ))}
+          <div className="rounded-2xl border border-dashed border-line px-4 py-3 text-sm text-muted">
+            <p className="font-medium text-ink-soft">{comingWallet.label}</p>
+            <p className="mt-1 text-xs">{comingWallet.hint}</p>
+          </div>
         </div>
       ) : null}
 
@@ -348,5 +582,21 @@ function PhysicalPay({ item }: { item: PhysicalItem }) {
         WhatsApp fallback
       </a>
     </div>
+  );
+}
+
+function BundlePay({ bundle }: { bundle: Bundle }) {
+  const hub = getHub(bundle.hubId);
+  const pack = hub ? getPack(hub, bundle.packId) : undefined;
+  const item = getPhysical(bundle.sku);
+  if (!hub || !pack || !item) return <HubPicker />;
+  return (
+    <DigitalPay
+      hub={hub}
+      presetPackId={pack.id}
+      presetSid={null}
+      reorder={false}
+      orderId={null}
+    />
   );
 }

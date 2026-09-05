@@ -40,14 +40,25 @@ export function shopPageHref(from: SitePage = "home") {
   return href(from, "shop");
 }
 
-export function payHref(
-  from: SitePage,
-  query?: { hub?: string; sku?: string; pack?: string },
-) {
+export type PayQuery = {
+  hub?: string;
+  sku?: string;
+  pack?: string;
+  sid?: string;
+  reorder?: string;
+  bundle?: string;
+  oid?: string;
+};
+
+export function payHref(from: SitePage, query?: PayQuery) {
   const params = new URLSearchParams();
   if (query?.hub) params.set("hub", query.hub);
   if (query?.sku) params.set("sku", query.sku);
   if (query?.pack) params.set("pack", query.pack);
+  if (query?.sid) params.set("sid", query.sid);
+  if (query?.reorder) params.set("reorder", query.reorder);
+  if (query?.bundle) params.set("bundle", query.bundle);
+  if (query?.oid) params.set("oid", query.oid);
   const q = params.toString();
   return href(from, "pay", q ? `?${q}` : "");
 }
@@ -61,4 +72,17 @@ export function navHref(hash: string, from: SitePage) {
   if (from === "home") return `#${hash}`;
   if (!isStaticPages) return `/#${hash}`;
   return `../index.html#${hash}`;
+}
+
+export function reorderHref(
+  from: SitePage,
+  input: { hub: string; pack: string; sid: string; oid?: string },
+) {
+  return payHref(from, {
+    hub: input.hub,
+    pack: input.pack,
+    sid: input.sid,
+    oid: input.oid,
+    reorder: "1",
+  });
 }

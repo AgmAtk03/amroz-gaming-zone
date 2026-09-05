@@ -1,7 +1,6 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
-import { DemoBadge } from "@/components/brand";
 import { hubs, physical } from "@/lib/catalog";
 import { payHref, type SitePage } from "@/lib/routes";
 
@@ -10,11 +9,7 @@ type Msg = { role: "bot" | "user"; text: string; lang: Lang; href?: string; href
 
 function detectLang(text: string): Lang {
   if (/[\u0900-\u097F]/.test(text)) return "ne";
-  if (
-    /\b(kati|cha|chha|chahincha|garnu|garna|chahe|ho|huncha|paisa|sasto|topup|top up)\b/i.test(
-      text,
-    )
-  ) {
+  if (/\b(kati|cha|chha|chahincha|garnu|garna|chahe|ho|huncha|paisa|sasto|topup|top up)\b/i.test(text)) {
     return "ne";
   }
   return "en";
@@ -56,28 +51,20 @@ function reply(
       hrefLabel: lang === "ne" ? `${hitHub.name} pack kholnus` : `Open ${hitHub.name} packs`,
       text:
         lang === "ne"
-          ? `${hitHub.name} — ${hitHub.blurb} Pack choose garera ID pathaunus. Instant digital.`
-          : `${hitHub.name}: ${hitHub.blurb} Open the pack list and drop the ID. Instant digital.`,
+          ? `${hitHub.name} — ${hitHub.blurb} Pack choose, saved ID default huncha.`
+          : `${hitHub.name}: ${hitHub.blurb} Open packs — last-used saved ID is the default.`,
     };
   }
 
   if (hitItem) {
     return {
       lang,
+      href: payHref(from, { sku: hitItem.id }),
+      hrefLabel: lang === "ne" ? "Shelf card kholnus" : `Open ${hitItem.name}`,
       text:
         lang === "ne"
-          ? `${hitItem.name} shelf ma cha. Same-day Pepsicola Ward 32, usually 2 hours. WhatsApp fallback ni huncha.`
-          : `${hitItem.name} is on the physical shelf. Same-day from Pepsicola Ward 32, usually within two hours. WhatsApp if you want a human.`,
-    };
-  }
-
-  if (/\b(help|product|find|khoj|chahin|sallah|ke cha|what do)\b/i.test(q) || q.length < 3) {
-    return {
-      lang,
-      text:
-        lang === "ne"
-          ? "Kehi khojna madat chahinchha? Free Fire, PUBG, MLBB, Valorant, Roblox, PS Store, Steam — ya Fantech / PS5 gear. Naam lekhnu hola."
-          : "Want help finding a product? I can point you to Free Fire, PUBG, MLBB, Valorant, Roblox, PS Store, Steam, or the physical shelf.",
+          ? `${hitItem.name} shelf ma cha. Same-day Pepsicola Ward 32, usually 2 hours.`
+          : `${hitItem.name} is on the shelf. Same-day from Pepsicola Ward 32, usually within two hours.`,
     };
   }
 
@@ -85,14 +72,14 @@ function reply(
     lang,
     text:
       lang === "ne"
-        ? "Maile tyo product bheteina. Game ko naam ya 'mouse', 'headset', 'PS5' lekhnus. Yo DEMO desk ho."
-        : "I did not match that. Try a game name, or mouse / headset / PS5. This is a DEMO desk.",
+        ? "Game naam, pack, ya gear lekhnus — FF, PUBG, MLBB, Valorant, Roblox, PS Store, Steam, Fantech, DualSense."
+        : "Ask for a hub or a SKU — FF, PUBG, MLBB, Valorant, Roblox, PS Store, Steam, Fantech, DualSense.",
   };
 }
 
 const starters = [
   { en: "Free Fire", ne: "Free Fire", send: "Free Fire" },
-  { en: "Physical gear", ne: "Physical gear", send: "fantech mouse" },
+  { en: "DualSense", ne: "DualSense", send: "DualSense" },
   { en: "PS Store", ne: "PS Store", send: "PS Store" },
 ];
 
@@ -103,10 +90,9 @@ export function ChatWidget({ from = "home" }: { from?: SitePage }) {
     {
       role: "bot",
       lang: "en",
-      text: "Amroz desk (DEMO). English or Nepali is fine. Want help finding a product?",
+      text: "Find a pack or a SKU. English or Nepali. DEMO desk — no paid API.",
     },
   ]);
-
   const lastLang = useMemo(() => msgs.filter((m) => m.role === "user").at(-1)?.lang ?? "en", [msgs]);
 
   function pushUser(text: string) {
@@ -129,33 +115,13 @@ export function ChatWidget({ from = "home" }: { from?: SitePage }) {
 
   return (
     <>
-      <section id="desk" className="mx-auto max-w-5xl px-4 py-6 sm:px-6">
-        <div className="flex items-center justify-between gap-3 rounded-2xl border border-line bg-panel px-4 py-4">
-          <div>
-            <div className="flex items-center gap-2">
-              <p className="text-xs tracking-[0.16em] text-muted uppercase">Desk chat</p>
-              <DemoBadge />
-            </div>
-            <p className="font-serif mt-1 text-lg font-semibold">Need a hand finding something?</p>
-            <p className="mt-1 text-sm text-muted">Nepali or English. Points you to a pack or the shelf.</p>
-          </div>
-          <button
-            type="button"
-            className="thumb-btn shrink-0 rounded-full bg-ink px-4 text-sm font-semibold text-paper"
-            onClick={() => setOpen(true)}
-          >
-            Open chat
-          </button>
-        </div>
-      </section>
-
       {open ? null : (
         <button
           type="button"
-          className="fixed right-4 bottom-20 z-40 thumb-btn rounded-full bg-ink px-4 text-sm font-semibold text-paper shadow-lg sm:bottom-4"
+          className="fixed right-4 bottom-4 z-40 thumb-btn rounded-full bg-gold px-4 text-sm font-semibold text-paper shadow-lg"
           onClick={() => setOpen(true)}
         >
-          Chat
+          Find a product
         </button>
       )}
 
@@ -164,8 +130,8 @@ export function ChatWidget({ from = "home" }: { from?: SitePage }) {
           <div className="flex h-[min(32rem,78vh)] flex-col overflow-hidden rounded-2xl border border-line bg-panel shadow-xl">
             <div className="flex items-center justify-between border-b border-line px-4 py-3">
               <div>
-                <p className="text-sm font-semibold">Amroz desk</p>
-                <p className="text-[11px] text-muted">DEMO · no paid API</p>
+                <p className="text-sm font-semibold">Find a product</p>
+                <p className="text-[11px] text-muted">DEMO · points to a pack or SKU</p>
               </div>
               <button
                 type="button"
@@ -181,16 +147,14 @@ export function ChatWidget({ from = "home" }: { from?: SitePage }) {
                 <div
                   key={`${i}-${msg.text.slice(0, 12)}`}
                   className={`max-w-[90%] rounded-2xl px-3 py-2 text-sm ${
-                    msg.role === "user"
-                      ? "ml-auto bg-ink text-paper"
-                      : "bg-paper-2 text-ink"
+                    msg.role === "user" ? "ml-auto bg-gold text-paper" : "bg-paper-2 text-ink"
                   }`}
                 >
                   <p>{msg.text}</p>
                   {msg.href ? (
                     <a
                       href={msg.href}
-                      className="mt-2 inline-flex rounded-full bg-ink px-3 py-1.5 text-xs font-semibold text-paper"
+                      className="mt-2 inline-flex rounded-full bg-gold px-3 py-1.5 text-xs font-semibold text-paper"
                     >
                       {msg.hrefLabel ?? "Open"}
                     </a>
@@ -214,13 +178,10 @@ export function ChatWidget({ from = "home" }: { from?: SitePage }) {
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder={lastLang === "ne" ? "Khojne kura lekhnu…" : "Ask for a product…"}
-                className="min-h-11 flex-1 rounded-full border border-line bg-paper px-4 text-sm outline-none focus:border-ink"
+                placeholder={lastLang === "ne" ? "Pack ya SKU lekhnus…" : "Ask for a pack or SKU…"}
+                className="min-h-11 flex-1 rounded-full border border-line bg-paper px-4 text-sm outline-none focus:border-gold"
               />
-              <button
-                type="submit"
-                className="h-11 rounded-full bg-pine px-4 text-sm font-semibold text-paper"
-              >
+              <button type="submit" className="h-11 rounded-full bg-gold px-4 text-sm font-semibold text-paper">
                 Send
               </button>
             </form>
