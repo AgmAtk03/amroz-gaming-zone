@@ -6,11 +6,17 @@ Kathmandu **marketplace** demo — instant digital top-ups and same-day physical
 
 Branch CDNs go stale. Open **one** `live-demo` commit SHA. HTML, CSS, `_next` media, and `amroz-client.js` all live in that same tree — no second assets commit.
 
-Rebuild with `npm run export:githack` (relative `./_next` + a client-only React boot). Do **not** pin HTML at SHA B to `_next` at SHA A. A commit cannot contain its own hash, so absolute CDN `assetPrefix` always desyncs.
-
-**Current export:** see the latest `live-demo` commit after publish.
+**Current export:** `e150bf30d642954bd2e6386271bf553092b686a2`
 
 Use **rawcdn** (production). `raw.githack.com` may show a one-time “Open the page” interstitial.
+
+- Home: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/e150bf30d642954bd2e6386271bf553092b686a2/index.html
+- Shop: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/e150bf30d642954bd2e6386271bf553092b686a2/shop/index.html
+- Pay: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/e150bf30d642954bd2e6386271bf553092b686a2/pay/index.html
+- Free Fire: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/e150bf30d642954bd2e6386271bf553092b686a2/pay/index.html?hub=freefire
+- Success: https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/e150bf30d642954bd2e6386271bf553092b686a2/pay/success/index.html
+
+Same SHA on `raw.githack.com` (replace the host).
 
 ## Saved IDs + one-tap reorder (v1)
 
