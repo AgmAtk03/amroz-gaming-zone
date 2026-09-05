@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "export:githack": "STATIC_EXPORT=1 NEXT_PUBLIC_STATIC_PAGES=1 STATIC_CDN=https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/__LIVE_SHA__ next build && STATIC_ORIGIN=https://rawcdn.githack.com/AgmAtk03/amroz-gaming-zone/__LIVE_SHA__ node scripts/rewrite-static-paths.mjs"
+    "export:githack": "STATIC_EXPORT=1 NEXT_PUBLIC_STATIC_PAGES=1 STATIC_CDN=https://cdn.jsdelivr.net/gh/AgmAtk03/amroz-gaming-zone@__LIVE_SHA__ next build && STATIC_ORIGIN=https://cdn.jsdelivr.net/gh/AgmAtk03/amroz-gaming-zone@__LIVE_SHA__ node scripts/rewrite-static-paths.mjs"
   },
   "dependencies": {
     "next": "16.3.4",
