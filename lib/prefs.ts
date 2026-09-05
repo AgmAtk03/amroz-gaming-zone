@@ -15,25 +15,26 @@ export type ShopPrefs = {
 const KEY = "amroz-prefs-v1";
 const EVENT = "amroz-prefs";
 
+const EMPTY_PREFS: ShopPrefs = {};
 let snapshotRaw: string | null = null;
-let snapshot: ShopPrefs = {};
+let snapshot: ShopPrefs = EMPTY_PREFS;
 
 function emit() {
   window.dispatchEvent(new Event(EVENT));
 }
 
 export function readPrefs(): ShopPrefs {
-  if (typeof window === "undefined") return {};
+  if (typeof window === "undefined") return EMPTY_PREFS;
   try {
     const raw = window.localStorage.getItem(KEY);
     if (raw === snapshotRaw) return snapshot;
     snapshotRaw = raw;
-    snapshot = raw ? (JSON.parse(raw) as ShopPrefs) : {};
+    snapshot = raw ? (JSON.parse(raw) as ShopPrefs) : EMPTY_PREFS;
     return snapshot;
   } catch {
     snapshotRaw = null;
-    snapshot = {};
-    return {};
+    snapshot = EMPTY_PREFS;
+    return EMPTY_PREFS;
   }
 }
 
@@ -55,5 +56,5 @@ function subscribe(onStoreChange: () => void) {
 }
 
 export function usePrefs() {
-  return useSyncExternalStore(subscribe, readPrefs, (): ShopPrefs => ({}));
+  return useSyncExternalStore(subscribe, readPrefs, () => EMPTY_PREFS);
 }
