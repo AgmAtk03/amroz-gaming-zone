@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import { Photo } from "@/components/photo";
 import { memberPerks } from "@/lib/content";
-import { clearMember, useMember, writeMember } from "@/lib/member";
+import { clearMember, isShopName, useMember, writeMember } from "@/lib/member";
 
 export function MembersOffer() {
   const member = useMember();
@@ -16,6 +16,10 @@ export function MembersOffer() {
     const phone = String(data.get("phone") ?? "").trim();
     if (name.length < 2 || phone.length < 7) {
       setError("Need a name and a phone (7+ digits).");
+      return;
+    }
+    if (!isShopName(name)) {
+      setError("Use the name you want on the account.");
       return;
     }
     writeMember({ name, phone, createdAt: new Date().toISOString() });
