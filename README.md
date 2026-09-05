@@ -6,12 +6,12 @@ Kathmandu **marketplace** demo — instant digital top-ups and same-day physical
 
 Branch CDNs go stale. Open the **`live-demo` commit SHA**, not the branch name.
 
-**Current export:** *(set after `live-demo` publish)*
+**Current export:** `55ecdde8cdfb636674f2f7ab8f2ea81fcc4f8f95`
 
-- Home: `https://raw.githack.com/AgmAtk03/amroz-gaming-zone/<SHA>/index.html`
-- Shop: `https://raw.githack.com/AgmAtk03/amroz-gaming-zone/<SHA>/shop/index.html`
-- Pay: `https://raw.githack.com/AgmAtk03/amroz-gaming-zone/<SHA>/pay/index.html`
-- Success: `https://raw.githack.com/AgmAtk03/amroz-gaming-zone/<SHA>/pay/success/index.html`
+- Home: https://raw.githack.com/AgmAtk03/amroz-gaming-zone/55ecdde8cdfb636674f2f7ab8f2ea81fcc4f8f95/index.html
+- Shop: https://raw.githack.com/AgmAtk03/amroz-gaming-zone/55ecdde8cdfb636674f2f7ab8f2ea81fcc4f8f95/shop/index.html
+- Pay: https://raw.githack.com/AgmAtk03/amroz-gaming-zone/55ecdde8cdfb636674f2f7ab8f2ea81fcc4f8f95/pay/index.html
+- Success: https://raw.githack.com/AgmAtk03/amroz-gaming-zone/55ecdde8cdfb636674f2f7ab8f2ea81fcc4f8f95/pay/success/index.html
 
 ## Saved IDs + one-tap reorder (v1)
 
