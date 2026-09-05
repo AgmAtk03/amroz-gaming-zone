@@ -1,5 +1,6 @@
 import { GameArt } from "@/components/game-art";
 import { featuredHubs, hubsInCategory, type Hub } from "@/lib/catalog";
+import { categoryDeliveryLabel, INSTANT_DELIVERY } from "@/lib/content";
 import { payHref, type SitePage } from "@/lib/routes";
 
 export function HubGrid({
@@ -18,6 +19,7 @@ export function HubGrid({
     : category
       ? hubsInCategory(category)
       : featuredHubs;
+  const delivery = categoryDeliveryLabel(category) ?? (featured || !category ? INSTANT_DELIVERY : null);
 
   return (
     <section id="topups" className={compact ? "py-4" : "py-6 sm:py-8"}>
@@ -25,7 +27,7 @@ export function HubGrid({
         <div className="flex items-end justify-between gap-3">
           <div>
             <p className="text-xs font-semibold tracking-wide text-gold uppercase">
-              {featured ? "Popular games" : "Games"}
+              {delivery ?? (featured ? "Popular games" : "Games")}
             </p>
             <h2 className="mt-1 text-2xl font-semibold tracking-tight">
               One card per game. Packs after you tap.

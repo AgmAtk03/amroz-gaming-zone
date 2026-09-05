@@ -16,7 +16,7 @@ export function Wordmark({
       aria-label="Amroz Gaming Zone home"
     >
       <svg viewBox="0 0 36 36" className="h-9 w-9 shrink-0" aria-hidden="true">
-        <rect x="1.5" y="1.5" width="33" height="33" rx="9" fill={inverse ? "#ffffff" : "#fa7b24"} />
+        <rect x="1.5" y="1.5" width="33" height="33" rx="9" fill={inverse ? "#ffffff" : "#ff3b4a"} />
         <path
           d="M9 26 L18 9 L27 26"
           stroke="#0f1419"

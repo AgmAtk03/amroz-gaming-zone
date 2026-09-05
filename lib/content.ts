@@ -1,7 +1,20 @@
+export const INSTANT_DELIVERY = "Instant Delivery";
+export const GEAR_DELIVERY = "2 Hour Delivery";
+
+export function isInstantCategory(cat?: string | null) {
+  return cat === "topups" || cat === "subscriptions";
+}
+
+export function categoryDeliveryLabel(cat?: string | null) {
+  if (cat === "gear") return GEAR_DELIVERY;
+  if (isInstantCategory(cat)) return INSTANT_DELIVERY;
+  return null;
+}
+
 export const site = {
   name: "Amroz Gaming Zone",
   shortName: "Amroz",
-  tagline: "Game top-ups on your ID. 2 hour gear in Kathmandu.",
+  tagline: "Instant Delivery top-ups. 2 Hour Delivery gear in Kathmandu.",
   city: "Kathmandu",
   ward: "Ward 32",
   area: "Pepsicola",
@@ -43,7 +56,7 @@ export const memberPerks = [
   },
   {
     title: "Gear packed first",
-    detail: "Your 2 hour delivery jumps the regular queue.",
+    detail: "Your 2 Hour Delivery jumps the regular queue.",
   },
   {
     title: "Weekend drops early",
@@ -52,9 +65,9 @@ export const memberPerks = [
 ] as const;
 
 export const trustSteps = [
-  { n: "1", title: "Lands on your ID", detail: "UID, Riot ID, or store login" },
+  { n: "1", title: INSTANT_DELIVERY, detail: "Lands on your ID" },
   { n: "2", title: "eSewa & Khalti", detail: "Pay in NPR, then we send" },
-  { n: "3", title: "2 hour gear", detail: "Pepsicola, Ward 32" },
+  { n: "3", title: GEAR_DELIVERY, detail: "Pepsicola, Ward 32" },
 ] as const;
 
 export const referralCodes = ["AMROZ", "WARD32", "SQUAD"] as const;

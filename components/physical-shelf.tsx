@@ -10,6 +10,7 @@ import {
   stockLabel,
   type PhysicalKind,
 } from "@/lib/catalog";
+import { GEAR_DELIVERY } from "@/lib/content";
 import { physicalWhatsAppHref } from "@/lib/demo-pay";
 import { payHref, shopPageHref, type SitePage } from "@/lib/routes";
 
@@ -50,7 +51,7 @@ export function PhysicalShelf({
           Gaming gear
         </p>
         <h2 className="mt-1 text-2xl font-semibold tracking-tight">
-          2 hour delivery
+          {GEAR_DELIVERY}
         </h2>
         <p className="mt-2 max-w-lg text-sm text-muted">
           Pickup or drop-off from Pepsicola, Ward 32.
@@ -112,7 +113,7 @@ export function PhysicalShelf({
                     <Photo src={item.photo} alt={item.name} />
                     <div className="absolute top-2 left-2 flex flex-col gap-1">
                       <span className="rounded-xl bg-paper/90 px-2 py-0.5 text-[10px] font-semibold">
-                        2 hour delivery
+                        {GEAR_DELIVERY}
                       </span>
                       {item.stock === "in" ? (
                         <span className="rounded-xl bg-paper/90 px-2 py-0.5 text-[10px] font-semibold">

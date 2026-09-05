@@ -6,7 +6,7 @@
     {
       "id": "topups",
       "label": "Top-ups",
-      "blurb": "Diamonds, UC, VP — one card per game."
+      "blurb": "Diamonds, UC, VP — Instant Delivery."
     },
     {
       "id": "vouchers",
@@ -21,12 +21,12 @@
     {
       "id": "subscriptions",
       "label": "Subs",
-      "blurb": "Netflix, YouTube, VPN."
+      "blurb": "Netflix, YouTube, VPN — Instant Delivery."
     },
     {
       "id": "gear",
       "label": "Gear",
-      "blurb": "Fantech, PS5, 2 hour delivery."
+      "blurb": "Fantech, PS5, 2 Hour Delivery."
     }
   ],
   "hubs": [

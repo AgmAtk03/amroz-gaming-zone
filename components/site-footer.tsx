@@ -1,5 +1,5 @@
 import { Wordmark } from "@/components/brand";
-import { site, whatsAppHref } from "@/lib/content";
+import { GEAR_DELIVERY, INSTANT_DELIVERY, site, whatsAppHref } from "@/lib/content";
 import { homeHref, type SitePage } from "@/lib/routes";
 
 export function SiteFooter({ page = "home" }: { page?: SitePage }) {
@@ -9,11 +9,13 @@ export function SiteFooter({ page = "home" }: { page?: SitePage }) {
         <div>
           <Wordmark href={homeHref(page)} />
           <p className="mt-3 max-w-sm text-sm text-muted">{site.addressLine}</p>
-          <p className="mt-1 text-sm text-muted">Top-ups on your ID. 2 hour gear.</p>
+          <p className="mt-1 text-sm text-muted">
+            Top-ups {INSTANT_DELIVERY}. Gear {GEAR_DELIVERY}.
+          </p>
         </div>
         <div className="flex flex-col gap-3">
           <a
-            href={whatsAppHref("Hi Amroz — I need a top-up or 2 hour gear.")}
+            href={whatsAppHref(`Hi Amroz — I need a top-up or ${GEAR_DELIVERY} gear.`)}
             className="thumb-btn inline-flex items-center justify-center rounded-xl bg-gold px-5 text-sm font-semibold text-paper"
           >
             WhatsApp the shop

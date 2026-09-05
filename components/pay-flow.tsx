@@ -18,7 +18,7 @@ import {
   type Pack,
   type PhysicalItem,
 } from "@/lib/catalog";
-import { referralCodes } from "@/lib/content";
+import { INSTANT_DELIVERY, isInstantCategory, referralCodes } from "@/lib/content";
 import {
   comingWallet,
   demoWhatsAppHref,
@@ -266,6 +266,9 @@ function DigitalPay({
           <GameArt src={hub.photo} name={hub.name} short={hub.short} alt="" />
         </div>
         <div>
+          {isInstantCategory(hub.category) ? (
+            <p className="text-xs font-semibold tracking-wide text-gold uppercase">{INSTANT_DELIVERY}</p>
+          ) : null}
           <p className="text-xs tracking-[0.16em] text-muted uppercase">{hub.kind}</p>
           <h1 className="text-2xl font-semibold">{hub.name}</h1>
         </div>
@@ -649,13 +652,13 @@ function PhysicalPay({ item }: { item: PhysicalItem }) {
       <p className="mt-2 text-sm text-muted">{item.blurb}</p>
       <p className="mt-2 text-sm">
         NPR {memberOn ? item.memberPrice : item.price}
-        <span className="ml-2 text-xs text-muted">2 hour delivery · Pepsicola Ward 32</span>
+        <span className="ml-2 text-xs text-muted">2 Hour Delivery · Pepsicola Ward 32</span>
       </p>
       <p className={`mt-1 text-xs stock-${item.stock}`}>
         Live shelf · {item.stock === "in" ? "on the counter" : item.stock === "low" ? "low" : "ask"}
       </p>
       <p className="mt-1 text-xs text-muted">
-        2 hour hold from the Pepsicola counter.
+        2 Hour Delivery hold from the Pepsicola counter.
       </p>
 
       <form className="mt-6" onSubmit={onHold}>

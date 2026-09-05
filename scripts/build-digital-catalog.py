@@ -612,11 +612,11 @@ for h in hubs:
         h["blurb"] = "Bigo diamonds on your ID. Pay, then go live."
 
 categories = [
-    {"id": "topups", "label": "Top-ups", "blurb": "Diamonds, UC, VP — one card per game."},
+    {"id": "topups", "label": "Top-ups", "blurb": "Diamonds, UC, VP — Instant Delivery."},
     {"id": "vouchers", "label": "Vouchers", "blurb": "Steam, PS Store, PC keys."},
     {"id": "gift-cards", "label": "Gift cards", "blurb": "iTunes, Nintendo, Discord, more."},
-    {"id": "subscriptions", "label": "Subs", "blurb": "Netflix, YouTube, VPN."},
-    {"id": "gear", "label": "Gear", "blurb": "Fantech, PS5, 2 hour delivery."},
+    {"id": "subscriptions", "label": "Subs", "blurb": "Netflix, YouTube, VPN — Instant Delivery."},
+    {"id": "gear", "label": "Gear", "blurb": "Fantech, PS5, 2 Hour Delivery."},
 ]
 
 ids = [h["id"] for h in hubs]

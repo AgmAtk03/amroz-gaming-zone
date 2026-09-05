@@ -16,7 +16,7 @@ const slides = [
   },
   {
     id: "ps5",
-    kicker: "2 hour delivery",
+    kicker: "2 Hour Delivery",
     title: "PS5 console and pads, packed today",
     line: "Ask the Pepsicola shelf. Stock moves fast.",
     cta: "See PS5",
@@ -25,9 +25,9 @@ const slides = [
   },
   {
     id: "topups",
-    kicker: "Top-ups",
+    kicker: "Instant Delivery",
     title: "Pick a game. Pay. Play.",
-    line: "Diamonds, UC, VP — one card per game.",
+    line: "Diamonds, UC, VP — Instant Delivery on your ID.",
     cta: "Browse top-ups",
     href: shopPageHref("home", { cat: "topups" }),
     photo: "/images/hub-freefire.jpg",
@@ -35,7 +35,7 @@ const slides = [
   {
     id: "gear",
     kicker: "Gaming gear",
-    title: "Fantech and pads in 2 hours",
+    title: "Fantech and pads — 2 Hour Delivery",
     line: "In stock chips stay on every card.",
     cta: "Open gear",
     href: shopPageHref("home", { cat: "gear" }),
