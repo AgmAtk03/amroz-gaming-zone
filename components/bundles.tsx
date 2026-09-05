@@ -1,5 +1,6 @@
 import { Photo } from "@/components/photo";
 import { bundles, getHub, getPack, getPhysical } from "@/lib/catalog";
+import { GEAR_DELIVERY, INSTANT_DELIVERY } from "@/lib/content";
 import { payHref, type SitePage } from "@/lib/routes";
 
 export function BundlesRow({ from = "home" }: { from?: SitePage }) {
@@ -9,7 +10,7 @@ export function BundlesRow({ from = "home" }: { from?: SitePage }) {
         <p className="text-xs font-semibold tracking-wide text-muted uppercase">Bundles</p>
         <h2 className="mt-1 text-2xl font-semibold tracking-tight">Top-up + gear</h2>
         <p className="mt-2 max-w-lg text-sm text-muted">
-          Credit on the ID now. Gear in 2 hours from the shelf.
+          {INSTANT_DELIVERY} on the ID now. Gear is {GEAR_DELIVERY} from the shelf.
         </p>
         <ul className="mt-4 grid gap-3 sm:grid-cols-2">
           {bundles.map((bundle) => {

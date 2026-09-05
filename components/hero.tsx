@@ -18,7 +18,7 @@ export function Hero() {
             Top-ups that land on your ID.
           </h1>
           <p className="mt-2 max-w-md text-[15px] text-ink-soft">
-            Pick a game. Pay with eSewa or Khalti. Gear in 2 hours from Pepsicola.
+            Pick a game. Pay with eSewa or Khalti. Instant Delivery on your ID. Gear is 2 Hour Delivery from Pepsicola.
           </p>
           <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center">
             <a

@@ -64,12 +64,12 @@ export function demoWhatsAppHref(
 }
 
 export function physicalWhatsAppHref(name: string) {
-  return whatsAppHref(`Hi Amroz — I want ${name}. 2 hour delivery, Pepsicola Ward 32.`);
+  return whatsAppHref(`Hi Amroz — I want ${name}. 2 Hour Delivery, Pepsicola Ward 32.`);
 }
 
 export function slaMissWhatsAppHref(name: string, orderId: string) {
   return whatsAppHref(
-    `Hi Amroz — 2h window missed for ${name} / ${orderId}. Please credit the next top-up.`,
+    `Hi Amroz — 2 Hour Delivery missed for ${name} / ${orderId}. Please credit the next top-up.`,
   );
 }
 

@@ -1,6 +1,6 @@
 # Amroz Gaming Zone
 
-Kathmandu shop — **Instant Delivery** (header only) top-ups and **2 hour** gaming gear from **Pepsicola, Ward 32**.
+Kathmandu shop — **Instant Delivery** top-ups and **2 Hour Delivery** gaming gear from **Pepsicola, Ward 32**. Neon red accent `#ff3b4a`.
 
 ## Live shop (SHA-pinned githack)
 
@@ -27,7 +27,7 @@ Same SHA on `raw.githack.com` (replace the host).
 - Catalog IA: Categories → one card per game family. Regions/packs only after tap-in. Source `data/gaming-com-np-amroz-catalog.md` → `data/catalog.json` + Amroz gear
 - Checkout: UID / Riot ID / Online ID as needed. Steam & PS Store also ask account password (not saved). Mobile games stay UID-only
 - Saved IDs, Buy again, member price still apply
-- Gear copy is 2 hour delivery; stock chips stay
+- Gear copy is **2 Hour Delivery**; top-ups and subs show **Instant Delivery**. Category tap hides Trending.
 - Wallet buttons are client-only (no live API keys). Customer UI does not label them mock or demo.
 
 ## Stack

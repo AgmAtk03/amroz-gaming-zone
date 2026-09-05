@@ -66,8 +66,8 @@ function reply(
       hrefLabel: lang === "ne" ? "Shelf card kholnus" : `Open ${hitItem.name}`,
       text:
         lang === "ne"
-          ? `${hitItem.name} shelf ma cha. 2 hour delivery, Pepsicola Ward 32.`
-          : `${hitItem.name} is on the shelf. 2 hour delivery from Pepsicola, Ward 32.`,
+          ? `${hitItem.name} shelf ma cha. 2 Hour Delivery, Pepsicola Ward 32.`
+          : `${hitItem.name} is on the shelf. 2 Hour Delivery from Pepsicola, Ward 32.`,
     };
   }
 

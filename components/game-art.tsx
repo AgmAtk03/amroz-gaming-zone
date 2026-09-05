@@ -1,6 +1,6 @@
 import { Photo } from "@/components/photo";
 
-const tones = ["#fa7b24", "#2f9e6b", "#7c8cff", "#e07070", "#c4a35a", "#5aa9e6"];
+const tones = ["#ff3b4a", "#2f9e6b", "#7c8cff", "#e07070", "#c4a35a", "#5aa9e6"];
 
 function tone(id: string) {
   let n = 0;

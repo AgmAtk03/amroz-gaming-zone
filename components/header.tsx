@@ -3,6 +3,7 @@
 import { FormEvent, useMemo, useState } from "react";
 import { InstantBadge, Wordmark } from "@/components/brand";
 import { catalogCategories, hubs, physical } from "@/lib/catalog";
+import { usePageSearchParams } from "@/lib/page-search";
 import { homeHref, payHref, shopPageHref, type SitePage } from "@/lib/routes";
 import { useSavedStore } from "@/lib/saved-ids";
 
@@ -19,6 +20,8 @@ export function Header({
 }) {
   const store = useSavedStore();
   const badge = Math.min(store.orders.length, 9);
+  const search = usePageSearchParams();
+  const activeCat = page === "shop" ? (search?.get("cat") ?? "") : "";
   const [q, setQ] = useState("");
   const hits = useMemo(() => {
     const needle = q.trim().toLowerCase();
@@ -145,7 +148,12 @@ export function Header({
             <li key={chip.id} className="shrink-0">
               <a
                 href={shopPageHref(page, { cat: chip.id })}
-                className="chip-energy inline-flex rounded-full border border-line bg-panel px-3 py-1.5 text-xs font-semibold"
+                aria-current={activeCat === chip.id ? "page" : undefined}
+                className={`chip-energy inline-flex rounded-full px-3 py-1.5 text-xs font-semibold ${
+                  activeCat === chip.id
+                    ? "border border-gold bg-gold text-paper"
+                    : "border border-line bg-panel"
+                }`}
               >
                 {chip.label}
               </a>

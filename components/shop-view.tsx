@@ -7,6 +7,7 @@ import { HubGrid } from "@/components/hub-grid";
 import { PhysicalShelf } from "@/components/physical-shelf";
 import { TrendingStrip } from "@/components/trending";
 import { catalogCategories } from "@/lib/catalog";
+import { categoryDeliveryLabel, GEAR_DELIVERY, INSTANT_DELIVERY } from "@/lib/content";
 import { usePageSearchParams } from "@/lib/page-search";
 
 export function ShopView() {
@@ -14,17 +15,24 @@ export function ShopView() {
   const cat = search?.get("cat") ?? "";
   const active = catalogCategories.some((row) => row.id === cat) ? cat : "";
   const label = catalogCategories.find((row) => row.id === active)?.label;
+  const delivery = categoryDeliveryLabel(active);
 
   return (
     <>
-      <TrendingStrip from="shop" />
+      {!active ? <TrendingStrip from="shop" /> : null}
       <section className="mx-auto max-w-5xl px-4 py-6 sm:px-6">
-        <p className="text-xs font-semibold tracking-wide text-gold uppercase">Shop</p>
+        <p className="text-xs font-semibold tracking-wide text-gold uppercase">
+          {delivery ?? "Shop"}
+        </p>
         <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">
           {label ?? "Categories, then a game"}
         </h1>
         <p className="mt-2 max-w-lg text-sm text-muted">
-          One card per game. Packs show after you tap in. Gear is 2 hour delivery.
+          {active === "gear"
+            ? `Pickup or drop-off from Pepsicola, Ward 32. ${GEAR_DELIVERY}.`
+            : delivery === INSTANT_DELIVERY
+              ? `One card per title. Packs show after you tap in. ${INSTANT_DELIVERY}.`
+              : `One card per game. Packs show after you tap in. Gear is ${GEAR_DELIVERY}.`}
         </p>
       </section>
       {!active ? <CategoryBrowse from="shop" /> : null}
