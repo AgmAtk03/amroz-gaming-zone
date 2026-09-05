@@ -458,14 +458,23 @@ export function getBundle(id: string | null | undefined) {
 }
 
 export function stockLabel(level: StockLevel, qty?: number) {
-  if (level === "in") return qty ? `On shelf · ${qty}` : "On shelf";
+  if (level === "in") return qty ? `In stock · ${qty}` : "In stock";
   if (level === "low") return qty ? `Low · ${qty}` : "Low stock";
   return "Ask the desk";
 }
 
+export const homePhysicalIds = [
+  "ft-wireless",
+  "ft-atom87",
+  "ps5-dualsense",
+  "pad-generic",
+  "phone-triggers",
+  "cable-pack",
+] as const;
+
+export const homeTrending = trendingPacks.slice(0, 5);
+
 export const categories = [
-  { id: "digital", label: "Top-ups", href: "#topups" },
-  { id: "gear", label: "Gear", href: "#shelf" },
-  { id: "bundles", label: "Bundles", href: "#bundles" },
-  { id: "members", label: "Members", href: "#account" },
+  { id: "digital", label: "Instant digital", href: "#topups" },
+  { id: "gear", label: "Same-day physical", href: "#shelf" },
 ] as const;

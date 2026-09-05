@@ -118,7 +118,7 @@ export function ChatWidget({ from = "home" }: { from?: SitePage }) {
       {open ? null : (
         <button
           type="button"
-          className="fixed right-4 bottom-4 z-40 thumb-btn rounded-full bg-gold px-4 text-sm font-semibold text-paper shadow-lg"
+          className="fixed right-4 bottom-20 z-30 thumb-btn rounded-xl bg-gold px-4 text-sm font-semibold text-paper shadow-lg md:bottom-4"
           onClick={() => setOpen(true)}
         >
           Find a product
@@ -126,7 +126,7 @@ export function ChatWidget({ from = "home" }: { from?: SitePage }) {
       )}
 
       {open ? (
-        <div className="fixed inset-x-0 bottom-0 z-50 mx-auto max-w-md px-3 pb-3 sm:inset-auto sm:right-4 sm:bottom-4 sm:w-[22rem] sm:px-0">
+        <div className="fixed inset-x-0 bottom-16 z-50 mx-auto max-w-md px-3 pb-3 md:inset-auto md:right-4 md:bottom-4 md:w-[22rem] md:px-0">
           <div className="flex h-[min(32rem,78vh)] flex-col overflow-hidden rounded-2xl border border-line bg-panel shadow-xl">
             <div className="flex items-center justify-between border-b border-line px-4 py-3">
               <div>

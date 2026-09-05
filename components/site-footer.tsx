@@ -12,19 +12,19 @@ export function SiteFooter({ page = "home" }: { page?: SitePage }) {
             {site.addressLine}
           </p>
           <p className="mt-1 text-sm text-muted">
-            Instant digital · same-day physical ≤ 2h · unique txn + order ID.
+            {site.tagline} Unique txn + order ID.
           </p>
         </div>
         <div className="flex flex-col gap-3">
           <a
             href={whatsAppHref("Hi Amroz — I need a top-up or same-day gear.")}
-            className="thumb-btn inline-flex items-center justify-center rounded-full bg-gold px-5 text-sm font-semibold text-paper"
+            className="thumb-btn inline-flex items-center justify-center rounded-xl bg-gold px-5 text-sm font-semibold text-paper"
           >
             Contact on WhatsApp
           </a>
           <a
             href={`tel:${site.phoneTel}`}
-            className="thumb-btn inline-flex items-center justify-center rounded-full border border-line px-5 text-sm font-semibold"
+            className="thumb-btn inline-flex items-center justify-center rounded-xl border border-line px-5 text-sm font-semibold"
           >
             Call {site.phoneDisplay}
           </a>

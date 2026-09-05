@@ -26,7 +26,7 @@ export function MembersOffer() {
   return (
     <section id="account" className="py-8 sm:py-10">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        <div className="overflow-hidden rounded-3xl border border-line bg-panel">
+        <div className="overflow-hidden rounded-2xl border border-line bg-panel">
           <div className="grid lg:grid-cols-2">
             <div className="relative min-h-40 lg:min-h-full">
               <Photo src="/images/hero.jpg" alt="Member counter at Amroz" className="absolute inset-0" />
@@ -37,7 +37,7 @@ export function MembersOffer() {
                 <p className="text-xs tracking-[0.16em] text-muted uppercase">Members</p>
                 <DemoBadge>DEMO until Cost clears</DemoBadge>
               </div>
-              <h2 className="font-serif mt-1 text-2xl font-semibold tracking-tight">
+              <h2 className="mt-1 text-2xl font-semibold tracking-tight">
                 Member price stays on reorder.
               </h2>
               <p className="mt-2 text-sm text-muted">
@@ -55,7 +55,7 @@ export function MembersOffer() {
                 {member ? (
                   <div>
                     <p className="text-xs tracking-wide text-muted uppercase">Signed in · DEMO</p>
-                    <p className="font-serif mt-1 text-xl font-semibold">{member.name}</p>
+                    <p className="mt-1 text-xl font-semibold">{member.name}</p>
                     <p className="mt-1 text-sm text-muted">{member.phone}</p>
                     <button
                       type="button"
@@ -91,7 +91,7 @@ export function MembersOffer() {
                     {error ? <p className="text-sm text-rust">{error}</p> : null}
                     <button
                       type="submit"
-                      className="thumb-btn w-full rounded-full bg-gold px-4 text-sm font-semibold text-paper"
+                      className="thumb-btn w-full rounded-xl bg-gold px-4 text-sm font-semibold text-paper"
                     >
                       Create DEMO account
                     </button>

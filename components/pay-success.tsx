@@ -81,7 +81,7 @@ export function PaySuccess() {
   return (
     <div className="mx-auto max-w-xl px-4 py-8 sm:px-6 sm:py-12">
       <p className="text-xs tracking-[0.16em] text-muted uppercase">Demo success</p>
-      <h1 className="font-serif mt-2 text-3xl font-semibold tracking-tight">{title}</h1>
+      <h1 className="mt-2 text-3xl font-semibold tracking-tight">{title}</h1>
       <p className="mt-2 text-sm text-muted">
         End of the mock path. No wallet was charged. Keep both IDs if you need to
         backtrack the story.
@@ -147,7 +147,7 @@ export function PaySuccess() {
               sid: stored?.savedId || parsed.sid,
               oid: stored?.id,
             })}
-            className="thumb-btn inline-flex items-center justify-center rounded-full bg-gold px-5 text-sm font-semibold text-paper"
+            className="thumb-btn inline-flex items-center justify-center rounded-xl bg-gold px-5 text-sm font-semibold text-paper"
           >
             Buy again · same ID
           </a>

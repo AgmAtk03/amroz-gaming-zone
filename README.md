@@ -17,7 +17,7 @@ Branch CDNs go stale. Open the **`live-demo` commit SHA**, not the branch name.
 
 - Save up to **5** player/game IDs per hub, each with a short label (`main`, `smurf`).
 - Persist on this device (`localStorage`). Account sync is later.
-- Checkout: hub → pack → last-used saved ID → confirm (hub + **masked** ID + price) → mock pay.
+- Checkout: hub → **UID first** (last-used default) → pack → confirm (hub + **masked** ID + price) → mock pay. Reorder still skips to confirm.
 - No saved ID: enter once, **Save for next time?** defaults yes.
 - Home **Buy again** shows the last 3 digital orders. One tap to confirm, one tap to pay.
 - Order history and WhatsApp shares use a masked ID. Full UID never goes in a share URL.

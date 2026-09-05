@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { DemoPayBanner } from "@/components/demo-banner";
-import { Header } from "@/components/header";
+import { AppShell } from "@/components/app-shell";
 import { PayFlow } from "@/components/pay-flow";
-import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "Pay | Amroz Gaming Zone",
@@ -16,17 +14,10 @@ function PayFallback() {
 
 export default function PayPage() {
   return (
-    <>
-      <div className="sticky top-0 z-50">
-        <DemoPayBanner />
-        <Header page="pay" sticky={false} />
-      </div>
-      <main className="flex-1">
-        <Suspense fallback={<PayFallback />}>
-          <PayFlow />
-        </Suspense>
-      </main>
-      <SiteFooter page="pay" />
-    </>
+    <AppShell page="pay">
+      <Suspense fallback={<PayFallback />}>
+        <PayFlow />
+      </Suspense>
+    </AppShell>
   );
 }

@@ -1,7 +1,7 @@
 export const site = {
   name: "Amroz Gaming Zone",
   shortName: "Amroz",
-  tagline: "Digital now. Physical today.",
+  tagline: "Instant top-ups. Same-day gaming gear in Kathmandu.",
   city: "Kathmandu",
   ward: "Ward 32",
   area: "Pepsicola",
@@ -56,11 +56,16 @@ export const memberPerks = [
   },
 ] as const;
 
+export const trustSteps = [
+  { n: "1", title: "Confirm UID", detail: "Last-used ID is the default" },
+  { n: "2", title: "Pick a pack", detail: "Hub or pack on this phone" },
+  { n: "3", title: "Mock pay", detail: "Instant credit · unique txn ID" },
+] as const;
+
 export const trustBadges = [
-  { title: "Instant digital", detail: "ID credit, usually now" },
-  { title: "Same-day ≤ 2h", detail: "Physical from Pepsicola" },
-  { title: "Txn + order ID", detail: "Every DEMO receipt" },
-  { title: "WhatsApp desk", detail: "Human if the clock slips" },
+  { title: "Instant", detail: "Digital on the ID" },
+  { title: "Same-day KTM", detail: "Physical ≤ 2h" },
+  { title: "In stock", detail: "Shelf truth · DEMO" },
 ] as const;
 
 export const demoReferralCodes = ["AMROZ", "WARD32", "SQUAD"] as const;

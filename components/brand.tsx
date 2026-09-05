@@ -10,22 +10,22 @@ export function Wordmark({
   return (
     <a
       href={href}
-      className="group flex items-center gap-2.5 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+      className="group flex items-center gap-2.5 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
       aria-label="Amroz Gaming Zone home"
     >
       <svg viewBox="0 0 36 36" className="h-9 w-9 shrink-0" aria-hidden="true">
-        <rect x="1.5" y="1.5" width="33" height="33" rx="9" fill={inverse ? "#f4efe6" : "#d4a054"} />
+        <rect x="1.5" y="1.5" width="33" height="33" rx="9" fill={inverse ? "#ffffff" : "#fa7b24"} />
         <path
           d="M9 26 L18 9 L27 26"
-          stroke={inverse ? "#14110e" : "#14110e"}
+          stroke={inverse ? "#0f1419" : "#0f1419"}
           strokeWidth="2.2"
           strokeLinejoin="round"
           fill="none"
         />
-        <path d="M13 18.5 H23" stroke={inverse ? "#14110e" : "#14110e"} strokeWidth="2" />
+        <path d="M13 18.5 H23" stroke={inverse ? "#0f1419" : "#0f1419"} strokeWidth="2" />
       </svg>
       <span className="leading-tight">
-        <span className={`font-serif block text-[15px] ${inverse ? "text-paper" : "text-ink"}`}>
+        <span className={`block text-[15px] font-semibold ${inverse ? "text-paper" : "text-ink"}`}>
           Amroz
         </span>
         {!compact && (

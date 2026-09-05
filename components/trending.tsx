@@ -1,5 +1,5 @@
 import { Photo } from "@/components/photo";
-import { getHub, getPack, trendingPacks } from "@/lib/catalog";
+import { getHub, getPack, homeTrending } from "@/lib/catalog";
 import { payHref, type SitePage } from "@/lib/routes";
 
 export function TrendingStrip({ from = "home" }: { from?: SitePage }) {
@@ -7,9 +7,9 @@ export function TrendingStrip({ from = "home" }: { from?: SitePage }) {
     <section id="trending" className="py-6 sm:py-8">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <p className="text-xs tracking-[0.16em] text-muted uppercase">Trending packs</p>
-        <h2 className="font-serif mt-1 text-2xl font-semibold tracking-tight">What people tap</h2>
+        <h2 className="mt-1 text-2xl font-semibold tracking-tight">What people tap</h2>
         <ul className="shelf-scroll mt-4 flex snap-x gap-3 overflow-x-auto pb-1">
-          {trendingPacks.map((row) => {
+          {homeTrending.map((row) => {
             const hub = getHub(row.hubId);
             const pack = hub ? getPack(hub, row.packId) : undefined;
             if (!hub || !pack) return null;
@@ -19,8 +19,11 @@ export function TrendingStrip({ from = "home" }: { from?: SitePage }) {
                   href={payHref(from, { hub: hub.id, pack: pack.id })}
                   className="photo-card flex h-full flex-col overflow-hidden rounded-2xl"
                 >
-                  <div className="h-24">
+                  <div className="relative h-24">
                     <Photo src={hub.photo} alt="" />
+                    <span className="absolute top-2 left-2 rounded-xl bg-paper/90 px-2 py-0.5 text-[10px] font-semibold">
+                      Instant
+                    </span>
                   </div>
                   <div className="flex flex-1 flex-col p-3">
                     <p className="text-[11px] text-muted">{hub.name}</p>

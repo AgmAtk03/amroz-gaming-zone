@@ -1,26 +1,25 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { DM_Sans, Source_Serif_4 } from "next/font/google";
+import { Inter, Noto_Sans } from "next/font/google";
 import "./globals.css";
 
-const sans = DM_Sans({
+const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const noto = Noto_Sans({
+  variable: "--font-noto",
+  subsets: ["latin", "devanagari"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const serif = Source_Serif_4({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["500", "600"],
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  title: "Amroz Gaming Zone | Marketplace — top-ups & same-day gear",
+  title: "Amroz Gaming Zone | Instant top-ups. Same-day gear in Kathmandu",
   description:
-    "Kathmandu gaming marketplace: instant digital top-ups, same-day physical gear within two hours. Pickup at Pepsicola Ward 32.",
+    "Instant top-ups. Same-day gaming gear in Kathmandu. Digital on the ID, physical from Pepsicola Ward 32 within two hours.",
   applicationName: "Amroz Gaming Zone",
   keywords: [
     "Amroz Gaming Zone",
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Amroz Gaming Zone",
-    description: "Instant digital. Same-day physical from Pepsicola Ward 32.",
+    description: "Instant top-ups. Same-day gaming gear in Kathmandu.",
     locale: "en_NP",
     type: "website",
   },
@@ -44,9 +43,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sans.variable} ${serif.variable} h-full antialiased`}
+      className={`${inter.variable} ${noto.variable} h-full antialiased`}
     >
-      <body className={`${sans.className} site-bg flex min-h-full flex-col`}>{children}</body>
+      <body className={`${inter.className} site-bg flex min-h-full flex-col`}>{children}</body>
     </html>
   );
 }

@@ -18,7 +18,7 @@ export function BuyAgain({ from = "home" }: { from?: SitePage }) {
         <div className="flex items-end justify-between gap-3">
           <div>
             <p className="text-xs tracking-[0.16em] text-muted uppercase">Buy again</p>
-            <h2 className="font-serif mt-1 text-2xl font-semibold tracking-tight">
+            <h2 className="mt-1 text-2xl font-semibold tracking-tight">
               Last {recent.length} digital {recent.length === 1 ? "order" : "orders"}
             </h2>
           </div>
@@ -49,7 +49,7 @@ export function BuyAgain({ from = "home" }: { from?: SitePage }) {
                         sid: order.savedId,
                         oid: order.id,
                       })}
-                      className="thumb-btn mt-3 inline-flex w-full items-center justify-center rounded-full bg-gold text-sm font-semibold text-paper"
+                      className="thumb-btn mt-3 inline-flex w-full items-center justify-center rounded-xl bg-gold text-sm font-semibold text-paper"
                     >
                       Buy again
                     </a>

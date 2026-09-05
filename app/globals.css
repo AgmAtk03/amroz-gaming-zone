@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #14110e;
-  --paper-2: #1b1713;
-  --ink: #f4efe6;
-  --ink-soft: #d8cfc0;
-  --panel: #221c17;
-  --line: #3a3229;
-  --pine: #8fb089;
-  --rust: #d27a5a;
-  --teal: #7eb8b2;
-  --muted: #9a9083;
-  --gold: #d4a054;
-  --ember: #e08a4c;
-  --sand: #c4a574;
-  --brick: #c46a58;
+  --paper: #0f1419;
+  --paper-2: #12181f;
+  --ink: #ffffff;
+  --ink-soft: #e8ecef;
+  --panel: #1a222d;
+  --line: #2a3340;
+  --pine: #8aa394;
+  --rust: #e07070;
+  --teal: #aeb6bd;
+  --muted: #aeb6bd;
+  --gold: #fa7b24;
+  --ember: #fa7b24;
+  --sand: #aeb6bd;
+  --brick: #fa7b24;
 }
 
 @theme inline {
@@ -32,8 +32,10 @@
   --color-ember: var(--ember);
   --color-sand: var(--sand);
   --color-brick: var(--brick);
-  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Source Serif 4", ui-serif, Georgia, serif;
+  --font-sans: "Inter", "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Inter", "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
 }
 
 html {
@@ -47,40 +49,32 @@ body {
 }
 
 body {
-  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans), "Noto Sans", ui-sans-serif, system-ui, sans-serif;
   min-height: 100%;
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--gold) 45%, transparent);
+  background: color-mix(in oklab, var(--gold) 40%, transparent);
   color: var(--paper);
 }
 
 .font-serif {
-  font-family: var(--font-serif), ui-serif, Georgia, serif;
+  font-family: var(--font-sans), "Noto Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
 .site-bg {
-  background:
-    radial-gradient(900px 420px at 0% -10%, rgba(212, 160, 84, 0.08), transparent 55%),
-    radial-gradient(700px 380px at 100% 0%, rgba(143, 176, 137, 0.06), transparent 50%),
-    var(--paper);
+  background: var(--paper);
 }
 
 .thumb-btn {
   min-height: 44px;
 }
 
-.chip-row {
-  scrollbar-width: none;
-}
-.chip-row::-webkit-scrollbar {
-  display: none;
-}
-
+.chip-row,
 .shelf-scroll {
   scrollbar-width: none;
 }
+.chip-row::-webkit-scrollbar,
 .shelf-scroll::-webkit-scrollbar {
   display: none;
 }
@@ -88,16 +82,25 @@ body {
 .photo-card {
   background: var(--panel);
   border: 1px solid var(--line);
+  border-radius: 16px;
 }
 
 .stock-in {
-  color: var(--pine);
+  color: var(--ink-soft);
 }
-.stock-low {
-  color: var(--gold);
-}
+.stock-low,
 .stock-ask {
   color: var(--muted);
+}
+
+.has-tabbar {
+  padding-bottom: 5.5rem;
+}
+
+@media (min-width: 768px) {
+  .has-tabbar {
+    padding-bottom: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

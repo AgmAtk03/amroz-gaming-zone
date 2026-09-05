@@ -7,7 +7,7 @@ export function BundlesRow({ from = "home" }: { from?: SitePage }) {
     <section id="bundles" className="py-6 sm:py-8">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <p className="text-xs tracking-[0.16em] text-muted uppercase">Bundles</p>
-        <h2 className="font-serif mt-1 text-2xl font-semibold tracking-tight">Dual take</h2>
+        <h2 className="mt-1 text-2xl font-semibold tracking-tight">Dual take</h2>
         <p className="mt-2 max-w-lg text-sm text-muted">
           Digital pack + physical SKU in one mock pay. Gear still same-day from the shelf.
         </p>
@@ -38,7 +38,7 @@ export function BundlesRow({ from = "home" }: { from?: SitePage }) {
                     </p>
                     <a
                       href={payHref(from, { bundle: bundle.id, hub: bundle.hubId, pack: bundle.packId, sku: bundle.sku })}
-                      className="thumb-btn mt-3 inline-flex w-full items-center justify-center rounded-full bg-gold text-sm font-semibold text-paper"
+                      className="thumb-btn mt-3 inline-flex w-full items-center justify-center rounded-xl bg-gold text-sm font-semibold text-paper"
                     >
                       Bundle · mock pay
                     </a>

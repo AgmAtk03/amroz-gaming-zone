@@ -1,19 +1,17 @@
-import { trustBadges } from "@/lib/content";
+import { trustSteps } from "@/lib/content";
 
 export function TrustBar() {
   return (
-    <section aria-label="Trust" className="border-b border-line bg-paper-2/80">
-      <ul className="chip-row mx-auto flex max-w-5xl gap-2 overflow-x-auto px-4 py-3 sm:grid sm:grid-cols-4 sm:overflow-visible sm:px-6">
-        {trustBadges.map((badge) => (
-          <li
-            key={badge.title}
-            className="min-w-[10.5rem] rounded-xl border border-line bg-panel px-3 py-2 sm:min-w-0"
-          >
-            <p className="text-xs font-semibold">{badge.title}</p>
-            <p className="text-[11px] text-muted">{badge.detail}</p>
+    <section aria-label="How it works" className="border-b border-line bg-paper-2">
+      <ol className="mx-auto grid max-w-5xl grid-cols-3 gap-3 px-4 py-4 sm:gap-4 sm:px-6">
+        {trustSteps.map((step) => (
+          <li key={step.n} className="rounded-xl border border-line bg-panel px-3 py-3">
+            <p className="text-[11px] font-semibold text-gold">{step.n}</p>
+            <p className="mt-1 text-xs font-semibold sm:text-sm">{step.title}</p>
+            <p className="mt-1 hidden text-[11px] text-muted sm:block">{step.detail}</p>
           </li>
         ))}
-      </ul>
+      </ol>
     </section>
   );
 }
