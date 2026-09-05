@@ -53,12 +53,20 @@ function SlaClock({ dueAt, name, orderId }: { dueAt: number; name: string; order
 export function PaySuccess() {
   const search = useSearchParams();
   const parsed = readDemoOrder(search);
-  const stored = getDigitalOrderByTxn(parsed.txn);
-  const saved = getSavedId(parsed.sid);
   const prefs = usePrefs();
-  const playerId = stored?.playerId ?? saved?.value ?? "";
-  const sample = !parsed.pay || (!parsed.pack && !parsed.item) || !parsed.txn;
+  const [playerId, setPlayerId] = useState("");
+  const [storedSid, setStoredSid] = useState<string | undefined>(undefined);
+  const [storedOid, setStoredOid] = useState<string | undefined>(undefined);
 
+  useEffect(() => {
+    const stored = getDigitalOrderByTxn(parsed.txn);
+    const saved = getSavedId(parsed.sid);
+    setPlayerId(stored?.playerId ?? saved?.value ?? "");
+    setStoredSid(stored?.savedId);
+    setStoredOid(stored?.id);
+  }, [parsed.txn, parsed.sid]);
+
+  const sample = !parsed.pay || (!parsed.pack && !parsed.item) || !parsed.txn;
   const digital = parsed.hub && parsed.pack;
   const title = digital
     ? parsed.hub!.fulfillment
@@ -69,9 +77,13 @@ export function PaySuccess() {
   const label = digital ? parsed.pack!.label : parsed.item?.name ?? "Sample pack";
   const price = digital ? parsed.pack!.price : parsed.item?.price ?? "—";
   const idLabel = digital ? parsed.hub!.idLabel : "Hold for";
-  const masked = playerId ? maskGameId(playerId) : digital ? "••••••" : "Walk-in";
+  const masked = digital
+    ? playerId
+      ? maskGameId(playerId)
+      : "••••••"
+    : parsed.hold || "Walk-in";
   const txn = parsed.txn || "AMRZ-DEMO-WALK";
-  const order = parsed.order || stored?.orderId || "ORD-DEMO";
+  const order = parsed.order || "ORD-DEMO";
   const payName = parsed.pay?.name ?? "Khalti";
 
   const wa = digital && parsed.hub
@@ -139,13 +151,13 @@ export function PaySuccess() {
       </div>
 
       <div className="mt-5 flex flex-col gap-2">
-        {digital && parsed.hub && parsed.pack && (stored?.savedId || parsed.sid) ? (
+        {digital && parsed.hub && parsed.pack && (storedSid || parsed.sid) ? (
           <a
             href={reorderHref("success", {
               hub: parsed.hub.id,
               pack: parsed.pack.id,
-              sid: stored?.savedId || parsed.sid,
-              oid: stored?.id,
+              sid: storedSid || parsed.sid,
+              oid: storedOid,
             })}
             className="thumb-btn inline-flex items-center justify-center rounded-xl bg-gold px-5 text-sm font-semibold text-paper"
           >

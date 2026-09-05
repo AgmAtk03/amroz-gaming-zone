@@ -76,7 +76,8 @@ export function readDemoOrder(search: URLSearchParams) {
   const sid = (search.get("sid") ?? "").trim();
   const txn = (search.get("txn") ?? "").trim();
   const order = (search.get("order") ?? "").trim();
-  return { hub, pack, item, bundle, pay, sid, txn, order };
+  const hold = (search.get("hold") ?? "").trim();
+  return { hub, pack, item, bundle, pay, sid, txn, order, hold };
 }
 
 export function physicalPayHref(from: SitePage, sku: string) {

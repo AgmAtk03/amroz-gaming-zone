@@ -553,6 +553,7 @@ function PhysicalPay({ item }: { item: PhysicalItem }) {
       pay: id,
       txn,
       order,
+      hold: holdName.trim(),
     }).toString();
     window.setTimeout(() => {
       window.location.href = successHref("pay", query);
