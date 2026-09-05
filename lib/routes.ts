@@ -16,16 +16,11 @@ const staticFile = {
   success: "pay/success/index.html",
 } as const;
 
-const staticDepth: Record<SitePage, number> = {
-  home: 0,
-  shop: 1,
-  pay: 1,
-  success: 2,
-};
-
 function staticHref(from: SitePage, to: SitePage, query = "") {
-  const prefix = staticDepth[from] === 0 ? "./" : "../".repeat(staticDepth[from]);
-  return `${prefix}${staticFile[to]}${query}`;
+  const target = staticFile[to];
+  if (from === "home") return target + query;
+  if (from === "shop" || from === "pay") return `../${target}` + query;
+  return `../../${target}` + query;
 }
 
 function href(from: SitePage, to: SitePage, query = "") {
@@ -71,7 +66,7 @@ export function navHref(hash: string, from: SitePage) {
   if (hash === "shop") return shopPageHref(from);
   if (from === "home") return `#${hash}`;
   if (!isStaticPages) return `/#${hash}`;
-  return `../index.html#${hash}`;
+  return from === "success" ? `../../index.html#${hash}` : `../index.html#${hash}`;
 }
 
 export function reorderHref(

@@ -21,6 +21,9 @@ const nextConfig: NextConfig = {
         assetPrefix: "/amroz-gaming-zone",
       }
     : {}),
+  // STATIC_CDN is required for githack: host-root /_next 404s under
+  // /<owner>/<repo>/<sha>/. Set at build time so Turbopack's chunk graph
+  // and getAssetPrefix() stay in sync — do not rewrite /_next after export.
   ...(staticCdn
     ? {
         assetPrefix: staticCdn,

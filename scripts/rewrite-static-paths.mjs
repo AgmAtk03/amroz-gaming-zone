@@ -1,8 +1,23 @@
 import { readdir, readFile, writeFile } from "node:fs/promises";
-import { dirname, extname, join, relative } from "node:path";
+import { extname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
+import { spawnSync } from "node:child_process";
 
 const root = join(fileURLToPath(new URL(".", import.meta.url)), "..", "out");
+
+/**
+ * Prefix public files (`/images`, favicon, icon) with STATIC_ORIGIN.
+ *
+ * Do NOT rewrite `/_next` — Next `assetPrefix` (`STATIC_CDN`) already emits
+ * those URLs. Post-export rewrites of `/_next` break Turbopack hydration
+ * (`getAssetPrefix` + chunk graph).
+ */
+const origin = (process.env.STATIC_ORIGIN || "").replace(/\/+$/, "");
+if (!origin) {
+  console.error("STATIC_ORIGIN is required (absolute URL that hosts public files).");
+  process.exit(1);
+}
+
 const rewriteExt = new Set([".html", ".js", ".css", ".txt", ".json"]);
 
 async function walk(dir) {
@@ -16,14 +31,6 @@ async function walk(dir) {
   return files;
 }
 
-function toRelative(fromFile, absPath) {
-  const target = join(root, absPath);
-  let rel = relative(dirname(fromFile), target).split("\\").join("/");
-  if (!rel.startsWith(".")) rel = `./${rel}`;
-  return rel;
-}
-
-/** `/_next/foo.js/` → `/_next/foo.js` so githack/static hosts do not 404 the file. */
 function stripFileSlash(urlPath) {
   const match = urlPath.match(/^([^?#]*)([?#].*)?$/);
   if (!match) return urlPath;
@@ -33,12 +40,9 @@ function stripFileSlash(urlPath) {
   return urlPath;
 }
 
-const absAsset = /(["'`(=])(\/(?:_next|favicon\.ico|icon\.svg|images)[^"'`)\s]*)/g;
-
-/** Catch leftover `chunk.js/` after relative rewrite (RSC flight + HTML). */
-const leftoverFileSlash =
-  /((?:\.\.\/|\.\/|\/)(?:_next|images)\/[^"'`\s)]+?\.[a-z0-9]+)\//gi;
-const leftoverIconSlash = /((?:\.\.\/|\.\/)?(?:favicon\.ico|icon\.svg)(?:\?[^"'`\s)]*)?)\//gi;
+/** `"/images/foo.jpg"` → `"https://cdn…/images/foo.jpg"` — lookbehind keeps `\"`. */
+const publicAsset =
+  /(?<=["'])\/((?:images|favicon\.ico|icon\.svg)[^"'`\\)\s]*)/g;
 
 const files = await walk(root);
 let changed = 0;
@@ -46,26 +50,50 @@ let changed = 0;
 for (const file of files) {
   if (!rewriteExt.has(extname(file))) continue;
   const source = await readFile(file, "utf8");
-  let next = source.replace(absAsset, (match, prefix, abs) => {
-    return `${prefix}${toRelative(file, stripFileSlash(abs))}`;
-  });
-  next = next.replace(leftoverFileSlash, "$1").replace(leftoverIconSlash, "$1");
+  const next = source.replace(
+    publicAsset,
+    (_, path) => `${origin}/${stripFileSlash(path)}`,
+  );
   if (next !== source) {
     await writeFile(file, next);
     changed += 1;
   }
 }
 
-let leftover = 0;
+let missingPrefix = 0;
+let leftoverPublic = 0;
+let brokenScripts = 0;
 for (const file of files) {
   if (extname(file) !== ".html") continue;
   const source = await readFile(file, "utf8");
-  const hits = source.match(/_next\/static\/[^"' ]+\.(js|css)\//g);
-  if (hits) leftover += hits.length;
+  if (!source.includes(`${origin}/_next/`)) missingPrefix += 1;
+  if (/(?:src|href)="\/(?:images|favicon\.ico|icon\.svg)/.test(source)) leftoverPublic += 1;
+
+  const inlines = source.matchAll(/<script(?![^>]*src=)[^>]*>([\s\S]*?)<\/script>/g);
+  for (const match of inlines) {
+    const check = spawnSync("node", ["--check"], {
+      input: match[1],
+      encoding: "utf8",
+    });
+    if (check.status !== 0) {
+      brokenScripts += 1;
+      console.error(`Broken inline script in ${relative(root, file)}:\n${check.stderr}`);
+    }
+  }
 }
 
-console.log(`Rewrote relative asset paths in ${changed} files under out/.`);
-if (leftover) {
-  console.error(`ERROR: ${leftover} chunk URLs still end with a trailing slash.`);
+console.log(`Prefixed public assets with ${origin}/ in ${changed} files.`);
+if (missingPrefix) {
+  console.error(
+    `ERROR: ${missingPrefix} HTML file(s) missing assetPrefix ${origin}/_next/. Build with STATIC_CDN.`,
+  );
+  process.exit(1);
+}
+if (leftoverPublic) {
+  console.error(`ERROR: ${leftoverPublic} HTML file(s) still have root-absolute public assets.`);
+  process.exit(1);
+}
+if (brokenScripts) {
+  console.error(`ERROR: ${brokenScripts} inline script(s) failed to parse after rewrite.`);
   process.exit(1);
 }
