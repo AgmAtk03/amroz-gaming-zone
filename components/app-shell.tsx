@@ -6,6 +6,7 @@ import { AccountDrawer } from "@/components/account-drawer";
 import { BottomNav } from "@/components/bottom-nav";
 import { Header } from "@/components/header";
 import { SiteFooter } from "@/components/site-footer";
+import { VisitZone } from "@/components/visit-zone";
 import type { SitePage } from "@/lib/routes";
 import { SitePageContext } from "@/lib/site-page";
 
@@ -38,6 +39,7 @@ export function AppShell({
         <main id="main" className="flex-1">
           {children}
         </main>
+        {page === "home" || page === "shop" ? <VisitZone /> : null}
         <SiteFooter page={page} />
       </div>
       <AccountDrawer page={page} panel={panel} onClose={() => setPanel(null)} />

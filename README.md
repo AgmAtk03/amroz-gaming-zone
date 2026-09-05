@@ -28,6 +28,7 @@ Same SHA on `raw.githack.com` (replace the host).
 - Checkout: UID / Riot ID / Online ID as needed. Steam & PS Store also ask account password (not saved). Mobile games stay UID-only
 - Saved IDs, Buy again, member price still apply
 - Gear copy is **2 Hour Delivery**; top-ups and subs show **Instant Delivery**. Category tap hides Trending.
+- **Visit our game zone** strip sits immediately above the footer on home and shop: Pepsicola football-ground floor, hourly/membership NPR, WhatsApp booth hold. Peek carousel (3.2s) is not the header slideshow.
 - Wallet buttons are client-only (no live API keys). Customer UI does not label them mock or demo.
 
 ## Stack

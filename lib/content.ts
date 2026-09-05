@@ -71,3 +71,57 @@ export const trustSteps = [
 ] as const;
 
 export const referralCodes = ["AMROZ", "WARD32", "SQUAD"] as const;
+
+/** Physical floor at Pepsicola — separate from Instant Delivery shop. */
+export const venue = {
+  title: "Visit our game zone",
+  place: "Pepsicola, Ward 32",
+  placeLine: "Football ground area. Walk in, or hold a booth on WhatsApp.",
+  hours: [
+    { days: "Sun – Thu", time: "10:00 AM – 11:00 PM" },
+    { days: "Fri – Sat", time: "10:00 AM – 12:30 AM" },
+  ],
+  rates: [
+    { label: "PS5 booth", price: "NPR 199 / hr" },
+    { label: "Extra pad", price: "NPR 50 / hr" },
+    { label: "Weekly 8 hrs", price: "NPR 1,999" },
+    { label: "Monthly 24 hrs", price: "NPR 3,999" },
+  ],
+  bookText: "Hi Amroz — hold a PS5 booth at Pepsicola (football ground).",
+  bookLabel: "Book a booth on WhatsApp",
+} as const;
+
+export const venueSlides = [
+  {
+    id: "vibe",
+    kicker: "The floor",
+    title: "Neon on. Booths open.",
+    line: "Walk in after class. Same Pepsicola block as the shop, by the football ground.",
+    photo: "/images/gear-rgb.jpg",
+    stamp: "Walk-in",
+  },
+  {
+    id: "booths",
+    kicker: "PS5 play",
+    title: "Duals, 4K, one booth.",
+    line: "NPR 199 an hour. Extra DualSense NPR 50. Pay at the desk.",
+    photo: "/images/gear-ps5.jpg",
+    stamp: "NPR 199/hr",
+  },
+  {
+    id: "pass",
+    kicker: "Come back",
+    title: "Hours that cost less.",
+    line: "Weekly 8 hours NPR 1,999. Monthly 24 hours NPR 3,999.",
+    photo: "/images/gear-set.jpg",
+    stamp: "Pass",
+  },
+  {
+    id: "hold",
+    kicker: "Hold a seat",
+    title: "Friday fills up.",
+    line: "WhatsApp us. We hold the booth 15 minutes past your slot.",
+    photo: "/images/gear-dualsense.jpg",
+    stamp: "Book",
+  },
+] as const;
