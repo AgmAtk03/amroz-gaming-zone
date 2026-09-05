@@ -1,0 +1,3982 @@
+{
+  "source": "https://gaming.com.np/",
+  "inventory": "data/gaming-com-np-amroz-catalog.md",
+  "note": "Imported from data/gaming-com-np-amroz-catalog.md. Families (MLBB, Free Fire) are one card; regions/packs after tap-in. Dead paths skipped (where-winds-meet, honkai-star-rail main). Amroz gear lives in catalog.ts.",
+  "categories": [
+    {
+      "id": "topups",
+      "label": "Top-ups",
+      "blurb": "Diamonds, UC, VP — Instant Delivery."
+    },
+    {
+      "id": "vouchers",
+      "label": "Vouchers",
+      "blurb": "Steam, PS Store, PC keys."
+    },
+    {
+      "id": "gift-cards",
+      "label": "Gift cards",
+      "blurb": "iTunes, Nintendo, Discord, more."
+    },
+    {
+      "id": "subscriptions",
+      "label": "Subs",
+      "blurb": "Netflix, YouTube, VPN — Instant Delivery."
+    },
+    {
+      "id": "gear",
+      "label": "Gear",
+      "blurb": "Fantech, PS5, 2 Hour Delivery."
+    }
+  ],
+  "hubs": [
+    {
+      "id": "mlbb",
+      "category": "topups",
+      "kind": "Diamonds",
+      "name": "Mobile Legends",
+      "short": "ML",
+      "blurb": "One MLBB card. Pick Nepal, weekly pass, or a bundle after you tap in.",
+      "idLabel": "Player ID",
+      "idHint": "Player ID. Zone ID optional. No game password.",
+      "idPlaceholder": "12345678 (1234)",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Diamonds pending on this ID",
+      "photo": "/images/hub-mlbb.jpg",
+      "featured": true,
+      "marginRank": 3,
+      "mergedFrom": [
+        "Weekly Diamond Pass MLBB",
+        "Mobile Legends (Nepal)",
+        "Mobile Legends (Nepal) - Second Pack",
+        "Double Diamond MLBB",
+        "Mobile Legends (Global)",
+        "Special Offer - Mobile Legends",
+        "Mobile Legends (Indonesia)",
+        "Limited Elite Bundle MLBB",
+        "Mobile Legends (Malaysia/Singapore)",
+        "Mobile Legends (Russia)",
+        "Mobile Legends (Philippines)",
+        "New - Mobile Legends (Nepal)",
+        "Super Value Pass MLBB"
+      ],
+      "regions": [
+        {
+          "id": "np",
+          "label": "Nepal"
+        },
+        {
+          "id": "global",
+          "label": "Global"
+        },
+        {
+          "id": "id",
+          "label": "Indonesia"
+        },
+        {
+          "id": "mysg",
+          "label": "MY / SG"
+        },
+        {
+          "id": "ph",
+          "label": "Philippines"
+        },
+        {
+          "id": "ru",
+          "label": "Russia"
+        }
+      ],
+      "packs": [
+        {
+          "id": "mlbb-86",
+          "label": "86 diamonds",
+          "amount": "86",
+          "unit": "diamonds",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "mlbb-172",
+          "label": "172 diamonds",
+          "amount": "172",
+          "unit": "diamonds",
+          "price": "360",
+          "memberPrice": "342",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "mlbb-weekly",
+          "label": "Weekly pass",
+          "amount": "weekly",
+          "unit": "pass",
+          "price": "220",
+          "memberPrice": "209",
+          "popular": true,
+          "marginRank": 3
+        },
+        {
+          "id": "mlbb-344",
+          "label": "344 diamonds",
+          "amount": "344",
+          "unit": "diamonds",
+          "price": "720",
+          "memberPrice": "684",
+          "popular": false,
+          "marginRank": 4
+        },
+        {
+          "id": "mlbb-706",
+          "label": "706 diamonds",
+          "amount": "706",
+          "unit": "diamonds",
+          "price": "1,500",
+          "memberPrice": "1,425",
+          "popular": false,
+          "marginRank": 5
+        },
+        {
+          "id": "mlbb-elite",
+          "label": "Elite bundle",
+          "amount": "elite",
+          "unit": "bundle",
+          "price": "890",
+          "memberPrice": "846",
+          "popular": false,
+          "marginRank": 6
+        }
+      ]
+    },
+    {
+      "id": "freefire",
+      "category": "topups",
+      "kind": "Diamonds",
+      "name": "Free Fire",
+      "short": "FF",
+      "blurb": "Diamonds, weekly, level-up, and Evo — one Free Fire card.",
+      "idLabel": "Player ID",
+      "idHint": "Free Fire UID — digits only. No game password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Diamonds pending on this ID",
+      "photo": "/images/hub-freefire.jpg",
+      "featured": true,
+      "marginRank": 3,
+      "mergedFrom": [
+        "Free Fire (Nepal)",
+        "Free Fire Level Up Package - New",
+        "Free Fire - Evo Access Tokens (NP/BD)",
+        "Free Fire (Indonesia)",
+        "Free Fire (Malaysia)",
+        "Free Fire Level Up Pass",
+        "Free Fire (LATAM)",
+        "Freefire Vietnam"
+      ],
+      "regions": [
+        {
+          "id": "np",
+          "label": "Nepal"
+        },
+        {
+          "id": "id",
+          "label": "Indonesia"
+        },
+        {
+          "id": "my",
+          "label": "Malaysia"
+        },
+        {
+          "id": "latam",
+          "label": "LATAM"
+        },
+        {
+          "id": "vn",
+          "label": "Vietnam"
+        }
+      ],
+      "packs": [
+        {
+          "id": "freefire-100",
+          "label": "100 diamonds",
+          "amount": "100",
+          "unit": "diamonds",
+          "price": "150",
+          "memberPrice": "142",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "freefire-310",
+          "label": "310 diamonds",
+          "amount": "310",
+          "unit": "diamonds",
+          "price": "450",
+          "memberPrice": "428",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "freefire-weekly",
+          "label": "Weekly",
+          "amount": "weekly",
+          "unit": "pass",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": true,
+          "marginRank": 3
+        },
+        {
+          "id": "freefire-520",
+          "label": "520 diamonds",
+          "amount": "520",
+          "unit": "diamonds",
+          "price": "750",
+          "memberPrice": "712",
+          "popular": false,
+          "marginRank": 4
+        },
+        {
+          "id": "freefire-level",
+          "label": "Level-up pass",
+          "amount": "level",
+          "unit": "pass",
+          "price": "399",
+          "memberPrice": "379",
+          "popular": false,
+          "marginRank": 5
+        },
+        {
+          "id": "freefire-evo",
+          "label": "Evo access",
+          "amount": "evo",
+          "unit": "token",
+          "price": "250",
+          "memberPrice": "238",
+          "popular": false,
+          "marginRank": 6
+        },
+        {
+          "id": "freefire-1080",
+          "label": "1,080 diamonds",
+          "amount": "1080",
+          "unit": "diamonds",
+          "price": "1,500",
+          "memberPrice": "1,425",
+          "popular": false,
+          "marginRank": 7
+        }
+      ]
+    },
+    {
+      "id": "pubg",
+      "category": "topups",
+      "kind": "UC",
+      "name": "PUBG Mobile",
+      "short": "PUBG",
+      "blurb": "UC on your character ID. Pay, then play.",
+      "idLabel": "Character ID",
+      "idHint": "PUBG character ID — digits only. No game password.",
+      "idPlaceholder": "5123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "UC pending on this ID",
+      "photo": "/images/hub-pubg.jpg",
+      "featured": true,
+      "marginRank": 3,
+      "mergedFrom": [
+        "PUBG Mobile (GLOBAL)"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "pubg-60",
+          "label": "60 UC",
+          "amount": "60",
+          "unit": "UC",
+          "price": "150",
+          "memberPrice": "142",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "pubg-325",
+          "label": "325 UC",
+          "amount": "325",
+          "unit": "UC",
+          "price": "750",
+          "memberPrice": "712",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "pubg-660",
+          "label": "660 UC",
+          "amount": "660",
+          "unit": "UC",
+          "price": "1,500",
+          "memberPrice": "1,425",
+          "popular": false,
+          "marginRank": 3
+        },
+        {
+          "id": "pubg-1800",
+          "label": "1,800 UC",
+          "amount": "1800",
+          "unit": "UC",
+          "price": "3,900",
+          "memberPrice": "3,705",
+          "popular": false,
+          "marginRank": 4
+        }
+      ]
+    },
+    {
+      "id": "roblox",
+      "category": "topups",
+      "kind": "Robux",
+      "name": "Roblox",
+      "short": "RBX",
+      "blurb": "Robux on your username. Gift-card packs live here too.",
+      "idLabel": "Roblox username",
+      "idHint": "Exact username — not the display name. No password.",
+      "idPlaceholder": "amroz_player",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Robux pending on this ID",
+      "photo": "/images/hub-roblox.jpg",
+      "featured": true,
+      "marginRank": 3,
+      "mergedFrom": [
+        "ROBLOX",
+        "Roblox Gift Card (US)"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "roblox-80",
+          "label": "80 Robux",
+          "amount": "80",
+          "unit": "Robux",
+          "price": "160",
+          "memberPrice": "152",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "roblox-400",
+          "label": "400 Robux",
+          "amount": "400",
+          "unit": "Robux",
+          "price": "750",
+          "memberPrice": "712",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "roblox-800",
+          "label": "800 Robux",
+          "amount": "800",
+          "unit": "Robux",
+          "price": "1,450",
+          "memberPrice": "1,378",
+          "popular": false,
+          "marginRank": 3
+        },
+        {
+          "id": "roblox-gc10",
+          "label": "US gift card $10",
+          "amount": "gc10",
+          "unit": "card",
+          "price": "1,650",
+          "memberPrice": "1,568",
+          "popular": false,
+          "marginRank": 4
+        }
+      ]
+    },
+    {
+      "id": "valorant",
+      "category": "topups",
+      "kind": "VP",
+      "name": "Valorant",
+      "short": "VAL",
+      "blurb": "VP on your Riot ID. PH and points packs in one place.",
+      "idLabel": "Riot ID",
+      "idHint": "Name#TAG as you type it in-game. No password.",
+      "idPlaceholder": "amroz#NP1",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "VP pending on this ID",
+      "photo": "/images/hub-valorant.jpg",
+      "featured": true,
+      "marginRank": 3,
+      "mergedFrom": [
+        "Valorant (PH)-INSTANT",
+        "Valorant Points"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "valorant-475",
+          "label": "475 VP",
+          "amount": "475",
+          "unit": "VP",
+          "price": "450",
+          "memberPrice": "428",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "valorant-1000",
+          "label": "1,000 VP",
+          "amount": "1000",
+          "unit": "VP",
+          "price": "900",
+          "memberPrice": "855",
+          "popular": false,
+          "marginRank": 2
+        },
+        {
+          "id": "valorant-2050",
+          "label": "2,050 VP",
+          "amount": "2050",
+          "unit": "VP",
+          "price": "1,800",
+          "memberPrice": "1,710",
+          "popular": false,
+          "marginRank": 3
+        },
+        {
+          "id": "valorant-3650",
+          "label": "3,650 VP",
+          "amount": "3650",
+          "unit": "VP",
+          "price": "3,200",
+          "memberPrice": "3,040",
+          "popular": false,
+          "marginRank": 4
+        }
+      ]
+    },
+    {
+      "id": "genshin",
+      "category": "topups",
+      "kind": "Genesis",
+      "name": "Genshin Impact",
+      "short": "GI",
+      "blurb": "Crystals and battle pass. One Genshin card.",
+      "idLabel": "UID + server",
+      "idHint": "In-game UID and server. No password.",
+      "idPlaceholder": "800123456 (Asia)",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Genesis pending on this ID",
+      "photo": "",
+      "featured": true,
+      "marginRank": 3,
+      "mergedFrom": [
+        "Genshin Impact",
+        "Genshin Impact Battle Pass",
+        "Genshin Impact x Miliastra Wonderland"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "genshin-60",
+          "label": "60 crystals",
+          "amount": "60",
+          "unit": "crystals",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "genshin-300",
+          "label": "300 crystals",
+          "amount": "300",
+          "unit": "crystals",
+          "price": "750",
+          "memberPrice": "712",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "genshin-bp",
+          "label": "Battle pass",
+          "amount": "bp",
+          "unit": "pass",
+          "price": "1,450",
+          "memberPrice": "1,378",
+          "popular": false,
+          "marginRank": 3
+        },
+        {
+          "id": "genshin-980",
+          "label": "980 crystals",
+          "amount": "980",
+          "unit": "crystals",
+          "price": "2,200",
+          "memberPrice": "2,090",
+          "popular": false,
+          "marginRank": 4
+        }
+      ]
+    },
+    {
+      "id": "honor-of-kings",
+      "category": "topups",
+      "kind": "Tokens",
+      "name": "Honor of Kings",
+      "short": "HOK",
+      "blurb": "Tokens and weekly cards. One Honor of Kings card.",
+      "idLabel": "Player ID",
+      "idHint": "Honor of Kings player ID. No game password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Tokens pending on this ID",
+      "photo": "",
+      "featured": true,
+      "marginRank": 3,
+      "mergedFrom": [
+        "Honor of Kings"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "honor-of-kings-16",
+          "label": "16+1 tokens",
+          "amount": "16",
+          "unit": "tokens",
+          "price": "35",
+          "memberPrice": "33",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "honor-of-kings-80",
+          "label": "80+8 tokens",
+          "amount": "80",
+          "unit": "tokens",
+          "price": "160",
+          "memberPrice": "152",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "honor-of-kings-weekly",
+          "label": "Weekly card",
+          "amount": "weekly",
+          "unit": "card",
+          "price": "220",
+          "memberPrice": "209",
+          "popular": false,
+          "marginRank": 3
+        },
+        {
+          "id": "honor-of-kings-400",
+          "label": "400+32 tokens",
+          "amount": "400",
+          "unit": "tokens",
+          "price": "810",
+          "memberPrice": "770",
+          "popular": false,
+          "marginRank": 4
+        }
+      ]
+    },
+    {
+      "id": "call-of-duty",
+      "category": "topups",
+      "kind": "CP",
+      "name": "Call of Duty Mobile",
+      "short": "COD",
+      "blurb": "COD Points on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "COD Mobile player ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "CP pending on this ID",
+      "photo": "",
+      "featured": true,
+      "marginRank": 3,
+      "mergedFrom": [
+        "Call of Duty Mobile"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "call-of-duty-80",
+          "label": "80 CP",
+          "amount": "80",
+          "unit": "CP",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "call-of-duty-400",
+          "label": "400 CP",
+          "amount": "400",
+          "unit": "CP",
+          "price": "750",
+          "memberPrice": "712",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "call-of-duty-800",
+          "label": "800 CP",
+          "amount": "800",
+          "unit": "CP",
+          "price": "1,450",
+          "memberPrice": "1,378",
+          "popular": false,
+          "marginRank": 3
+        },
+        {
+          "id": "call-of-duty-2000",
+          "label": "2,000 CP",
+          "amount": "2000",
+          "unit": "CP",
+          "price": "3,500",
+          "memberPrice": "3,325",
+          "popular": false,
+          "marginRank": 4
+        }
+      ]
+    },
+    {
+      "id": "efootball",
+      "category": "topups",
+      "kind": "Coins",
+      "name": "eFootball",
+      "short": "PES",
+      "blurb": "Android or iOS packs after you tap in.",
+      "idLabel": "Konami ID",
+      "idHint": "Konami ID. No game password.",
+      "idPlaceholder": "konami_id",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Coins pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "eFootball PES 2026 (Android Only)",
+        "(IOS Only) eFootball PES 2026"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "efootball-100a",
+          "label": "100 coins · Android",
+          "amount": "100a",
+          "unit": "coins",
+          "price": "220",
+          "memberPrice": "209",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "efootball-550a",
+          "label": "550 coins · Android",
+          "amount": "550a",
+          "unit": "coins",
+          "price": "990",
+          "memberPrice": "940",
+          "popular": false,
+          "marginRank": 2
+        },
+        {
+          "id": "efootball-100i",
+          "label": "100 coins · iOS",
+          "amount": "100i",
+          "unit": "coins",
+          "price": "240",
+          "memberPrice": "228",
+          "popular": false,
+          "marginRank": 3
+        },
+        {
+          "id": "efootball-550i",
+          "label": "550 coins · iOS",
+          "amount": "550i",
+          "unit": "coins",
+          "price": "1,050",
+          "memberPrice": "998",
+          "popular": false,
+          "marginRank": 4
+        }
+      ]
+    },
+    {
+      "id": "blood-strike",
+      "category": "topups",
+      "kind": "Gold",
+      "name": "Blood Strike",
+      "short": "BS",
+      "blurb": "Gold and pass in one Blood Strike card.",
+      "idLabel": "Player ID",
+      "idHint": "Blood Strike UID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Gold pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Blood Strike",
+        "Blood Strike - Pass"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "blood-strike-60",
+          "label": "60 gold",
+          "amount": "60",
+          "unit": "gold",
+          "price": "160",
+          "memberPrice": "152",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "blood-strike-300",
+          "label": "300 gold",
+          "amount": "300",
+          "unit": "gold",
+          "price": "720",
+          "memberPrice": "684",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "blood-strike-pass",
+          "label": "Strike pass",
+          "amount": "pass",
+          "unit": "pass",
+          "price": "890",
+          "memberPrice": "846",
+          "popular": false,
+          "marginRank": 3
+        },
+        {
+          "id": "blood-strike-680",
+          "label": "680 gold",
+          "amount": "680",
+          "unit": "gold",
+          "price": "1,550",
+          "memberPrice": "1,472",
+          "popular": false,
+          "marginRank": 4
+        }
+      ]
+    },
+    {
+      "id": "delta-force",
+      "category": "topups",
+      "kind": "Credits",
+      "name": "Delta Force",
+      "short": "DF",
+      "blurb": "Global credits and event packs.",
+      "idLabel": "Player ID",
+      "idHint": "Delta Force UID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Credits pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Delta Force (Global)",
+        "Delta Force (Global) - Packs"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "delta-force-60",
+          "label": "60 credits",
+          "amount": "60",
+          "unit": "credits",
+          "price": "170",
+          "memberPrice": "162",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "delta-force-300",
+          "label": "300 credits",
+          "amount": "300",
+          "unit": "credits",
+          "price": "740",
+          "memberPrice": "703",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "delta-force-event",
+          "label": "Event pack",
+          "amount": "event",
+          "unit": "pack",
+          "price": "990",
+          "memberPrice": "940",
+          "popular": false,
+          "marginRank": 3
+        },
+        {
+          "id": "delta-force-980",
+          "label": "980 credits",
+          "amount": "980",
+          "unit": "credits",
+          "price": "2,100",
+          "memberPrice": "1,995",
+          "popular": false,
+          "marginRank": 4
+        }
+      ]
+    },
+    {
+      "id": "tower-of-fantasy",
+      "category": "topups",
+      "kind": "Tanium",
+      "name": "Tower of Fantasy",
+      "short": "ToF",
+      "blurb": "Global or SEA — pick the pack after you tap in.",
+      "idLabel": "UID + server",
+      "idHint": "UID and Global or SEA. No password.",
+      "idPlaceholder": "123456789 (Global)",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Tanium pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Tower of Fantasy (GLOBAL)",
+        "Tower of Fantasy (SEA)"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "tower-of-fantasy-60g",
+          "label": "60 tanium · Global",
+          "amount": "60g",
+          "unit": "tanium",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "tower-of-fantasy-300g",
+          "label": "300 tanium · Global",
+          "amount": "300g",
+          "unit": "tanium",
+          "price": "750",
+          "memberPrice": "712",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "tower-of-fantasy-60s",
+          "label": "60 tanium · SEA",
+          "amount": "60s",
+          "unit": "tanium",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 3
+        },
+        {
+          "id": "tower-of-fantasy-300s",
+          "label": "300 tanium · SEA",
+          "amount": "300s",
+          "unit": "tanium",
+          "price": "750",
+          "memberPrice": "712",
+          "popular": false,
+          "marginRank": 4
+        }
+      ]
+    },
+    {
+      "id": "honkai-star-rail",
+      "category": "topups",
+      "kind": "Oneiric",
+      "name": "Honkai: Star Rail",
+      "short": "HSR",
+      "blurb": "Oneiric shards and battle pass.",
+      "idLabel": "UID + server",
+      "idHint": "UID and server. No password.",
+      "idPlaceholder": "800123456 (Asia)",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Oneiric pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Honkai: Star Rail",
+        "Honkai: Star Rail Battle Pass"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "honkai-star-rail-60",
+          "label": "60 shards",
+          "amount": "60",
+          "unit": "shards",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "honkai-star-rail-300",
+          "label": "300 shards",
+          "amount": "300",
+          "unit": "shards",
+          "price": "750",
+          "memberPrice": "712",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "honkai-star-rail-bp",
+          "label": "Battle pass",
+          "amount": "bp",
+          "unit": "pass",
+          "price": "1,450",
+          "memberPrice": "1,378",
+          "popular": false,
+          "marginRank": 3
+        },
+        {
+          "id": "honkai-star-rail-980",
+          "label": "980 shards",
+          "amount": "980",
+          "unit": "shards",
+          "price": "2,200",
+          "memberPrice": "2,090",
+          "popular": false,
+          "marginRank": 4
+        }
+      ]
+    },
+    {
+      "id": "clash-of-clans",
+      "category": "topups",
+      "kind": "Gems",
+      "name": "Clash of Clans",
+      "short": "COC",
+      "blurb": "Gems and offer packs. One Clash card.",
+      "idLabel": "Player tag",
+      "idHint": "Player tag like #ABC123. No password.",
+      "idPlaceholder": "#ABC123XY",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Gems pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "CLASH OF CLANS OFFERS",
+        "Clash of Clans"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "clash-of-clans-80",
+          "label": "80 gems",
+          "amount": "80",
+          "unit": "gems",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "clash-of-clans-500",
+          "label": "500 gems",
+          "amount": "500",
+          "unit": "gems",
+          "price": "890",
+          "memberPrice": "846",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "clash-of-clans-offer",
+          "label": "Offer pack",
+          "amount": "offer",
+          "unit": "pack",
+          "price": "650",
+          "memberPrice": "618",
+          "popular": false,
+          "marginRank": 3
+        },
+        {
+          "id": "clash-of-clans-1200",
+          "label": "1,200 gems",
+          "amount": "1200",
+          "unit": "gems",
+          "price": "1,990",
+          "memberPrice": "1,890",
+          "popular": false,
+          "marginRank": 4
+        }
+      ]
+    },
+    {
+      "id": "starmaker",
+      "category": "topups",
+      "kind": "Coins",
+      "name": "Starmaker",
+      "short": "SM",
+      "blurb": "Coins in one Starmaker card.",
+      "idLabel": "User ID",
+      "idHint": "Starmaker user ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Coins pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Starmaker Topup",
+        "[Instant] Starmaker Topup"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "starmaker-100",
+          "label": "100 coins",
+          "amount": "100",
+          "unit": "coins",
+          "price": "160",
+          "memberPrice": "152",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "starmaker-500",
+          "label": "500 coins",
+          "amount": "500",
+          "unit": "coins",
+          "price": "720",
+          "memberPrice": "684",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "starmaker-1000",
+          "label": "1,000 coins",
+          "amount": "1000",
+          "unit": "coins",
+          "price": "1,350",
+          "memberPrice": "1,282",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "bigo",
+      "category": "topups",
+      "kind": "Diamonds",
+      "name": "Bigo Live",
+      "short": "Bigo",
+      "blurb": "Bigo diamonds on your ID. Pay, then go live.",
+      "idLabel": "Bigo ID",
+      "idHint": "Bigo user ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Diamonds pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Bigo Live (Direct Topup)"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "bigo-100",
+          "label": "100 diamonds",
+          "amount": "100",
+          "unit": "diamonds",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "bigo-500",
+          "label": "500 diamonds",
+          "amount": "500",
+          "unit": "diamonds",
+          "price": "820",
+          "memberPrice": "779",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "bigo-1000",
+          "label": "1,000 diamonds",
+          "amount": "1000",
+          "unit": "diamonds",
+          "price": "1,550",
+          "memberPrice": "1,472",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "poppo",
+      "category": "topups",
+      "kind": "Coins",
+      "name": "Poppo Live",
+      "short": "Poppo",
+      "blurb": "Live coins on your Poppo ID.",
+      "idLabel": "User ID",
+      "idHint": "Poppo user ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Coins pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Poppo Live"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "poppo-100",
+          "label": "100 coins",
+          "amount": "100",
+          "unit": "coins",
+          "price": "170",
+          "memberPrice": "162",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "poppo-500",
+          "label": "500 coins",
+          "amount": "500",
+          "unit": "coins",
+          "price": "780",
+          "memberPrice": "741",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "poppo-1200",
+          "label": "1,200 coins",
+          "amount": "1200",
+          "unit": "coins",
+          "price": "1,750",
+          "memberPrice": "1,662",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "dragon-raja",
+      "category": "topups",
+      "kind": "Coupons",
+      "name": "Dragon Raja",
+      "short": "DR",
+      "blurb": "SEA coupons on your UID.",
+      "idLabel": "UID",
+      "idHint": "Dragon Raja UID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Coupons pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Dragon Raja (SEA)"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "dragon-raja-60",
+          "label": "60 coupons",
+          "amount": "60",
+          "unit": "coupons",
+          "price": "190",
+          "memberPrice": "180",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "dragon-raja-300",
+          "label": "300 coupons",
+          "amount": "300",
+          "unit": "coupons",
+          "price": "790",
+          "memberPrice": "750",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "dragon-raja-980",
+          "label": "980 coupons",
+          "amount": "980",
+          "unit": "coupons",
+          "price": "2,300",
+          "memberPrice": "2,185",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "nikke",
+      "category": "topups",
+      "kind": "Gems",
+      "name": "NIKKE",
+      "short": "NIKKE",
+      "blurb": "Goddess of Victory gems.",
+      "idLabel": "Player ID",
+      "idHint": "NIKKE player ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Gems pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Goddess of Victory: Nikke (Global)"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "nikke-60",
+          "label": "60 gems",
+          "amount": "60",
+          "unit": "gems",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "nikke-300",
+          "label": "300 gems",
+          "amount": "300",
+          "unit": "gems",
+          "price": "750",
+          "memberPrice": "712",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "nikke-980",
+          "label": "980 gems",
+          "amount": "980",
+          "unit": "gems",
+          "price": "2,200",
+          "memberPrice": "2,090",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "identity-v",
+      "category": "topups",
+      "kind": "Echoes",
+      "name": "Identity V",
+      "short": "IDV",
+      "blurb": "Echoes on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "Identity V ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Echoes pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Identity V"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "identity-v-60",
+          "label": "60 echoes",
+          "amount": "60",
+          "unit": "echoes",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "identity-v-300",
+          "label": "300 echoes",
+          "amount": "300",
+          "unit": "echoes",
+          "price": "750",
+          "memberPrice": "712",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "identity-v-680",
+          "label": "680 echoes",
+          "amount": "680",
+          "unit": "echoes",
+          "price": "1,600",
+          "memberPrice": "1,520",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "life-after",
+      "category": "topups",
+      "kind": "Golds",
+      "name": "LifeAfter",
+      "short": "LA",
+      "blurb": "Golds on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "LifeAfter ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Golds pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "LifeAfter"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "life-after-60",
+          "label": "60 golds",
+          "amount": "60",
+          "unit": "golds",
+          "price": "170",
+          "memberPrice": "162",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "life-after-300",
+          "label": "300 golds",
+          "amount": "300",
+          "unit": "golds",
+          "price": "740",
+          "memberPrice": "703",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "mirage",
+      "category": "topups",
+      "kind": "Crystals",
+      "name": "Mirage: Perfect Skyline",
+      "short": "MPS",
+      "blurb": "Crystals on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "Mirage UID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Crystals pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Mirage:Perfect Skyline"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "mirage-60",
+          "label": "60 crystals",
+          "amount": "60",
+          "unit": "crystals",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "mirage-300",
+          "label": "300 crystals",
+          "amount": "300",
+          "unit": "crystals",
+          "price": "750",
+          "memberPrice": "712",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "moonlight-blade",
+      "category": "topups",
+      "kind": "Ingots",
+      "name": "Moonlight Blade M",
+      "short": "MBM",
+      "blurb": "Ingots on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "Moonlight Blade ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Ingots pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Moonlight Blade M"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "moonlight-blade-60",
+          "label": "60 ingots",
+          "amount": "60",
+          "unit": "ingots",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "moonlight-blade-300",
+          "label": "300 ingots",
+          "amount": "300",
+          "unit": "ingots",
+          "price": "750",
+          "memberPrice": "712",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "super-sus",
+      "category": "topups",
+      "kind": "Gems",
+      "name": "Super Sus",
+      "short": "SUS",
+      "blurb": "Gems on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "Super Sus ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Gems pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Super Sus"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "super-sus-60",
+          "label": "60 gems",
+          "amount": "60",
+          "unit": "gems",
+          "price": "160",
+          "memberPrice": "152",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "super-sus-300",
+          "label": "300 gems",
+          "amount": "300",
+          "unit": "gems",
+          "price": "720",
+          "memberPrice": "684",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "zepeto",
+      "category": "topups",
+      "kind": "Zems",
+      "name": "Zepeto",
+      "short": "ZEP",
+      "blurb": "Zems on your username.",
+      "idLabel": "Zepeto username",
+      "idHint": "Exact username. No password.",
+      "idPlaceholder": "amroz_zep",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Zems pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Zepeto"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "zepeto-80",
+          "label": "80 zems",
+          "amount": "80",
+          "unit": "zems",
+          "price": "190",
+          "memberPrice": "180",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "zepeto-400",
+          "label": "400 zems",
+          "amount": "400",
+          "unit": "zems",
+          "price": "820",
+          "memberPrice": "779",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "farlight84",
+      "category": "topups",
+      "kind": "Diamonds",
+      "name": "Farlight 84",
+      "short": "FL84",
+      "blurb": "Diamonds on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "Farlight UID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Diamonds pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Farlight84"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "farlight84-60",
+          "label": "60 diamonds",
+          "amount": "60",
+          "unit": "diamonds",
+          "price": "170",
+          "memberPrice": "162",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "farlight84-300",
+          "label": "300 diamonds",
+          "amount": "300",
+          "unit": "diamonds",
+          "price": "740",
+          "memberPrice": "703",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "tiktok",
+      "category": "topups",
+      "kind": "Coins",
+      "name": "TikTok Coins",
+      "short": "TT",
+      "blurb": "Coins on your TikTok username.",
+      "idLabel": "TikTok username",
+      "idHint": "Exact username. No password.",
+      "idPlaceholder": "amroz_tt",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Coins pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Tiktok Coins"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "tiktok-70",
+          "label": "70 coins",
+          "amount": "70",
+          "unit": "coins",
+          "price": "160",
+          "memberPrice": "152",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "tiktok-350",
+          "label": "350 coins",
+          "amount": "350",
+          "unit": "coins",
+          "price": "720",
+          "memberPrice": "684",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "tiktok-700",
+          "label": "700 coins",
+          "amount": "700",
+          "unit": "coins",
+          "price": "1,350",
+          "memberPrice": "1,282",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "wuthering-waves",
+      "category": "topups",
+      "kind": "Lunite",
+      "name": "Wuthering Waves",
+      "short": "WuWa",
+      "blurb": "Lunite on your UID.",
+      "idLabel": "UID + server",
+      "idHint": "UID and server. No password.",
+      "idPlaceholder": "800123456",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Lunite pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Wuthering Waves"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "wuthering-waves-60",
+          "label": "60 lunite",
+          "amount": "60",
+          "unit": "lunite",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "wuthering-waves-300",
+          "label": "300 lunite",
+          "amount": "300",
+          "unit": "lunite",
+          "price": "750",
+          "memberPrice": "712",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "wuthering-waves-980",
+          "label": "980 lunite",
+          "amount": "980",
+          "unit": "lunite",
+          "price": "2,200",
+          "memberPrice": "2,090",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "pokemon-go",
+      "category": "topups",
+      "kind": "Coins",
+      "name": "Pokémon GO",
+      "short": "PGO",
+      "blurb": "PokéCoins on your trainer.",
+      "idLabel": "Trainer code",
+      "idHint": "Trainer code. No password.",
+      "idPlaceholder": "1234 5678 9012",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Coins pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Pokemon Go"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "pokemon-go-100",
+          "label": "100 coins",
+          "amount": "100",
+          "unit": "coins",
+          "price": "190",
+          "memberPrice": "180",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "pokemon-go-550",
+          "label": "550 coins",
+          "amount": "550",
+          "unit": "coins",
+          "price": "890",
+          "memberPrice": "846",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "lords-mobile",
+      "category": "topups",
+      "kind": "Gems",
+      "name": "Lords Mobile",
+      "short": "LM",
+      "blurb": "Gems on your kingdom ID.",
+      "idLabel": "Player ID",
+      "idHint": "Lords Mobile ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Gems pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Lords Mobile"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "lords-mobile-100",
+          "label": "100 gems",
+          "amount": "100",
+          "unit": "gems",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "lords-mobile-500",
+          "label": "500 gems",
+          "amount": "500",
+          "unit": "gems",
+          "price": "820",
+          "memberPrice": "779",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "blockman-go",
+      "category": "topups",
+      "kind": "Gems",
+      "name": "Blockman Go",
+      "short": "BMG",
+      "blurb": "Gems on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "Blockman Go ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Gems pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Blockman Go"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "blockman-go-60",
+          "label": "60 gems",
+          "amount": "60",
+          "unit": "gems",
+          "price": "160",
+          "memberPrice": "152",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "blockman-go-300",
+          "label": "300 gems",
+          "amount": "300",
+          "unit": "gems",
+          "price": "720",
+          "memberPrice": "684",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "standoff-2",
+      "category": "topups",
+      "kind": "Gold",
+      "name": "Standoff 2",
+      "short": "SO2",
+      "blurb": "Gold on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "Standoff 2 ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Gold pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Standoff 2"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "standoff-2-100",
+          "label": "100 gold",
+          "amount": "100",
+          "unit": "gold",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "standoff-2-500",
+          "label": "500 gold",
+          "amount": "500",
+          "unit": "gold",
+          "price": "820",
+          "memberPrice": "779",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "immortal-taoists",
+      "category": "topups",
+      "kind": "Jade",
+      "name": "Immortal Taoists",
+      "short": "IT",
+      "blurb": "Jade on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "Immortal Taoists ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Jade pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Immortal Taoists - Idle Manga"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "immortal-taoists-60",
+          "label": "60 jade",
+          "amount": "60",
+          "unit": "jade",
+          "price": "170",
+          "memberPrice": "162",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "immortal-taoists-300",
+          "label": "300 jade",
+          "amount": "300",
+          "unit": "jade",
+          "price": "740",
+          "memberPrice": "703",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "brawl-stars",
+      "category": "topups",
+      "kind": "Gems",
+      "name": "Brawl Stars",
+      "short": "BS",
+      "blurb": "Gems and pass offers.",
+      "idLabel": "Player tag",
+      "idHint": "Player tag. No password.",
+      "idPlaceholder": "#ABC123",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Gems pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Brawl Star Pass and Offers"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "brawl-stars-30",
+          "label": "30 gems",
+          "amount": "30",
+          "unit": "gems",
+          "price": "220",
+          "memberPrice": "209",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "brawl-stars-80",
+          "label": "80 gems",
+          "amount": "80",
+          "unit": "gems",
+          "price": "520",
+          "memberPrice": "494",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "brawl-stars-pass",
+          "label": "Brawl pass",
+          "amount": "pass",
+          "unit": "pass",
+          "price": "990",
+          "memberPrice": "940",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "score-match",
+      "category": "topups",
+      "kind": "Cash",
+      "name": "Score Match",
+      "short": "SM",
+      "blurb": "Cash on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "Score Match ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Cash pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Score Match"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "score-match-100",
+          "label": "100 cash",
+          "amount": "100",
+          "unit": "cash",
+          "price": "170",
+          "memberPrice": "162",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "score-match-500",
+          "label": "500 cash",
+          "amount": "500",
+          "unit": "cash",
+          "price": "760",
+          "memberPrice": "722",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "fc-mobile",
+      "category": "topups",
+      "kind": "Points",
+      "name": "FC Mobile",
+      "short": "FC",
+      "blurb": "FC points on your EA ID.",
+      "idLabel": "EA ID",
+      "idHint": "EA account ID. No password.",
+      "idPlaceholder": "ea_id",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Points pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "FC Mobile"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "fc-mobile-40",
+          "label": "40 points",
+          "amount": "40",
+          "unit": "points",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "fc-mobile-120",
+          "label": "120 points",
+          "amount": "120",
+          "unit": "points",
+          "price": "520",
+          "memberPrice": "494",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "fc-mobile-520",
+          "label": "520 points",
+          "amount": "520",
+          "unit": "points",
+          "price": "1,990",
+          "memberPrice": "1,890",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "honkai-impact",
+      "category": "topups",
+      "kind": "Crystals",
+      "name": "Honkai Impact 3rd",
+      "short": "HI3",
+      "blurb": "SEA crystals on your UID.",
+      "idLabel": "UID + server",
+      "idHint": "UID and SEA server. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Crystals pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Honkai Impact 3rd (SEA)"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "honkai-impact-60",
+          "label": "60 crystals",
+          "amount": "60",
+          "unit": "crystals",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "honkai-impact-300",
+          "label": "300 crystals",
+          "amount": "300",
+          "unit": "crystals",
+          "price": "750",
+          "memberPrice": "712",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "last-island",
+      "category": "topups",
+      "kind": "Gold",
+      "name": "Last Island of Survival",
+      "short": "LIOS",
+      "blurb": "Gold on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "Last Island ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Gold pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Last Island of Survival"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "last-island-60",
+          "label": "60 gold",
+          "amount": "60",
+          "unit": "gold",
+          "price": "170",
+          "memberPrice": "162",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "last-island-300",
+          "label": "300 gold",
+          "amount": "300",
+          "unit": "gold",
+          "price": "740",
+          "memberPrice": "703",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "chess-com",
+      "category": "topups",
+      "kind": "Membership",
+      "name": "Chess.com",
+      "short": "Chess",
+      "blurb": "Premium time on your username.",
+      "idLabel": "Chess.com username",
+      "idHint": "Exact username. No password.",
+      "idPlaceholder": "amroz_chess",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Membership pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Chess.com"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "chess-com-1m",
+          "label": "1 month",
+          "amount": "1m",
+          "unit": "month",
+          "price": "890",
+          "memberPrice": "846",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "chess-com-3m",
+          "label": "3 months",
+          "amount": "3m",
+          "unit": "month",
+          "price": "2,290",
+          "memberPrice": "2,176",
+          "popular": false,
+          "marginRank": 2
+        },
+        {
+          "id": "chess-com-1y",
+          "label": "1 year",
+          "amount": "1y",
+          "unit": "year",
+          "price": "6,990",
+          "memberPrice": "6,640",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "mini-world",
+      "category": "topups",
+      "kind": "Mini",
+      "name": "Mini World: CREATA",
+      "short": "MW",
+      "blurb": "Mini coins on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "Mini World ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Mini pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Mini World:CREATA"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "mini-world-60",
+          "label": "60 mini",
+          "amount": "60",
+          "unit": "mini",
+          "price": "160",
+          "memberPrice": "152",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "mini-world-300",
+          "label": "300 mini",
+          "amount": "300",
+          "unit": "mini",
+          "price": "720",
+          "memberPrice": "684",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "clash-royale",
+      "category": "topups",
+      "kind": "Gems",
+      "name": "Clash Royale",
+      "short": "CR",
+      "blurb": "Gems on your player tag.",
+      "idLabel": "Player tag",
+      "idHint": "Player tag. No password.",
+      "idPlaceholder": "#ABC123",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Gems pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Clash Royale"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "clash-royale-80",
+          "label": "80 gems",
+          "amount": "80",
+          "unit": "gems",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "clash-royale-500",
+          "label": "500 gems",
+          "amount": "500",
+          "unit": "gems",
+          "price": "890",
+          "memberPrice": "846",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "fortnite",
+      "category": "topups",
+      "kind": "V-Bucks",
+      "name": "Fortnite",
+      "short": "FN",
+      "blurb": "V-Bucks on your Epic ID.",
+      "idLabel": "Epic username",
+      "idHint": "Epic username. No password.",
+      "idPlaceholder": "amroz_fn",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "V-Bucks pending on this ID",
+      "photo": "",
+      "featured": true,
+      "marginRank": 3,
+      "mergedFrom": [
+        "Fortnite"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "fortnite-1000",
+          "label": "1,000 V-Bucks",
+          "amount": "1000",
+          "unit": "vbucks",
+          "price": "990",
+          "memberPrice": "940",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "fortnite-2800",
+          "label": "2,800 V-Bucks",
+          "amount": "2800",
+          "unit": "vbucks",
+          "price": "2,490",
+          "memberPrice": "2,366",
+          "popular": false,
+          "marginRank": 2
+        },
+        {
+          "id": "fortnite-5000",
+          "label": "5,000 V-Bucks",
+          "amount": "5000",
+          "unit": "vbucks",
+          "price": "3,990",
+          "memberPrice": "3,790",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "war-robots",
+      "category": "topups",
+      "kind": "Gold",
+      "name": "War Robots",
+      "short": "WR",
+      "blurb": "Gold on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "War Robots ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Gold pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "War Robots"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "war-robots-100",
+          "label": "100 gold",
+          "amount": "100",
+          "unit": "gold",
+          "price": "190",
+          "memberPrice": "180",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "war-robots-500",
+          "label": "500 gold",
+          "amount": "500",
+          "unit": "gold",
+          "price": "850",
+          "memberPrice": "808",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "magic-chess",
+      "category": "topups",
+      "kind": "Diamonds",
+      "name": "Magic Chess: Go Go",
+      "short": "MC",
+      "blurb": "Diamonds on your ML ID.",
+      "idLabel": "Player ID",
+      "idHint": "Player ID. Zone optional. No password.",
+      "idPlaceholder": "12345678 (1234)",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Diamonds pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Magic Chess: Go Go"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "magic-chess-50",
+          "label": "50 diamonds",
+          "amount": "50",
+          "unit": "diamonds",
+          "price": "160",
+          "memberPrice": "152",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "magic-chess-150",
+          "label": "150 diamonds",
+          "amount": "150",
+          "unit": "diamonds",
+          "price": "420",
+          "memberPrice": "399",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "magic-chess-500",
+          "label": "500 diamonds",
+          "amount": "500",
+          "unit": "diamonds",
+          "price": "1,250",
+          "memberPrice": "1,188",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "marvel-rivals",
+      "category": "topups",
+      "kind": "Lattice",
+      "name": "Marvel Rivals",
+      "short": "MR",
+      "blurb": "Lattice on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "Marvel Rivals ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Lattice pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Marvel Rivals"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "marvel-rivals-300",
+          "label": "300 lattice",
+          "amount": "300",
+          "unit": "lattice",
+          "price": "450",
+          "memberPrice": "428",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "marvel-rivals-500",
+          "label": "500 lattice",
+          "amount": "500",
+          "unit": "lattice",
+          "price": "720",
+          "memberPrice": "684",
+          "popular": false,
+          "marginRank": 2
+        },
+        {
+          "id": "marvel-rivals-1000",
+          "label": "1,000 lattice",
+          "amount": "1000",
+          "unit": "lattice",
+          "price": "1,350",
+          "memberPrice": "1,282",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "gray-raven",
+      "category": "topups",
+      "kind": "Black cards",
+      "name": "Punishing: Gray Raven",
+      "short": "PGR",
+      "blurb": "Black cards on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "PGR UID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Black cards pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Punishing: Gray Raven"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "gray-raven-60",
+          "label": "60 cards",
+          "amount": "60",
+          "unit": "cards",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "gray-raven-300",
+          "label": "300 cards",
+          "amount": "300",
+          "unit": "cards",
+          "price": "750",
+          "memberPrice": "712",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "squad-busters",
+      "category": "topups",
+      "kind": "Gems",
+      "name": "Squad Busters",
+      "short": "SB",
+      "blurb": "Gems on your player tag.",
+      "idLabel": "Player tag",
+      "idHint": "Player tag. No password.",
+      "idPlaceholder": "#ABC123",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Gems pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Squad Busters"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "squad-busters-80",
+          "label": "80 gems",
+          "amount": "80",
+          "unit": "gems",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "squad-busters-170",
+          "label": "170 gems",
+          "amount": "170",
+          "unit": "gems",
+          "price": "380",
+          "memberPrice": "361",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "once-human",
+      "category": "topups",
+      "kind": "Crate",
+      "name": "Once Human",
+      "short": "OH",
+      "blurb": "Crates on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "Once Human ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Crate pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Once Human"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "once-human-60",
+          "label": "60 crate",
+          "amount": "60",
+          "unit": "crate",
+          "price": "190",
+          "memberPrice": "180",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "once-human-300",
+          "label": "300 crate",
+          "amount": "300",
+          "unit": "crate",
+          "price": "790",
+          "memberPrice": "750",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "love-and-deepspace",
+      "category": "topups",
+      "kind": "Gems",
+      "name": "Love and Deepspace",
+      "short": "LADS",
+      "blurb": "Gems on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "Love and Deepspace ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Gems pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Love and Deepspace"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "love-and-deepspace-60",
+          "label": "60 gems",
+          "amount": "60",
+          "unit": "gems",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "love-and-deepspace-300",
+          "label": "300 gems",
+          "amount": "300",
+          "unit": "gems",
+          "price": "750",
+          "memberPrice": "712",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "telegram-stars",
+      "category": "topups",
+      "kind": "Stars",
+      "name": "Telegram Stars",
+      "short": "TG",
+      "blurb": "Stars on your Telegram username.",
+      "idLabel": "Telegram username",
+      "idHint": "Username with @. No password.",
+      "idPlaceholder": "@amroz",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Stars pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Telegram Stars"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "telegram-stars-50",
+          "label": "50 stars",
+          "amount": "50",
+          "unit": "stars",
+          "price": "190",
+          "memberPrice": "180",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "telegram-stars-250",
+          "label": "250 stars",
+          "amount": "250",
+          "unit": "stars",
+          "price": "850",
+          "memberPrice": "808",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "whiteout-survival",
+      "category": "topups",
+      "kind": "Gems",
+      "name": "Whiteout Survival",
+      "short": "WOS",
+      "blurb": "Gems on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "Whiteout Survival ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Gems pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Whiteout Survival"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "whiteout-survival-100",
+          "label": "100 gems",
+          "amount": "100",
+          "unit": "gems",
+          "price": "180",
+          "memberPrice": "171",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "whiteout-survival-500",
+          "label": "500 gems",
+          "amount": "500",
+          "unit": "gems",
+          "price": "820",
+          "memberPrice": "779",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "lineage2m",
+      "category": "topups",
+      "kind": "NCoin",
+      "name": "Lineage2M",
+      "short": "L2M",
+      "blurb": "NCoin on your UID.",
+      "idLabel": "Player ID",
+      "idHint": "Lineage2M ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "NCoin pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Lineage2M"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "lineage2m-60",
+          "label": "60 ncoin",
+          "amount": "60",
+          "unit": "ncoin",
+          "price": "190",
+          "memberPrice": "180",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "lineage2m-300",
+          "label": "300 ncoin",
+          "amount": "300",
+          "unit": "ncoin",
+          "price": "790",
+          "memberPrice": "750",
+          "popular": true,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "teen-patti",
+      "category": "topups",
+      "kind": "Chips",
+      "name": "Teen Patti Gold",
+      "short": "TPG",
+      "blurb": "Chips on your Teen Patti ID.",
+      "idLabel": "Player ID",
+      "idHint": "Teen Patti Gold ID. No password.",
+      "idPlaceholder": "123456789",
+      "fulfillMode": "uid",
+      "tone": "gold",
+      "fulfillment": "Chips pending on this ID",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Teen Patti Gold"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "teen-patti-10m",
+          "label": "10M chips",
+          "amount": "10m",
+          "unit": "chips",
+          "price": "190",
+          "memberPrice": "180",
+          "popular": false,
+          "marginRank": 1
+        },
+        {
+          "id": "teen-patti-50m",
+          "label": "50M chips",
+          "amount": "50m",
+          "unit": "chips",
+          "price": "790",
+          "memberPrice": "750",
+          "popular": true,
+          "marginRank": 2
+        },
+        {
+          "id": "teen-patti-200m",
+          "label": "200M chips",
+          "amount": "200m",
+          "unit": "chips",
+          "price": "2,490",
+          "memberPrice": "2,366",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "steam",
+      "category": "vouchers",
+      "kind": "USD / INR wallet",
+      "name": "Steam",
+      "short": "STM",
+      "blurb": "Steam wallet on your account. USD and INR packs after you tap in.",
+      "idLabel": "Steam username",
+      "idHint": "The Steam account the wallet should land on.",
+      "idPlaceholder": "amroz_steam",
+      "fulfillMode": "account",
+      "tone": "gold",
+      "fulfillment": "USD / INR wallet pending on this account",
+      "photo": "/images/hub-steam.jpg",
+      "featured": true,
+      "marginRank": 3,
+      "mergedFrom": [
+        "Steam Wallet Code (USD)",
+        "Steam Wallet Code (INR)"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "steam-5",
+          "label": "$5 USD",
+          "amount": "5",
+          "unit": "USD",
+          "price": "750",
+          "memberPrice": "712",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "steam-10",
+          "label": "$10 USD",
+          "amount": "10",
+          "unit": "USD",
+          "price": "1,450",
+          "memberPrice": "1,378",
+          "popular": false,
+          "marginRank": 2
+        },
+        {
+          "id": "steam-500inr",
+          "label": "₹500 INR",
+          "amount": "500inr",
+          "unit": "INR",
+          "price": "890",
+          "memberPrice": "846",
+          "popular": false,
+          "marginRank": 3
+        },
+        {
+          "id": "steam-20",
+          "label": "$20 USD",
+          "amount": "20",
+          "unit": "USD",
+          "price": "2,850",
+          "memberPrice": "2,708",
+          "popular": false,
+          "marginRank": 4
+        }
+      ],
+      "passwordLabel": "Steam password",
+      "passwordWhy": "We sign in once to add the wallet. Password is not saved on this phone."
+    },
+    {
+      "id": "psn",
+      "category": "vouchers",
+      "kind": "Wallet",
+      "name": "PlayStation Store",
+      "short": "PS",
+      "blurb": "PS Store credit. INR and US packs after you tap in.",
+      "idLabel": "PSN Online ID",
+      "idHint": "The Online ID we should credit.",
+      "idPlaceholder": "amroz_psn",
+      "fulfillMode": "account",
+      "tone": "gold",
+      "fulfillment": "Wallet pending on this account",
+      "photo": "/images/hub-psn.jpg",
+      "featured": true,
+      "marginRank": 3,
+      "mergedFrom": [
+        "PlayStation Store Wallet Code (INR)",
+        "PlayStation Network Card (US)"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "psn-1000",
+          "label": "NPR 1,000 credit",
+          "amount": "1000",
+          "unit": "wallet",
+          "price": "1,000",
+          "memberPrice": "950",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "psn-2000",
+          "label": "NPR 2,000 credit",
+          "amount": "2000",
+          "unit": "wallet",
+          "price": "2,000",
+          "memberPrice": "1,900",
+          "popular": false,
+          "marginRank": 2
+        },
+        {
+          "id": "psn-10us",
+          "label": "US $10 card",
+          "amount": "10us",
+          "unit": "USD",
+          "price": "1,650",
+          "memberPrice": "1,568",
+          "popular": false,
+          "marginRank": 3
+        },
+        {
+          "id": "psn-5000",
+          "label": "NPR 5,000 credit",
+          "amount": "5000",
+          "unit": "wallet",
+          "price": "5,000",
+          "memberPrice": "4,750",
+          "popular": false,
+          "marginRank": 4
+        }
+      ],
+      "passwordLabel": "PlayStation password",
+      "passwordWhy": "We sign in once to drop store credit. Password is not saved on this phone."
+    },
+    {
+      "id": "gta-5",
+      "category": "vouchers",
+      "kind": "Steam gift",
+      "name": "GTA V",
+      "short": "GTA5",
+      "blurb": "GTA V Steam gift. Code after pay.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Steam gift code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Grand Theft Auto V (GTA 5)"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "gta-5-std",
+          "label": "Standard",
+          "amount": "std",
+          "unit": "key",
+          "price": "2,490",
+          "memberPrice": "2,366",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "gta-5-prem",
+          "label": "Premium",
+          "amount": "prem",
+          "unit": "key",
+          "price": "3,990",
+          "memberPrice": "3,790",
+          "popular": false,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "minecraft",
+      "category": "vouchers",
+      "kind": "Java + Bedrock",
+      "name": "Minecraft",
+      "short": "MC",
+      "blurb": "Java and Bedrock edition key.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Java + Bedrock code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Minecraft Java and Bedrock Edition"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "minecraft-both",
+          "label": "Java + Bedrock",
+          "amount": "both",
+          "unit": "key",
+          "price": "3,490",
+          "memberPrice": "3,316",
+          "popular": true,
+          "marginRank": 1
+        }
+      ]
+    },
+    {
+      "id": "wukong",
+      "category": "vouchers",
+      "kind": "Steam gift",
+      "name": "Black Myth: Wukong",
+      "short": "BMW",
+      "blurb": "Steam gift after pay.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Steam gift code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Black Myth: Wukong Steam Gift"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "wukong-std",
+          "label": "Standard",
+          "amount": "std",
+          "unit": "key",
+          "price": "5,990",
+          "memberPrice": "5,690",
+          "popular": true,
+          "marginRank": 1
+        }
+      ]
+    },
+    {
+      "id": "tekken-8",
+      "category": "vouchers",
+      "kind": "Steam gift",
+      "name": "Tekken 8",
+      "short": "T8",
+      "blurb": "Tekken 8 Steam gift.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Steam gift code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Tekken 8"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "tekken-8-std",
+          "label": "Standard",
+          "amount": "std",
+          "unit": "key",
+          "price": "5,490",
+          "memberPrice": "5,216",
+          "popular": true,
+          "marginRank": 1
+        }
+      ]
+    },
+    {
+      "id": "windows",
+      "category": "vouchers",
+      "kind": "Activation",
+      "name": "Windows key",
+      "short": "WIN",
+      "blurb": "Windows activation for Nepal.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Activation code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Windows Activation Key (Nepal)"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "windows-home",
+          "label": "Home",
+          "amount": "home",
+          "unit": "key",
+          "price": "1,990",
+          "memberPrice": "1,890",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "windows-pro",
+          "label": "Pro",
+          "amount": "pro",
+          "unit": "key",
+          "price": "3,490",
+          "memberPrice": "3,316",
+          "popular": false,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "office",
+      "category": "vouchers",
+      "kind": "License",
+      "name": "Microsoft Office",
+      "short": "OFF",
+      "blurb": "Office license key.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "License code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Microsoft Office"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "office-per",
+          "label": "Personal",
+          "amount": "per",
+          "unit": "key",
+          "price": "4,990",
+          "memberPrice": "4,740",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "office-pro",
+          "label": "Professional",
+          "amount": "pro",
+          "unit": "key",
+          "price": "8,990",
+          "memberPrice": "8,540",
+          "popular": false,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "tryhackme",
+      "category": "vouchers",
+      "kind": "Voucher",
+      "name": "TryHackMe",
+      "short": "THM",
+      "blurb": "TryHackMe voucher code.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Voucher code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "TryHackMe"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "tryhackme-1m",
+          "label": "1 month",
+          "amount": "1m",
+          "unit": "month",
+          "price": "1,490",
+          "memberPrice": "1,416",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "tryhackme-1y",
+          "label": "1 year",
+          "amount": "1y",
+          "unit": "year",
+          "price": "9,990",
+          "memberPrice": "9,490",
+          "popular": false,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "noping",
+      "category": "vouchers",
+      "kind": "Subscription code",
+      "name": "NoPing",
+      "short": "NP",
+      "blurb": "NoPing code after pay.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Subscription code code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "NoPing Subscription Code"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "noping-1m",
+          "label": "1 month",
+          "amount": "1m",
+          "unit": "month",
+          "price": "890",
+          "memberPrice": "846",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "noping-1y",
+          "label": "1 year",
+          "amount": "1y",
+          "unit": "year",
+          "price": "6,990",
+          "memberPrice": "6,640",
+          "popular": false,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "udemy",
+      "category": "topups",
+      "kind": "Course credit",
+      "name": "Udemy",
+      "short": "UD",
+      "blurb": "Udemy credit after pay.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Course credit code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Udemy"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "udemy-1",
+          "label": "1 course",
+          "amount": "1",
+          "unit": "course",
+          "price": "890",
+          "memberPrice": "846",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "udemy-5",
+          "label": "5 courses",
+          "amount": "5",
+          "unit": "course",
+          "price": "3,490",
+          "memberPrice": "3,316",
+          "popular": false,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "itunes",
+      "category": "gift-cards",
+      "kind": "Gift card",
+      "name": "iTunes / App Store",
+      "short": "iOS",
+      "blurb": "US and India cards after you tap in.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Gift card code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "iTunes Gift Card (IN)",
+        "iTunes Gift Card (US)"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "itunes-10us",
+          "label": "US $10",
+          "amount": "10us",
+          "unit": "USD",
+          "price": "1,650",
+          "memberPrice": "1,568",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "itunes-25us",
+          "label": "US $25",
+          "amount": "25us",
+          "unit": "USD",
+          "price": "3,990",
+          "memberPrice": "3,790",
+          "popular": false,
+          "marginRank": 2
+        },
+        {
+          "id": "itunes-500in",
+          "label": "IN ₹500",
+          "amount": "500in",
+          "unit": "INR",
+          "price": "890",
+          "memberPrice": "846",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "nintendo",
+      "category": "gift-cards",
+      "kind": "Gift card",
+      "name": "Nintendo eShop",
+      "short": "NSW",
+      "blurb": "US eShop card.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Gift card code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Nintendo eShop Gift Card (US)"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "nintendo-10",
+          "label": "$10",
+          "amount": "10",
+          "unit": "USD",
+          "price": "1,650",
+          "memberPrice": "1,568",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "nintendo-25",
+          "label": "$25",
+          "amount": "25",
+          "unit": "USD",
+          "price": "3,990",
+          "memberPrice": "3,790",
+          "popular": false,
+          "marginRank": 2
+        },
+        {
+          "id": "nintendo-50",
+          "label": "$50",
+          "amount": "50",
+          "unit": "USD",
+          "price": "7,790",
+          "memberPrice": "7,400",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "razer",
+      "category": "gift-cards",
+      "kind": "Pin",
+      "name": "Razer Gold",
+      "short": "RZ",
+      "blurb": "Razer pin (MY).",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Pin code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Razer Pin Direct Top Up (MY)"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "razer-10",
+          "label": "RM 10",
+          "amount": "10",
+          "unit": "MYR",
+          "price": "390",
+          "memberPrice": "370",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "razer-50",
+          "label": "RM 50",
+          "amount": "50",
+          "unit": "MYR",
+          "price": "1,690",
+          "memberPrice": "1,606",
+          "popular": false,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "garena-shell",
+      "category": "gift-cards",
+      "kind": "Shells",
+      "name": "Garena Shell",
+      "short": "GS",
+      "blurb": "ID or MY after you tap in.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Shells code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Garena Shell (ID)",
+        "Garena Shell (MY)"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "garena-shell-50id",
+          "label": "ID 50",
+          "amount": "50id",
+          "unit": "shell",
+          "price": "220",
+          "memberPrice": "209",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "garena-shell-150id",
+          "label": "ID 150",
+          "amount": "150id",
+          "unit": "shell",
+          "price": "620",
+          "memberPrice": "589",
+          "popular": false,
+          "marginRank": 2
+        },
+        {
+          "id": "garena-shell-50my",
+          "label": "MY 50",
+          "amount": "50my",
+          "unit": "shell",
+          "price": "240",
+          "memberPrice": "228",
+          "popular": false,
+          "marginRank": 3
+        }
+      ]
+    },
+    {
+      "id": "bigo-card",
+      "category": "gift-cards",
+      "kind": "Gift card",
+      "name": "Bigo gift card",
+      "short": "BigoGC",
+      "blurb": "Bigo gift card code.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Gift card code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Bigo Live Gift Card"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "bigo-card-10",
+          "label": "$10",
+          "amount": "10",
+          "unit": "USD",
+          "price": "1,650",
+          "memberPrice": "1,568",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "bigo-card-25",
+          "label": "$25",
+          "amount": "25",
+          "unit": "USD",
+          "price": "3,990",
+          "memberPrice": "3,790",
+          "popular": false,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "tango",
+      "category": "gift-cards",
+      "kind": "Coins card",
+      "name": "Tango",
+      "short": "Tango",
+      "blurb": "Tango gift card.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Coins card code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Tango"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "tango-10",
+          "label": "$10",
+          "amount": "10",
+          "unit": "USD",
+          "price": "1,650",
+          "memberPrice": "1,568",
+          "popular": true,
+          "marginRank": 1
+        }
+      ]
+    },
+    {
+      "id": "discord",
+      "category": "gift-cards",
+      "kind": "Nitro",
+      "name": "Discord Nitro",
+      "short": "Nitro",
+      "blurb": "Nitro gift after pay.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Nitro code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Discord Nitro"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "discord-1m",
+          "label": "1 month",
+          "amount": "1m",
+          "unit": "month",
+          "price": "1,290",
+          "memberPrice": "1,226",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "discord-1y",
+          "label": "1 year",
+          "amount": "1y",
+          "unit": "year",
+          "price": "9,990",
+          "memberPrice": "9,490",
+          "popular": false,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "netflix",
+      "category": "subscriptions",
+      "kind": "Premium",
+      "name": "Netflix",
+      "short": "NF",
+      "blurb": "Netflix premium time.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Premium code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Netflix Premium Subscription"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "netflix-1m",
+          "label": "1 month",
+          "amount": "1m",
+          "unit": "month",
+          "price": "1,490",
+          "memberPrice": "1,416",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "netflix-3m",
+          "label": "3 months",
+          "amount": "3m",
+          "unit": "month",
+          "price": "4,290",
+          "memberPrice": "4,076",
+          "popular": false,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "crunchyroll",
+      "category": "subscriptions",
+      "kind": "Premium",
+      "name": "Crunchyroll",
+      "short": "CR",
+      "blurb": "Crunchyroll premium.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Premium code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Crunchyroll Premium"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "crunchyroll-1m",
+          "label": "1 month",
+          "amount": "1m",
+          "unit": "month",
+          "price": "990",
+          "memberPrice": "940",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "crunchyroll-1y",
+          "label": "1 year",
+          "amount": "1y",
+          "unit": "year",
+          "price": "7,990",
+          "memberPrice": "7,590",
+          "popular": false,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "youtube",
+      "category": "subscriptions",
+      "kind": "Premium",
+      "name": "YouTube Premium",
+      "short": "YT",
+      "blurb": "YouTube Premium time.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Premium code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "YouTube Premium"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "youtube-1m",
+          "label": "1 month",
+          "amount": "1m",
+          "unit": "month",
+          "price": "890",
+          "memberPrice": "846",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "youtube-1y",
+          "label": "1 year",
+          "amount": "1y",
+          "unit": "year",
+          "price": "7,990",
+          "memberPrice": "7,590",
+          "popular": false,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "surfshark",
+      "category": "subscriptions",
+      "kind": "VPN",
+      "name": "Surfshark",
+      "short": "VPN",
+      "blurb": "Surfshark VPN code.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "VPN code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Surfshark VPN"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "surfshark-1m",
+          "label": "1 month",
+          "amount": "1m",
+          "unit": "month",
+          "price": "690",
+          "memberPrice": "656",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "surfshark-1y",
+          "label": "1 year",
+          "amount": "1y",
+          "unit": "year",
+          "price": "3,990",
+          "memberPrice": "3,790",
+          "popular": false,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "duolingo",
+      "category": "subscriptions",
+      "kind": "Super",
+      "name": "Duolingo Super",
+      "short": "Duo",
+      "blurb": "Duolingo Super time.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Super code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Duolingo Super"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "duolingo-1m",
+          "label": "1 month",
+          "amount": "1m",
+          "unit": "month",
+          "price": "790",
+          "memberPrice": "750",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "duolingo-1y",
+          "label": "1 year",
+          "amount": "1y",
+          "unit": "year",
+          "price": "5,990",
+          "memberPrice": "5,690",
+          "popular": false,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "prime-video",
+      "category": "subscriptions",
+      "kind": "Premium",
+      "name": "Prime Video",
+      "short": "Prime",
+      "blurb": "Prime Video time.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Premium code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Prime Video"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "prime-video-1m",
+          "label": "1 month",
+          "amount": "1m",
+          "unit": "month",
+          "price": "499",
+          "memberPrice": "474",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "prime-video-1y",
+          "label": "1 year",
+          "amount": "1y",
+          "unit": "year",
+          "price": "4,990",
+          "memberPrice": "4,740",
+          "popular": false,
+          "marginRank": 2
+        }
+      ]
+    },
+    {
+      "id": "zoom",
+      "category": "subscriptions",
+      "kind": "Pro",
+      "name": "Zoom",
+      "short": "Zoom",
+      "blurb": "Zoom Pro time.",
+      "idLabel": "Email or WhatsApp",
+      "idHint": "Where we send the code. No account password.",
+      "idPlaceholder": "980… or you@mail.com",
+      "fulfillMode": "code",
+      "tone": "gold",
+      "fulfillment": "Pro code pending",
+      "photo": "",
+      "featured": false,
+      "marginRank": 8,
+      "mergedFrom": [
+        "Zoom"
+      ],
+      "regions": [],
+      "packs": [
+        {
+          "id": "zoom-1m",
+          "label": "1 month",
+          "amount": "1m",
+          "unit": "month",
+          "price": "1,490",
+          "memberPrice": "1,416",
+          "popular": true,
+          "marginRank": 1
+        },
+        {
+          "id": "zoom-1y",
+          "label": "1 year",
+          "amount": "1y",
+          "unit": "year",
+          "price": "12,990",
+          "memberPrice": "12,340",
+          "popular": false,
+          "marginRank": 2
+        }
+      ]
+    }
+  ]
+}

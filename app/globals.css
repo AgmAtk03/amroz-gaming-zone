@@ -1,29 +1,43 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #07060d;
-  --ink-2: #0e0b16;
-  --panel: #14101f;
-  --line: rgba(180, 140, 255, 0.22);
-  --cyan: #22f0ff;
-  --magenta: #ff3cac;
-  --violet: #b56bff;
-  --text: #f3eefc;
-  --muted: #b7adc8;
+  --paper: #0f1419;
+  --paper-2: #12181f;
+  --ink: #ffffff;
+  --ink-soft: #e8ecef;
+  --panel: #1a222d;
+  --line: #2a3340;
+  --pine: #8aa394;
+  --rust: #e07070;
+  --teal: #aeb6bd;
+  --muted: #aeb6bd;
+  --gold: #ff3b4a;
+  --instant: #2f9e6b;
+  --ember: #ff3b4a;
+  --sand: #aeb6bd;
+  --brick: #ff3b4a;
 }
 
 @theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
   --color-ink: var(--ink);
-  --color-ink-2: var(--ink-2);
+  --color-ink-soft: var(--ink-soft);
   --color-panel: var(--panel);
   --color-line: var(--line);
-  --color-cyan: var(--cyan);
-  --color-magenta: var(--magenta);
-  --color-violet: var(--violet);
-  --color-text: var(--text);
+  --color-pine: var(--pine);
+  --color-rust: var(--rust);
+  --color-teal: var(--teal);
   --color-muted: var(--muted);
-  --font-sans: var(--font-outfit);
-  --font-display: var(--font-orbitron);
+  --color-gold: var(--gold);
+  --color-instant: var(--instant);
+  --color-ember: var(--ember);
+  --color-sand: var(--sand);
+  --color-brick: var(--brick);
+  --font-sans: "Inter", "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Inter", "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
 }
 
 html {
@@ -32,126 +46,257 @@ html {
 
 html,
 body {
-  background: var(--ink);
-  color: var(--text);
+  background: var(--paper);
+  color: var(--ink);
 }
 
 body {
-  font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans), "Noto Sans", ui-sans-serif, system-ui, sans-serif;
   min-height: 100%;
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--cyan) 40%, transparent);
-  color: #041016;
+  background: color-mix(in oklab, var(--gold) 40%, transparent);
+  color: var(--paper);
 }
 
-.font-display {
-  font-family: var(--font-orbitron), ui-sans-serif, system-ui, sans-serif;
+.font-serif {
+  font-family: var(--font-sans), "Noto Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
 .site-bg {
-  background:
-    radial-gradient(1200px 600px at 10% -10%, rgba(181, 107, 255, 0.18), transparent 55%),
-    radial-gradient(900px 500px at 100% 0%, rgba(34, 240, 255, 0.1), transparent 50%),
-    radial-gradient(800px 500px at 80% 80%, rgba(255, 60, 172, 0.08), transparent 50%),
-    var(--ink);
+  background: var(--paper);
 }
 
-.grid-overlay {
-  background-image:
-    linear-gradient(rgba(34, 240, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(181, 107, 255, 0.05) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+.thumb-btn {
+  min-height: 44px;
 }
 
-.neon-border {
-  border: 1px solid color-mix(in oklab, var(--cyan) 35%, var(--line));
-  box-shadow:
-    0 0 0 1px rgba(255, 60, 172, 0.08) inset,
-    0 0 32px rgba(34, 240, 255, 0.08);
+.chip-row,
+.shelf-scroll {
+  scrollbar-width: none;
 }
-
-.glow-btn {
-  box-shadow:
-    0 0 0 1px color-mix(in oklab, var(--cyan) 50%, transparent),
-    0 0 24px rgba(34, 240, 255, 0.28);
-}
-
-.glow-btn:hover {
-  box-shadow:
-    0 0 0 1px var(--cyan),
-    0 0 32px rgba(34, 240, 255, 0.4);
-}
-
-.tile-cyan {
-  background:
-    radial-gradient(120% 90% at 0% 0%, rgba(34, 240, 255, 0.22), transparent 55%),
-    linear-gradient(160deg, #171326, #0c0a12);
-}
-
-.tile-violet {
-  background:
-    radial-gradient(120% 90% at 100% 0%, rgba(181, 107, 255, 0.28), transparent 55%),
-    linear-gradient(160deg, #171326, #0c0a12);
-}
-
-.tile-magenta {
-  background:
-    radial-gradient(120% 90% at 50% 100%, rgba(255, 60, 172, 0.22), transparent 50%),
-    linear-gradient(160deg, #171326, #0c0a12);
-}
-
-.gallery-a {
-  background:
-    repeating-linear-gradient(135deg, rgba(34, 240, 255, 0.12) 0 8px, transparent 8px 18px),
-    radial-gradient(circle at 30% 40%, rgba(34, 240, 255, 0.35), transparent 42%),
-    #120c1c;
-}
-
-.gallery-b {
-  background:
-    radial-gradient(ellipse at 70% 30%, rgba(255, 60, 172, 0.45), transparent 45%),
-    radial-gradient(ellipse at 20% 80%, rgba(181, 107, 255, 0.4), transparent 40%),
-    #120c1c;
-}
-
-.gallery-c {
-  background:
-    linear-gradient(180deg, transparent 60%, rgba(7, 6, 13, 0.7)),
-    repeating-linear-gradient(90deg, rgba(181, 107, 255, 0.2) 0 2px, transparent 2px 14px),
-    #160e24;
-}
-
-.gallery-d {
-  background:
-    conic-gradient(from 210deg at 50% 50%, rgba(34, 240, 255, 0.3), rgba(181, 107, 255, 0.15), rgba(255, 60, 172, 0.3), rgba(34, 240, 255, 0.3)),
-    #100c18;
-}
-
-.gallery-e {
-  background:
-    radial-gradient(circle at 50% 120%, rgba(34, 240, 255, 0.35), transparent 50%),
-    linear-gradient(145deg, #1a1230, #0a0810);
-}
-
-.gallery-f {
-  background:
-    repeating-radial-gradient(circle at 20% 20%, rgba(255, 60, 172, 0.2) 0 6px, transparent 6px 18px),
-    #140d1f;
-}
-
-details.faq > summary {
-  list-style: none;
-}
-
-details.faq > summary::-webkit-details-marker {
+.chip-row::-webkit-scrollbar,
+.shelf-scroll::-webkit-scrollbar {
   display: none;
 }
 
-details.faq[open] > summary .chev {
-  transform: rotate(45deg);
+.header-energy {
+  box-shadow: 0 1px 0 color-mix(in oklab, var(--gold) 35%, transparent);
+}
+
+.header-energy::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background-size: 220% 100%;
+  animation: header-sweep 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+header.header-energy {
+  position: relative;
+}
+
+@keyframes header-sweep {
+  0% {
+    background-position: 120% 0;
+  }
+  100% {
+    background-position: -120% 0;
+  }
+}
+
+.chip-energy {
+  transition: border-color 0.16s ease, transform 0.16s ease, background 0.16s ease;
+}
+
+.chip-energy:hover,
+.chip-energy:active {
+  border-color: color-mix(in oklab, var(--gold) 55%, var(--line));
+  transform: translateY(-1px);
+}
+
+.hero-track {
+  transition: transform 0.5s ease;
+}
+
+.hero-ken {
+  animation: ken 2.5s ease-out both;
+  transform-origin: 50% 40%;
+}
+
+@keyframes ken {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.hero-copy {
+  animation: copy-up 0.45s ease both;
+}
+
+.zone-strip {
+  box-shadow: 0 -1px 0 color-mix(in oklab, var(--gold) 28%, transparent);
+}
+
+.zone-track {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.zone-card {
+  border: 1px solid color-mix(in oklab, var(--gold) 42%, var(--line));
+  box-shadow:
+    0 0 0 1px rgba(255, 59, 74, 0.1) inset,
+    0 0 22px rgba(255, 59, 74, 0.12);
+}
+
+.zone-card-on {
+  box-shadow:
+    0 0 0 1px rgba(255, 59, 74, 0.28) inset,
+    0 0 36px rgba(255, 59, 74, 0.22);
+}
+
+.zone-wash {
+  background:
+    linear-gradient(180deg, transparent 18%, rgba(15, 20, 25, 0.55) 48%, rgba(15, 20, 25, 0.92)),
+    linear-gradient(90deg, rgba(255, 59, 74, 0.14), transparent 42%);
+}
+
+.zone-still {
+  transform-origin: 30% 60%;
+}
+
+.zone-card-on .zone-still {
+  animation: zone-drift 3.2s ease-in-out both;
+}
+
+.zone-scan {
+  background: linear-gradient(
+    105deg,
+    transparent 18%,
+    color-mix(in oklab, var(--gold) 22%, transparent) 48%,
+    transparent 72%
+  );
+  background-size: 220% 100%;
+  mix-blend-mode: screen;
+}
+
+.zone-card-on .zone-scan {
+  animation: zone-scan 3.2s ease-in-out both;
+}
+
+@keyframes zone-drift {
+  from {
+    transform: scale(1.04) translateX(3%);
+  }
+  to {
+    transform: scale(1) translateX(0);
+  }
+}
+
+@keyframes zone-scan {
+  from {
+    background-position: 130% 0;
+  }
+  to {
+    background-position: -40% 0;
+  }
+}
+
+@keyframes copy-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.photo-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition: border-color 0.15s ease, transform 0.16s ease;
+}
+
+.photo-card:hover {
+  border-color: color-mix(in oklab, var(--gold) 45%, var(--line));
+  transform: scale(1.015);
+}
+
+.press-card:active {
+  transform: scale(0.97);
+}
+
+@keyframes hub-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hub-card {
+  animation: hub-in 0.38s ease both;
+}
+
+.photo-shimmer {
+  isolation: isolate;
+}
+
+.photo-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    color-mix(in oklab, white 14%, transparent) 50%,
+    transparent 80%
+  );
+  background-size: 220% 100%;
+  animation: photo-shimmer 1.15s ease-out 1;
+  pointer-events: none;
+}
+
+@keyframes photo-shimmer {
+  from {
+    background-position: 120% 0;
+  }
+  to {
+    background-position: -120% 0;
+  }
+}
+
+.stock-in {
+  color: var(--ink-soft);
+}
+.stock-low,
+.stock-ask {
+  color: var(--muted);
+}
+
+.has-tabbar {
+  padding-bottom: 5.5rem;
+}
+
+@media (min-width: 768px) {
+  .has-tabbar {
+    padding-bottom: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -159,40 +304,22 @@ details.faq[open] > summary .chev {
     scroll-behavior: auto;
   }
 
-  .pulse-ring,
-  .scan {
-    animation: none !important;
+  .hub-card,
+  .photo-shimmer::after,
+  .photo-card,
+  .press-card,
+  .header-energy::after,
+  .hero-ken,
+  .hero-copy,
+  .zone-still,
+  .zone-scan,
+  .zone-track {
+    animation: none;
+    transition: none;
   }
-}
 
-@keyframes pulse-ring {
-  0% {
-    transform: scale(0.85);
-    opacity: 0.55;
+  .photo-card:hover,
+  .press-card:active {
+    transform: none;
   }
-  100% {
-    transform: scale(1.25);
-    opacity: 0;
-  }
-}
-
-.pulse-ring {
-  animation: pulse-ring 2.4s ease-out infinite;
-}
-
-.pulse-ring:nth-child(2) {
-  animation-delay: 0.8s;
-}
-
-@keyframes scan {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(400%);
-  }
-}
-
-.scan {
-  animation: scan 5s linear infinite;
 }

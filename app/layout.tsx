@@ -1,46 +1,51 @@
 import type { Metadata } from "next";
-import { Orbitron, Outfit } from "next/font/google";
+import type { ReactNode } from "react";
+import { Inter, Noto_Sans } from "next/font/google";
 import "./globals.css";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
-const orbitron = Orbitron({
-  variable: "--font-orbitron",
-  subsets: ["latin"],
+const noto = Noto_Sans({
+  variable: "--font-noto",
+  subsets: ["latin", "devanagari"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Amroz Gaming Zone | PS club in Kathmandu Ward 32",
+  title: "Amroz Gaming Zone | Game top-ups in Kathmandu",
   description:
-    "Amroz Gaming Zone is a PlayStation club and PC hangout in Ward 32, Kathmandu. Book PS5 booths, join tournaments, and grab weekly or monthly memberships in NPR.",
+    "Free Fire, PUBG, MLBB, Valorant, Roblox, PS Store, and Steam Instant Delivery top-ups on your ID. 2 Hour Delivery gaming gear from Pepsicola, Ward 32.",
   applicationName: "Amroz Gaming Zone",
   keywords: [
     "Amroz Gaming Zone",
-    "Kathmandu PS5",
-    "gaming zone Ward 32",
-    "PlayStation club Nepal",
+    "Kathmandu top-up",
+    "Free Fire Nepal",
+    "Pepsicola gaming shop",
   ],
   openGraph: {
     title: "Amroz Gaming Zone",
-    description:
-      "Ward 32’s late-night PS club — booths, tournaments, memberships in NPR.",
+    description: "Instant Delivery top-ups on your ID. 2 Hour Delivery gaming gear in Kathmandu.",
     locale: "en_NP",
     type: "website",
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${orbitron.variable} h-full antialiased`}
+      className={`${inter.variable} ${noto.variable} h-full antialiased`}
     >
-      <body className="site-bg min-h-full flex flex-col">{children}</body>
+      <body className={`${inter.className} site-bg flex min-h-full flex-col`}>{children}</body>
     </html>
   );
 }

@@ -1,25 +1,23 @@
 import type { NextConfig } from "next";
 
 const isGithubPages = process.env.GITHUB_PAGES === "true";
-const staticCdn = process.env.STATIC_CDN;
+const isStaticExport =
+  isGithubPages || process.env.STATIC_EXPORT === "1";
 
 const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  ...(isGithubPages
+  ...(isStaticExport
     ? {
         output: "export" as const,
         trailingSlash: true,
-        basePath: "/amroz-gaming-zone",
-        assetPrefix: "/amroz-gaming-zone",
       }
     : {}),
-  ...(staticCdn
+  ...(isGithubPages
     ? {
-        output: "export" as const,
-        trailingSlash: true,
-        assetPrefix: staticCdn,
+        basePath: "/amroz-gaming-zone",
+        assetPrefix: "/amroz-gaming-zone",
       }
     : {}),
 };

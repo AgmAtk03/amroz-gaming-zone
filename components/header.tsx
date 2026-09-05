@@ -1,79 +1,166 @@
 "use client";
 
-import { useState } from "react";
-import { Wordmark } from "@/components/brand";
-import { nav, whatsAppHref } from "@/lib/content";
-import { homeHref, navHref, type SitePage } from "@/lib/routes";
+import { FormEvent, useMemo, useState } from "react";
+import { InstantBadge, Wordmark } from "@/components/brand";
+import { catalogCategories, hubs, physical } from "@/lib/catalog";
+import { usePageSearchParams } from "@/lib/page-search";
+import { homeHref, payHref, shopPageHref, type SitePage } from "@/lib/routes";
+import { useSavedStore } from "@/lib/saved-ids";
 
-export function Header({ page = "home" }: { page?: SitePage }) {
-  const [open, setOpen] = useState(false);
+export function Header({
+  page = "home",
+  sticky = true,
+  onOpenAccount,
+  onOpenCart,
+}: {
+  page?: SitePage;
+  sticky?: boolean;
+  onOpenAccount?: () => void;
+  onOpenCart?: () => void;
+}) {
+  const store = useSavedStore();
+  const badge = Math.min(store.orders.length, 9);
+  const search = usePageSearchParams();
+  const activeCat = page === "shop" ? (search?.get("cat") ?? "") : "";
+  const [q, setQ] = useState("");
+  const hits = useMemo(() => {
+    const needle = q.trim().toLowerCase();
+    if (needle.length < 2) return [];
+    const games = hubs
+      .filter(
+        (hub) =>
+          hub.name.toLowerCase().includes(needle) ||
+          hub.short.toLowerCase().includes(needle) ||
+          hub.kind.toLowerCase().includes(needle),
+      )
+      .map((hub) => ({
+        key: hub.id,
+        label: hub.name,
+        meta: hub.kind,
+        href: payHref(page, { hub: hub.id }),
+      }));
+    const gear = physical
+      .filter(
+        (item) =>
+          item.name.toLowerCase().includes(needle) ||
+          item.sku.toLowerCase().includes(needle) ||
+          item.kind.toLowerCase().includes(needle),
+      )
+      .slice(0, 4)
+      .map((item) => ({
+        key: item.id,
+        label: item.name,
+        meta: item.kind,
+        href: payHref(page, { sku: item.id }),
+      }));
+    return [...games, ...gear].slice(0, 6);
+  }, [page, q]);
+
+  function onSearch(e: FormEvent) {
+    e.preventDefault();
+    if (hits[0]) window.location.href = hits[0].href;
+  }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-ink/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Wordmark href={homeHref(page)} />
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
-          {nav.map((item) => (
-            <a
-              key={item.href}
-              href={navHref(item.href.slice(1), page)}
-              className="rounded-md px-3 py-2 text-sm text-muted transition hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-        <div className="flex items-center gap-2">
-          <a
-            href={whatsAppHref("Hi Amroz — I want to book a booth.")}
-            className="hidden rounded-full bg-cyan px-4 py-2 text-sm font-semibold text-ink glow-btn transition sm:inline-flex"
-          >
-            Book a booth
-          </a>
+    <header
+      className={`${sticky ? "sticky top-0 z-40" : ""} header-energy border-b border-line bg-paper/95 backdrop-blur-md`}
+    >
+      <div className="mx-auto flex max-w-5xl items-center gap-3 px-3 py-2.5 sm:px-6">
+        <div className="flex min-w-0 items-center gap-2">
+          <Wordmark href={homeHref(page)} compact />
+          <InstantBadge className="shrink-0 whitespace-nowrap px-1.5 text-[9px] sm:px-2 sm:text-[10px]" />
+        </div>
+        <form className="relative hidden min-w-0 flex-1 md:block" onSubmit={onSearch}>
+          <label className="sr-only" htmlFor="shop-search">
+            Search games
+          </label>
+          <input
+            id="shop-search"
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="Search Free Fire, PUBG, MLBB…"
+            className="w-full rounded-xl border border-line bg-panel px-4 py-2.5 text-sm outline-none focus:border-gold"
+          />
+          {hits.length ? (
+            <ul className="absolute inset-x-0 top-full z-20 mt-1 divide-y divide-line overflow-hidden rounded-xl border border-line bg-panel shadow-xl">
+              {hits.map((hit) => (
+                <li key={hit.key}>
+                  <a href={hit.href} className="flex items-center justify-between px-4 py-2.5 text-sm">
+                    <span>{hit.label}</span>
+                    <span className="text-xs text-muted">{hit.meta}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </form>
+        <div className="ml-auto flex items-center gap-2">
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-line text-text lg:hidden"
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            onClick={() => setOpen((v) => !v)}
+            onClick={onOpenCart}
+            className="relative inline-flex h-10 items-center rounded-xl border border-line px-3 text-xs font-semibold"
           >
-            <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              {open ? (
-                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="1.8" />
-              ) : (
-                <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="1.8" />
-              )}
-            </svg>
+            Cart
+            {badge ? (
+              <span className="ml-1.5 inline-flex min-w-5 justify-center rounded-full bg-gold px-1.5 text-[10px] font-semibold text-paper">
+                {badge}
+              </span>
+            ) : null}
+          </button>
+          <button
+            type="button"
+            onClick={onOpenAccount}
+            className="hidden h-10 items-center rounded-xl border border-line px-3 text-xs font-semibold md:inline-flex"
+          >
+            Account
           </button>
         </div>
       </div>
-      {open && (
-        <div
-          id="mobile-nav"
-          className="border-t border-line bg-ink-2 px-4 py-4 lg:hidden"
-        >
-          <nav className="flex flex-col gap-1" aria-label="Mobile">
-            {nav.map((item) => (
-              <a
-                key={item.href}
-                href={navHref(item.href.slice(1), page)}
-                onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-3 text-base text-text hover:bg-panel"
-              >
-                {item.label}
-              </a>
+
+      <form className="px-3 pb-2 md:hidden" onSubmit={onSearch}>
+        <label className="sr-only" htmlFor="shop-search-m">
+          Search games
+        </label>
+        <input
+          id="shop-search-m"
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          placeholder="Search Free Fire, PUBG, MLBB…"
+          className="w-full rounded-xl border border-line bg-panel px-4 py-2.5 text-sm outline-none focus:border-gold"
+        />
+        {hits.length ? (
+          <ul className="mt-1 divide-y divide-line overflow-hidden rounded-xl border border-line bg-panel">
+            {hits.map((hit) => (
+              <li key={hit.key}>
+                <a href={hit.href} className="flex items-center justify-between px-4 py-2.5 text-sm">
+                  <span>{hit.label}</span>
+                  <span className="text-xs text-muted">{hit.meta}</span>
+                </a>
+              </li>
             ))}
-            <a
-              href={navHref("book", page)}
-              onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-cyan px-4 py-3 text-center text-sm font-semibold text-ink"
-            >
-              Book a booth
-            </a>
-          </nav>
-        </div>
-      )}
+          </ul>
+        ) : null}
+      </form>
+
+      <nav aria-label="Shop categories" className="border-t border-line">
+        <ul className="chip-row mx-auto flex max-w-5xl gap-2 overflow-x-auto px-3 py-2 sm:px-6">
+          {catalogCategories.map((chip) => (
+            <li key={chip.id} className="shrink-0">
+              <a
+                href={shopPageHref(page, { cat: chip.id })}
+                aria-current={activeCat === chip.id ? "page" : undefined}
+                className={`chip-energy inline-flex rounded-full px-3 py-1.5 text-xs font-semibold ${
+                  activeCat === chip.id
+                    ? "border border-gold bg-gold text-paper"
+                    : "border border-line bg-panel"
+                }`}
+              >
+                {chip.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   );
 }
