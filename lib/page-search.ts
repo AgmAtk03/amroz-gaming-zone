@@ -10,7 +10,9 @@ import { useEffect, useState } from "react";
  * checkout stays on “Loading checkout…” and Account never hydrates.
  */
 export function usePageSearchParams(): URLSearchParams | null {
-  const [params, setParams] = useState<URLSearchParams | null>(null);
+  const [params, setParams] = useState<URLSearchParams | null>(() =>
+    typeof window === "undefined" ? null : new URLSearchParams(window.location.search),
+  );
 
   useEffect(() => {
     const read = () => setParams(new URLSearchParams(window.location.search));
